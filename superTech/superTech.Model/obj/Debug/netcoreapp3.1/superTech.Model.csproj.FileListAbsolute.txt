@@ -1,0 +1,9 @@
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\bin\Debug\netcoreapp3.1\superTech.Model.deps.json
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\bin\Debug\netcoreapp3.1\superTech.Model.dll
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\bin\Debug\netcoreapp3.1\superTech.Model.pdb
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.AssemblyInfoInputs.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.AssemblyInfo.cs
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.dll
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.pdb
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.csproj.CoreCompileInputs.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Model\obj\Debug\netcoreapp3.1\superTech.Model.csprojAssemblyReference.cache
