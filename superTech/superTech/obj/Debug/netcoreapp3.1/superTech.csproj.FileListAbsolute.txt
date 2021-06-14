@@ -1,3 +1,9 @@
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csprojAssemblyReference.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csproj.CoreCompileInputs.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfoInputs.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfo.cs
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -9,6 +15,8 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netc
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Flurl.dll
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Flurl.Http.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
@@ -127,9 +135,8 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netc
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csprojAssemblyReference.cache
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfoInputs.cache
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfo.cs
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.dll
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.RazorTargetAssemblyInfo.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csproj.CopyComplete
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\staticwebassets\superTech.StaticWebAssets.Manifest.cache
@@ -137,10 +144,3 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netc
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.genruntimeconfig.cache
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Flurl.dll
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Flurl.Http.dll
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csproj.CoreCompileInputs.cache
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.dll
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.pdb

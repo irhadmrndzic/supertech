@@ -45,7 +45,6 @@
             this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DOE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Roles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -110,7 +109,6 @@
             this.DOB,
             this.Address,
             this.City,
-            this.DOE,
             this.DOR,
             this.Roles,
             this.Active});
@@ -164,7 +162,7 @@
             // 
             // Lastname
             // 
-            this.Lastname.DataPropertyName = "FirstName";
+            this.Lastname.DataPropertyName = "LastName";
             this.Lastname.HeaderText = "Prezime";
             this.Lastname.MinimumWidth = 8;
             this.Lastname.Name = "Lastname";
@@ -233,15 +231,6 @@
             this.City.Name = "City";
             this.City.ReadOnly = true;
             this.City.Width = 150;
-            // 
-            // DOE
-            // 
-            this.DOE.DataPropertyName = "DateOfEmployment";
-            this.DOE.HeaderText = "Datum zaposlenja";
-            this.DOE.MinimumWidth = 8;
-            this.DOE.Name = "DOE";
-            this.DOE.ReadOnly = true;
-            this.DOE.Width = 150;
             // 
             // DOR
             // 
@@ -312,7 +301,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn City;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DOE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn Roles;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Active;

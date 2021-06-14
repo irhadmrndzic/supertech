@@ -21,8 +21,7 @@ namespace superTech.Database
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public DateTime? DateOfEmployment { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }

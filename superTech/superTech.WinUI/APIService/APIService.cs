@@ -50,5 +50,14 @@ namespace superTech.WinUI.APIService
             return await url.PostJsonAsync(request).ReceiveJson<T>();
         }
 
+        public async Task<T> Update<T>(int? id, object request)
+        {
+            var url = $"{Properties.Settings.Default.apiURL}/{_route}/{id}";
+
+            var result = await url.PutJsonAsync(request).ReceiveJson<T>();
+
+            return result;
+        }
+
     }
 }

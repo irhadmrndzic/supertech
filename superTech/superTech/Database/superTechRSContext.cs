@@ -97,7 +97,7 @@ namespace superTech.Database
 
             modelBuilder.Entity<BuyerOrder>(entity =>
             {
-                entity.Property(e => e.Date).HasColumnType("datetime");
+                entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.FkUserId).HasColumnName("FK_UserId");
 
@@ -176,7 +176,7 @@ namespace superTech.Database
             {
                 entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
 
-                entity.Property(e => e.Date).HasColumnType("datetime");
+                entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.FkSupplierId).HasColumnName("FK_SupplierId");
 
@@ -337,9 +337,7 @@ namespace superTech.Database
                     .IsRequired()
                     .HasMaxLength(150);
 
-                entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
-
-                entity.Property(e => e.DateOfEmployment).HasColumnType("date");
+                entity.Property(e => e.DateOfBirth).HasColumnType("date");
 
                 entity.Property(e => e.Email)
                     .IsRequired()

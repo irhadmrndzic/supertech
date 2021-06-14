@@ -56,8 +56,8 @@ namespace superTech.Services
         {
             var entity = _mapper.Map<User>(request);
 
-            entity.RegistrationDate = DateTime.Now;
-            entity.DateOfEmployment = DateTime.Parse(request.DateOfEmployment);
+            entity.RegistrationDate = DateTime.Parse(request.DateOfRegistration);
+
             entity.DateOfBirth = DateTime.Parse(request.DateOfBirth);
 
             entity.PasswordHash = "test";
@@ -90,6 +90,11 @@ namespace superTech.Services
         public override UserModel Update(int id, UserUpsertRequest request)
         {
             var entity = _dbContext.Users.Find(id);
+            entity.DateOfBirth = DateTime.Parse(request.DateOfBirth);
+
+            entity.RegistrationDate = DateTime.Parse(request.DateOfRegistration);
+
+
             _mapper.Map(request, entity);
             _dbContext.SaveChanges();
 
