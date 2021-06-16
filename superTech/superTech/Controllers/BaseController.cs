@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using superTech.Services.Generic;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace superTech.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T,TSearchFilter>:ControllerBase

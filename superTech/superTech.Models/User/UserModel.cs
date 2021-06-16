@@ -1,5 +1,7 @@
 ﻿
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using superTech.Models.Roles;
 
 namespace superTech.Models.User
 {
@@ -22,6 +24,8 @@ namespace superTech.Models.User
         public string RolesString { get; set; }
 
         public List<int> Roles { get; set; }
+        public ICollection<UsersRolesModel> UsersRoles { get; set; }
+
     }
 
 }

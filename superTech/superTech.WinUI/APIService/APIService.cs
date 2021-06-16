@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Flurl.Http;
 using superTech.Models.Extensions;
 
@@ -7,7 +10,8 @@ namespace superTech.WinUI.APIService
     public class APIService
     {
         private string _route = null;
-
+        public static string Username { get; set; }
+        public static string Password { get; set; }
         public APIService(string route)
         {
             _route = route;
@@ -16,25 +20,36 @@ namespace superTech.WinUI.APIService
         public async Task<T> Get<T>(object search)
         {
             var url = $"{Properties.Settings.Default.apiURL}/{_route}";
-            if (search != null)
+
+            try
             {
-                url += "?";
-                url += await search.ToQueryString();
-                var result = await url.GetJsonAsync<T>();
-                return result;
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
-            else
+            catch (FlurlHttpException ex)
             {
-                T result = await $"{Properties.Settings.Default.apiURL}/{_route}".GetJsonAsync<T>();
-                return result;
+                if (ex.Call.Response.StatusCode == 401)
+                {
+                    MessageBox.Show("Niste authentificirani");
+                }
+                throw;
             }
         }
 
         public async Task<T> GetById<T>(object id)
         {
-            T result = await $"{Properties.Settings.Default.apiURL}/{_route}/{id}".GetJsonAsync<T>();
-            return result;
+            var url = $"{Properties.Settings.Default.apiURL}/{_route}/{id}";
+
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+
+
         }
+
 
         public async Task<T> GetRoles<T>()
         {
@@ -47,17 +62,50 @@ namespace superTech.WinUI.APIService
         {
             var url = $"{Properties.Settings.Default.apiURL}/{_route}";
 
-            return await url.PostJsonAsync(request).ReceiveJson<T>();
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
+
 
         public async Task<T> Update<T>(int? id, object request)
         {
-            var url = $"{Properties.Settings.Default.apiURL}/{_route}/{id}";
+            try
+            {
+                var url = $"{Properties.Settings.Default.apiURL}/{_route}/{id}";
 
-            var result = await url.PutJsonAsync(request).ReceiveJson<T>();
+                return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
-            return result;
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
-
     }
+
 }

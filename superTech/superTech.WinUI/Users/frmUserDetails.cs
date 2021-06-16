@@ -120,12 +120,24 @@ namespace superTech.WinUI.Users
                     Address = txtAddress.Text,
                     UserName = txtUsername.Text,
                     Email = txtEmail.Text,
-                    Password = txtPassword.Text,
-                    PasswordConfirmation = txtPassword.Text,
                     PhoneNumber = txtPhoneNumber.Text,
                     CityId = int.Parse(cmbCity.SelectedValue.ToString()),
                     Roles = selectedRoles
+
                 };
+
+                if (string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPasswordConfirm.Text)
+                    || (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtPasswordConfirm.Text)))
+                {
+                    request.Password = "";
+                    request.PasswordConfirmation = "";
+                }
+                else
+                {
+                    request.Password = txtPassword.Text;
+                    request.PasswordConfirmation = txtPasswordConfirm.Text;
+
+                }
 
                 if (_id.HasValue)
                 {

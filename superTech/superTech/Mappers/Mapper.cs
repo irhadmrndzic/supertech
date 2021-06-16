@@ -13,7 +13,10 @@ namespace superTech.Mappers
     {
         public Mapper()
         {
+            CreateMap<Role, RolesModel>().ReverseMap();
+
             CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<UsersRole, UsersRolesModel>().ReverseMap();
 
 
             CreateMap<User, UserModel>()
@@ -28,6 +31,8 @@ namespace superTech.Mappers
 
             CreateMap<User, UserUpsertRequest>().ReverseMap();
 
+
+
             CreateMap<User, UserUpsertRequest>()
                 .ForMember(x=>x.CityId,q=>q.MapFrom(src=>src.FkCityId))
                 .ReverseMap();
@@ -35,7 +40,6 @@ namespace superTech.Mappers
 
             CreateMap<Product,ProductUpsertRequest>().ReverseMap();
             CreateMap<City, CityModel>().ReverseMap();
-            CreateMap<Role, RolesModel>().ReverseMap();
 
             CreateMap<City, CityUpsertRequest>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();

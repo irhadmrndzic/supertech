@@ -32,5 +32,6 @@ namespace superTech.Models.User
         public int CityId { get; set; }
         public List<int> Roles { get; set; } = new List<int>();
 
+
     }
 }

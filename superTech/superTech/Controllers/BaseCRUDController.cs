@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using superTech.Services.Generic;
 using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseCRUDController<T,TSearch,TInsert,TUpdate> : BaseController<T,TSearch>

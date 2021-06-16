@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using superTech.Models.Category;
 using superTech.Models.Roles;
 using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : BaseCRUDController<RolesModel, object, RolesModel, RolesModel>
