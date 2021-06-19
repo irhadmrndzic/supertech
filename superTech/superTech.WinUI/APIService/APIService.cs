@@ -35,7 +35,7 @@ namespace superTech.WinUI.APIService
             {
                 if (ex.Call.Response.StatusCode == 401)
                 {
-                    MessageBox.Show("Niste authentificirani");
+                    MessageBox.Show("Niste autentificirani");
                 }
                 throw;
             }
@@ -53,7 +53,7 @@ namespace superTech.WinUI.APIService
 
         public async Task<T> GetRoles<T>()
         {
-            T result = await $"{Properties.Settings.Default.apiURL}/{_route}".GetJsonAsync<T>();
+            T result = await $"{Properties.Settings.Default.apiURL}/{_route}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
 
             return result;
         }

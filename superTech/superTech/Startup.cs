@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +18,8 @@ using superTech.Services;
 using superTech.Services.Generic;
 using superTech.Services.GenericCRUD;
 using Newtonsoft;
+using superTech.Models.UnitsOfMeasures;
+
 namespace superTech
 {
     public class Startup
@@ -42,22 +43,30 @@ namespace superTech
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "superTech", Version = "v1" });
 
-                c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
                 {
+                    Name = "Authorization",
                     Type = SecuritySchemeType.Http,
-                    Scheme = "basic"
+                    Scheme = "basic",
+                    In = ParameterLocation.Header,
+                    Description = "Basic Authorization header using the Bearer scheme."
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
-                        },
-                        new string[]{}
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "basic"
+                                }
+                            },
+                            new string[] {}
                     }
                 });
+
             });
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthentication("BasicAuthentication")
@@ -68,14 +77,15 @@ namespace superTech
 
 
             services.AddScoped<IBaseService<UserModel, object>, BaseService<UserModel, object, User>>();
-            services.AddScoped<IUsersService,UsersService>();
 
             services.AddScoped<IBaseService<ProductModel, object>, BaseService<ProductModel, object, Product>>();
 
 
-            services
-                .AddScoped<ICRUDService<UserModel, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>,
-                    UsersService>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IProductsService, ProductsService>();
+
+
+
             //services
             //    .AddScoped<ICRUDService<UserModel, object, UserUpsertRequest, UserUpsertRequest>,
             //        BaseCRUDService<UserModel, object, User, UserUpsertRequest, UserUpsertRequest>>();
@@ -96,7 +106,8 @@ namespace superTech
                 .AddScoped<ICRUDService<RolesModel, object, RolesModel, RolesModel>,
                     BaseCRUDService<RolesModel, object, Role, RolesModel, RolesModel>>();
 
-
+            services.AddScoped<ICRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>,
+                BaseCRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasure, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>>();
 
         }
 
@@ -113,8 +124,6 @@ namespace superTech
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-         
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -122,7 +131,6 @@ namespace superTech
             app.UseAuthentication();
 
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {

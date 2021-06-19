@@ -12,13 +12,18 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Services
 {
-    public class UsersService:BaseCRUDService<UserModel, UserSearchRequest, User, UserUpsertRequest, UserUpsertRequest>,IUsersService
+    public class UsersService:IUsersService
     {
-        public UsersService(superTechRSContext context,IMapper mapper) : base(context, mapper)
+        private readonly superTechRSContext _dbContext;
+        private readonly IMapper _mapper;
+
+        public UsersService(superTechRSContext context, IMapper mapper )
         {
+            _dbContext = context;
+            _mapper = mapper;
         }
 
-        public override List<UserModel> Get(UserSearchRequest searchFilter)
+        public  List<UserModel> Get(UserSearchRequest searchFilter)
         {
             var query = _dbContext.Users.AsQueryable();
 
@@ -45,7 +50,7 @@ namespace superTech.Services
             return _mapper.Map<List<UserModel>>(list);
         }
 
-        public override UserModel GetById(int id)
+        public  UserModel GetById(int id)
         {
             var entity = _dbContext.Users.Where(x => x.UserId == id)
                 .Include(ur => ur.UsersRoles)
@@ -55,7 +60,7 @@ namespace superTech.Services
             return _mapper.Map<UserModel>(entity);
         }
 
-        public override UserModel Insert(UserUpsertRequest request)
+        public  UserModel Insert(UserUpsertRequest request)
         {
             var entity = _mapper.Map<User>(request);
 
@@ -100,7 +105,7 @@ namespace superTech.Services
             return _mapper.Map<UserModel>(query);
         }
 
-        public override UserModel Update(int id, UserUpsertRequest request)
+        public  UserModel Update(int id, UserUpsertRequest request)
         {
             var entity = _dbContext.Users.Find(id);
             _dbContext.Users.Attach(entity);

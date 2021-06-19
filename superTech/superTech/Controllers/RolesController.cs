@@ -6,7 +6,7 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : BaseCRUDController<RolesModel, object, RolesModel, RolesModel>

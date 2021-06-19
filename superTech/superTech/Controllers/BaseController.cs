@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace superTech.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T,TSearchFilter>:ControllerBase

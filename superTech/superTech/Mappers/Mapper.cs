@@ -5,6 +5,7 @@ using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.Product;
 using superTech.Models.Roles;
+using superTech.Models.UnitsOfMeasures;
 using superTech.Models.User;
 
 namespace superTech.Mappers
@@ -31,11 +32,18 @@ namespace superTech.Mappers
 
             CreateMap<User, UserUpsertRequest>().ReverseMap();
 
+            CreateMap<UnitsOfMeasure, UnitsOfMeasuresModel>().ReverseMap();
+            CreateMap<UnitsOfMeasure, UnitsOfMeasuresUpsertRequest>().ReverseMap();
+
+
 
 
             CreateMap<User, UserUpsertRequest>()
                 .ForMember(x=>x.CityId,q=>q.MapFrom(src=>src.FkCityId))
                 .ReverseMap();
+
+            CreateMap<Product, ProductModel>().ForMember(x => x.CategoryString, src => src.MapFrom(x => x.FkCategory.Name)).
+                ForMember(y=>y.FkUnitOfMeasureString, m=>m.MapFrom(src=>src.FkUnitOfMeasure.Name)).ReverseMap();
 
 
             CreateMap<Product,ProductUpsertRequest>().ReverseMap();
