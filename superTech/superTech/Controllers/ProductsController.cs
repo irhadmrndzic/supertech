@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using superTech.Models.Product;
 using superTech.Services;
-using superTech.Services.GenericCRUD;
 using System.Collections.Generic;
 
 namespace superTech.Controllers
 {
-    //[Authorize(AuthenticationSchemes = "BasicAuthentication")]
+    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -21,7 +20,7 @@ namespace superTech.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
-        public List<ProductModel> Get([FromQuery]ProductUpsertRequest searchFilter)
+        public List<ProductModel> Get([FromQuery]ProductsSearchRequest searchFilter)
         {
             return _productsService.Get(searchFilter);
         }

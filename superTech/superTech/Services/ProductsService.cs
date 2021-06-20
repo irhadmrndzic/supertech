@@ -21,9 +21,15 @@ namespace superTech.Services
             _mapper = mapper;
         }
 
-        public List<ProductModel> Get(ProductUpsertRequest searchFilter)
+        public List<ProductModel> Get(ProductsSearchRequest searchFilter)
         {
             var query = _dbContext.Products.AsQueryable();
+
+            if (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0)
+            {
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory);
+            }
+            query.OrderBy(x => x.Name);
             query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure);
             var list = query.ToList();
 

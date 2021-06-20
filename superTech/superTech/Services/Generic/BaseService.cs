@@ -10,7 +10,7 @@ namespace superTech.Services.Generic
         public readonly superTechRSContext _dbContext;
         public readonly IMapper _mapper;
 
-        public BaseService(superTechRSContext dbContext, IMapper mapper)
+        public  BaseService(superTechRSContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;

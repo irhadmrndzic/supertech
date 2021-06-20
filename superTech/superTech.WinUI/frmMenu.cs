@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using superTech.WinUI.Products;
 using superTech.WinUI.Users;
 
 namespace superTech.WinUI
@@ -97,6 +98,14 @@ namespace superTech.WinUI
         {
             frmUserDetails frmUserDetails = new frmUserDetails();
             frmUserDetails.Show();
+        }
+
+        private void pregledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProducts frmProducts = new frmProducts();
+            frmProducts.MdiParent = this;
+            frmProducts.WindowState = FormWindowState.Maximized;
+            frmProducts.Show();
         }
     }
 }
