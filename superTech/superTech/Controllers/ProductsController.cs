@@ -24,5 +24,19 @@ namespace superTech.Controllers
         {
             return _productsService.Get(searchFilter);
         }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet("{id}")]
+        public ProductModel GetById(int id)
+        {
+            return _productsService.GetById(id);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public ProductModel Insert(ProductUpsertRequest request)
+        {
+            return _productsService.Insert(request);
+        }
     }
 }

@@ -38,12 +38,25 @@ namespace superTech.Services
 
         public ProductModel GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).SingleOrDefault();
+
+            return _mapper.Map<ProductModel>(query);
         }
 
         public ProductModel Insert(ProductUpsertRequest request)
         {
-            throw new System.NotImplementedException();
+            var entity = _mapper.Map<Product>(request);
+
+            _dbContext.Products.Add(entity);
+            _dbContext.SaveChanges();
+
+            entity.FkCategoryId = request.CategoryId;
+            entity.FkUnitOfMeasureId = request.UnitOfMeasureId;
+
+            _dbContext.SaveChanges();
+
+            return _mapper.Map<ProductModel>(entity);
+
         }
 
         public ProductModel Update(int id, ProductUpsertRequest request)

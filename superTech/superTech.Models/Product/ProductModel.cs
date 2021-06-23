@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace superTech.Models.Product
 {
    public class ProductModel
@@ -7,11 +9,11 @@ namespace superTech.Models.Product
         public string Name { get; set; }
         public string Description { get; set; }
         public string Code { get; set; }
+        [Range(0,double.MaxValue)]
         public decimal Price { get; set; }
         public bool Active { get; set; }
-
-        //public byte[] Image { get; set; }
-        //public byte[] ImageThumb { get; set; }
+        public byte[] Image { get; set; }
+        public byte[] ImageThumb { get; set; }
         public string FkUnitOfMeasureString { get; set; }
         public string CategoryString { get; set; }
 
