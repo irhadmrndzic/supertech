@@ -1,4 +1,6 @@
 ﻿
+using superTech.Models.Ratings;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace superTech.Models.Product
@@ -11,12 +13,13 @@ namespace superTech.Models.Product
         public string Code { get; set; }
         [Range(0,double.MaxValue)]
         public decimal Price { get; set; }
+        public decimal? Rating { get; set; }
         public bool Active { get; set; }
         public byte[] Image { get; set; }
         public byte[] ImageThumb { get; set; }
         public string FkUnitOfMeasureString { get; set; }
         public string CategoryString { get; set; }
-
-        //public ICollection<ProductsCategories> ProductsCategories { get; set; }
+        public int CategoryId { get; set; }
+        public int UnitOfMeasureId { get; set; }
     }
 }

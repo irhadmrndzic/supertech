@@ -38,5 +38,15 @@ namespace superTech.Controllers
         {
             return _productsService.Insert(request);
         }
+
+
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPut("{id}")]
+        public ProductModel Update(int id, [FromBody]ProductUpsertRequest request)
+        {
+            return _productsService.Update(id, request);
+        }
+
     }
 }

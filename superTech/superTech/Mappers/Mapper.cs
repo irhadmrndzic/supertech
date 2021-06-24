@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using superTech.Database;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.Product;
+using superTech.Models.Ratings;
 using superTech.Models.Roles;
 using superTech.Models.UnitsOfMeasures;
 using superTech.Models.User;
@@ -18,6 +20,8 @@ namespace superTech.Mappers
 
             CreateMap<User, UserModel>().ReverseMap();
             CreateMap<UsersRole, UsersRolesModel>().ReverseMap();
+            CreateMap<Rating, RatingsModel>().ReverseMap();
+
 
 
             CreateMap<User, UserModel>()
@@ -43,7 +47,11 @@ namespace superTech.Mappers
                 .ReverseMap();
 
             CreateMap<Product, ProductModel>().ForMember(x => x.CategoryString, src => src.MapFrom(x => x.FkCategory.Name)).
-                ForMember(y=>y.FkUnitOfMeasureString, m=>m.MapFrom(src=>src.FkUnitOfMeasure.Name)).ReverseMap();
+                ForMember(y=>y.FkUnitOfMeasureString, m=>m.MapFrom(src=>src.FkUnitOfMeasure.Name)).
+                ForMember(m=>m.CategoryId,sr=>sr.MapFrom(a=>a.FkCategory.CategoryId)).
+                ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
+               ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra=>(decimal?)ra.Rating1)))
+                .ReverseMap();
 
 
             CreateMap<Product,ProductUpsertRequest>().ReverseMap();

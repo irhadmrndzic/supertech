@@ -29,10 +29,9 @@ namespace superTech.WinUI.Products
         {
             cmbCategories.SelectedValue = 0;
 
-         await  loadUnitsOfMeasures();
-         await  loadCategories();
-         await  loadProducts(0);
-
+            await loadUnitsOfMeasures();
+            await loadCategories();
+            await loadProducts(0);
 
         }
 
@@ -63,7 +62,8 @@ namespace superTech.WinUI.Products
 
         private async Task loadProducts(int? categoryId)
         {
-            var products = await _productsService.Get<List<ProductModel>>(new ProductsSearchRequest() { 
+            var products = await _productsService.Get<List<ProductModel>>(new ProductsSearchRequest()
+            {
                 CategoryId = categoryId
             });
 
@@ -82,9 +82,9 @@ namespace superTech.WinUI.Products
             {
                 value = 0;
             }
-            if(int.TryParse(value.ToString(), out int id))
+            if (int.TryParse(value.ToString(), out int id))
             {
-                 await  loadProducts(id);
+                await loadProducts(id);
             }
         }
 
@@ -94,12 +94,34 @@ namespace superTech.WinUI.Products
 
             var entity = await _productsService.GetById<ProductModel>(id);
 
+            var castedCategories = cmbCategories.Items.Cast<CategoryModel>().Select(x => x.CategoryId).ToList();
+
+
+            for (int i = 0; i < castedCategories.Count; i++)
+            {
+                if (castedCategories[i] == entity.CategoryId)
+                {
+                    cmbCategories.SelectedIndex = i;
+                }
+            }
+
+            var castedUOMs = cmbUom.Items.Cast<UnitsOfMeasuresModel>().Select(x => x.UnitOfMeasureId).ToList();
+
+
+            for (int i = 0; i < castedUOMs.Count; i++)
+            {
+                if (castedUOMs[i] == entity.UnitOfMeasureId)
+                {
+                    cmbUom.SelectedIndex = i;
+                }
+            }
+
             txtCode.Text = entity.Code;
             txtDesc.Text = entity.Description;
             txtName.Text = entity.Name;
             txtPrice.Text = entity.Price.ToString();
             cbActive.Checked = entity.Active;
-            if (entity.Image.Length>0)
+            if (entity.Image.Length > 0)
             {
                 ImageConverter converter = new ImageConverter();
                 pbProdImage.Image = (Image)converter.ConvertFrom(entity.Image);
@@ -108,27 +130,9 @@ namespace superTech.WinUI.Products
             }
 
 
-         }
+        }
 
         ProductUpsertRequest req = new ProductUpsertRequest();
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var result = imgDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                var fileName = imgDialog.FileName;
-
-                var file = File.ReadAllBytes(fileName);
-
-                req.Image = file;
-                txtImage.Text = fileName;
-
-                Image image = Image.FromFile(fileName);
-                pbProdImage.Image = image;
-                pbProdImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-        }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -158,6 +162,38 @@ namespace superTech.WinUI.Products
         private void btnClear_Click(object sender, EventArgs e)
         {
             FormReset.ResetAllControls(this);
+        }
+
+        private void btnAddImage_Click(object sender, EventArgs e)
+        {
+            var result = imgDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = imgDialog.FileName;
+
+                var file = File.ReadAllBytes(fileName);
+
+                req.Image = file;
+                txtImage.Text = fileName;
+
+                Image image = Image.FromFile(fileName);
+                pbProdImage.Image = image;
+                pbProdImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private void dgvProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 7)
+            {
+                if (e.Value is bool)
+                {
+                    bool value = (bool)e.Value;
+                    e.Value = (value) ? "Aktivan" : "Neaktivan";
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

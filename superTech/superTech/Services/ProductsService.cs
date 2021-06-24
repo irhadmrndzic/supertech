@@ -30,7 +30,7 @@ namespace superTech.Services
                 query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory);
             }
             query.OrderBy(x => x.Name);
-            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure);
+            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r=>r.Ratings);
             var list = query.ToList();
 
             return _mapper.Map<List<ProductModel>>(list);
@@ -38,7 +38,7 @@ namespace superTech.Services
 
         public ProductModel GetById(int id)
         {
-            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).SingleOrDefault();
+            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).Include(r=>r.Ratings).SingleOrDefault();
 
             return _mapper.Map<ProductModel>(query);
         }
@@ -61,7 +61,21 @@ namespace superTech.Services
 
         public ProductModel Update(int id, ProductUpsertRequest request)
         {
-            throw new System.NotImplementedException();
+
+            var entity = _dbContext.Products.Find(id);
+
+            _dbContext.Products.Attach(entity);
+            _dbContext.Update(entity);
+
+            _mapper.Map(request, entity);
+
+            _dbContext.SaveChanges();
+
+
+            var query = _dbContext.Products.Where(x => x.ProductId == entity.ProductId).Include(q => q.Ratings)
+             .Include(r => r.FkCategory).Include(c => c.FkUnitOfMeasure).SingleOrDefault();
+
+            return _mapper.Map<ProductModel>(query);
         }
     }
 }

@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdcutName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -48,7 +41,7 @@
             this.pbProdImage = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtImage = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddImage = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbUom = new System.Windows.Forms.ComboBox();
             this.cbActive = new System.Windows.Forms.CheckBox();
@@ -57,6 +50,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.imgDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnClear = new System.Windows.Forms.Button();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdcutName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProdImage)).BeginInit();
             this.SuspendLayout();
@@ -77,80 +79,17 @@
             this.UnitOfMeasure,
             this.Price,
             this.Description,
-            this.Active});
+            this.Active,
+            this.Rating});
             this.dgvProducts.Location = new System.Drawing.Point(839, 0);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1192, 1028);
+            this.dgvProducts.Size = new System.Drawing.Size(1376, 1028);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProducts_CellFormatting);
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
-            // 
-            // ProductId
-            // 
-            this.ProductId.DataPropertyName = "ProductId";
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.MinimumWidth = 8;
-            this.ProductId.Name = "ProductId";
-            this.ProductId.Visible = false;
-            this.ProductId.Width = 150;
-            // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Šifra";
-            this.Code.MinimumWidth = 8;
-            this.Code.Name = "Code";
-            this.Code.Width = 150;
-            // 
-            // ProdcutName
-            // 
-            this.ProdcutName.DataPropertyName = "Name";
-            this.ProdcutName.HeaderText = "Naziv";
-            this.ProdcutName.MinimumWidth = 8;
-            this.ProdcutName.Name = "ProdcutName";
-            this.ProdcutName.Width = 150;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "CategoryString";
-            this.Category.HeaderText = "Kategorija";
-            this.Category.MinimumWidth = 8;
-            this.Category.Name = "Category";
-            this.Category.Width = 150;
-            // 
-            // UnitOfMeasure
-            // 
-            this.UnitOfMeasure.DataPropertyName = "FkUnitOfMeasureString";
-            this.UnitOfMeasure.HeaderText = "Jedinica mjere";
-            this.UnitOfMeasure.MinimumWidth = 8;
-            this.UnitOfMeasure.Name = "UnitOfMeasure";
-            this.UnitOfMeasure.Width = 150;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Cijena";
-            this.Price.MinimumWidth = 8;
-            this.Price.Name = "Price";
-            this.Price.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Opis";
-            this.Description.MinimumWidth = 8;
-            this.Description.Name = "Description";
-            this.Description.Width = 150;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "Active";
-            this.Active.HeaderText = "Aktivan";
-            this.Active.MinimumWidth = 8;
-            this.Active.Name = "Active";
-            this.Active.Width = 150;
             // 
             // txtCode
             // 
@@ -244,15 +183,15 @@
             this.txtImage.Size = new System.Drawing.Size(448, 26);
             this.txtImage.TabIndex = 17;
             // 
-            // button1
+            // btnAddImage
             // 
-            this.button1.Location = new System.Drawing.Point(633, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 36);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Dodaj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddImage.Location = new System.Drawing.Point(633, 357);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.Size = new System.Drawing.Size(178, 36);
+            this.btnAddImage.TabIndex = 19;
+            this.btnAddImage.Text = "Dodaj";
+            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // btnSave
             // 
@@ -324,11 +263,87 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // ProductId
+            // 
+            this.ProductId.DataPropertyName = "ProductId";
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.MinimumWidth = 8;
+            this.ProductId.Name = "ProductId";
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 150;
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Šifra";
+            this.Code.MinimumWidth = 8;
+            this.Code.Name = "Code";
+            this.Code.Width = 150;
+            // 
+            // ProdcutName
+            // 
+            this.ProdcutName.DataPropertyName = "Name";
+            this.ProdcutName.HeaderText = "Naziv";
+            this.ProdcutName.MinimumWidth = 8;
+            this.ProdcutName.Name = "ProdcutName";
+            this.ProdcutName.Width = 150;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "CategoryString";
+            this.Category.HeaderText = "Kategorija";
+            this.Category.MinimumWidth = 8;
+            this.Category.Name = "Category";
+            this.Category.Width = 150;
+            // 
+            // UnitOfMeasure
+            // 
+            this.UnitOfMeasure.DataPropertyName = "FkUnitOfMeasureString";
+            this.UnitOfMeasure.HeaderText = "Jedinica mjere";
+            this.UnitOfMeasure.MinimumWidth = 8;
+            this.UnitOfMeasure.Name = "UnitOfMeasure";
+            this.UnitOfMeasure.Width = 150;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Cijena";
+            this.Price.MinimumWidth = 8;
+            this.Price.Name = "Price";
+            this.Price.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Opis";
+            this.Description.MinimumWidth = 8;
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Aktivan";
+            this.Active.MinimumWidth = 8;
+            this.Active.Name = "Active";
+            this.Active.Width = 150;
+            // 
+            // Rating
+            // 
+            this.Rating.DataPropertyName = "Rating";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "/";
+            this.Rating.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Rating.HeaderText = "Ocjena";
+            this.Rating.MinimumWidth = 8;
+            this.Rating.Name = "Rating";
+            this.Rating.Width = 150;
+            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2031, 1028);
+            this.ClientSize = new System.Drawing.Size(2215, 1028);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.label7);
@@ -336,7 +351,7 @@
             this.Controls.Add(this.cbActive);
             this.Controls.Add(this.cmbUom);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtImage);
             this.Controls.Add(this.pbProdImage);
@@ -372,13 +387,15 @@
         private System.Windows.Forms.PictureBox pbProdImage;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtImage;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cmbUom;
         private System.Windows.Forms.CheckBox cbActive;
         private System.Windows.Forms.MaskedTextBox txtPrice;
         private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.OpenFileDialog imgDialog;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdcutName;
@@ -387,7 +404,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Active;
-        private System.Windows.Forms.OpenFileDialog imgDialog;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
     }
 }
