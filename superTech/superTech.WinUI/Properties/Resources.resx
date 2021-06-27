@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ValidatePrice" xml:space="preserve">
+    <value>Unesite cijenu koja je veća od 0 !</value>
+  </data>
+  <data name="Validate_Image" xml:space="preserve">
+    <value>Slika je obavezna !</value>
+  </data>
   <data name="Validate_Input" xml:space="preserve">
     <value>Polje je obavezno !</value>
+  </data>
+  <data name="Validate_Input_Length" xml:space="preserve">
+    <value>Broj unesenih karaktera mora biti manji od </value>
   </data>
 </root>

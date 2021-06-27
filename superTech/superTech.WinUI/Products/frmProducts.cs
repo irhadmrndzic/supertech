@@ -18,10 +18,11 @@ namespace superTech.WinUI.Products
         private readonly APIService.APIService _uomService = new APIService.APIService("unitsofmeasures");
         private readonly APIService.APIService _productsService = new APIService.APIService("products");
 
-
+        private int? _id = null;
 
         public frmProducts()
         {
+            this.AutoValidate = AutoValidate.Disable;
             InitializeComponent();
         }
 
@@ -32,10 +33,7 @@ namespace superTech.WinUI.Products
             await loadUnitsOfMeasures();
             await loadCategories();
             await loadProducts(0);
-
         }
-
-
 
         private async Task loadUnitsOfMeasures()
         {
@@ -56,8 +54,6 @@ namespace superTech.WinUI.Products
             cmbCategories.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategories.DisplayMember = "Name";
             cmbCategories.ValueMember = "CategoryId";
-
-
         }
 
         private async Task loadProducts(int? categoryId)
@@ -75,24 +71,23 @@ namespace superTech.WinUI.Products
             }
         }
 
-        private async void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
+        private  void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
             var value = cmbCategories.SelectedValue;
             if (value == null)
             {
                 value = 0;
             }
-            if (int.TryParse(value.ToString(), out int id))
-            {
-                await loadProducts(id);
-            }
         }
 
         private async void dgvProducts_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var id = dgvProducts.SelectedRows[0].Cells[0].Value;
+            errProvider.Clear();
+            errProvider.Dispose();
 
-            var entity = await _productsService.GetById<ProductModel>(id);
+            _id = (int)dgvProducts.SelectedRows[0].Cells[0].Value;
+
+            var entity = await _productsService.GetById<ProductModel>(_id);
 
             var castedCategories = cmbCategories.Items.Cast<CategoryModel>().Select(x => x.CategoryId).ToList();
 
@@ -106,7 +101,6 @@ namespace superTech.WinUI.Products
             }
 
             var castedUOMs = cmbUom.Items.Cast<UnitsOfMeasuresModel>().Select(x => x.UnitOfMeasureId).ToList();
-
 
             for (int i = 0; i < castedUOMs.Count; i++)
             {
@@ -128,40 +122,54 @@ namespace superTech.WinUI.Products
                 pbProdImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
             }
-
-
         }
 
         ProductUpsertRequest req = new ProductUpsertRequest();
-
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var categoryId = cmbCategories.SelectedValue;
-
-            if (int.TryParse(categoryId.ToString(), out int catId))
+            if (validateForm())
             {
-                req.CategoryId = catId;
+                var categoryId = cmbCategories.SelectedValue;
+
+
+                if (int.TryParse(categoryId.ToString(), out int catId))
+                {
+                    req.CategoryId = catId;
+                }
+
+                var unitOfMeasure = cmbUom.SelectedValue;
+
+                if (int.TryParse(unitOfMeasure.ToString(), out int uomId))
+                {
+                    req.UnitOfMeasureId = uomId;
+                }
+
+                req.Name = txtName.Text;
+                req.Code = txtCode.Text;
+                req.Active = cbActive.Checked;
+                req.Description = txtDesc.Text;
+                req.Price = decimal.Parse(txtPrice.Text);
+
+                if (!_id.HasValue)
+                {
+                    await _productsService.Insert<ProductModel>(req);
+                }
+                else
+                {
+                    await _productsService.Update<ProductModel>(_id, req);
+                }
             }
-
-            var unitOfMeasure = cmbUom.SelectedValue;
-
-            if (int.TryParse(unitOfMeasure.ToString(), out int uomId))
-            {
-                req.UnitOfMeasureId = uomId;
-            }
-
-            req.Name = txtName.Text;
-            req.Code = txtCode.Text;
-            req.Active = cbActive.Checked;
-            req.Description = txtDesc.Text;
-            req.Price = decimal.Parse(txtPrice.Text);
-
-            await _productsService.Insert<ProductModel>(req);
         }
 
+        void clearForm()
+        {
+            errProvider.Clear();
+            errProvider.Dispose();
+            FormReset.ResetAllControls(this);
+        }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            FormReset.ResetAllControls(this);
+            clearForm();
         }
 
         private void btnAddImage_Click(object sender, EventArgs e)
@@ -193,6 +201,157 @@ namespace superTech.WinUI.Products
                     e.Value = (value) ? "Aktivan" : "Neaktivan";
                     e.FormattingApplied = true;
                 }
+            }
+        }
+
+        private async void btnShowProducts_Click(object sender, EventArgs e)
+        {
+            clearForm();
+
+            var value = cmbCategories.SelectedValue;
+            if (value == null)
+            {
+                value = 0;
+            }
+            if (int.TryParse(value.ToString(), out int id))
+            {
+                errProvider.SetError(cmbCategories, null);
+
+                await loadProducts(id);
+            }
+        }
+
+        bool validateForm()
+        {
+            if (!validateCategories() || !validateProductName() || !validateProductDescription() || !validatePrice() || !validateUOMs() || !validateProductCode() || !validateImage())
+                return false;
+            return true;
+        }
+
+        bool validateCategories()
+        {
+            if (cmbCategories.SelectedIndex == 0)
+            {
+                errProvider.SetError(cmbCategories, Properties.Resources.Validate_Input);
+                return false;
+
+            }
+            else
+            {
+                errProvider.SetError(cmbCategories, null);
+                return true;
+            }
+
+        }
+
+        bool validateUOMs()
+        {
+            if (cmbUom.SelectedIndex == 0)
+            {
+                errProvider.SetError(cmbUom, Properties.Resources.Validate_Input);
+                return false;
+
+            }
+            else
+            {
+                errProvider.SetError(cmbUom, null);
+                return true;
+            }
+
+        }
+
+        bool validateProductName()
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                errProvider.SetError(txtName, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                if (txtName.TextLength >= 50)
+                {
+                    errProvider.SetError(txtName, Properties.Resources.Validate_Input_Length + " 50 !");
+                    return false;
+                }
+                else
+                {
+                    errProvider.SetError(txtName, null);
+                    return true;
+                }
+            }
+        }
+
+        bool validateProductCode()
+        {
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                errProvider.SetError(txtCode, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                if (txtCode.TextLength >= 30)
+                {
+                    errProvider.SetError(txtCode, Properties.Resources.Validate_Input_Length + " 30 !");
+                    return false;
+                }
+                else
+                {
+                    errProvider.SetError(txtCode, null);
+                    return true;
+                }
+            }
+        }
+
+        bool validateProductDescription()
+        {
+            if (string.IsNullOrWhiteSpace(txtDesc.Text))
+            {
+                errProvider.SetError(txtDesc, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                if (txtCode.TextLength >= 100)
+                {
+                    errProvider.SetError(txtDesc, Properties.Resources.Validate_Input_Length + " 100 !");
+                    return false;
+                }
+                else
+                {
+                    errProvider.SetError(txtDesc, null);
+                    return true;
+                }
+            }
+        }
+
+        bool validatePrice()
+        {
+            if (txtPrice.Value <= 0)
+            {
+                errProvider.SetError(txtPrice, Properties.Resources.ValidatePrice);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtPrice, null);
+                return true;
+            }
+        }
+
+        bool validateImage()
+        {
+            if (pbProdImage == null || pbProdImage.Image == null)
+            {
+                errProvider.SetError(pbProdImage, Properties.Resources.Validate_Image);
+
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(pbProdImage, null);
+                return true;
             }
         }
     }

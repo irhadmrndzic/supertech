@@ -61,11 +61,38 @@ namespace superTech.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Slika je obavezna !.
+        /// </summary>
+        internal static string Validate_Image {
+            get {
+                return ResourceManager.GetString("Validate_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Polje je obavezno !.
         /// </summary>
         internal static string Validate_Input {
             get {
                 return ResourceManager.GetString("Validate_Input", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broj unesenih karaktera mora biti manji od .
+        /// </summary>
+        internal static string Validate_Input_Length {
+            get {
+                return ResourceManager.GetString("Validate_Input_Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unesite cijenu koja je veća od 0 !.
+        /// </summary>
+        internal static string ValidatePrice {
+            get {
+                return ResourceManager.GetString("ValidatePrice", resourceCulture);
             }
         }
     }

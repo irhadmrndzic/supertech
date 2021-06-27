@@ -10,7 +10,7 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Services
 {
-    public class ProductsService:IProductsService
+    public class ProductsService : IProductsService
     {
 
         private readonly superTechRSContext _dbContext;
@@ -30,7 +30,7 @@ namespace superTech.Services
                 query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory);
             }
             query.OrderBy(x => x.Name);
-            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r=>r.Ratings);
+            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r => r.Ratings);
             var list = query.ToList();
 
             return _mapper.Map<List<ProductModel>>(list);
@@ -38,7 +38,7 @@ namespace superTech.Services
 
         public ProductModel GetById(int id)
         {
-            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).Include(r=>r.Ratings).SingleOrDefault();
+            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).Include(r => r.Ratings).SingleOrDefault();
 
             return _mapper.Map<ProductModel>(query);
         }
@@ -65,7 +65,10 @@ namespace superTech.Services
             var entity = _dbContext.Products.Find(id);
 
             _dbContext.Products.Attach(entity);
+            entity.FkCategoryId = request.CategoryId;
+            entity.FkUnitOfMeasureId = request.UnitOfMeasureId;
             _dbContext.Update(entity);
+
 
             _mapper.Map(request, entity);
 

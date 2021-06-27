@@ -64,6 +64,12 @@ namespace superTech.WinUI.Utilities
                     RichTextBox richTextBox = (RichTextBox)control;
                     richTextBox.Text = null;
                 }
+
+                if (control is NumericUpDown)
+                {
+                    NumericUpDown numericUpDown = (NumericUpDown)control;
+                    numericUpDown.Value = 0;
+                }
             }
         }
     }
