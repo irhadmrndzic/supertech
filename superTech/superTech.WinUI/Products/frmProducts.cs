@@ -58,8 +58,12 @@ namespace superTech.WinUI.Products
 
         private async Task loadProducts(int? categoryId)
         {
+            lblNoProducts.Hide();
+
             var products = await _productsService.Get<List<ProductModel>>(new ProductsSearchRequest()
             {
+                Name = txtNameSearch.Text,
+                Code = txtCodeSearch.Text,
                 CategoryId = categoryId
             });
 
@@ -67,7 +71,14 @@ namespace superTech.WinUI.Products
             {
                 Cursor.Current = Cursor.Current;
                 dgvProducts.AutoGenerateColumns = false;
-                dgvProducts.DataSource = products;
+
+                    dgvProducts.DataSource = products;
+            }
+
+            if (products.Count == 0)
+            {
+                lblNoProducts.Text = Properties.Resources.No_Products;
+                lblNoProducts.Show();
             }
         }
 
@@ -80,11 +91,8 @@ namespace superTech.WinUI.Products
             }
         }
 
-        private async void dgvProducts_MouseDoubleClick(object sender, MouseEventArgs e)
+        private async void onProductClicked()
         {
-            errProvider.Clear();
-            errProvider.Dispose();
-
             _id = (int)dgvProducts.SelectedRows[0].Cells[0].Value;
 
             var entity = await _productsService.GetById<ProductModel>(_id);
@@ -122,6 +130,14 @@ namespace superTech.WinUI.Products
                 pbProdImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
             }
+        }
+
+        private  void dgvProducts_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            errProvider.Clear();
+            errProvider.Dispose();
+
+            onProductClicked();
         }
 
         ProductUpsertRequest req = new ProductUpsertRequest();
@@ -166,6 +182,7 @@ namespace superTech.WinUI.Products
             errProvider.Clear();
             errProvider.Dispose();
             FormReset.ResetAllControls(this);
+            _id = null;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -204,22 +221,6 @@ namespace superTech.WinUI.Products
             }
         }
 
-        private async void btnShowProducts_Click(object sender, EventArgs e)
-        {
-            clearForm();
-
-            var value = cmbCategories.SelectedValue;
-            if (value == null)
-            {
-                value = 0;
-            }
-            if (int.TryParse(value.ToString(), out int id))
-            {
-                errProvider.SetError(cmbCategories, null);
-
-                await loadProducts(id);
-            }
-        }
 
         bool validateForm()
         {
@@ -353,6 +354,43 @@ namespace superTech.WinUI.Products
                 errProvider.SetError(pbProdImage, null);
                 return true;
             }
+        }
+
+       private async void onGetProductsClicked()
+        {
+
+            var value = cmbCategories.SelectedValue;
+            if (value == null)
+            {
+                value = 0;
+            }
+            if (int.TryParse(value.ToString(), out int id))
+            {
+                errProvider.SetError(cmbCategories, null);
+
+                await loadProducts(id);
+            }
+        }
+        private  void btnShowProducts_Click(object sender, EventArgs e)
+        {
+            clearForm();
+            onGetProductsClicked();
+        }
+
+        private  void btnSearch_Click(object sender, EventArgs e)
+        {
+            clearForm();
+            onGetProductsClicked();
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            if (_id.HasValue)
+            {
+            await _productsService.Delete<ProductModel>(_id);
+            }
+
         }
     }
 }

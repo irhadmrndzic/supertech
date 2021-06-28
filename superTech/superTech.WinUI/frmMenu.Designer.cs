@@ -33,11 +33,13 @@
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proizvodiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.proizvodiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +50,8 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
-            this.proizvodiToolStripMenuItem});
+            this.proizvodiToolStripMenuItem,
+            this.newsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(2072, 33);
@@ -67,16 +70,31 @@
             // pretragaKorisnikaToolStripMenuItem
             // 
             this.pretragaKorisnikaToolStripMenuItem.Name = "pretragaKorisnikaToolStripMenuItem";
-            this.pretragaKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.pretragaKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
             this.pretragaKorisnikaToolStripMenuItem.Text = "Pretraga Korisnika";
             this.pretragaKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.pretragaKorisnikaToolStripMenuItem_Click);
             // 
             // noviKorisnikToolStripMenuItem
             // 
             this.noviKorisnikToolStripMenuItem.Name = "noviKorisnikToolStripMenuItem";
-            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
             this.noviKorisnikToolStripMenuItem.Text = "Novi korisnik";
             this.noviKorisnikToolStripMenuItem.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem_Click);
+            // 
+            // proizvodiToolStripMenuItem
+            // 
+            this.proizvodiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem});
+            this.proizvodiToolStripMenuItem.Name = "proizvodiToolStripMenuItem";
+            this.proizvodiToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
+            this.proizvodiToolStripMenuItem.Text = "Proizvodi";
+            // 
+            // pregledToolStripMenuItem
+            // 
+            this.pregledToolStripMenuItem.Name = "pregledToolStripMenuItem";
+            this.pregledToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem.Text = "Pregled";
+            this.pregledToolStripMenuItem.Click += new System.EventHandler(this.pregledToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -96,20 +114,20 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(60, 25);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // proizvodiToolStripMenuItem
+            // newsToolStripMenuItem
             // 
-            this.proizvodiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem});
-            this.proizvodiToolStripMenuItem.Name = "proizvodiToolStripMenuItem";
-            this.proizvodiToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
-            this.proizvodiToolStripMenuItem.Text = "Proizvodi";
+            this.newsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem1});
+            this.newsToolStripMenuItem.Name = "newsToolStripMenuItem";
+            this.newsToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.newsToolStripMenuItem.Text = "News";
             // 
-            // pregledToolStripMenuItem
+            // pregledToolStripMenuItem1
             // 
-            this.pregledToolStripMenuItem.Name = "pregledToolStripMenuItem";
-            this.pregledToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.pregledToolStripMenuItem.Text = "Pregled";
-            this.pregledToolStripMenuItem.Click += new System.EventHandler(this.pregledToolStripMenuItem_Click);
+            this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
+            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem1.Text = "Pregled";
+            this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.pregledToolStripMenuItem1_Click);
             // 
             // frmMenu
             // 
@@ -144,6 +162,8 @@
         private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proizvodiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem1;
     }
 }
 

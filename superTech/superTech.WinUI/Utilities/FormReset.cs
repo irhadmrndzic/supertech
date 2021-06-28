@@ -19,12 +19,12 @@ namespace superTech.WinUI.Utilities
                     textBox.Text = null;
                 }
 
-                if (control is ComboBox)
-                {
-                    ComboBox comboBox = (ComboBox)control;
-                    if (comboBox.Items.Count > 0)
-                        comboBox.SelectedIndex = 0;
-                }
+                //if (control is ComboBox)
+                //{
+                //    ComboBox comboBox = (ComboBox)control;
+                //    if (comboBox.Items.Count > 0)
+                //        comboBox.SelectedIndex = 0;
+                //}
 
                 if (control is CheckBox)
                 {

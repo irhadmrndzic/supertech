@@ -61,6 +61,15 @@ namespace superTech.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nema pronađenih proizvoda !.
+        /// </summary>
+        internal static string No_Products {
+            get {
+                return ResourceManager.GetString("No_Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Slika je obavezna !.
         /// </summary>
         internal static string Validate_Image {

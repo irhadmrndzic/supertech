@@ -48,5 +48,13 @@ namespace superTech.Controllers
             return _productsService.Update(id, request);
         }
 
+
+        [Authorize(Roles = "Administrator")]
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+             _productsService.Delete(id);
+        }
+
     }
 }

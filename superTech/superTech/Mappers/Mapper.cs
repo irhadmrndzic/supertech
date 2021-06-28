@@ -4,6 +4,7 @@ using AutoMapper;
 using superTech.Database;
 using superTech.Models.Category;
 using superTech.Models.City;
+using superTech.Models.News;
 using superTech.Models.Product;
 using superTech.Models.Ratings;
 using superTech.Models.Roles;
@@ -39,8 +40,7 @@ namespace superTech.Mappers
             CreateMap<UnitsOfMeasure, UnitsOfMeasuresModel>().ReverseMap();
             CreateMap<UnitsOfMeasure, UnitsOfMeasuresUpsertRequest>().ReverseMap();
 
-
-
+            CreateMap<News, NewsModel>().ReverseMap();
 
             CreateMap<User, UserUpsertRequest>()
                 .ForMember(x=>x.CityId,q=>q.MapFrom(src=>src.FkCityId))

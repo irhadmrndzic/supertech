@@ -24,3 +24,4 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csproj.CopyComplete
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.exe
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.pdb
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.News.frmNews.resources

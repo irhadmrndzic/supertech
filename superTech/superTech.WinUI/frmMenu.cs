@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using superTech.WinUI.News;
 using superTech.WinUI.Products;
 using superTech.WinUI.Users;
 
@@ -106,6 +107,14 @@ namespace superTech.WinUI
             frmProducts.MdiParent = this;
             frmProducts.WindowState = FormWindowState.Maximized;
             frmProducts.Show();
+        }
+
+        private void pregledToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmNews frmNews = new frmNews();
+            frmNews.MdiParent = this;
+            frmNews.WindowState = FormWindowState.Maximized;
+            frmNews.Show();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace superTech.WinUI.Users
 
         }
 
-        private async  void frmUsers_Load(object sender, EventArgs e)
+        private   void frmUsers_Load(object sender, EventArgs e)
         {
         }
 

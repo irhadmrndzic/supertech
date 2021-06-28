@@ -21,17 +21,60 @@ namespace superTech.Services
             _mapper = mapper;
         }
 
+
+
         public List<ProductModel> Get(ProductsSearchRequest searchFilter)
         {
             var query = _dbContext.Products.AsQueryable();
 
-            if (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0)
+
+            if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
+            {
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory).Include(q => q.FkCategory); ;
+            }
+
+            if ((!string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
+            {
+                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()) && x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); ;
+            }
+
+            if((!string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
+            {
+                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower())).Include(q => q.FkCategory); ;
+            }
+
+            if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
+            {
+                query = query.Where(x => x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); ;
+            }
+
+            if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
             {
                 query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory);
             }
+
+            if ((!string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
+            {
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId && x.Name.ToLower().Contains(searchFilter.Name.ToLower())
+                && x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory);
+            }
+
+            if ((!string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
+            {
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId && x.Name.ToLower().Contains(searchFilter.Name.ToLower())).Include(q => q.FkCategory);
+            }
+
+            if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
+            {
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId && x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory);
+            }
+
+
             query.OrderBy(x => x.Name);
+
             query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r => r.Ratings);
             var list = query.ToList();
+
 
             return _mapper.Map<List<ProductModel>>(list);
         }
@@ -79,6 +122,17 @@ namespace superTech.Services
              .Include(r => r.FkCategory).Include(c => c.FkUnitOfMeasure).SingleOrDefault();
 
             return _mapper.Map<ProductModel>(query);
+        }
+
+        public void Delete(int id)
+        {
+            var entity = _dbContext.Products.Where(x => x.ProductId == id).Include(r => r.Ratings).Include(p => p.FkCategory).Include(u => u.FkUnitOfMeasure).FirstOrDefault();
+
+            _dbContext.Products.Remove(entity);
+
+            _dbContext.SaveChanges();
+
+
         }
     }
 }

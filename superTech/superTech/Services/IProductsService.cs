@@ -10,5 +10,7 @@ namespace superTech.Services
         public ProductModel GetById(int id);
         public ProductModel Insert(ProductUpsertRequest request);
         public ProductModel Update(int id, ProductUpsertRequest request);
+        public void Delete(int id);
+
     }
 }

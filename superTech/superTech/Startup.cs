@@ -19,6 +19,7 @@ using superTech.Services.Generic;
 using superTech.Services.GenericCRUD;
 using Newtonsoft;
 using superTech.Models.UnitsOfMeasures;
+using superTech.Models.News;
 
 namespace superTech
 {
@@ -90,6 +91,9 @@ namespace superTech
             //    .AddScoped<ICRUDService<UserModel, object, UserUpsertRequest, UserUpsertRequest>,
             //        BaseCRUDService<UserModel, object, User, UserUpsertRequest, UserUpsertRequest>>();
 
+            // PRETRAGA PROIZVODA PO SIFRI
+
+
 
             services
                 .AddScoped<ICRUDService<ProductModel, object, ProductUpsertRequest, ProductUpsertRequest>,
@@ -108,6 +112,11 @@ namespace superTech
 
             services.AddScoped<ICRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>,
                 BaseCRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasure, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>>();
+
+
+
+            services.AddScoped<ICRUDService<NewsModel, object, NewsModel, NewsModel>,
+                BaseCRUDService<NewsModel, object, News, NewsModel, NewsModel>>();
 
         }
 
