@@ -15,9 +15,13 @@ namespace superTech.WinUI.News
             InitializeComponent();
         }
 
+
         private async void frmNews_Load(object sender, EventArgs e)
         {
-         await loadNews();
+            lblNoNews.Hide();
+            await loadNews();
+            dpDoC.CustomFormat = " ";
+            dpDoC.Format = DateTimePickerFormat.Custom;
         }
 
         private async Task loadNews()
@@ -31,9 +35,9 @@ namespace superTech.WinUI.News
             }
         }
 
-        private   void dgvNews_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dgvNews_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-             onNewsClicked();
+            onNewsClicked();
         }
 
         private async void onNewsClicked()
@@ -46,6 +50,37 @@ namespace superTech.WinUI.News
             txtContent.Text = entity.Content;
             dpDoC.Value = Convert.ToDateTime(entity.DateOfCreation);
             cbActive.Checked = entity.Active;
+        }
+
+        NewsSearchRequest request = new NewsSearchRequest();
+        private async void btnFilter_Click(object sender, EventArgs e)
+        {
+            lblNoNews.Hide();
+
+            request.DateOfCreation = dpDoC.Value;
+            var news = await _newsService.Get<List<NewsModel>>(request);
+                dgvNews.DataSource = news;
+
+            if(news.Count == 0)
+            {
+                lblNoNews.Text = "Nema pronađenih novosti za odabrani datum !";
+                lblNoNews.Show();
+            }
+        }
+
+        private async void btnShowAll_Click(object sender, EventArgs e)
+        {
+            lblNoNews.Hide();
+
+            await loadNews();
+            dpDoC.CustomFormat = " ";
+            dpDoC.Format = DateTimePickerFormat.Custom;
+        }
+
+        private void dpDoC_ValueChanged(object sender, EventArgs e)
+        {
+            lblNoNews.Hide();
+            vdpDoC.CustomFormat = "dd/MM/yyyy hh:mm:ss";
         }
     }
 }

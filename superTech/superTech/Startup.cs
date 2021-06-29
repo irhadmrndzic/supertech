@@ -81,7 +81,6 @@ namespace superTech
 
             services.AddScoped<IBaseService<ProductModel, object>, BaseService<ProductModel, object, Product>>();
 
-
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IProductsService, ProductsService>();
 
@@ -115,8 +114,8 @@ namespace superTech
 
 
 
-            services.AddScoped<ICRUDService<NewsModel, object, NewsModel, NewsModel>,
-                BaseCRUDService<NewsModel, object, News, NewsModel, NewsModel>>();
+            services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsModel, NewsModel>,
+              NewsService>();
 
         }
 
