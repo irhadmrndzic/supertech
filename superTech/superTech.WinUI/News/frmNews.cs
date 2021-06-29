@@ -80,7 +80,7 @@ namespace superTech.WinUI.News
         private void dpDoC_ValueChanged(object sender, EventArgs e)
         {
             lblNoNews.Hide();
-            vdpDoC.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            dpDoC.CustomFormat = "dd/MM/yyyy hh:mm:ss";
         }
     }
 }
