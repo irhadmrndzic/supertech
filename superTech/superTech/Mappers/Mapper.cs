@@ -41,6 +41,7 @@ namespace superTech.Mappers
             CreateMap<UnitsOfMeasure, UnitsOfMeasuresUpsertRequest>().ReverseMap();
 
             CreateMap<News, NewsModel>().ReverseMap();
+            CreateMap<News, NewsUpsertRequest>().ReverseMap();
 
             CreateMap<User, UserUpsertRequest>()
                 .ForMember(x=>x.CityId,q=>q.MapFrom(src=>src.FkCityId))
@@ -60,6 +61,8 @@ namespace superTech.Mappers
             CreateMap<City, CityUpsertRequest>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();
             CreateMap<Category, CategoryUpsertRequest>().ReverseMap();
+
+
         }
     }
 }

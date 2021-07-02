@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace superTech.Services
 {
-    public class NewsService : BaseCRUDService<NewsModel, NewsSearchRequest, News, NewsModel, NewsModel>, ICRUDService<NewsModel, NewsSearchRequest, NewsModel, NewsModel>
+    public class NewsService : BaseCRUDService<NewsModel, NewsSearchRequest, News, NewsUpsertRequest, NewsUpsertRequest>, ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>
     {
         public NewsService(superTechRSContext context, IMapper mapper) : base(context, mapper)
         {

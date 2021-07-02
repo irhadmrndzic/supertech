@@ -70,6 +70,12 @@ namespace superTech.WinUI.Utilities
                     NumericUpDown numericUpDown = (NumericUpDown)control;
                     numericUpDown.Value = 0;
                 }
+
+                if (control is DateTimePicker)
+                {
+                    DateTimePicker dp = (DateTimePicker)control;
+                    dp.Value = DateTime.Today;
+                }
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvNews = new System.Windows.Forms.DataGridView();
             this.NewsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +45,11 @@
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.lblNoNews = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClearForm = new System.Windows.Forms.Button();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvNews
@@ -130,7 +135,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(135, 82);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(432, 26);
+            this.txtTitle.Size = new System.Drawing.Size(832, 26);
             this.txtTitle.TabIndex = 2;
             // 
             // txtContent
@@ -205,11 +210,37 @@
             this.lblNoNews.Size = new System.Drawing.Size(0, 20);
             this.lblNoNews.TabIndex = 11;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(744, 819);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(230, 94);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Sačuvaj";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClearForm
+            // 
+            this.btnClearForm.Location = new System.Drawing.Point(475, 819);
+            this.btnClearForm.Name = "btnClearForm";
+            this.btnClearForm.Size = new System.Drawing.Size(230, 94);
+            this.btnClearForm.TabIndex = 13;
+            this.btnClearForm.Text = "Očisti";
+            this.btnClearForm.UseVisualStyleBackColor = true;
+            this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
+            // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
             // frmNews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2157, 1140);
+            this.Controls.Add(this.btnClearForm);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblNoNews);
             this.Controls.Add(this.btnShowAll);
             this.Controls.Add(this.btnFilter);
@@ -225,6 +256,7 @@
             this.Text = "frmNews";
             this.Load += new System.EventHandler(this.frmNews_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +280,8 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Label lblNoNews;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnClearForm;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

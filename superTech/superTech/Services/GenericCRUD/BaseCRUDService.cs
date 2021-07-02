@@ -26,7 +26,7 @@ namespace superTech.Services.GenericCRUD
         public virtual TModel Update(int id, TUpdate request)
         {
             var entity = _dbContext.Set<TDatabase>().Find(id);
-
+            _mapper.Map(request, entity);
             _dbContext.Set<TDatabase>().Attach(entity);
             _dbContext.Set<TDatabase>().Update(entity);
             _dbContext.SaveChanges();

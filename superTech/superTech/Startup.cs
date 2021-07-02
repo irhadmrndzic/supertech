@@ -114,7 +114,7 @@ namespace superTech
 
 
 
-            services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsModel, NewsModel>,
+            services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>,
               NewsService>();
 
         }

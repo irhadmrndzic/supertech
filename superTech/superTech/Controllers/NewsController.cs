@@ -7,9 +7,9 @@ namespace superTech.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class NewsController : BaseCRUDController<NewsModel, NewsSearchRequest, NewsModel, NewsModel>
+    public class NewsController : BaseCRUDController<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>
     {
-        public NewsController(ICRUDService<NewsModel, NewsSearchRequest, NewsModel, NewsModel> IBaseService) : base(IBaseService)
+        public NewsController(ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest> IBaseService) : base(IBaseService)
         {
 
         }
