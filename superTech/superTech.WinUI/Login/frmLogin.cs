@@ -24,9 +24,11 @@ namespace superTech.WinUI.Login
             try
             {
                 await _usersApiService.Get<object>(null);
+                Cursor.Current = Cursors.WaitCursor;
                 frmMenu frmMenu = new frmMenu();
                 frmMenu.Show();
                 Hide();
+                MessageBox.Show("Dobrodošli !");
 
             }
             catch (Exception exception)

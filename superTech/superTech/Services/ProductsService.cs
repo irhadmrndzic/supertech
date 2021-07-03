@@ -70,9 +70,11 @@ namespace superTech.Services
             }
 
 
+
+            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r => r.Ratings).Include(o=>o.OrderItems).ThenInclude(f=>f.FkOrder)
+                .Include(p=>p.BuyerOrderItems).ThenInclude(l=>l.FkBuyerOrderNavigation);
             query.OrderBy(x => x.Name);
 
-            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r => r.Ratings);
             var list = query.ToList();
 
 

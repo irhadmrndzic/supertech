@@ -21,5 +21,7 @@ namespace superTech.Models.Product
         public string CategoryString { get; set; }
         public int CategoryId { get; set; }
         public int UnitOfMeasureId { get; set; }
+        public int Inventory { get; set; }
+
     }
 }

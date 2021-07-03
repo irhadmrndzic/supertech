@@ -14,7 +14,8 @@ namespace superTech.WinUI.Users
             InitializeComponent();
         }
 
-        private async void btnShowUsers_Click(object sender, EventArgs e)
+
+        public async void LoadUsers()
         {
             Cursor.Current = Cursors.WaitCursor;
             var search = new UserSearchRequest
@@ -25,11 +26,6 @@ namespace superTech.WinUI.Users
 
             dgvUsers.AutoGenerateColumns = false;
 
-            //if (search.FirstName == "" && search.LastName == "")
-            //{
-            //    search = null;
-
-            //}
 
             var users = await _usersApiService.Get<List<UserModel>>(search);
             if (users.Count > 0)
@@ -39,11 +35,18 @@ namespace superTech.WinUI.Users
                 dgvUsers.DataSource = users;
             }
 
+        }
 
+        private async void btnShowUsers_Click(object sender, EventArgs e)
+        {
+
+            LoadUsers();
         }
 
         private   void frmUsers_Load(object sender, EventArgs e)
         {
+            LoadUsers();
+
         }
 
         private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -51,6 +54,11 @@ namespace superTech.WinUI.Users
             var id = dgvUsers.SelectedRows[0].Cells[0].Value;
             frmUserDetails frmUserDetails = new frmUserDetails(int.Parse(id.ToString()));
             frmUserDetails.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

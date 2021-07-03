@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using superTech.WinUI.News;
 using superTech.WinUI.Products;
+using superTech.WinUI.SupplierOrder;
 using superTech.WinUI.Users;
 
 namespace superTech.WinUI
@@ -115,6 +116,14 @@ namespace superTech.WinUI
             frmNews.MdiParent = this;
             frmNews.WindowState = FormWindowState.Maximized;
             frmNews.Show();
+        }
+
+        private void novaNabavkaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSupplierOrder frmSupplierOrder = new frmSupplierOrder();
+            frmSupplierOrder.MdiParent = this;
+            frmSupplierOrder.WindowState = FormWindowState.Maximized;
+            frmSupplierOrder.Show();
         }
     }
 }

@@ -35,11 +35,14 @@
             this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proizvodiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaNabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +54,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
             this.proizvodiToolStripMenuItem,
-            this.newsToolStripMenuItem});
+            this.newsToolStripMenuItem,
+            this.nabavkaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(2072, 33);
@@ -92,9 +96,24 @@
             // pregledToolStripMenuItem
             // 
             this.pregledToolStripMenuItem.Name = "pregledToolStripMenuItem";
-            this.pregledToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem.Size = new System.Drawing.Size(174, 34);
             this.pregledToolStripMenuItem.Text = "Pregled";
             this.pregledToolStripMenuItem.Click += new System.EventHandler(this.pregledToolStripMenuItem_Click);
+            // 
+            // newsToolStripMenuItem
+            // 
+            this.newsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem1});
+            this.newsToolStripMenuItem.Name = "newsToolStripMenuItem";
+            this.newsToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.newsToolStripMenuItem.Text = "News";
+            // 
+            // pregledToolStripMenuItem1
+            // 
+            this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
+            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(174, 34);
+            this.pregledToolStripMenuItem1.Text = "Pregled";
+            this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.pregledToolStripMenuItem1_Click);
             // 
             // statusStrip
             // 
@@ -114,20 +133,27 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(60, 25);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // newsToolStripMenuItem
+            // nabavkaToolStripMenuItem
             // 
-            this.newsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem1});
-            this.newsToolStripMenuItem.Name = "newsToolStripMenuItem";
-            this.newsToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
-            this.newsToolStripMenuItem.Text = "News";
+            this.nabavkaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem2,
+            this.novaNabavkaToolStripMenuItem});
+            this.nabavkaToolStripMenuItem.Name = "nabavkaToolStripMenuItem";
+            this.nabavkaToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.nabavkaToolStripMenuItem.Text = "Nabavka";
             // 
-            // pregledToolStripMenuItem1
+            // pregledToolStripMenuItem2
             // 
-            this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
-            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
-            this.pregledToolStripMenuItem1.Text = "Pregled";
-            this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.pregledToolStripMenuItem1_Click);
+            this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
+            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem2.Text = "Pregled";
+            // 
+            // novaNabavkaToolStripMenuItem
+            // 
+            this.novaNabavkaToolStripMenuItem.Name = "novaNabavkaToolStripMenuItem";
+            this.novaNabavkaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.novaNabavkaToolStripMenuItem.Text = "Nova nabavka";
+            this.novaNabavkaToolStripMenuItem.Click += new System.EventHandler(this.novaNabavkaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -164,6 +190,9 @@
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nabavkaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem novaNabavkaToolStripMenuItem;
     }
 }
 
