@@ -8,6 +8,7 @@ using superTech.Models.News;
 using superTech.Models.Product;
 using superTech.Models.Ratings;
 using superTech.Models.Roles;
+using superTech.Models.Suppliers;
 using superTech.Models.UnitsOfMeasures;
 using superTech.Models.User;
 
@@ -62,6 +63,9 @@ namespace superTech.Mappers
             CreateMap<City, CityUpsertRequest>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();
             CreateMap<Category, CategoryUpsertRequest>().ReverseMap();
+
+            CreateMap<Supplier, SuppliersModel>().ReverseMap();
+
 
 
         }

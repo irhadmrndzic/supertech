@@ -71,8 +71,14 @@ namespace superTech.Services
 
 
 
-            query = query.Include(q => q.FkCategory).Include(x => x.FkUnitOfMeasure).Include(r => r.Ratings).Include(o=>o.OrderItems).ThenInclude(f=>f.FkOrder)
-                .Include(p=>p.BuyerOrderItems).ThenInclude(l=>l.FkBuyerOrderNavigation);
+            query = query
+                .Include(q => q.FkCategory)
+                .Include(x => x.FkUnitOfMeasure)
+                .Include(r => r.Ratings)
+                .Include(o=>o.OrderItems)
+                .ThenInclude(f=>f.FkOrder)
+                .Include(p=>p.BuyerOrderItems)
+                .ThenInclude(l=>l.FkBuyerOrderNavigation);
             query.OrderBy(x => x.Name);
 
             var list = query.ToList();
@@ -83,7 +89,15 @@ namespace superTech.Services
 
         public ProductModel GetById(int id)
         {
-            var query = _dbContext.Products.Where(x => x.ProductId == id).Include(q => q.FkCategory).Include(u => u.FkUnitOfMeasure).Include(r => r.Ratings).SingleOrDefault();
+            var query = _dbContext.Products.Where(x => x.ProductId == id)
+                .Include(q => q.FkCategory)
+                .Include(u => u.FkUnitOfMeasure)
+                .Include(r => r.Ratings)
+                .Include(o => o.OrderItems)
+                .ThenInclude(f => f.FkOrder)
+                .Include(p => p.BuyerOrderItems)
+                .ThenInclude(l => l.FkBuyerOrderNavigation)
+                .SingleOrDefault();
 
             return _mapper.Map<ProductModel>(query);
         }

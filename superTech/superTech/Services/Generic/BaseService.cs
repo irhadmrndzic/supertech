@@ -19,6 +19,7 @@ namespace superTech.Services.Generic
         public virtual List<TModel> Get(TSearchFilter searchFilter)
         {
             var list = _dbContext.Set<TDatabase>().ToList();
+
             return _mapper.Map<List<TModel>>(list);
         }
 

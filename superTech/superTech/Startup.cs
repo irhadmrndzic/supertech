@@ -20,6 +20,7 @@ using superTech.Services.GenericCRUD;
 using Newtonsoft;
 using superTech.Models.UnitsOfMeasures;
 using superTech.Models.News;
+using superTech.Models.Suppliers;
 
 namespace superTech
 {
@@ -112,10 +113,17 @@ namespace superTech
             services.AddScoped<ICRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>,
                 BaseCRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasure, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>>();
 
+            //services.AddScoped<ICRUDService<SuppliersModel, SuppliersSearchRequest, SuppliersModel, SuppliersModel>,
+            //    BaseCRUDService<SuppliersModel, SuppliersSearchRequest, Supplier, SuppliersModel, SuppliersModel>>();
+
 
 
             services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>,
               NewsService>();
+
+
+            services.AddScoped<ICRUDService<SuppliersModel, SuppliersSearchRequest, SuppliersModel, SuppliersModel>,
+              SuppliersService>();
 
         }
 

@@ -28,8 +28,6 @@ namespace superTech.WinUI.Login
                 frmMenu frmMenu = new frmMenu();
                 frmMenu.Show();
                 Hide();
-                MessageBox.Show("Dobrodošli !");
-
             }
             catch (Exception exception)
             {
