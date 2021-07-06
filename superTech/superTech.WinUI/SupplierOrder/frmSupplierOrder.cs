@@ -199,6 +199,7 @@ namespace superTech.WinUI.SupplierOrder
 
             txtProductCode.Text = entity.Code;
             txtPrice.Text = entity.Price.ToString();
+            txtUnitOfMeasure.Text = entity.FkUnitOfMeasureString;
             selectedProduct = entity;
 
   
@@ -207,36 +208,110 @@ namespace superTech.WinUI.SupplierOrder
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            if (orderList.Count == 0)
+
+            if (validateProductForm())
             {
-                selectedProduct.Quantity = int.Parse(txtQuantity.Text);
-                selectedProduct.Price = decimal.Parse(txtPrice.Text) * int.Parse(txtQuantity.Text);
-                orderList.Add(selectedProduct);
-                selectedProduct = null;
-            }
-            else
-            {
-                foreach (var prod in orderList.ToList())
+                if (orderList.Count == 0)
                 {
-                    if  (prod.Name == entity.Name)
+                    selectedProduct.Quantity = int.Parse(txtQuantity.Text);
+                    selectedProduct.Price = decimal.Parse(txtPrice.Text) * int.Parse(txtQuantity.Text);
+                    orderList.Add(selectedProduct);
+                    selectedProduct = null;
+                }
+                else
+                {
+                    foreach (var prod in orderList.ToList())
                     {
-                        prod.Quantity += int.Parse(txtQuantity.Text);
-                        prod.Price = decimal.Parse(txtPrice.Text) * prod.Quantity;
+                        if (prod.Name == entity.Name)
+                        {
+                            prod.Quantity += int.Parse(txtQuantity.Text);
+                            prod.Price = decimal.Parse(txtPrice.Text) * prod.Quantity;
+                        }
+                    }
+
+                    if (!orderList.Where(x => x.Name == entity.Name).Any())
+                    {
+                        selectedProduct.Quantity = int.Parse(txtQuantity.Text);
+                        selectedProduct.Price = entity.Price * int.Parse(txtQuantity.Text);
+                        orderList.Add(selectedProduct);
                     }
                 }
 
-                if (!orderList.Where(x => x.Name == entity.Name).Any())
-                {
-                    selectedProduct.Quantity = int.Parse(txtQuantity.Text);
-                    selectedProduct.Price = entity.Price * int.Parse(txtQuantity.Text);
-                    orderList.Add(selectedProduct);
-                }
+                dgvProductOrder.DataSource = orderList.ToList();
+                dgvProductOrder.Refresh();
+                dgvProductOrder.Update();
+                selectedProduct = null;
             }
-
-            dgvProductOrder.DataSource = orderList.ToList();
-            dgvProductOrder.Refresh();
-            dgvProductOrder.Update();
-            selectedProduct = null;
         }
+
+
+
+        bool validateProductCode()
+        {
+         
+                if (string.IsNullOrWhiteSpace(txtProductCode.Text))
+                {
+                    errProvider.SetError(txtProductCode, Properties.Resources.Validate_Input);
+                    return false;
+                }
+                else
+                {
+                        errProvider.SetError(txtProductCode, null);
+                        return true;
+                }
+        }
+
+
+        bool validateProductPrice()
+        {
+
+            if (string.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                errProvider.SetError(txtPrice, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtPrice, null);
+                return true;
+            }
+        }
+
+        bool validateProductUom()
+        {
+
+            if (string.IsNullOrWhiteSpace(txtUnitOfMeasure.Text))
+            {
+                errProvider.SetError(txtUnitOfMeasure, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtUnitOfMeasure, null);
+                return true;
+            }
+        }
+
+        bool validateProductQuantity()
+        {
+            if (string.IsNullOrWhiteSpace(txtQuantity.Text))
+            {
+                errProvider.SetError(txtQuantity, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtQuantity, null);
+                return true;
+            }
+        }
+
+        bool validateProductForm()
+        {
+            if (!validateProductQuantity() || !validateProductCode() || !validateProductPrice() || !validateProductUom())
+                return false;
+            return true;
+        }
+        
     }
 }

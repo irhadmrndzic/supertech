@@ -30,5 +30,6 @@ namespace superTech.Services
 
             return _mapper.Map<List<SuppliersModel>>(list);
         }
+
     }
 }

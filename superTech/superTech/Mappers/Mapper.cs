@@ -5,6 +5,8 @@ using superTech.Database;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.News;
+using superTech.Models.Orders;
+using superTech.Models.Orders.OrderItems;
 using superTech.Models.Product;
 using superTech.Models.Ratings;
 using superTech.Models.Roles;
@@ -14,7 +16,7 @@ using superTech.Models.User;
 
 namespace superTech.Mappers
 {
-    public class Mapper:Profile
+    public class Mapper : Profile
     {
         public Mapper()
         {
@@ -30,8 +32,8 @@ namespace superTech.Mappers
                 .ForMember(x => x.Roles, a => a.MapFrom(src => src.UsersRoles.Select(s => s.FkRole.Name)))
                 .ForMember(g => g.City, gr => gr.MapFrom(sr => sr.FkCity.CityId))
                 .ForMember(c => c.CityString, c => c.MapFrom(c => c.FkCity.Name))
-                .ForMember(r => r.RolesString, rs => rs.MapFrom(src => string.Join("," , src.UsersRoles.Select(x=>x.FkRole.Name))))
-                .ForMember(c => c.Roles, c => c.MapFrom(c => c.UsersRoles.Select(q=>q.FkRoleId)))
+                .ForMember(r => r.RolesString, rs => rs.MapFrom(src => string.Join(",", src.UsersRoles.Select(x => x.FkRole.Name))))
+                .ForMember(c => c.Roles, c => c.MapFrom(c => c.UsersRoles.Select(q => q.FkRoleId)))
                 .ReverseMap();
 
 
@@ -45,19 +47,19 @@ namespace superTech.Mappers
             CreateMap<News, NewsUpsertRequest>().ReverseMap();
 
             CreateMap<User, UserUpsertRequest>()
-                .ForMember(x=>x.CityId,q=>q.MapFrom(src=>src.FkCityId))
+                .ForMember(x => x.CityId, q => q.MapFrom(src => src.FkCityId))
                 .ReverseMap();
 
             CreateMap<Product, ProductModel>().ForMember(x => x.CategoryString, src => src.MapFrom(x => x.FkCategory.Name)).
-                ForMember(y=>y.FkUnitOfMeasureString, m=>m.MapFrom(src=>src.FkUnitOfMeasure.Name)).
-                ForMember(m=>m.CategoryId,sr=>sr.MapFrom(a=>a.FkCategory.CategoryId)).
+                ForMember(y => y.FkUnitOfMeasureString, m => m.MapFrom(src => src.FkUnitOfMeasure.Name)).
+                ForMember(m => m.CategoryId, sr => sr.MapFrom(a => a.FkCategory.CategoryId)).
                 ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
-                ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra=>(decimal?)ra.Rating1)))
-                .ForMember(i=>i.Inventory, sri=>sri.MapFrom(mf=>mf.OrderItems.Sum(e=>e.Quantity) - mf.BuyerOrderItems.Sum(o=>o.Quantity)))
+                ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra => (decimal?)ra.Rating1)))
+                .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
                 .ReverseMap();
 
 
-            CreateMap<Product,ProductUpsertRequest>().ReverseMap();
+            CreateMap<Product, ProductUpsertRequest>().ReverseMap();
             CreateMap<City, CityModel>().ReverseMap();
 
             CreateMap<City, CityUpsertRequest>().ReverseMap();
@@ -66,6 +68,19 @@ namespace superTech.Mappers
 
             CreateMap<Supplier, SuppliersModel>().ReverseMap();
 
+            CreateMap<OrderItem, OrderItemModel>()
+                .ForMember(x => x.FkOrderId, src => src.MapFrom(a => a.FkOrder.OrderId))
+                .ForMember(x => x.FkProductId, src => src.MapFrom(a => a.FkProduct.ProductId))
+                .ForMember(x => x.ProductName, src => src.MapFrom(a => a.FkProduct.Name))
+                .ForMember(x => x.ProductCode, src => src.MapFrom(a => a.FkProduct.Code));
+
+            CreateMap<Order, OrdersModel>()
+                .ForMember(x => x.FkSupplierId, src => src.MapFrom(a => a.FkSupplier.SupplierId))
+                .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
+                .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
+                .ForMember(q => q.SupplierString, w => w.MapFrom(src => src.FkSupplier.Name))
+                .ForMember(l => l.OrderItems, k => k.MapFrom(src => src.OrderItems))
+                .ReverseMap();
 
 
         }

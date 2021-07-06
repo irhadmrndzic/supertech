@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bntClearSuppliers = new System.Windows.Forms.Button();
             this.txtSupplierDesc = new System.Windows.Forms.TextBox();
@@ -59,6 +60,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvProductOrder = new System.Windows.Forms.DataGridView();
+            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,6 +71,9 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtUnitOfMeasure = new System.Windows.Forms.TextBox();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.groupSearch = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblNoProducts = new System.Windows.Forms.Label();
@@ -82,7 +90,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnAddProduct = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,10 +99,7 @@
             this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -104,11 +108,11 @@
             this.groupBox3.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bntClearSuppliers);
             this.groupBox1.Controls.Add(this.txtSupplierDesc);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtSupplierWebAddress);
@@ -132,7 +136,7 @@
             // 
             // bntClearSuppliers
             // 
-            this.bntClearSuppliers.Location = new System.Drawing.Point(545, 564);
+            this.bntClearSuppliers.Location = new System.Drawing.Point(562, 336);
             this.bntClearSuppliers.Name = "bntClearSuppliers";
             this.bntClearSuppliers.Size = new System.Drawing.Size(120, 49);
             this.bntClearSuppliers.TabIndex = 35;
@@ -380,6 +384,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bntClearSuppliers);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.dgvProductOrder);
             this.groupBox2.Controls.Add(this.label7);
@@ -397,7 +402,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 413);
+            this.button1.Location = new System.Drawing.Point(498, 422);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(184, 84);
             this.button1.TabIndex = 16;
@@ -420,6 +425,39 @@
             this.dgvProductOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductOrder.Size = new System.Drawing.Size(1978, 581);
             this.dgvProductOrder.TabIndex = 15;
+            // 
+            // SelectedProductId
+            // 
+            this.SelectedProductId.DataPropertyName = "ProductId";
+            this.SelectedProductId.HeaderText = "ProductId";
+            this.SelectedProductId.MinimumWidth = 8;
+            this.SelectedProductId.Name = "SelectedProductId";
+            this.SelectedProductId.Visible = false;
+            this.SelectedProductId.Width = 150;
+            // 
+            // SelectedProductName
+            // 
+            this.SelectedProductName.DataPropertyName = "Name";
+            this.SelectedProductName.HeaderText = "Naziv";
+            this.SelectedProductName.MinimumWidth = 8;
+            this.SelectedProductName.Name = "SelectedProductName";
+            this.SelectedProductName.Width = 150;
+            // 
+            // SelectedProductPrice
+            // 
+            this.SelectedProductPrice.DataPropertyName = "Price";
+            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
+            this.SelectedProductPrice.MinimumWidth = 8;
+            this.SelectedProductPrice.Name = "SelectedProductPrice";
+            this.SelectedProductPrice.Width = 150;
+            // 
+            // SelectedProductQuantity
+            // 
+            this.SelectedProductQuantity.DataPropertyName = "Quantity";
+            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
+            this.SelectedProductQuantity.MinimumWidth = 8;
+            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
+            this.SelectedProductQuantity.Width = 150;
             // 
             // label7
             // 
@@ -471,6 +509,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.txtUnitOfMeasure);
             this.groupBox3.Controls.Add(this.btnAddProduct);
             this.groupBox3.Controls.Add(this.groupSearch);
             this.groupBox3.Controls.Add(this.txtPrice);
@@ -486,6 +526,33 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Proizvodi";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(342, 342);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(110, 20);
+            this.label18.TabIndex = 36;
+            this.label18.Text = "Jedinica mjere";
+            // 
+            // txtUnitOfMeasure
+            // 
+            this.txtUnitOfMeasure.Location = new System.Drawing.Point(342, 377);
+            this.txtUnitOfMeasure.Name = "txtUnitOfMeasure";
+            this.txtUnitOfMeasure.ReadOnly = true;
+            this.txtUnitOfMeasure.Size = new System.Drawing.Size(138, 26);
+            this.txtUnitOfMeasure.TabIndex = 35;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(480, 509);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
+            this.btnAddProduct.TabIndex = 34;
+            this.btnAddProduct.Text = "Dodaj na listu";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // groupSearch
             // 
@@ -584,13 +651,14 @@
             // 
             this.txtPrice.Location = new System.Drawing.Point(9, 451);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(203, 26);
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(281, 26);
             this.txtPrice.TabIndex = 14;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 416);
+            this.label10.Location = new System.Drawing.Point(9, 416);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 20);
             this.label10.TabIndex = 13;
@@ -598,15 +666,15 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(284, 451);
+            this.txtQuantity.Location = new System.Drawing.Point(342, 451);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(200, 26);
+            this.txtQuantity.Size = new System.Drawing.Size(138, 26);
             this.txtQuantity.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(280, 416);
+            this.label9.Location = new System.Drawing.Point(342, 416);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 20);
             this.label9.TabIndex = 11;
@@ -614,29 +682,20 @@
             // 
             // txtProductCode
             // 
-            this.txtProductCode.Location = new System.Drawing.Point(10, 377);
+            this.txtProductCode.Location = new System.Drawing.Point(9, 377);
             this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(474, 26);
+            this.txtProductCode.ReadOnly = true;
+            this.txtProductCode.Size = new System.Drawing.Size(281, 26);
             this.txtProductCode.TabIndex = 10;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 342);
+            this.label8.Location = new System.Drawing.Point(9, 342);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 20);
             this.label8.TabIndex = 9;
             this.label8.Text = "Šifra";
-            // 
-            // btnAddProduct
-            // 
-            this.btnAddProduct.Location = new System.Drawing.Point(480, 514);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
-            this.btnAddProduct.TabIndex = 34;
-            this.btnAddProduct.Text = "Dodaj na listu";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // dgvProducts
             // 
@@ -725,38 +784,9 @@
             this.ProductDescription.Name = "ProductDescription";
             this.ProductDescription.Width = 150;
             // 
-            // SelectedProductId
+            // errProvider
             // 
-            this.SelectedProductId.DataPropertyName = "ProductId";
-            this.SelectedProductId.HeaderText = "ProductId";
-            this.SelectedProductId.MinimumWidth = 8;
-            this.SelectedProductId.Name = "SelectedProductId";
-            this.SelectedProductId.Visible = false;
-            this.SelectedProductId.Width = 150;
-            // 
-            // SelectedProductName
-            // 
-            this.SelectedProductName.DataPropertyName = "Name";
-            this.SelectedProductName.HeaderText = "Naziv";
-            this.SelectedProductName.MinimumWidth = 8;
-            this.SelectedProductName.Name = "SelectedProductName";
-            this.SelectedProductName.Width = 150;
-            // 
-            // SelectedProductPrice
-            // 
-            this.SelectedProductPrice.DataPropertyName = "Price";
-            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
-            this.SelectedProductPrice.MinimumWidth = 8;
-            this.SelectedProductPrice.Name = "SelectedProductPrice";
-            this.SelectedProductPrice.Width = 150;
-            // 
-            // SelectedProductQuantity
-            // 
-            this.SelectedProductQuantity.DataPropertyName = "Quantity";
-            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
-            this.SelectedProductQuantity.MinimumWidth = 8;
-            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
-            this.SelectedProductQuantity.Width = 150;
+            this.errProvider.ContainerControl = this;
             // 
             // frmSupplierOrder
             // 
@@ -782,6 +812,7 @@
             this.groupSearch.ResumeLayout(false);
             this.groupSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -856,5 +887,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtUnitOfMeasure;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }
