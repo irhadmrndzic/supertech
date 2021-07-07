@@ -32,6 +32,9 @@ namespace superTech.WinUI.SupplierOrder
             dgvSuppliers.AutoGenerateColumns = false;
             dgvProductOrder.AutoGenerateColumns = false;
 
+            dpOrderDate.CustomFormat = " ";
+            dpOrderDate.Format = DateTimePickerFormat.Custom;
+
             cmbProductCategories.SelectedValue = 0;
             lblNoSuppliers.Hide();
             LoadSuppliers();
@@ -46,7 +49,9 @@ namespace superTech.WinUI.SupplierOrder
         {
             try
             {
-                var suppliers = await _suppliersService.Get<List<SuppliersModel>>(null);
+                SuppliersSearchRequest suppliersSearchRequest = new SuppliersSearchRequest();
+                suppliersSearchRequest.Name = txtSupplierSearch.Text;
+                var suppliers = await _suppliersService.Get<List<SuppliersModel>>(suppliersSearchRequest);
                 dgvSuppliers.DataSource = suppliers;
             }
             catch (Exception exception)
@@ -59,18 +64,30 @@ namespace superTech.WinUI.SupplierOrder
         {
             _supplierId = (int)dgvSuppliers.SelectedRows[0].Cells[0].Value;
 
-            var request = await _suppliersService.GetById<SuppliersModel>(_supplierId);
+            try
+            {
+                var request = await _suppliersService.GetById<SuppliersModel>(_supplierId);
 
-            txtSupplierName.Text = request.Name;
-            txtSupplierEmail.Text = request.Email;
-            txtSupplierBankAcc.Text = request.BankAccount;
-            txtSupplierWebAddress.Text = request.WebAddress;
-            txtSupplierPhone.Text = request.PhoneNumber;
-            txtSupplierDesc.Text = request.Description;
+                txtSupplierName.Text = request.Name;
+                txtSupplierEmail.Text = request.Email;
+                txtSupplierBankAcc.Text = request.BankAccount;
+                txtSupplierWebAddress.Text = request.WebAddress;
+                txtSupplierPhone.Text = request.PhoneNumber;
+                txtSupplierDesc.Text = request.Description;
+
+                errProvider.Clear();
+                errProvider.Dispose();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Dobavljači", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnShowSuppliers_Click(object sender, EventArgs e)
         {
+
             filterSuppliers();
         }
 
@@ -114,11 +131,12 @@ namespace superTech.WinUI.SupplierOrder
 
         private async Task loadProducts(int? categoryId)
         {
+
+            lblNoProducts.Hide();
             try
             {
                 var products = await _productsService.Get<List<ProductModel>>(new ProductsSearchRequest()
                 {
-                    Name = txtProductNameSearch.Text,
                     Code = txtProductCodeSearch.Text,
                     CategoryId = categoryId
                 });
@@ -177,7 +195,7 @@ namespace superTech.WinUI.SupplierOrder
         {
             _productId = (int)dgvProducts.SelectedRows[0].Cells[0].Value;
 
-             entity = await _productsService.GetById<ProductModel>(_productId);
+            entity = await _productsService.GetById<ProductModel>(_productId);
 
             var castedCategories = cmbProductCategories.Items.Cast<CategoryModel>().Select(x => x.CategoryId).ToList();
 
@@ -190,6 +208,8 @@ namespace superTech.WinUI.SupplierOrder
                 }
             }
 
+
+
             //var castedUOMs = cmbUom.Items.Cast<UnitsOfMeasuresModel>().Select(x => x.UnitOfMeasureId).ToList();
 
             //for (int i = 0; i < castedUOMs.Count; i++)
@@ -200,12 +220,13 @@ namespace superTech.WinUI.SupplierOrder
             //    }
             //}
 
+            txtUnitOfMeasure.Text = entity.FkUnitOfMeasureString;
             txtProductCode.Text = entity.Code;
             txtPrice.Text = entity.Price.ToString();
             txtUnitOfMeasure.Text = entity.FkUnitOfMeasureString;
             selectedProduct = entity;
 
-  
+
 
         }
 
@@ -245,32 +266,47 @@ namespace superTech.WinUI.SupplierOrder
                 dgvProductOrder.Refresh();
                 dgvProductOrder.Update();
 
-                decimal sum = 0;
-                for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
-                {
-                    sum += Convert.ToDecimal(dgvProductOrder.Rows[i].Cells[2].Value);
-                }
-                txtBillAmount.Text = sum.ToString();
+             
+                txtBillAmount.Text = getSum(dgvProductOrder).ToString();
 
                 selectedProduct = null;
+
+                setRowNumber(dgvProductOrder);
+
+            }
+        }
+
+        private decimal getSum(DataGridView dgv)
+        {
+            decimal sum = 0;
+            for (int i = 0; i < dgv.Rows.Count; ++i)
+            {
+                sum += Convert.ToDecimal(dgvProductOrder.Rows[i].Cells[3].Value);
+            }
+            return sum;
+        }
+        private void setRowNumber(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                dgv.Rows[i].Cells[1].Value = (i + 1).ToString();
             }
         }
 
 
-
         bool validateProductCode()
         {
-         
-                if (string.IsNullOrWhiteSpace(txtProductCode.Text))
-                {
-                    errProvider.SetError(txtProductCode, Properties.Resources.Validate_Input);
-                    return false;
-                }
-                else
-                {
-                        errProvider.SetError(txtProductCode, null);
-                        return true;
-                }
+
+            if (string.IsNullOrWhiteSpace(txtProductCode.Text))
+            {
+                errProvider.SetError(txtProductCode, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtProductCode, null);
+                return true;
+            }
         }
 
 
@@ -325,39 +361,170 @@ namespace superTech.WinUI.SupplierOrder
             return true;
         }
 
+        bool validateSupplierName()
+        {
+            if (string.IsNullOrWhiteSpace(txtSupplierName.Text))
+            {
+                errProvider.SetError(txtSupplierName, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtSupplierName, null);
+                return true;
+            }
+        }
+
+        bool validateSupplierForm()
+        {
+            if (!validateSupplierName())
+                return false;
+            return true;
+        }
+
+        bool validateOrderNumber()
+        {
+            if (string.IsNullOrEmpty(txtOrderNumber.Text))
+            {
+                errProvider.SetError(txtOrderNumber, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else if (txtOrderNumber.Text.Length > 10)
+            {
+                errProvider.SetError(txtOrderNumber, "Polje mora sadržavati manje od 10 karaktera ! ");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtOrderNumber, null);
+                return true;
+            }
+        }
+
+        private void dpOrderDate_ValueChanged(object sender, EventArgs e)
+        {
+            dpOrderDate.CustomFormat = "dd/MM/yyyy";
+
+        }
+
+        bool validateOrderDate()
+        {
+            if (dpOrderDate.Text == " ")
+            {
+                errProvider.SetError(dpOrderDate, "Molimo unesite datum objave !");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(dpOrderDate, null);
+                return true;
+            }
+        }
+
+        bool validateOrderForm()
+        {
+            if (!validateOrderNumber() || !validateOrderDate())
+                return false;
+            return true;
+        }
+
+
         private async void btnAddOrder_Click(object sender, EventArgs e)
         {
-
-            OrdersUpsertRequest order = new OrdersUpsertRequest();
-            int amount = 0;
-            for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
+            if (validateSupplierForm() && validateProductForm() && validateOrderForm() && orderList.Count > 0)
             {
-                amount += Convert.ToInt32(dgvProductOrder.Rows[i].Cells[2].Value);
-            }
-            order.Amount = amount;
-            order.Date = DateTime.Now;
-            order.OrderNumber = int.Parse(txtOrderNumber.Text);
-            order.SupplierId = _supplierId;
-            order.UserId = 47;
-
-            order.OrderItems = new List<OrderItemsUpsertRequest>();
-
-
-            for (int i = 0; i < orderList.Count; i++)
-            {
-
-                OrderItemsUpsertRequest oi = new OrderItemsUpsertRequest
+                try
                 {
-                    FkProductId = _productId,
-                    Quantity = (int)dgvProductOrder.Rows[i].Cells[3].Value,
-                    Amount = (decimal)dgvProductOrder.Rows[i].Cells[2].Value,
-                };
-                
-                order.OrderItems.Add(oi);
+                    string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                    OrdersUpsertRequest order = new OrdersUpsertRequest();
+                    int amount = 0;
+                    for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
+                    {
+                        amount += Convert.ToInt32(dgvProductOrder.Rows[i].Cells[3].Value);
+                    }
+                    order.Amount = amount;
+                    order.Date = DateTime.Now;
+                    order.OrderNumber = int.Parse(txtOrderNumber.Text);
+                    order.SupplierId = _supplierId;
+                    order.UserId = 47;
+                    order.Active = true;
+
+                    order.OrderItems = new List<OrderItemsUpsertRequest>();
+
+
+                    for (int i = 0; i < orderList.Count; i++)
+                    {
+
+                        OrderItemsUpsertRequest oi = new OrderItemsUpsertRequest
+                        {
+                            FkProductId = _productId,
+                            Quantity = (int)dgvProductOrder.Rows[i].Cells[4].Value,
+                            Amount = (decimal)dgvProductOrder.Rows[i].Cells[3].Value,
+                        };
+
+                        order.OrderItems.Add(oi);
+                    }
+                    await _orderService.Insert<OrdersModel>(order);
+                    MessageBox.Show("Uspješno ste dodali narudžbu !");
+
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Narudžba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            if(orderList.Count == 0)
+            {
+                MessageBox.Show("Molimo dodajte proizvode u listu !");
+            }
+        }
+
+        private void btnShowProducts_Click(object sender, EventArgs e)
+        {
+            onFilterProducts();
+        }
+
+        public async void onFilterProducts()
+        {
+            var value = cmbProductCategories.SelectedValue;
+            if (value == null)
+            {
+                value = 0;
+            }
+            if (int.TryParse(value.ToString(), out int id))
+            {
+                errProvider.SetError(cmbProductCategories, null);
+                await loadProducts(id);
+            }
+        }
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            int productIndex;
+            frmRemoveProduct frmRemoveProduct = new frmRemoveProduct();
+            if (frmRemoveProduct.ShowDialog() == DialogResult.OK)
+            {
+
+                productIndex = frmRemoveProduct.productIndex;
+                if (productIndex <= orderList.Count)
+                {
+                    orderList.RemoveAt(productIndex - 1);
+                    dgvProductOrder.DataSource = orderList.ToList();
+                    setRowNumber(dgvProductOrder);
+
+                    dgvProductOrder.Refresh();
+                    dgvProductOrder.Update();
+
+                    txtBillAmount.Text = getSum(dgvProductOrder).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Unesite ispravan redni broj! ");
+                }
+              
             }
 
-
-            await _orderService.Insert<OrdersModel>(order);
         }
     }
 }

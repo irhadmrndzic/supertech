@@ -58,16 +58,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bntClearSuppliers = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.dgvProductOrder = new System.Windows.Forms.DataGridView();
-            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBillAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -75,15 +72,12 @@
             this.txtUnitOfMeasure = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.groupSearch = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.lblNoProducts = new System.Windows.Forms.Label();
             this.btnShowProducts = new System.Windows.Forms.Button();
             this.cmbProductCategories = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtProductCodeSearch = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtProductNameSearch = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
@@ -100,6 +94,11 @@
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -374,31 +373,42 @@
             // 
             // bntClearSuppliers
             // 
-            this.bntClearSuppliers.Location = new System.Drawing.Point(562, 336);
+            this.bntClearSuppliers.Location = new System.Drawing.Point(6, 541);
             this.bntClearSuppliers.Name = "bntClearSuppliers";
             this.bntClearSuppliers.Size = new System.Drawing.Size(120, 49);
             this.bntClearSuppliers.TabIndex = 35;
-            this.bntClearSuppliers.Text = "Očisti";
+            this.bntClearSuppliers.Text = "Očisti formu";
             this.bntClearSuppliers.UseVisualStyleBackColor = true;
             this.bntClearSuppliers.Click += new System.EventHandler(this.bntClearSuppliers_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnRemoveProduct);
             this.groupBox2.Controls.Add(this.bntClearSuppliers);
             this.groupBox2.Controls.Add(this.btnAddOrder);
             this.groupBox2.Controls.Add(this.dgvProductOrder);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtBillAmount);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dpOrderDate);
             this.groupBox2.Controls.Add(this.txtOrderNumber);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(12, 1262);
+            this.groupBox2.Location = new System.Drawing.Point(12, 1165);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(2688, 606);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Narudžba";
+            // 
+            // btnRemoveProduct
+            // 
+            this.btnRemoveProduct.Location = new System.Drawing.Point(547, 172);
+            this.btnRemoveProduct.Name = "btnRemoveProduct";
+            this.btnRemoveProduct.Size = new System.Drawing.Size(137, 54);
+            this.btnRemoveProduct.TabIndex = 36;
+            this.btnRemoveProduct.Text = "Ukloni proizvod";
+            this.btnRemoveProduct.UseVisualStyleBackColor = true;
+            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // btnAddOrder
             // 
@@ -412,9 +422,11 @@
             // 
             // dgvProductOrder
             // 
+            this.dgvProductOrder.AllowUserToAddRows = false;
             this.dgvProductOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SelectedProductId,
+            this.ProductIndex,
             this.SelectedProductName,
             this.SelectedProductPrice,
             this.SelectedProductQuantity});
@@ -426,39 +438,6 @@
             this.dgvProductOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductOrder.Size = new System.Drawing.Size(1978, 581);
             this.dgvProductOrder.TabIndex = 15;
-            // 
-            // SelectedProductId
-            // 
-            this.SelectedProductId.DataPropertyName = "ProductId";
-            this.SelectedProductId.HeaderText = "ProductId";
-            this.SelectedProductId.MinimumWidth = 8;
-            this.SelectedProductId.Name = "SelectedProductId";
-            this.SelectedProductId.Visible = false;
-            this.SelectedProductId.Width = 150;
-            // 
-            // SelectedProductName
-            // 
-            this.SelectedProductName.DataPropertyName = "Name";
-            this.SelectedProductName.HeaderText = "Naziv";
-            this.SelectedProductName.MinimumWidth = 8;
-            this.SelectedProductName.Name = "SelectedProductName";
-            this.SelectedProductName.Width = 150;
-            // 
-            // SelectedProductPrice
-            // 
-            this.SelectedProductPrice.DataPropertyName = "Price";
-            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
-            this.SelectedProductPrice.MinimumWidth = 8;
-            this.SelectedProductPrice.Name = "SelectedProductPrice";
-            this.SelectedProductPrice.Width = 150;
-            // 
-            // SelectedProductQuantity
-            // 
-            this.SelectedProductQuantity.DataPropertyName = "Quantity";
-            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
-            this.SelectedProductQuantity.MinimumWidth = 8;
-            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
-            this.SelectedProductQuantity.Width = 150;
             // 
             // label7
             // 
@@ -486,12 +465,13 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Datum";
             // 
-            // dateTimePicker1
+            // dpOrderDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(10, 184);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(464, 26);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dpOrderDate.Location = new System.Drawing.Point(10, 184);
+            this.dpOrderDate.Name = "dpOrderDate";
+            this.dpOrderDate.Size = new System.Drawing.Size(464, 26);
+            this.dpOrderDate.TabIndex = 11;
+            this.dpOrderDate.ValueChanged += new System.EventHandler(this.dpOrderDate_ValueChanged);
             // 
             // txtOrderNumber
             // 
@@ -524,7 +504,7 @@
             this.groupBox3.Controls.Add(this.dgvProducts);
             this.groupBox3.Location = new System.Drawing.Point(12, 640);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(2682, 616);
+            this.groupBox3.Size = new System.Drawing.Size(2682, 505);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Proizvodi";
@@ -532,7 +512,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(342, 342);
+            this.label18.Location = new System.Drawing.Point(344, 245);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(110, 20);
             this.label18.TabIndex = 36;
@@ -540,7 +520,7 @@
             // 
             // txtUnitOfMeasure
             // 
-            this.txtUnitOfMeasure.Location = new System.Drawing.Point(342, 377);
+            this.txtUnitOfMeasure.Location = new System.Drawing.Point(344, 280);
             this.txtUnitOfMeasure.Name = "txtUnitOfMeasure";
             this.txtUnitOfMeasure.ReadOnly = true;
             this.txtUnitOfMeasure.Size = new System.Drawing.Size(138, 26);
@@ -548,7 +528,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(480, 509);
+            this.btnAddProduct.Location = new System.Drawing.Point(482, 412);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
             this.btnAddProduct.TabIndex = 34;
@@ -558,52 +538,41 @@
             // 
             // groupSearch
             // 
-            this.groupSearch.Controls.Add(this.btnSearch);
             this.groupSearch.Controls.Add(this.lblNoProducts);
             this.groupSearch.Controls.Add(this.btnShowProducts);
             this.groupSearch.Controls.Add(this.cmbProductCategories);
             this.groupSearch.Controls.Add(this.label11);
             this.groupSearch.Controls.Add(this.txtProductCodeSearch);
-            this.groupSearch.Controls.Add(this.label12);
             this.groupSearch.Controls.Add(this.label13);
-            this.groupSearch.Controls.Add(this.txtProductNameSearch);
             this.groupSearch.Location = new System.Drawing.Point(10, 48);
             this.groupSearch.Name = "groupSearch";
-            this.groupSearch.Size = new System.Drawing.Size(672, 259);
+            this.groupSearch.Size = new System.Drawing.Size(672, 180);
             this.groupSearch.TabIndex = 34;
             this.groupSearch.TabStop = false;
             this.groupSearch.Text = "Pretraga";
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(435, 64);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(202, 49);
-            this.btnSearch.TabIndex = 31;
-            this.btnSearch.Text = "Prikazi";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
             // lblNoProducts
             // 
             this.lblNoProducts.AutoSize = true;
-            this.lblNoProducts.Location = new System.Drawing.Point(414, 135);
+            this.lblNoProducts.Location = new System.Drawing.Point(418, 56);
             this.lblNoProducts.Name = "lblNoProducts";
             this.lblNoProducts.Size = new System.Drawing.Size(0, 20);
             this.lblNoProducts.TabIndex = 32;
             // 
             // btnShowProducts
             // 
-            this.btnShowProducts.Location = new System.Drawing.Point(435, 178);
+            this.btnShowProducts.Location = new System.Drawing.Point(439, 99);
             this.btnShowProducts.Name = "btnShowProducts";
             this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
             this.btnShowProducts.TabIndex = 33;
             this.btnShowProducts.Text = "Prikazi";
             this.btnShowProducts.UseVisualStyleBackColor = true;
+            this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 
             // cmbProductCategories
             // 
             this.cmbProductCategories.FormattingEnabled = true;
-            this.cmbProductCategories.Location = new System.Drawing.Point(6, 211);
+            this.cmbProductCategories.Location = new System.Drawing.Point(10, 132);
             this.cmbProductCategories.Name = "cmbProductCategories";
             this.cmbProductCategories.Size = new System.Drawing.Size(363, 28);
             this.cmbProductCategories.TabIndex = 32;
@@ -611,7 +580,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 112);
+            this.label11.Location = new System.Drawing.Point(10, 33);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(42, 20);
             this.label11.TabIndex = 3;
@@ -619,39 +588,23 @@
             // 
             // txtProductCodeSearch
             // 
-            this.txtProductCodeSearch.Location = new System.Drawing.Point(7, 135);
+            this.txtProductCodeSearch.Location = new System.Drawing.Point(11, 56);
             this.txtProductCodeSearch.Name = "txtProductCodeSearch";
             this.txtProductCodeSearch.Size = new System.Drawing.Size(362, 26);
             this.txtProductCodeSearch.TabIndex = 2;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 20);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Naziv";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 178);
+            this.label13.Location = new System.Drawing.Point(10, 99);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 20);
             this.label13.TabIndex = 31;
             this.label13.Text = "Kategorija:";
             // 
-            // txtProductNameSearch
-            // 
-            this.txtProductNameSearch.Location = new System.Drawing.Point(7, 64);
-            this.txtProductNameSearch.Name = "txtProductNameSearch";
-            this.txtProductNameSearch.Size = new System.Drawing.Size(362, 26);
-            this.txtProductNameSearch.TabIndex = 0;
-            // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(9, 451);
+            this.txtPrice.Location = new System.Drawing.Point(11, 354);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(281, 26);
@@ -660,7 +613,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 416);
+            this.label10.Location = new System.Drawing.Point(11, 319);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 20);
             this.label10.TabIndex = 13;
@@ -668,7 +621,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(342, 451);
+            this.txtQuantity.Location = new System.Drawing.Point(344, 354);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(138, 26);
             this.txtQuantity.TabIndex = 12;
@@ -676,7 +629,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(342, 416);
+            this.label9.Location = new System.Drawing.Point(344, 319);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 20);
             this.label9.TabIndex = 11;
@@ -684,7 +637,7 @@
             // 
             // txtProductCode
             // 
-            this.txtProductCode.Location = new System.Drawing.Point(9, 377);
+            this.txtProductCode.Location = new System.Drawing.Point(11, 280);
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.ReadOnly = true;
             this.txtProductCode.Size = new System.Drawing.Size(281, 26);
@@ -693,7 +646,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 342);
+            this.label8.Location = new System.Drawing.Point(11, 245);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 20);
             this.label8.TabIndex = 9;
@@ -717,7 +670,7 @@
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1972, 591);
+            this.dgvProducts.Size = new System.Drawing.Size(1972, 480);
             this.dgvProducts.TabIndex = 9;
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
             // 
@@ -790,11 +743,51 @@
             // 
             this.errProvider.ContainerControl = this;
             // 
+            // SelectedProductId
+            // 
+            this.SelectedProductId.DataPropertyName = "ProductId";
+            this.SelectedProductId.HeaderText = "ProductId";
+            this.SelectedProductId.MinimumWidth = 8;
+            this.SelectedProductId.Name = "SelectedProductId";
+            this.SelectedProductId.Visible = false;
+            this.SelectedProductId.Width = 150;
+            // 
+            // ProductIndex
+            // 
+            this.ProductIndex.HeaderText = "Redni broj";
+            this.ProductIndex.MinimumWidth = 8;
+            this.ProductIndex.Name = "ProductIndex";
+            this.ProductIndex.Width = 150;
+            // 
+            // SelectedProductName
+            // 
+            this.SelectedProductName.DataPropertyName = "Name";
+            this.SelectedProductName.HeaderText = "Naziv";
+            this.SelectedProductName.MinimumWidth = 8;
+            this.SelectedProductName.Name = "SelectedProductName";
+            this.SelectedProductName.Width = 150;
+            // 
+            // SelectedProductPrice
+            // 
+            this.SelectedProductPrice.DataPropertyName = "Price";
+            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
+            this.SelectedProductPrice.MinimumWidth = 8;
+            this.SelectedProductPrice.Name = "SelectedProductPrice";
+            this.SelectedProductPrice.Width = 150;
+            // 
+            // SelectedProductQuantity
+            // 
+            this.SelectedProductQuantity.DataPropertyName = "Quantity";
+            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
+            this.SelectedProductQuantity.MinimumWidth = 8;
+            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
+            this.SelectedProductQuantity.Width = 150;
+            // 
             // frmSupplierOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2712, 1889);
+            this.ClientSize = new System.Drawing.Size(2712, 1783);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -835,7 +828,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBillAmount;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dpOrderDate;
         private System.Windows.Forms.TextBox txtOrderNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvProductOrder;
@@ -847,12 +840,9 @@
         private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupSearch;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblNoProducts;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtProductCodeSearch;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtProductNameSearch;
         private System.Windows.Forms.Button btnShowProducts;
         private System.Windows.Forms.ComboBox cmbProductCategories;
         private System.Windows.Forms.Label label13;
@@ -885,12 +875,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inventory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtUnitOfMeasure;
         private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Button btnRemoveProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
     }
 }
