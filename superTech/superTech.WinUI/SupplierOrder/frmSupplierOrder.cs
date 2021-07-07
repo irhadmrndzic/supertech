@@ -1,4 +1,6 @@
 ﻿using superTech.Models.Category;
+using superTech.Models.Orders;
+using superTech.Models.Orders.OrderItems;
 using superTech.Models.Product;
 using superTech.Models.Suppliers;
 using superTech.WinUI.Utilities;
@@ -15,6 +17,7 @@ namespace superTech.WinUI.SupplierOrder
         private readonly APIService.APIService _suppliersService = new APIService.APIService("suppliers");
         private readonly APIService.APIService _productsService = new APIService.APIService("products");
         private readonly APIService.APIService _categoriesService = new APIService.APIService("categories");
+        private readonly APIService.APIService _orderService = new APIService.APIService("orders");
         public int? _supplierId = null;
         public int? _productId = null;
         public frmSupplierOrder()
@@ -217,6 +220,7 @@ namespace superTech.WinUI.SupplierOrder
                     selectedProduct.Price = decimal.Parse(txtPrice.Text) * int.Parse(txtQuantity.Text);
                     orderList.Add(selectedProduct);
                     selectedProduct = null;
+
                 }
                 else
                 {
@@ -240,6 +244,14 @@ namespace superTech.WinUI.SupplierOrder
                 dgvProductOrder.DataSource = orderList.ToList();
                 dgvProductOrder.Refresh();
                 dgvProductOrder.Update();
+
+                decimal sum = 0;
+                for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
+                {
+                    sum += Convert.ToDecimal(dgvProductOrder.Rows[i].Cells[2].Value);
+                }
+                txtBillAmount.Text = sum.ToString();
+
                 selectedProduct = null;
             }
         }
@@ -312,6 +324,40 @@ namespace superTech.WinUI.SupplierOrder
                 return false;
             return true;
         }
-        
+
+        private async void btnAddOrder_Click(object sender, EventArgs e)
+        {
+
+            OrdersUpsertRequest order = new OrdersUpsertRequest();
+            int amount = 0;
+            for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
+            {
+                amount += Convert.ToInt32(dgvProductOrder.Rows[i].Cells[2].Value);
+            }
+            order.Amount = amount;
+            order.Date = DateTime.Now;
+            order.OrderNumber = int.Parse(txtOrderNumber.Text);
+            order.SupplierId = _supplierId;
+            order.UserId = 47;
+
+            order.OrderItems = new List<OrderItemsUpsertRequest>();
+
+
+            for (int i = 0; i < orderList.Count; i++)
+            {
+
+                OrderItemsUpsertRequest oi = new OrderItemsUpsertRequest
+                {
+                    FkProductId = _productId,
+                    Quantity = (int)dgvProductOrder.Rows[i].Cells[3].Value,
+                    Amount = (decimal)dgvProductOrder.Rows[i].Cells[2].Value,
+                };
+                
+                order.OrderItems.Add(oi);
+            }
+
+
+            await _orderService.Insert<OrdersModel>(order);
+        }
     }
 }

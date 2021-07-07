@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bntClearSuppliers = new System.Windows.Forms.Button();
             this.txtSupplierDesc = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtSupplierWebAddress = new System.Windows.Forms.TextBox();
@@ -57,18 +56,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.bntClearSuppliers = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddOrder = new System.Windows.Forms.Button();
             this.dgvProductOrder = new System.Windows.Forms.DataGridView();
             this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtBillAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -133,16 +133,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dobavljači";
-            // 
-            // bntClearSuppliers
-            // 
-            this.bntClearSuppliers.Location = new System.Drawing.Point(562, 336);
-            this.bntClearSuppliers.Name = "bntClearSuppliers";
-            this.bntClearSuppliers.Size = new System.Drawing.Size(120, 49);
-            this.bntClearSuppliers.TabIndex = 35;
-            this.bntClearSuppliers.Text = "Očisti";
-            this.bntClearSuppliers.UseVisualStyleBackColor = true;
-            this.bntClearSuppliers.Click += new System.EventHandler(this.bntClearSuppliers_Click);
             // 
             // txtSupplierDesc
             // 
@@ -382,16 +372,26 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv";
             // 
+            // bntClearSuppliers
+            // 
+            this.bntClearSuppliers.Location = new System.Drawing.Point(562, 336);
+            this.bntClearSuppliers.Name = "bntClearSuppliers";
+            this.bntClearSuppliers.Size = new System.Drawing.Size(120, 49);
+            this.bntClearSuppliers.TabIndex = 35;
+            this.bntClearSuppliers.Text = "Očisti";
+            this.bntClearSuppliers.UseVisualStyleBackColor = true;
+            this.bntClearSuppliers.Click += new System.EventHandler(this.bntClearSuppliers_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bntClearSuppliers);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnAddOrder);
             this.groupBox2.Controls.Add(this.dgvProductOrder);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtBillAmount);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.txtOrderNumber);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 1262);
             this.groupBox2.Name = "groupBox2";
@@ -400,14 +400,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Narudžba";
             // 
-            // button1
+            // btnAddOrder
             // 
-            this.button1.Location = new System.Drawing.Point(498, 422);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 84);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Zaključi";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Location = new System.Drawing.Point(498, 422);
+            this.btnAddOrder.Name = "btnAddOrder";
+            this.btnAddOrder.Size = new System.Drawing.Size(184, 84);
+            this.btnAddOrder.TabIndex = 16;
+            this.btnAddOrder.Text = "Zaključi";
+            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
             // dgvProductOrder
             // 
@@ -468,12 +469,13 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Iznos računa";
             // 
-            // textBox6
+            // txtBillAmount
             // 
-            this.textBox6.Location = new System.Drawing.Point(10, 272);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(464, 26);
-            this.textBox6.TabIndex = 13;
+            this.txtBillAmount.Location = new System.Drawing.Point(10, 272);
+            this.txtBillAmount.Name = "txtBillAmount";
+            this.txtBillAmount.ReadOnly = true;
+            this.txtBillAmount.Size = new System.Drawing.Size(464, 26);
+            this.txtBillAmount.TabIndex = 13;
             // 
             // label6
             // 
@@ -491,12 +493,12 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(464, 26);
             this.dateTimePicker1.TabIndex = 11;
             // 
-            // textBox5
+            // txtOrderNumber
             // 
-            this.textBox5.Location = new System.Drawing.Point(10, 96);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(464, 26);
-            this.textBox5.TabIndex = 10;
+            this.txtOrderNumber.Location = new System.Drawing.Point(10, 96);
+            this.txtOrderNumber.Name = "txtOrderNumber";
+            this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
+            this.txtOrderNumber.TabIndex = 10;
             // 
             // label5
             // 
@@ -831,10 +833,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtBillAmount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtOrderNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvProductOrder;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -854,7 +856,7 @@
         private System.Windows.Forms.Button btnShowProducts;
         private System.Windows.Forms.ComboBox cmbProductCategories;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddOrder;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnShowSuppliers;
