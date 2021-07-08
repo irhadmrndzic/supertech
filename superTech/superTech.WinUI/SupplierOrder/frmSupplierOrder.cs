@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Claims;
+using superTech.Models.User;
 
 namespace superTech.WinUI.SupplierOrder
 {
@@ -18,19 +20,38 @@ namespace superTech.WinUI.SupplierOrder
         private readonly APIService.APIService _productsService = new APIService.APIService("products");
         private readonly APIService.APIService _categoriesService = new APIService.APIService("categories");
         private readonly APIService.APIService _orderService = new APIService.APIService("orders");
+        private readonly APIService.APIService _userService = new APIService.APIService("users");
+
+
+        private readonly APIService.APIService _logged = new APIService.APIService("loggeduser");
+
         public int? _supplierId = null;
         public int? _productId = null;
+
+        public List<UserModel> user = new List<UserModel>();
         public frmSupplierOrder()
         {
             InitializeComponent();
             this.AutoScroll = true;
+           GetUser();
 
         }
 
         private async void frmSupplierOrder_Load(object sender, EventArgs e)
         {
             dgvSuppliers.AutoGenerateColumns = false;
+            dgvSuppliers.AllowUserToResizeColumns = false;
+            dgvSuppliers.AllowUserToResizeRows = false;
+
             dgvProductOrder.AutoGenerateColumns = false;
+            dgvProductOrder.AllowUserToResizeRows = false;
+            dgvProductOrder.AllowUserToResizeColumns = false;
+
+            dgvProducts.AutoGenerateColumns = false;
+            dgvProducts.AllowUserToResizeRows = false;
+            dgvProducts.AllowUserToResizeColumns = false;
+
+            
 
             dpOrderDate.CustomFormat = " ";
             dpOrderDate.Format = DateTimePickerFormat.Custom;
@@ -118,14 +139,16 @@ namespace superTech.WinUI.SupplierOrder
 
         private void bntClearSuppliers_Click(object sender, EventArgs e)
         {
-            clearSuppliers();
+            clearForm();
         }
 
-        void clearSuppliers()
+        void clearForm()
         {
             _supplierId = null;
             txtSupplierSearch.Text = "";
             FormReset.ResetAllControls(this);
+            dpOrderDate.CustomFormat = " ";
+            dpOrderDate.Format = DateTimePickerFormat.Custom;
         }
 
 
@@ -266,7 +289,7 @@ namespace superTech.WinUI.SupplierOrder
                 dgvProductOrder.Refresh();
                 dgvProductOrder.Update();
 
-             
+
                 txtBillAmount.Text = getSum(dgvProductOrder).ToString();
 
                 selectedProduct = null;
@@ -435,7 +458,8 @@ namespace superTech.WinUI.SupplierOrder
             {
                 try
                 {
-                    string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
+
                     OrdersUpsertRequest order = new OrdersUpsertRequest();
                     int amount = 0;
                     for (int i = 0; i < dgvProductOrder.Rows.Count; ++i)
@@ -443,11 +467,12 @@ namespace superTech.WinUI.SupplierOrder
                         amount += Convert.ToInt32(dgvProductOrder.Rows[i].Cells[3].Value);
                     }
                     order.Amount = amount;
-                    order.Date = DateTime.Now;
+                    order.Date = dpOrderDate.Value;
                     order.OrderNumber = int.Parse(txtOrderNumber.Text);
                     order.SupplierId = _supplierId;
-                    order.UserId = 47;
+                    order.UserId = Convert.ToInt32(user[0].UserId);
                     order.Active = true;
+                    order.Confirmed = false;
 
                     order.OrderItems = new List<OrderItemsUpsertRequest>();
 
@@ -457,7 +482,7 @@ namespace superTech.WinUI.SupplierOrder
 
                         OrderItemsUpsertRequest oi = new OrderItemsUpsertRequest
                         {
-                            FkProductId = _productId,
+                            FkProductId = orderList[i].ProductId,
                             Quantity = (int)dgvProductOrder.Rows[i].Cells[4].Value,
                             Amount = (decimal)dgvProductOrder.Rows[i].Cells[3].Value,
                         };
@@ -474,7 +499,7 @@ namespace superTech.WinUI.SupplierOrder
                 }
 
             }
-            if(orderList.Count == 0)
+            if (orderList.Count == 0)
             {
                 MessageBox.Show("Molimo dodajte proizvode u listu !");
             }
@@ -522,9 +547,16 @@ namespace superTech.WinUI.SupplierOrder
                 {
                     MessageBox.Show("Unesite ispravan redni broj! ");
                 }
-              
+
             }
 
+        }
+
+        public async void GetUser()
+        {
+            UserSearchRequest us = new UserSearchRequest();
+            us.Username = APIService.APIService.Username;
+            user = await _userService.Get<List<UserModel>>(us);
         }
     }
 }

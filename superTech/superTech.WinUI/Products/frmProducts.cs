@@ -215,7 +215,7 @@ namespace superTech.WinUI.Products
                 if (e.Value is bool)
                 {
                     bool value = (bool)e.Value;
-                    e.Value = (value) ? "Aktivan" : "Neaktivan";
+                    e.Value = (value) ? "DA" : "NE";
                     e.FormattingApplied = true;
                 }
             }

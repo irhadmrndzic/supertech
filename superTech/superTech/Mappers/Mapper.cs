@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using AutoMapper;
 using superTech.Database;
 using superTech.Models.Category;
@@ -80,9 +79,8 @@ namespace superTech.Mappers
                 .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
                 .ForMember(q => q.SupplierString, w => w.MapFrom(src => src.FkSupplier.Name))
                 .ForMember(l => l.OrderItems, k => k.MapFrom(src => src.OrderItems))
+                .ForMember(l => l.Confirmed, k => k.MapFrom(src => src.Confirmed))
                 .ReverseMap();
-
-
         }
     }
 }

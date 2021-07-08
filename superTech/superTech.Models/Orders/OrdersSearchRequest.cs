@@ -6,6 +6,8 @@ namespace superTech.Models.Orders
 {
     public class OrdersSearchRequest
     {
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
+        public DateTime Date { get; set; }
+
     }
 }

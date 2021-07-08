@@ -37,12 +37,12 @@
             this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.nabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.novaNabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +115,29 @@
             this.pregledToolStripMenuItem1.Text = "Pregled";
             this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.pregledToolStripMenuItem1_Click);
             // 
+            // nabavkaToolStripMenuItem
+            // 
+            this.nabavkaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem2,
+            this.novaNabavkaToolStripMenuItem});
+            this.nabavkaToolStripMenuItem.Name = "nabavkaToolStripMenuItem";
+            this.nabavkaToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.nabavkaToolStripMenuItem.Text = "Nabavka";
+            // 
+            // pregledToolStripMenuItem2
+            // 
+            this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
+            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem2.Text = "Pregled";
+            this.pregledToolStripMenuItem2.Click += new System.EventHandler(this.pregledToolStripMenuItem2_Click);
+            // 
+            // novaNabavkaToolStripMenuItem
+            // 
+            this.novaNabavkaToolStripMenuItem.Name = "novaNabavkaToolStripMenuItem";
+            this.novaNabavkaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.novaNabavkaToolStripMenuItem.Text = "Nova nabavka";
+            this.novaNabavkaToolStripMenuItem.Click += new System.EventHandler(this.novaNabavkaToolStripMenuItem_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -132,28 +155,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(60, 25);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // nabavkaToolStripMenuItem
-            // 
-            this.nabavkaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem2,
-            this.novaNabavkaToolStripMenuItem});
-            this.nabavkaToolStripMenuItem.Name = "nabavkaToolStripMenuItem";
-            this.nabavkaToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
-            this.nabavkaToolStripMenuItem.Text = "Nabavka";
-            // 
-            // pregledToolStripMenuItem2
-            // 
-            this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
-            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
-            this.pregledToolStripMenuItem2.Text = "Pregled";
-            // 
-            // novaNabavkaToolStripMenuItem
-            // 
-            this.novaNabavkaToolStripMenuItem.Name = "novaNabavkaToolStripMenuItem";
-            this.novaNabavkaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.novaNabavkaToolStripMenuItem.Text = "Nova nabavka";
-            this.novaNabavkaToolStripMenuItem.Click += new System.EventHandler(this.novaNabavkaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

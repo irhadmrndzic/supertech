@@ -88,14 +88,6 @@ namespace superTech
 
 
 
-            //services
-            //    .AddScoped<ICRUDService<UserModel, object, UserUpsertRequest, UserUpsertRequest>,
-            //        BaseCRUDService<UserModel, object, User, UserUpsertRequest, UserUpsertRequest>>();
-
-            // PRETRAGA PROIZVODA PO SIFRI
-
-
-
             services
                 .AddScoped<ICRUDService<ProductModel, object, ProductUpsertRequest, ProductUpsertRequest>,
                     BaseCRUDService<ProductModel, object, Product, ProductUpsertRequest, ProductUpsertRequest>>();
@@ -114,8 +106,6 @@ namespace superTech
             services.AddScoped<ICRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>,
                 BaseCRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasure, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>>();
 
-            //services.AddScoped<ICRUDService<SuppliersModel, SuppliersSearchRequest, SuppliersModel, SuppliersModel>,
-            //    BaseCRUDService<SuppliersModel, SuppliersSearchRequest, Supplier, SuppliersModel, SuppliersModel>>();
 
 
             services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>,

@@ -21,14 +21,34 @@ namespace superTech.Services
             var query = _dbContext.Orders.AsQueryable();
 
             query = query.Include(o => o.FkUser).Include(a => a.FkSupplier).Include(x=>x.OrderItems).ThenInclude(p=>p.FkProduct);
-            if (searchFilter.OrderNumber!=0 && searchFilter!=null)
+            if (searchFilter.OrderNumber!=0 && searchFilter.OrderNumber.HasValue)
             {
                 query = query.Where(q => q.OrderNumber == searchFilter.OrderNumber);
             }
 
+            if(searchFilter?.Date !=null && (searchFilter?.Date.ToString() != "1.1.0001. 00:00:00" && searchFilter?.Date.ToString() != "1.1.0001. 01:00:00"))
+            {
+                var date = searchFilter.Date.Date;
+
+                query = query.Where(x => x.Date.Date == date);
+                query = query.OrderBy(x => x.Date);
+
+            }
             var list = query.ToList();
 
             return _mapper.Map<List<OrdersModel>>(list);
+        }
+
+        public override OrdersModel GetById(int id)
+        {
+            var query = _dbContext.Orders.Where(x=>x.OrderId == id);
+
+            query = query.Include(o => o.FkUser).Include(a => a.FkSupplier).Include(x => x.OrderItems).ThenInclude(p => p.FkProduct);
+
+            var entity = query.SingleOrDefault();
+
+            return _mapper.Map<OrdersModel>(entity);
+
         }
 
 

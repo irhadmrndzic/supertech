@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Flurl.Http;
 using superTech.Models.Extensions;
+using superTech.Models.User;
 
 namespace superTech.WinUI.APIService
 {
@@ -130,6 +131,7 @@ namespace superTech.WinUI.APIService
             }
 
         }
+
     }
 
 }

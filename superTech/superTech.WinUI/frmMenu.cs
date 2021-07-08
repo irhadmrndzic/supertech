@@ -121,8 +121,17 @@ namespace superTech.WinUI
         private void novaNabavkaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSupplierOrder frmSupplierOrder = new frmSupplierOrder();
-            frmSupplierOrder.WindowState = FormWindowState.Normal;
+            frmSupplierOrder.MdiParent = this;
+            frmSupplierOrder.WindowState = FormWindowState.Maximized;
             frmSupplierOrder.Show();
+        }
+
+        private void pregledToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmOrders frmOrders = new frmOrders();
+            frmOrders.MdiParent = this;
+            frmOrders.WindowState = FormWindowState.Maximized;
+            frmOrders.Show();
         }
     }
 }

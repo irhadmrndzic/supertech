@@ -43,6 +43,11 @@ namespace superTech.Services
                 query = _dbContext.Users.Where(x => x.LastName.ToLower().StartsWith(searchFilter.LastName.ToLower()));
             }
 
+            if (!string.IsNullOrWhiteSpace(searchFilter.Username))
+            {
+                query = _dbContext.Users.Where(x => x.UserName.ToLower().StartsWith(searchFilter.Username.ToLower()));
+            }
+
             query = query.Include(x => x.FkCity).Include(q=>q.UsersRoles).ThenInclude(r=>r.FkRole);
 
             var list = query.ToList();

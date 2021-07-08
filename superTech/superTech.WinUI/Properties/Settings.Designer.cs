@@ -31,5 +31,17 @@ namespace superTech.WinUI.Properties {
                 return ((string)(this["apiURL"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Proizvod")]
+        public string ProductName {
+            get {
+                return ((string)(this["ProductName"]));
+            }
+            set {
+                this["ProductName"] = value;
+            }
+        }
     }
 }

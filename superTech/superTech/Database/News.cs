@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 #nullable disable
+
 namespace superTech.Database
 {
     public partial class News
