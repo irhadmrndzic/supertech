@@ -107,7 +107,7 @@
             this.MinimizeBox = false;
             this.Name = "frmOrderItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmOrderItems";
+            this.Text = "Stavke narudžbe";
             this.Load += new System.EventHandler(this.frmOrderItems_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

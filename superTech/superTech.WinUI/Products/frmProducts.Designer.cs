@@ -31,6 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdcutName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -61,16 +71,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdcutName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProdImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -106,6 +106,90 @@
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProducts_CellFormatting);
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
+            // 
+            // ProductId
+            // 
+            this.ProductId.DataPropertyName = "ProductId";
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.MinimumWidth = 8;
+            this.ProductId.Name = "ProductId";
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 150;
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Šifra";
+            this.Code.MinimumWidth = 8;
+            this.Code.Name = "Code";
+            this.Code.Width = 150;
+            // 
+            // ProdcutName
+            // 
+            this.ProdcutName.DataPropertyName = "Name";
+            this.ProdcutName.HeaderText = "Naziv";
+            this.ProdcutName.MinimumWidth = 8;
+            this.ProdcutName.Name = "ProdcutName";
+            this.ProdcutName.Width = 150;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "CategoryString";
+            this.Category.HeaderText = "Kategorija";
+            this.Category.MinimumWidth = 8;
+            this.Category.Name = "Category";
+            this.Category.Width = 150;
+            // 
+            // UnitOfMeasure
+            // 
+            this.UnitOfMeasure.DataPropertyName = "FkUnitOfMeasureString";
+            this.UnitOfMeasure.HeaderText = "Jedinica mjere";
+            this.UnitOfMeasure.MinimumWidth = 8;
+            this.UnitOfMeasure.Name = "UnitOfMeasure";
+            this.UnitOfMeasure.Width = 150;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Cijena";
+            this.Price.MinimumWidth = 8;
+            this.Price.Name = "Price";
+            this.Price.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Opis";
+            this.Description.MinimumWidth = 8;
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Aktivan";
+            this.Active.MinimumWidth = 8;
+            this.Active.Name = "Active";
+            this.Active.Width = 150;
+            // 
+            // Rating
+            // 
+            this.Rating.DataPropertyName = "Rating";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "/";
+            this.Rating.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Rating.HeaderText = "Ocjena";
+            this.Rating.MinimumWidth = 8;
+            this.Rating.Name = "Rating";
+            this.Rating.Width = 150;
+            // 
+            // Inventory
+            // 
+            this.Inventory.DataPropertyName = "Inventory";
+            this.Inventory.HeaderText = "Stanje na skladištu";
+            this.Inventory.MinimumWidth = 8;
+            this.Inventory.Name = "Inventory";
+            this.Inventory.Width = 150;
             // 
             // txtCode
             // 
@@ -373,90 +457,6 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // ProductId
-            // 
-            this.ProductId.DataPropertyName = "ProductId";
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.MinimumWidth = 8;
-            this.ProductId.Name = "ProductId";
-            this.ProductId.Visible = false;
-            this.ProductId.Width = 150;
-            // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Šifra";
-            this.Code.MinimumWidth = 8;
-            this.Code.Name = "Code";
-            this.Code.Width = 150;
-            // 
-            // ProdcutName
-            // 
-            this.ProdcutName.DataPropertyName = "Name";
-            this.ProdcutName.HeaderText = "Naziv";
-            this.ProdcutName.MinimumWidth = 8;
-            this.ProdcutName.Name = "ProdcutName";
-            this.ProdcutName.Width = 150;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "CategoryString";
-            this.Category.HeaderText = "Kategorija";
-            this.Category.MinimumWidth = 8;
-            this.Category.Name = "Category";
-            this.Category.Width = 150;
-            // 
-            // UnitOfMeasure
-            // 
-            this.UnitOfMeasure.DataPropertyName = "FkUnitOfMeasureString";
-            this.UnitOfMeasure.HeaderText = "Jedinica mjere";
-            this.UnitOfMeasure.MinimumWidth = 8;
-            this.UnitOfMeasure.Name = "UnitOfMeasure";
-            this.UnitOfMeasure.Width = 150;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Cijena";
-            this.Price.MinimumWidth = 8;
-            this.Price.Name = "Price";
-            this.Price.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Opis";
-            this.Description.MinimumWidth = 8;
-            this.Description.Name = "Description";
-            this.Description.Width = 150;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "Active";
-            this.Active.HeaderText = "Aktivan";
-            this.Active.MinimumWidth = 8;
-            this.Active.Name = "Active";
-            this.Active.Width = 150;
-            // 
-            // Rating
-            // 
-            this.Rating.DataPropertyName = "Rating";
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = "/";
-            this.Rating.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Rating.HeaderText = "Ocjena";
-            this.Rating.MinimumWidth = 8;
-            this.Rating.Name = "Rating";
-            this.Rating.Width = 150;
-            // 
-            // Inventory
-            // 
-            this.Inventory.DataPropertyName = "Inventory";
-            this.Inventory.HeaderText = "Stanje na skladištu";
-            this.Inventory.MinimumWidth = 8;
-            this.Inventory.Name = "Inventory";
-            this.Inventory.Width = 150;
-            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -486,6 +486,7 @@
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.dgvProducts);
             this.Name = "frmProducts";
+            this.Text = "Proizvodi";
             this.Load += new System.EventHandler(this.frmProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProdImage)).EndInit();

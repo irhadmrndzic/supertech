@@ -1,4 +1,5 @@
 ﻿using superTech.Models.Orders;
+using superTech.WinUI.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -31,9 +32,17 @@ namespace superTech.WinUI.SupplierOrder
 
         public async Task loadOrders()
         {
-            Cursor.Current = Cursor.Current;
-            var orders = await _ordersService.Get<List<OrdersModel>>(null);
-            dgvOrders.DataSource = orders;
+            try
+            {
+                Cursor.Current = Cursor.Current;
+                var orders = await _ordersService.Get<List<OrdersModel>>(null);
+                dgvOrders.DataSource = orders;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private async void dgvOrders_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -43,13 +52,21 @@ namespace superTech.WinUI.SupplierOrder
 
         public async Task selectOrder()
         {
-            _orderId = (int)dgvOrders.SelectedRows[0].Cells[0].Value;
+            try
+            {
+                _orderId = (int)dgvOrders.SelectedRows[0].Cells[0].Value;
 
-            var entity = await _ordersService.GetById<OrdersModel>(_orderId);
+                var entity = await _ordersService.GetById<OrdersModel>(_orderId);
 
-            cbActive.Checked = entity.Active;
-            cbConfirmOrder.Checked = entity.Confirmed;
-            txtOrderNumber.Text = entity.OrderNumber.ToString();
+                cbActive.Checked = entity.Active;
+                cbConfirmOrder.Checked = entity.Confirmed;
+                txtOrderNumber.Text = entity.OrderNumber.ToString();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnOrderItems_Click(object sender, EventArgs e)
@@ -83,36 +100,43 @@ namespace superTech.WinUI.SupplierOrder
 
         private async void btnFilterOrder_Click(object sender, EventArgs e)
         {
-            OrdersSearchRequest request = new OrdersSearchRequest();
-
-            if (txtOrderNumberSearch.Text != "")
+            try
             {
-                request.OrderNumber = Convert.ToInt32(txtOrderNumberSearch.Text);
-            }
+                OrdersSearchRequest request = new OrdersSearchRequest();
 
-            if (dpOrder.Text != " ")
+                if (txtOrderNumberSearch.Text != "")
+                {
+                    request.OrderNumber = Convert.ToInt32(txtOrderNumberSearch.Text);
+                }
+
+                if (dpOrder.Text != " ")
+                {
+                    request.Date = dpOrder.Value;
+                }
+
+                var res = await _ordersService.Get<List<OrdersModel>>(request);
+
+                if (res.Count > 0)
+                {
+                    dgvOrders.DataSource = res;
+                    clearForm();
+                }
+                else
+                {
+                    lblNoOrders.Text = "Nema pronađenih narudžbi ! ";
+                    lblNoOrders.Show();
+                }
+            }
+            catch (Exception exception)
             {
-                request.Date = dpOrder.Value;
+                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            var res = await _ordersService.Get<List<OrdersModel>>(request);
-
-            if (res.Count > 0)
-            {
-                dgvOrders.DataSource = res;
-            }
-            else
-            {
-                lblNoOrders.Text = "Nema pronađenih narudžbi ! ";
-                lblNoOrders.Show();
-            }
-
         }
 
         private void dpOrder_ValueChanged(object sender, EventArgs e)
         {
-                lblNoOrders.Hide();
-                dpOrder.CustomFormat = "dd/MM/yyyy";
+            lblNoOrders.Hide();
+            dpOrder.CustomFormat = "dd/MM/yyyy";
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
@@ -122,6 +146,36 @@ namespace superTech.WinUI.SupplierOrder
             txtOrderNumberSearch.Text = "";
             lblNoOrders.Hide();
             loadOrders();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_orderId.HasValue)
+                {
+                    OrdersUpsertRequest request = new OrdersUpsertRequest();
+
+                    request.Confirmed = cbConfirmOrder.Checked;
+
+                    await _ordersService.Update<OrdersModel>(_orderId, request);
+                    clearForm();
+                    MessageBox.Show("Uspješno ste uredili narudžbu : " + txtOrderNumber.Text + " !");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void clearForm()
+        {
+            _orderId = null;
+            txtOrderNumberSearch.Text = "";
+            FormReset.ResetAllControls(this);
+            dpOrder.CustomFormat = " ";
+            dpOrder.Format = DateTimePickerFormat.Custom;
         }
     }
 }

@@ -77,7 +77,6 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(491, 26);
             this.txtFirstName.TabIndex = 0;
-            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // txtLastName
             // 
@@ -85,7 +84,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(491, 26);
             this.txtLastName.TabIndex = 1;
-            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // label6
             // 
@@ -111,7 +109,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(491, 26);
             this.txtEmail.TabIndex = 5;
-            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label5
             // 
@@ -128,7 +125,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(491, 26);
             this.txtUsername.TabIndex = 4;
-            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // label7
             // 
@@ -145,7 +141,6 @@
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(198, 26);
             this.txtGender.TabIndex = 11;
-            this.txtGender.Validating += new System.ComponentModel.CancelEventHandler(this.txtGender_Validating);
             // 
             // label8
             // 
@@ -162,7 +157,6 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(491, 26);
             this.txtAddress.TabIndex = 9;
-            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
             // label9
             // 
@@ -257,7 +251,6 @@
             this.cbRoles.Name = "cbRoles";
             this.cbRoles.Size = new System.Drawing.Size(257, 188);
             this.cbRoles.TabIndex = 13;
-            this.cbRoles.Validating += new System.ComponentModel.CancelEventHandler(this.cbRoles_Validating);
             // 
             // label13
             // 
@@ -347,7 +340,7 @@
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label1);
             this.Name = "frmUserDetails";
-            this.Text = "frmUserDetails";
+            this.Text = "Detalji korisnika";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);

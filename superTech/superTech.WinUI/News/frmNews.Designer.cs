@@ -253,7 +253,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvNews);
             this.Name = "frmNews";
-            this.Text = "frmNews";
+            this.Text = "Novosti";
             this.Load += new System.EventHandler(this.frmNews_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();

@@ -6,7 +6,7 @@ namespace superTech.Models.News
     public class NewsUpsertRequest
     {
         [Required]
-        [MaxLength(10)]
+        [MaxLength(100)]
         [MinLength(1)]
         public string Title { get; set; }
         [Required]

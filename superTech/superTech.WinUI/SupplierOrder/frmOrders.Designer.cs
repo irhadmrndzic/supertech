@@ -38,9 +38,9 @@
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Confirmed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.GroupBox();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.lblNoOrders = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtOrderNumberSearch = new System.Windows.Forms.TextBox();
             this.btnFilterOrder = new System.Windows.Forms.Button();
             this.dpOrder = new System.Windows.Forms.DateTimePicker();
             this.Edit = new System.Windows.Forms.GroupBox();
@@ -50,7 +50,7 @@
             this.btnOrderItems = new System.Windows.Forms.Button();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnShowAll = new System.Windows.Forms.Button();
+            this.txtOrderNumberSearch = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.Search.SuspendLayout();
             this.Edit.SuspendLayout();
@@ -58,6 +58,10 @@
             // 
             // dgvOrders
             // 
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.AllowUserToResizeColumns = false;
+            this.dgvOrders.AllowUserToResizeRows = false;
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -147,10 +151,10 @@
             // 
             // Search
             // 
+            this.Search.Controls.Add(this.txtOrderNumberSearch);
             this.Search.Controls.Add(this.btnShowAll);
             this.Search.Controls.Add(this.lblNoOrders);
             this.Search.Controls.Add(this.label2);
-            this.Search.Controls.Add(this.txtOrderNumberSearch);
             this.Search.Controls.Add(this.btnFilterOrder);
             this.Search.Controls.Add(this.dpOrder);
             this.Search.Location = new System.Drawing.Point(13, 13);
@@ -159,6 +163,16 @@
             this.Search.TabIndex = 1;
             this.Search.TabStop = false;
             this.Search.Text = "Pretraga";
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(595, 70);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(106, 52);
+            this.btnShowAll.TabIndex = 7;
+            this.btnShowAll.Text = "Prikaži sve";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // lblNoOrders
             // 
@@ -176,13 +190,6 @@
             this.label2.Size = new System.Drawing.Size(108, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Broj narudžbe";
-            // 
-            // txtOrderNumberSearch
-            // 
-            this.txtOrderNumberSearch.Location = new System.Drawing.Point(7, 135);
-            this.txtOrderNumberSearch.Name = "txtOrderNumberSearch";
-            this.txtOrderNumberSearch.Size = new System.Drawing.Size(334, 26);
-            this.txtOrderNumberSearch.TabIndex = 5;
             // 
             // btnFilterOrder
             // 
@@ -212,7 +219,7 @@
             this.Edit.Size = new System.Drawing.Size(547, 178);
             this.Edit.TabIndex = 2;
             this.Edit.TabStop = false;
-            this.Edit.Text = "Potvrda prijema ";
+            this.Edit.Text = "Potvrda prijema  robe";
             // 
             // btnSave
             // 
@@ -222,6 +229,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbActive
             // 
@@ -271,15 +279,13 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Broj narudžbe";
             // 
-            // btnShowAll
+            // txtOrderNumberSearch
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(595, 70);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(106, 52);
-            this.btnShowAll.TabIndex = 7;
-            this.btnShowAll.Text = "Prikaži sve";
-            this.btnShowAll.UseVisualStyleBackColor = true;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            this.txtOrderNumberSearch.Location = new System.Drawing.Point(7, 138);
+            this.txtOrderNumberSearch.Mask = "0000000000";
+            this.txtOrderNumberSearch.Name = "txtOrderNumberSearch";
+            this.txtOrderNumberSearch.Size = new System.Drawing.Size(338, 26);
+            this.txtOrderNumberSearch.TabIndex = 5;
             // 
             // frmOrders
             // 
@@ -293,7 +299,7 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.dgvOrders);
             this.Name = "frmOrders";
-            this.Text = "frmOrders";
+            this.Text = "Narudžbe";
             this.Load += new System.EventHandler(this.frmOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.Search.ResumeLayout(false);
@@ -327,8 +333,8 @@
         private System.Windows.Forms.TextBox txtOrderNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtOrderNumberSearch;
         private System.Windows.Forms.Label lblNoOrders;
         private System.Windows.Forms.Button btnShowAll;
+        private System.Windows.Forms.MaskedTextBox txtOrderNumberSearch;
     }
 }

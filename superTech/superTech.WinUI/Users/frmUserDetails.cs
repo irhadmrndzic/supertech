@@ -29,7 +29,7 @@ namespace superTech.WinUI.Users
         private async void frmUserDetails_Load(object sender, EventArgs e)
         {
             if (_id.HasValue)
-            { 
+            {
                 var user = await _apiService.GetById<UserModel>(_id);
                 List<CityModel> cities = await _apiServiceCities.Get<List<CityModel>>(null);
                 List<RolesModel> roles = await _apiServiceRoles.Get<List<RolesModel>>(null);
@@ -61,7 +61,7 @@ namespace superTech.WinUI.Users
                     {
                         if (castedRoles[i] == user.Roles[j])
                         {
-                            cbRoles.SetItemChecked(i,true);
+                            cbRoles.SetItemChecked(i, true);
                         }
                     }
                 }
@@ -104,7 +104,7 @@ namespace superTech.WinUI.Users
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (validateForm())
             {
                 List<int> selectedRoles =
                     cbRoles.CheckedItems.Cast<RolesModel>().Select(x => x.RoleId).ToList();
@@ -152,120 +152,139 @@ namespace superTech.WinUI.Users
                 }
 
             }
-
-     
-
         }
 
-        private void txtFirstName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        bool validateForm()
+        {
+            if (!validateFirstName() || !validateLastName() || !validateUserName() || !validateEmail() || !validatePhoneNumber() || !validateAddress() || !validateGender() || !validateRoles())
+                return false;
+            return true;
+        }
+
+
+        bool validateFirstName()
         {
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
                 errProvider.SetError(txtFirstName, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
-                errProvider.SetError(txtFirstName,null);
+                errProvider.SetError(txtFirstName, null);
+                return true;
             }
         }
 
- 
-
-        private void txtLastName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        bool validateLastName()
         {
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 errProvider.SetError(txtLastName, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
                 errProvider.SetError(txtLastName, null);
+                return true;
             }
         }
 
-        private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+
+        bool validateUserName()
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 errProvider.SetError(txtUsername, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
+
             }
             else
             {
                 errProvider.SetError(txtUsername, null);
+                return true;
             }
         }
 
-        private void txtEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+
+
+        bool validateEmail()
         {
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 errProvider.SetError(txtEmail, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
+
             }
             else
             {
                 errProvider.SetError(txtEmail, null);
+                return true;
+
             }
         }
 
-        private void txtPhoneNumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        bool validatePhoneNumber()
         {
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
             {
                 errProvider.SetError(txtPhoneNumber, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
                 errProvider.SetError(txtPhoneNumber, null);
+                return true;
+
             }
         }
 
-        private void txtAddress_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        bool validateAddress()
         {
             if (string.IsNullOrWhiteSpace(txtAddress.Text))
             {
                 errProvider.SetError(txtAddress, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
                 errProvider.SetError(txtAddress, null);
+                return true;
             }
         }
 
-        private void txtGender_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+
+        bool validateGender()
         {
             if (string.IsNullOrWhiteSpace(txtGender.Text))
             {
                 errProvider.SetError(txtGender, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
                 errProvider.SetError(txtGender, null);
+                return true;
+
             }
         }
 
-        private void cbRoles_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        bool validateRoles()
         {
             List<int> selectedRoles =
-                cbRoles.CheckedItems.Cast<RolesModel>().Select(x => x.RoleId).ToList();
+               cbRoles.CheckedItems.Cast<RolesModel>().Select(x => x.RoleId).ToList();
 
             if (selectedRoles.Count <= 0)
             {
                 errProvider.SetError(cbRoles, Properties.Resources.Validate_Input);
-                e.Cancel = true;
+                return false;
             }
             else
             {
                 errProvider.SetError(cbRoles, null);
+                return true;
             }
         }
 
-    
     }
 }

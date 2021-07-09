@@ -54,7 +54,7 @@ namespace superTech.Mappers
                 ForMember(m => m.CategoryId, sr => sr.MapFrom(a => a.FkCategory.CategoryId)).
                 ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
                 ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra => (decimal?)ra.Rating1)))
-                .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
+                .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f=>f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
                 .ReverseMap();
 
 

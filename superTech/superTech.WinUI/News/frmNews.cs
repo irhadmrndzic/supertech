@@ -100,27 +100,36 @@ namespace superTech.WinUI.News
         {
             if (validateForm())
             {
-                upsertRequest.Active = cbActive.Checked;
-                upsertRequest.Title = txtTitle.Text;
-                upsertRequest.Content = txtContent.Text;
-                upsertRequest.DateOfCreation = dpDoC.Value;
-
-                if (_id.HasValue)
+                try
                 {
-                    await _newsService.Update<NewsModel>(_id, upsertRequest);
-                    MessageBox.Show("Uspješno ste uredili novost !");
+                    upsertRequest.Active = cbActive.Checked;
+                    upsertRequest.Title = txtTitle.Text.ToString();
+                    upsertRequest.Content = txtContent.Text;
+                    upsertRequest.DateOfCreation = dpDoC.Value;
+
+                    if (_id.HasValue)
+                    {
+                        await _newsService.Update<NewsModel>(_id, upsertRequest);
+                        MessageBox.Show("Uspješno ste uredili novost !");
+                    }
+                    else
+                    {
+                        await _newsService.Insert<NewsModel>(upsertRequest);
+                        MessageBox.Show("Uspješno ste sačuvali novost !");
+
+                    }
+
+                    FormReset.ResetAllControls(this);
+                    _id = null;
+                    dpDoC.CustomFormat = " ";
+                    dpDoC.Format = DateTimePickerFormat.Custom;
                 }
-                else
+                catch (Exception ex)
                 {
-                    await _newsService.Insert<NewsModel>(upsertRequest);
-                    MessageBox.Show("Uspješno ste sačuvali novost !");
+                    MessageBox.Show(ex.Message, "Novosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
-                FormReset.ResetAllControls(this);
-                _id = null;
-                dpDoC.CustomFormat = " ";
-                dpDoC.Format = DateTimePickerFormat.Custom;
             }
         }
 

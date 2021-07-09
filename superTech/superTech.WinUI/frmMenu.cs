@@ -21,6 +21,7 @@ namespace superTech.WinUI
         public frmMenu()
         {
             InitializeComponent();
+            txtUsername.Text = APIService.APIService.Username;
         }
 
         private void ShowNewForm(object sender, EventArgs e)

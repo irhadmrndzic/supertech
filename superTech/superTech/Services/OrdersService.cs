@@ -87,5 +87,27 @@ namespace superTech.Services
 
         }
 
+
+        public override OrdersModel Update(int id, OrdersUpsertRequest request)
+        {
+            var entity = _dbContext.Orders.Find(id);
+            _dbContext.Orders.Attach(entity);
+            _dbContext.Orders.Update(entity);
+
+            if (request.Confirmed == true)
+            {
+                entity.Confirmed = true;
+                entity.Active = false;
+            }
+            else
+            {
+                entity.Confirmed = false;
+                entity.Active = true;
+            }
+            _dbContext.SaveChanges();
+
+            return _mapper.Map<OrdersModel>(entity);
+        }
+
     }
 }

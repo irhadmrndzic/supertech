@@ -61,11 +61,15 @@
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.dgvProductOrder = new System.Windows.Forms.DataGridView();
+            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBillAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -80,7 +84,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -94,11 +97,8 @@
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.SelectedProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtQuantity = new System.Windows.Forms.MaskedTextBox();
+            this.txtOrderNumber = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -383,6 +383,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtOrderNumber);
             this.groupBox2.Controls.Add(this.btnRemoveProduct);
             this.groupBox2.Controls.Add(this.bntClearSuppliers);
             this.groupBox2.Controls.Add(this.btnAddOrder);
@@ -391,7 +392,6 @@
             this.groupBox2.Controls.Add(this.txtBillAmount);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.dpOrderDate);
-            this.groupBox2.Controls.Add(this.txtOrderNumber);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 1165);
             this.groupBox2.Name = "groupBox2";
@@ -439,6 +439,46 @@
             this.dgvProductOrder.Size = new System.Drawing.Size(1978, 581);
             this.dgvProductOrder.TabIndex = 15;
             // 
+            // SelectedProductId
+            // 
+            this.SelectedProductId.DataPropertyName = "ProductId";
+            this.SelectedProductId.HeaderText = "ProductId";
+            this.SelectedProductId.MinimumWidth = 8;
+            this.SelectedProductId.Name = "SelectedProductId";
+            this.SelectedProductId.Visible = false;
+            this.SelectedProductId.Width = 150;
+            // 
+            // ProductIndex
+            // 
+            this.ProductIndex.HeaderText = "Redni broj";
+            this.ProductIndex.MinimumWidth = 8;
+            this.ProductIndex.Name = "ProductIndex";
+            this.ProductIndex.Width = 150;
+            // 
+            // SelectedProductName
+            // 
+            this.SelectedProductName.DataPropertyName = "Name";
+            this.SelectedProductName.HeaderText = "Naziv";
+            this.SelectedProductName.MinimumWidth = 8;
+            this.SelectedProductName.Name = "SelectedProductName";
+            this.SelectedProductName.Width = 150;
+            // 
+            // SelectedProductPrice
+            // 
+            this.SelectedProductPrice.DataPropertyName = "Price";
+            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
+            this.SelectedProductPrice.MinimumWidth = 8;
+            this.SelectedProductPrice.Name = "SelectedProductPrice";
+            this.SelectedProductPrice.Width = 150;
+            // 
+            // SelectedProductQuantity
+            // 
+            this.SelectedProductQuantity.DataPropertyName = "Quantity";
+            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
+            this.SelectedProductQuantity.MinimumWidth = 8;
+            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
+            this.SelectedProductQuantity.Width = 150;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -473,13 +513,6 @@
             this.dpOrderDate.TabIndex = 11;
             this.dpOrderDate.ValueChanged += new System.EventHandler(this.dpOrderDate_ValueChanged);
             // 
-            // txtOrderNumber
-            // 
-            this.txtOrderNumber.Location = new System.Drawing.Point(10, 96);
-            this.txtOrderNumber.Name = "txtOrderNumber";
-            this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
-            this.txtOrderNumber.TabIndex = 10;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -491,13 +524,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.txtUnitOfMeasure);
             this.groupBox3.Controls.Add(this.btnAddProduct);
             this.groupBox3.Controls.Add(this.groupSearch);
             this.groupBox3.Controls.Add(this.txtPrice);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtProductCode);
             this.groupBox3.Controls.Add(this.label8);
@@ -619,13 +652,6 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Cijena";
             // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(344, 354);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(138, 26);
-            this.txtQuantity.TabIndex = 12;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -743,45 +769,21 @@
             // 
             this.errProvider.ContainerControl = this;
             // 
-            // SelectedProductId
+            // txtQuantity
             // 
-            this.SelectedProductId.DataPropertyName = "ProductId";
-            this.SelectedProductId.HeaderText = "ProductId";
-            this.SelectedProductId.MinimumWidth = 8;
-            this.SelectedProductId.Name = "SelectedProductId";
-            this.SelectedProductId.Visible = false;
-            this.SelectedProductId.Width = 150;
+            this.txtQuantity.Location = new System.Drawing.Point(348, 354);
+            this.txtQuantity.Mask = "000000";
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(134, 26);
+            this.txtQuantity.TabIndex = 37;
             // 
-            // ProductIndex
+            // txtOrderNumber
             // 
-            this.ProductIndex.HeaderText = "Redni broj";
-            this.ProductIndex.MinimumWidth = 8;
-            this.ProductIndex.Name = "ProductIndex";
-            this.ProductIndex.Width = 150;
-            // 
-            // SelectedProductName
-            // 
-            this.SelectedProductName.DataPropertyName = "Name";
-            this.SelectedProductName.HeaderText = "Naziv";
-            this.SelectedProductName.MinimumWidth = 8;
-            this.SelectedProductName.Name = "SelectedProductName";
-            this.SelectedProductName.Width = 150;
-            // 
-            // SelectedProductPrice
-            // 
-            this.SelectedProductPrice.DataPropertyName = "Price";
-            this.SelectedProductPrice.HeaderText = "Ukupna cijena";
-            this.SelectedProductPrice.MinimumWidth = 8;
-            this.SelectedProductPrice.Name = "SelectedProductPrice";
-            this.SelectedProductPrice.Width = 150;
-            // 
-            // SelectedProductQuantity
-            // 
-            this.SelectedProductQuantity.DataPropertyName = "Quantity";
-            this.SelectedProductQuantity.HeaderText = "Ukupna količina";
-            this.SelectedProductQuantity.MinimumWidth = 8;
-            this.SelectedProductQuantity.Name = "SelectedProductQuantity";
-            this.SelectedProductQuantity.Width = 150;
+            this.txtOrderNumber.Location = new System.Drawing.Point(10, 93);
+            this.txtOrderNumber.Mask = "0000000000";
+            this.txtOrderNumber.Name = "txtOrderNumber";
+            this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
+            this.txtOrderNumber.TabIndex = 37;
             // 
             // frmSupplierOrder
             // 
@@ -792,7 +794,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSupplierOrder";
-            this.Text = "frmSupplierOrder";
+            this.Text = "Nova narudžba";
             this.Load += new System.EventHandler(this.frmSupplierOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -829,13 +831,11 @@
         private System.Windows.Forms.TextBox txtBillAmount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dpOrderDate;
-        private System.Windows.Forms.TextBox txtOrderNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvProductOrder;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.Label label8;
@@ -884,5 +884,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
+        private System.Windows.Forms.MaskedTextBox txtQuantity;
+        private System.Windows.Forms.MaskedTextBox txtOrderNumber;
     }
 }

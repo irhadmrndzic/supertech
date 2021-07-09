@@ -31,6 +31,9 @@
             this.txtUsersFirstName = new System.Windows.Forms.TextBox();
             this.btnShowUsers = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUsersLastName = new System.Windows.Forms.TextBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +48,6 @@
             this.DOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Roles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtUsersLastName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +87,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Korisnici";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Prezime";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Ime";
+            // 
+            // txtUsersLastName
+            // 
+            this.txtUsersLastName.Location = new System.Drawing.Point(6, 167);
+            this.txtUsersLastName.Name = "txtUsersLastName";
+            this.txtUsersLastName.Size = new System.Drawing.Size(577, 26);
+            this.txtUsersLastName.TabIndex = 5;
             // 
             // dgvUsers
             // 
@@ -240,31 +265,6 @@
             this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Active.Width = 150;
             // 
-            // txtUsersLastName
-            // 
-            this.txtUsersLastName.Location = new System.Drawing.Point(6, 167);
-            this.txtUsersLastName.Name = "txtUsersLastName";
-            this.txtUsersLastName.Size = new System.Drawing.Size(577, 26);
-            this.txtUsersLastName.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Ime";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Prezime";
-            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -272,7 +272,7 @@
             this.ClientSize = new System.Drawing.Size(2556, 1199);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmUsers";
-            this.Text = "frmUsers";
+            this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.frmUsers_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
