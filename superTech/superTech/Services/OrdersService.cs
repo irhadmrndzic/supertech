@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using superTech.Database;
 using superTech.Models.Orders;
-using superTech.Models.Orders.OrderItems;
 using superTech.Services.GenericCRUD;
 using System.Collections.Generic;
 using System.Linq;

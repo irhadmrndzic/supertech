@@ -78,6 +78,18 @@
     <Compile Include="News\frmNews.Designer.cs">
       <DependentUpon>frmNews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Offers\frmOfferItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers\frmOfferItems.Designer.cs">
+      <DependentUpon>frmOfferItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\frmOffers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers\frmOffers.Designer.cs">
+      <DependentUpon>frmOffers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Products\frmProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="News\frmNews.resx">
       <DependentUpon>frmNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offers\frmOfferItems.resx">
+      <DependentUpon>frmOfferItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offers\frmOffers.resx">
+      <DependentUpon>frmOffers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>

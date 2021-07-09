@@ -7,6 +7,7 @@ namespace superTech.Services.GenericCRUD
     {
         T Insert(TInsert request);
         T Update(int id, TUpdate request);
+        void Delete(int id);
 
     }
 }

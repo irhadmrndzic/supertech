@@ -6,7 +6,6 @@ namespace superTech.Models.Orders.OrderItems
 {
   public  class OrderItemModel
     {
-        public int OrderItemId { get; set; }
         public int? Quantity { get; set; }
         public decimal? Amount { get; set; }
         public int? FkOrderId { get; set; }

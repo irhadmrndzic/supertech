@@ -12,6 +12,9 @@ namespace superTech.Services.GenericCRUD
         {
             
         }
+
+   
+
         public virtual TModel Insert(TInsert request)
         {
             var entity = _mapper.Map<TDatabase>(request);
@@ -32,6 +35,15 @@ namespace superTech.Services.GenericCRUD
             _dbContext.SaveChanges();
 
             return _mapper.Map<TModel>(entity);
+
+        }
+
+        public virtual void Delete(int id)
+        {
+            var entity = _dbContext.Set<TDatabase>().Find(id);
+            _dbContext.Set<TDatabase>().Remove(entity);
+            _dbContext.SaveChanges();
+
 
         }
     }

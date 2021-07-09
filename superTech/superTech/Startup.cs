@@ -22,6 +22,7 @@ using superTech.Models.UnitsOfMeasures;
 using superTech.Models.News;
 using superTech.Models.Suppliers;
 using superTech.Models.Orders;
+using superTech.Models.Offers;
 
 namespace superTech
 {
@@ -117,6 +118,9 @@ namespace superTech
 
             services.AddScoped<ICRUDService<OrdersModel, OrdersSearchRequest, OrdersUpsertRequest, OrdersUpsertRequest>,
                 OrdersService>();
+
+            services.AddScoped<ICRUDService<OffersModel, OffersSearchRequest, OffersUpsertRequest, OffersUpsertRequest>,
+                        OffersService>();
 
         }
 

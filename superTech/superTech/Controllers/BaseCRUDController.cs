@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using superTech.Exceptions;
 using superTech.Services.Generic;
 using superTech.Services.GenericCRUD;
 
@@ -28,5 +29,24 @@ namespace superTech.Controllers
         {
             return _service.Update(id,request);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _service.Delete(id);
+                return Ok();
+
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new UserException(ex.Message);
+            }
+
+        }
+
+
     }
 }

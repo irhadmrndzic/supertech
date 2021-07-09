@@ -4,6 +4,8 @@ using superTech.Database;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.News;
+using superTech.Models.Offers;
+using superTech.Models.Offers.OfferItems;
 using superTech.Models.Orders;
 using superTech.Models.Orders.OrderItems;
 using superTech.Models.Product;
@@ -54,7 +56,7 @@ namespace superTech.Mappers
                 ForMember(m => m.CategoryId, sr => sr.MapFrom(a => a.FkCategory.CategoryId)).
                 ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
                 ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra => (decimal?)ra.Rating1)))
-                .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f=>f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
+                .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f => f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
                 .ReverseMap();
 
 
@@ -81,6 +83,36 @@ namespace superTech.Mappers
                 .ForMember(l => l.OrderItems, k => k.MapFrom(src => src.OrderItems))
                 .ForMember(l => l.Confirmed, k => k.MapFrom(src => src.Confirmed))
                 .ReverseMap();
+
+
+            CreateMap<ProductOffer, OfferItemsModel>()
+                .ForMember(x => x.FkOfferId, src => src.MapFrom(q => q.FkOffer.OfferId))
+                .ForMember(x => x.FkProductId, src => src.MapFrom(q => q.FkProduct.ProductId))
+                .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
+                .ReverseMap();
+
+            //CreateMap<ProductOffer, OfferItemsUpsertRequest>()
+            //    .ForMember(x => x.Discount, src => src.MapFrom(q => q.Discount))
+            //    .ForMember(x => x.PriceWithDiscount, src => src.MapFrom(q => q.PriceWithDiscount))
+            //    .ForMember(q => q.FkProductId, src => src.MapFrom(w => w.FkProduct.ProductId))
+            //    .ForMember(q => q.FkOfferId, src => src.MapFrom(w => w.FkOffer.OfferId)).ReverseMap();
+
+
+            CreateMap<OfferItemsUpsertRequest, ProductOffer>()
+                .ForMember(x => x.FkProductId, src => src.MapFrom(q => q.FkProductId))
+                .ForMember(x => x.FkOfferId, src => src.MapFrom(q => q.FkOfferId))
+                .ForMember(x => x.Discount, src => src.MapFrom(q => q.Discount))
+                .ForMember(x => x.PriceWithDiscount, src => src.MapFrom(q => q.PriceWithDiscount)).ReverseMap();
+
+
+
+
+            CreateMap<Offer, OffersModel>()
+                    .ForMember(x => x.OfferItems, src => src.MapFrom(x => x.ProductOffers)).ReverseMap();
+
+
+            //CreateMap<OffersUpsertRequest, Offer>()
+            //        .ForMember(x => x.ProductOffers, src => src.MapFrom(x => x.OfferItems)).ReverseMap();
         }
     }
 }

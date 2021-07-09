@@ -11,7 +11,6 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debug\Flurl.xml
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debug\Flurl.Http.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csprojAssemblyReference.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.exe.config
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.frmMenu.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Login.frmLogin.resources
@@ -29,3 +28,6 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.SupplierOrder.frmRemoveProduct.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.SupplierOrder.frmOrders.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.SupplierOrder.frmOrderItems.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmOffers.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmOfferItems.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csproj.AssemblyReference.cache

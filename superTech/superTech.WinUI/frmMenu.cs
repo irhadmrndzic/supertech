@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using superTech.WinUI.News;
+using superTech.WinUI.Offers;
 using superTech.WinUI.Products;
 using superTech.WinUI.SupplierOrder;
 using superTech.WinUI.Users;
@@ -133,6 +134,14 @@ namespace superTech.WinUI
             frmOrders.MdiParent = this;
             frmOrders.WindowState = FormWindowState.Maximized;
             frmOrders.Show();
+        }
+
+        private void pregledToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmOffers frmOffers = new frmOffers();
+            frmOffers.MdiParent = this;
+            frmOffers.WindowState = FormWindowState.Maximized;
+            frmOffers.Show();
         }
     }
 }
