@@ -38,7 +38,7 @@ namespace superTech.WinUI.Offers
             LoadOffers();
         }
 
-        public  async Task LoadOffers()
+        public async Task LoadOffers()
         {
             try
             {
@@ -104,7 +104,7 @@ namespace superTech.WinUI.Offers
                 MessageBox.Show("Molimo odaberite datum od ! ");
 
             }
-            if (dpDTSearch.Text!=" ")
+            if (dpDTSearch.Text != " ")
             {
                 request.DateTo = dpDTSearch.Value;
             }
@@ -115,7 +115,7 @@ namespace superTech.WinUI.Offers
             }
             try
             {
-              var res =  await _offerService.Get<List<OffersModel>>(request);
+                var res = await _offerService.Get<List<OffersModel>>(request);
                 if (res.Count > 0)
                 {
                     dgvOffers.DataSource = res;
@@ -195,30 +195,132 @@ namespace superTech.WinUI.Offers
             {
                 MessageBox.Show("Molimo odaberite ponudu ! ");
             }
-        
+
         }
 
-        private async void btnSave_Click(object sender, EventArgs e)
+        private async void btnSaveOffer_Click(object sender, EventArgs e)
         {
             OffersUpsertRequest offersUpsertRequest = new OffersUpsertRequest();
 
             if (_offerId.HasValue)
             {
-                try
+                if (validateForm())
                 {
-                    offersUpsertRequest.DateFrom = dpDateFrom.Value;
-                    offersUpsertRequest.DateTo = dpDateTo.Value;
-                    offersUpsertRequest.Title = txtTitle.Text;
-                    offersUpsertRequest.Description = txtDescription.Text;
+                    try
+                    {
+                        offersUpsertRequest.DateFrom = dpDateFrom.Value;
+                        offersUpsertRequest.DateTo = dpDateTo.Value;
+                        offersUpsertRequest.Title = txtTitle.Text;
+                        offersUpsertRequest.Description = txtDescription.Text;
 
-                    await _offerService.Update<OffersModel>(_offerId, offersUpsertRequest);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        await _offerService.Update<OffersModel>(_offerId, offersUpsertRequest);
+                        MessageBox.Show("Uspješno ste uredili ponudu ! ", "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
-            }    
+            }
+            else
+            {
+                MessageBox.Show("Molimo odaberite ponudu ! ", "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
+
+        bool validateForm()
+        {
+            if (!validateTitle() || !validateDescription() || !validateOrderDateFrom() || !validateOrderDateTo() || !validatePeriod())
+                return false;
+            return true;
+        }
+
+        bool validateTitle()
+        {
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                errProvider.SetError(txtTitle, Properties.Resources.Validate_Input);
+                return false;
+            }
+            if (txtTitle.Text.Length >= 101)
+            {
+                errProvider.SetError(txtTitle, "Naslov ne smije sadržavati više od 100 karaktera");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtTitle, null);
+                return true;
+            }
+        }
+
+
+        bool validateDescription()
+        {
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                errProvider.SetError(txtDescription, Properties.Resources.Validate_Input);
+                return false;
+            }
+            if (txtDescription.Text.Length >= 1001)
+            {
+                errProvider.SetError(txtDescription, "Naslov ne smije sadržavati više od 100 karaktera");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtDescription, null);
+                return true;
+            }
+        }
+
+        bool validateOrderDateFrom()
+        {
+            if (dpDateFrom.Text == " ")
+            {
+                errProvider.SetError(dpDateFrom, "Molimo unesite važenja od !");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(dpDateFrom, null);
+                return true;
+            }
+        }
+
+        bool validateOrderDateTo()
+        {
+            if (dpDateTo.Text == " ")
+            {
+                errProvider.SetError(dpDateTo, "Molimo unesite važenja do !");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(dpDateTo, null);
+                return true;
+            }
+        }
+
+        bool validatePeriod()
+        {
+
+            if (dpDateTo.Value < dpDateFrom.Value)
+            {
+                errProvider.SetError(dpDateTo, "Molimo unesite validan period !");
+                return false;
+            }
+
+            else
+            {
+                errProvider.SetError(dpDateTo, null);
+                return true;
+            }
+        }
+
+
     }
 }

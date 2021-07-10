@@ -40,10 +40,11 @@
             this.nabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.novaNabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.ponudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.novaPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,6 +140,22 @@
             this.novaNabavkaToolStripMenuItem.Text = "Nova nabavka";
             this.novaNabavkaToolStripMenuItem.Click += new System.EventHandler(this.novaNabavkaToolStripMenuItem_Click);
             // 
+            // ponudeToolStripMenuItem
+            // 
+            this.ponudeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem3,
+            this.novaPonudaToolStripMenuItem});
+            this.ponudeToolStripMenuItem.Name = "ponudeToolStripMenuItem";
+            this.ponudeToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
+            this.ponudeToolStripMenuItem.Text = "Ponude";
+            // 
+            // pregledToolStripMenuItem3
+            // 
+            this.pregledToolStripMenuItem3.Name = "pregledToolStripMenuItem3";
+            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem3.Text = "Pregled";
+            this.pregledToolStripMenuItem3.Click += new System.EventHandler(this.pregledToolStripMenuItem3_Click);
+            // 
             // txtUsername
             // 
             this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -154,20 +171,12 @@
             this.txtUsername.TabIndex = 4;
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ponudeToolStripMenuItem
+            // novaPonudaToolStripMenuItem
             // 
-            this.ponudeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem3});
-            this.ponudeToolStripMenuItem.Name = "ponudeToolStripMenuItem";
-            this.ponudeToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
-            this.ponudeToolStripMenuItem.Text = "Ponude";
-            // 
-            // pregledToolStripMenuItem3
-            // 
-            this.pregledToolStripMenuItem3.Name = "pregledToolStripMenuItem3";
-            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(270, 34);
-            this.pregledToolStripMenuItem3.Text = "Pregled";
-            this.pregledToolStripMenuItem3.Click += new System.EventHandler(this.pregledToolStripMenuItem3_Click);
+            this.novaPonudaToolStripMenuItem.Name = "novaPonudaToolStripMenuItem";
+            this.novaPonudaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.novaPonudaToolStripMenuItem.Text = "Nova ponuda";
+            this.novaPonudaToolStripMenuItem.Click += new System.EventHandler(this.novaPonudaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -206,6 +215,7 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.ToolStripMenuItem ponudeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem novaPonudaToolStripMenuItem;
     }
 }
 

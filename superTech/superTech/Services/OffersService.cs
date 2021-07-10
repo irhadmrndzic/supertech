@@ -48,7 +48,7 @@ namespace superTech.Services
         }
         public override OffersModel Update(int id, OffersUpsertRequest request)
         {
-               var entity = _dbContext.Offers.Where(x => x.OfferId == id).Include(q => q.ProductOffers).ThenInclude(w => w.FkProduct).SingleOrDefault();
+            var entity = _dbContext.Offers.Where(x => x.OfferId == id).Include(q => q.ProductOffers).ThenInclude(w => w.FkProduct).SingleOrDefault();
 
             _dbContext.Update(entity);
             _dbContext.Attach(entity);
@@ -58,7 +58,7 @@ namespace superTech.Services
             entity.Title = request.Title;
             entity.Description = request.Description;
             _dbContext.SaveChanges();
-            if (request.OfferItems.Count > 0)
+            if (request.OfferItems != null &&  request.OfferItems.Count > 0)
             {
                 _mapper.Map(request.OfferItems, entity.ProductOffers);
             }
@@ -86,7 +86,37 @@ namespace superTech.Services
 
         }
 
- 
+        public override OffersModel Insert(OffersUpsertRequest request)
+        {
+
+            Offer offer = new Offer();
+            offer.Title = request.Title;
+            offer.Description = request.Description;
+            offer.DateFrom = request.DateFrom;
+            offer.DateTo = request.DateTo;
+
+            _dbContext.Offers.Add(offer);
+            _dbContext.SaveChanges();
+
+            foreach (var item in request.OfferItems)
+            {
+                ProductOffer oi = new ProductOffer
+                {
+                    Discount = item.Discount,
+                    PriceWithDiscount = item.PriceWithDiscount,
+                    FkProductId = item.FkProductId,
+                    FkOfferId = offer.OfferId
+                };
+
+                offer.ProductOffers.Add(oi);
+                _dbContext.ProductOffers.Add(oi);
+            }
+            _dbContext.SaveChanges();
+
+            return _mapper.Map<OffersModel>(offer);
+
+        }
+
     }
 }
 

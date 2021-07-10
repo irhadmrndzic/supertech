@@ -199,7 +199,7 @@ namespace superTech.WinUI.SupplierOrder
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Categories", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message, "Kategorije", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -232,24 +232,11 @@ namespace superTech.WinUI.SupplierOrder
             }
 
 
-
-            //var castedUOMs = cmbUom.Items.Cast<UnitsOfMeasuresModel>().Select(x => x.UnitOfMeasureId).ToList();
-
-            //for (int i = 0; i < castedUOMs.Count; i++)
-            //{
-            //    if (castedUOMs[i] == entity.UnitOfMeasureId)
-            //    {
-            //        cmbUom.SelectedIndex = i;
-            //    }
-            //}
-
             txtUnitOfMeasure.Text = entity.FkUnitOfMeasureString;
             txtProductCode.Text = entity.Code;
             txtPrice.Text = entity.Price.ToString();
             txtUnitOfMeasure.Text = entity.FkUnitOfMeasureString;
             selectedProduct = entity;
-
-
 
         }
 

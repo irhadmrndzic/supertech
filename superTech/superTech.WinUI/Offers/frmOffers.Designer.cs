@@ -54,7 +54,7 @@
             this.btnOfferItems = new System.Windows.Forms.Button();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSaveOffer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -295,22 +295,22 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnSave
+            // btnSaveOffer
             // 
-            this.btnSave.Location = new System.Drawing.Point(533, 882);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(146, 58);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSaveOffer.Location = new System.Drawing.Point(467, 882);
+            this.btnSaveOffer.Name = "btnSaveOffer";
+            this.btnSaveOffer.Size = new System.Drawing.Size(146, 58);
+            this.btnSaveOffer.TabIndex = 15;
+            this.btnSaveOffer.Text = "Sačuvaj";
+            this.btnSaveOffer.UseVisualStyleBackColor = true;
+            this.btnSaveOffer.Click += new System.EventHandler(this.btnSaveOffer_Click);
             // 
             // frmOffers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1614, 987);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnSaveOffer);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnOfferItems);
             this.Controls.Add(this.dpDateTo);
@@ -362,6 +362,6 @@
         private System.Windows.Forms.Label lblNoOffers;
         private System.Windows.Forms.ErrorProvider errProvider;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnSaveOffer;
     }
 }

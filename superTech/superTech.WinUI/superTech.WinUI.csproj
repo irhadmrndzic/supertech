@@ -78,6 +78,12 @@
     <Compile Include="News\frmNews.Designer.cs">
       <DependentUpon>frmNews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Offers\frmAddOffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers\frmAddOffer.Designer.cs">
+      <DependentUpon>frmAddOffer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Offers\frmOfferItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="Offers\frmOffers.Designer.cs">
       <DependentUpon>frmOffers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\frmRemoveOfferProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers\frmRemoveOfferProduct.Designer.cs">
+      <DependentUpon>frmRemoveOfferProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\frmProducts.cs">
       <SubType>Form</SubType>
@@ -144,11 +156,17 @@
     <EmbeddedResource Include="News\frmNews.resx">
       <DependentUpon>frmNews.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Offers\frmAddOffer.resx">
+      <DependentUpon>frmAddOffer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Offers\frmOfferItems.resx">
       <DependentUpon>frmOfferItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Offers\frmOffers.resx">
       <DependentUpon>frmOffers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offers\frmRemoveOfferProduct.resx">
+      <DependentUpon>frmRemoveOfferProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>

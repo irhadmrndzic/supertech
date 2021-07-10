@@ -58,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bntClearSuppliers = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtOrderNumber = new System.Windows.Forms.MaskedTextBox();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.dgvProductOrder = new System.Windows.Forms.DataGridView();
@@ -72,6 +73,7 @@
             this.dpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtQuantity = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtUnitOfMeasure = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -97,8 +99,6 @@
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtQuantity = new System.Windows.Forms.MaskedTextBox();
-            this.txtOrderNumber = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -400,6 +400,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Narudžba";
             // 
+            // txtOrderNumber
+            // 
+            this.txtOrderNumber.Location = new System.Drawing.Point(10, 93);
+            this.txtOrderNumber.Mask = "0000000000";
+            this.txtOrderNumber.Name = "txtOrderNumber";
+            this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
+            this.txtOrderNumber.TabIndex = 37;
+            // 
             // btnRemoveProduct
             // 
             this.btnRemoveProduct.Location = new System.Drawing.Point(547, 172);
@@ -541,6 +549,14 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Proizvodi";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(348, 354);
+            this.txtQuantity.Mask = "000000";
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(134, 26);
+            this.txtQuantity.TabIndex = 37;
             // 
             // label18
             // 
@@ -768,22 +784,6 @@
             // errProvider
             // 
             this.errProvider.ContainerControl = this;
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(348, 354);
-            this.txtQuantity.Mask = "000000";
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(134, 26);
-            this.txtQuantity.TabIndex = 37;
-            // 
-            // txtOrderNumber
-            // 
-            this.txtOrderNumber.Location = new System.Drawing.Point(10, 93);
-            this.txtOrderNumber.Mask = "0000000000";
-            this.txtOrderNumber.Name = "txtOrderNumber";
-            this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
-            this.txtOrderNumber.TabIndex = 37;
             // 
             // frmSupplierOrder
             // 

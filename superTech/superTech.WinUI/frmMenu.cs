@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using superTech.WinUI.News;
 using superTech.WinUI.Offers;
@@ -142,6 +135,14 @@ namespace superTech.WinUI
             frmOffers.MdiParent = this;
             frmOffers.WindowState = FormWindowState.Maximized;
             frmOffers.Show();
+        }
+
+        private void novaPonudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddOffer frmAddOffer = new frmAddOffer();
+            frmAddOffer.MdiParent = this;
+            frmAddOffer.WindowState = FormWindowState.Maximized;
+            frmAddOffer.Show();
         }
     }
 }

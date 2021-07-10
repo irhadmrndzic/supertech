@@ -31,3 +31,5 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmOffers.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmOfferItems.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csproj.AssemblyReference.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmAddOffer.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Offers.frmRemoveOfferProduct.resources
