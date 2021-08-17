@@ -26,7 +26,9 @@ namespace superTech.Database
         public byte[] ImageThumb { get; set; }
         public int? FkUnitOfMeasureId { get; set; }
         public int? FkCategoryId { get; set; }
+        public int? BrandId { get; set; }
 
+        public virtual Brand Brand { get; set; }
         public virtual Category FkCategory { get; set; }
         public virtual UnitsOfMeasure FkUnitOfMeasure { get; set; }
         public virtual ICollection<BillItem> BillItems { get; set; }

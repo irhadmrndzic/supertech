@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using AutoMapper;
 using superTech.Database;
+using superTech.Models.Brands;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.News;
@@ -22,6 +23,7 @@ namespace superTech.Mappers
         public Mapper()
         {
             CreateMap<Role, RolesModel>().ReverseMap();
+            CreateMap<Brand, BrandsModel>().ReverseMap();
 
             CreateMap<User, UserModel>().ReverseMap();
             CreateMap<UsersRole, UsersRolesModel>().ReverseMap();
@@ -57,6 +59,7 @@ namespace superTech.Mappers
                 ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
                 ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra => (decimal?)ra.Rating1)))
                 .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f => f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
+                .ForMember(b=>b.Brand, sr=>sr.MapFrom(x=>x.Brand.Name))
                 .ReverseMap();
 
 

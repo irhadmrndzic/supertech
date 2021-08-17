@@ -19,6 +19,7 @@ namespace superTech.Database
 
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillItem> BillItems { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<BuyerOrder> BuyerOrders { get; set; }
         public virtual DbSet<BuyerOrderItem> BuyerOrderItems { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
@@ -93,6 +94,15 @@ namespace superTech.Database
                     .WithMany(p => p.BillItems)
                     .HasForeignKey(d => d.FkProductId)
                     .HasConstraintName("FK__BillItems__FK_Pr__6383C8BA");
+            });
+
+            modelBuilder.Entity<Brand>(entity =>
+            {
+                entity.Property(e => e.Name).HasMaxLength(150);
+
+                entity.Property(e => e.Phone).HasMaxLength(50);
+
+                entity.Property(e => e.WebAddress).HasMaxLength(150);
             });
 
             modelBuilder.Entity<BuyerOrder>(entity =>
@@ -229,6 +239,11 @@ namespace superTech.Database
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+
+                entity.HasOne(d => d.Brand)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.BrandId)
+                    .HasConstraintName("FK__Products__BrandI__160F4887");
 
                 entity.HasOne(d => d.FkCategory)
                     .WithMany(p => p.Products)

@@ -1,4 +1,5 @@
-﻿using superTech.Models.Category;
+﻿using superTech.Models.Brands;
+using superTech.Models.Category;
 using superTech.Models.Product;
 using superTech.Models.UnitsOfMeasures;
 using superTech.WinUI.Utilities;
@@ -17,6 +18,7 @@ namespace superTech.WinUI.Products
         private readonly APIService.APIService _categoriesService = new APIService.APIService("categories");
         private readonly APIService.APIService _uomService = new APIService.APIService("unitsofmeasures");
         private readonly APIService.APIService _productsService = new APIService.APIService("products");
+        private readonly APIService.APIService _brandsService = new APIService.APIService("brands");
 
         private int? _id = null;
 
@@ -31,8 +33,19 @@ namespace superTech.WinUI.Products
             cmbCategories.SelectedValue = 0;
 
             await loadUnitsOfMeasures();
+            await loadBrands();
             await loadCategories();
             await loadProducts(0);
+        }
+
+        private async Task loadBrands()
+        {
+            List<BrandsModel> brands = await _brandsService.Get<List<BrandsModel>>(null);
+            cmbBrand.DataSource = brands;
+            brands.Insert(0, new BrandsModel());
+            cmbBrand.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBrand.DisplayMember = "Name";
+            cmbBrand.ValueMember = "BrandId";
         }
 
         private async Task loadUnitsOfMeasures()
@@ -159,6 +172,12 @@ namespace superTech.WinUI.Products
                 {
                     req.UnitOfMeasureId = uomId;
                 }
+                var brandId = cmbBrand.SelectedValue;
+
+                if(int.TryParse(brandId.ToString(),out int bId))
+                {
+                    req.BrandId = bId;
+                }
 
                 req.Name = txtName.Text;
                 req.Code = txtCode.Text;
@@ -169,6 +188,14 @@ namespace superTech.WinUI.Products
                 if (!_id.HasValue)
                 {
                     await _productsService.Insert<ProductModel>(req);
+
+                    DialogResult result = MessageBox.Show("Uspješno ste dodali proizvod ! ", "Dodaj proizvod", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.OK)
+                    {
+                        clearForm();
+                        onGetProductsClicked();
+                    }
                 }
                 else
                 {
@@ -224,7 +251,7 @@ namespace superTech.WinUI.Products
 
         bool validateForm()
         {
-            if (!validateCategories() || !validateProductName() || !validateProductDescription() || !validatePrice() || !validateUOMs() || !validateProductCode() || !validateImage())
+            if (!validateCategories() || !validateProductName() || !validateProductDescription() || !validatePrice() || !validateUOMs() || !validateProductCode() || !validateImage() || !validateBrand())
                 return false;
             return true;
         }
@@ -240,6 +267,22 @@ namespace superTech.WinUI.Products
             else
             {
                 errProvider.SetError(cmbCategories, null);
+                return true;
+            }
+
+        }
+
+        bool validateBrand()
+        {
+            if (cmbBrand.SelectedIndex == 0)
+            {
+                errProvider.SetError(cmbBrand, Properties.Resources.Validate_Input);
+                return false;
+
+            }
+            else
+            {
+                errProvider.SetError(cmbBrand, null);
                 return true;
             }
 
@@ -389,8 +432,25 @@ namespace superTech.WinUI.Products
             if (_id.HasValue)
             {
             await _productsService.Delete<ProductModel>(_id);
+                DialogResult result = MessageBox.Show("Uspješno ste obrisali proizvod ! ", "Obriši proizvod", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if(result == DialogResult.OK)
+                {
+                    clearForm();
+                    onGetProductsClicked();
+                }
+
             }
 
+        }
+
+        private void cmbBrand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var value = cmbBrand.SelectedValue;
+            if (value == null)
+            {
+                value = 0;
+            }
         }
     }
 }

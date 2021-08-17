@@ -72,6 +72,7 @@ namespace superTech.Services
 
 
             query = query
+                .Include(b=>b.Brand)
                 .Include(q => q.FkCategory)
                 .Include(x => x.FkUnitOfMeasure)
                 .Include(r => r.Ratings)
@@ -90,6 +91,7 @@ namespace superTech.Services
         public ProductModel GetById(int id)
         {
             var query = _dbContext.Products.Where(x => x.ProductId == id)
+                .Include(b => b.Brand)
                 .Include(q => q.FkCategory)
                 .Include(u => u.FkUnitOfMeasure)
                 .Include(r => r.Ratings)
@@ -111,7 +113,7 @@ namespace superTech.Services
 
             entity.FkCategoryId = request.CategoryId;
             entity.FkUnitOfMeasureId = request.UnitOfMeasureId;
-
+            entity.BrandId = request.BrandId;
             _dbContext.SaveChanges();
 
             return _mapper.Map<ProductModel>(entity);

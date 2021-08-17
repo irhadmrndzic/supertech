@@ -11,6 +11,7 @@ namespace superTech.Models.Orders
         public DateTime Date { get; set; }
         public bool Active { get; set; }
         public bool Confirmed { get; set; }
+        public bool Canceled { get; set; }
         public decimal Amount { get; set; }
         public int? UserId { get; set; }
         public int? SupplierId { get; set; }

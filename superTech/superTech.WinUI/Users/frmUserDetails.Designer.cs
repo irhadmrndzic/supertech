@@ -196,18 +196,22 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnSave.Location = new System.Drawing.Point(21, 1105);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(498, 61);
+            this.btnSave.Size = new System.Drawing.Size(498, 63);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtPasswordConfirm
             // 
             this.txtPasswordConfirm.Location = new System.Drawing.Point(13, 618);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
+            this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(491, 26);
             this.txtPasswordConfirm.TabIndex = 8;
             // 
@@ -224,6 +228,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(13, 546);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(491, 26);
             this.txtPassword.TabIndex = 7;
             // 
@@ -309,6 +314,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(530, 1207);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.label16);

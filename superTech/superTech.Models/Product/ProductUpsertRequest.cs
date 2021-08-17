@@ -11,7 +11,7 @@ namespace superTech.Models.Product
         public byte[] Image { get; set; }
         public int CategoryId { get; set; }
         public int UnitOfMeasureId { get; set; }
-
+        public int BrandId { get; set; }
 
     }
 }

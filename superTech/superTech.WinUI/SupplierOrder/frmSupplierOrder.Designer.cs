@@ -90,15 +90,16 @@
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -112,6 +113,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.txtSupplierDesc);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtSupplierWebAddress);
@@ -176,7 +178,7 @@
             this.groupBox4.Controls.Add(this.txtSupplierSearch);
             this.groupBox4.Location = new System.Drawing.Point(23, 40);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(624, 150);
+            this.groupBox4.Size = new System.Drawing.Size(659, 150);
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Pretraga";
@@ -199,12 +201,15 @@
             // 
             // btnShowSuppliers
             // 
-            this.btnShowSuppliers.Location = new System.Drawing.Point(416, 63);
+            this.btnShowSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnShowSuppliers.Location = new System.Drawing.Point(426, 63);
             this.btnShowSuppliers.Name = "btnShowSuppliers";
             this.btnShowSuppliers.Size = new System.Drawing.Size(202, 49);
             this.btnShowSuppliers.TabIndex = 33;
             this.btnShowSuppliers.Text = "Prikaži";
-            this.btnShowSuppliers.UseVisualStyleBackColor = true;
+            this.btnShowSuppliers.UseVisualStyleBackColor = false;
             this.btnShowSuppliers.Click += new System.EventHandler(this.btnShowSuppliers_Click);
             // 
             // label16
@@ -227,6 +232,7 @@
             // 
             this.dgvSuppliers.AllowUserToAddRows = false;
             this.dgvSuppliers.AllowUserToDeleteRows = false;
+            this.dgvSuppliers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierId,
@@ -410,27 +416,34 @@
             // 
             // btnRemoveProduct
             // 
-            this.btnRemoveProduct.Location = new System.Drawing.Point(547, 172);
+            this.btnRemoveProduct.BackColor = System.Drawing.Color.Salmon;
+            this.btnRemoveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnRemoveProduct.Location = new System.Drawing.Point(514, 172);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Size = new System.Drawing.Size(137, 54);
             this.btnRemoveProduct.TabIndex = 36;
             this.btnRemoveProduct.Text = "Ukloni proizvod";
-            this.btnRemoveProduct.UseVisualStyleBackColor = true;
+            this.btnRemoveProduct.UseVisualStyleBackColor = false;
             this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // btnAddOrder
             // 
-            this.btnAddOrder.Location = new System.Drawing.Point(498, 422);
+            this.btnAddOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnAddOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnAddOrder.Location = new System.Drawing.Point(441, 411);
             this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(184, 84);
+            this.btnAddOrder.Size = new System.Drawing.Size(230, 63);
             this.btnAddOrder.TabIndex = 16;
             this.btnAddOrder.Text = "Zaključi";
-            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.UseVisualStyleBackColor = false;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
             // dgvProductOrder
             // 
             this.dgvProductOrder.AllowUserToAddRows = false;
+            this.dgvProductOrder.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProductOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SelectedProductId,
@@ -532,6 +545,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.txtUnitOfMeasure);
@@ -577,12 +591,15 @@
             // 
             // btnAddProduct
             // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnAddProduct.Location = new System.Drawing.Point(482, 412);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
             this.btnAddProduct.TabIndex = 34;
             this.btnAddProduct.Text = "Dodaj na listu";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // groupSearch
@@ -610,12 +627,15 @@
             // 
             // btnShowProducts
             // 
+            this.btnShowProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnShowProducts.Location = new System.Drawing.Point(439, 99);
             this.btnShowProducts.Name = "btnShowProducts";
             this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
             this.btnShowProducts.TabIndex = 33;
             this.btnShowProducts.Text = "Prikazi";
-            this.btnShowProducts.UseVisualStyleBackColor = true;
+            this.btnShowProducts.UseVisualStyleBackColor = false;
             this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 
             // cmbProductCategories
@@ -696,11 +716,13 @@
             // 
             // dgvProducts
             // 
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
             this.ProductName,
             this.Code,
+            this.Brand,
             this.Price,
             this.Category,
             this.UnitOfMeasure,
@@ -715,6 +737,10 @@
             this.dgvProducts.Size = new System.Drawing.Size(1972, 480);
             this.dgvProducts.TabIndex = 9;
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
+            // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
             // 
             // ProductId
             // 
@@ -740,6 +766,14 @@
             this.Code.MinimumWidth = 8;
             this.Code.Name = "Code";
             this.Code.Width = 150;
+            // 
+            // Brand
+            // 
+            this.Brand.DataPropertyName = "Brand";
+            this.Brand.HeaderText = "Prozivođač";
+            this.Brand.MinimumWidth = 8;
+            this.Brand.Name = "Brand";
+            this.Brand.Width = 150;
             // 
             // Price
             // 
@@ -781,14 +815,11 @@
             this.ProductDescription.Name = "ProductDescription";
             this.ProductDescription.Width = 150;
             // 
-            // errProvider
-            // 
-            this.errProvider.ContainerControl = this;
-            // 
             // frmSupplierOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2712, 1783);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -867,14 +898,6 @@
         private System.Windows.Forms.Button bntClearSuppliers;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.DataGridView dgvProducts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inventory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtUnitOfMeasure;
         private System.Windows.Forms.ErrorProvider errProvider;
@@ -886,5 +909,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
         private System.Windows.Forms.MaskedTextBox txtQuantity;
         private System.Windows.Forms.MaskedTextBox txtOrderNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inventory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
     }
 }

@@ -59,6 +59,7 @@
             this.dgvNews.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvNews.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvNews.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNews.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NewsId,
@@ -184,22 +185,28 @@
             // 
             // btnFilter
             // 
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnFilter.Location = new System.Drawing.Point(618, 128);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(154, 49);
             this.btnFilter.TabIndex = 9;
             this.btnFilter.Text = "Filtriraj";
-            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnShowAll
             // 
+            this.btnShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnShowAll.Location = new System.Drawing.Point(820, 128);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(154, 49);
             this.btnShowAll.TabIndex = 10;
             this.btnShowAll.Text = "Prikaži sve";
-            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.UseVisualStyleBackColor = false;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // lblNoNews
@@ -212,22 +219,28 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(744, 819);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnSave.Location = new System.Drawing.Point(744, 882);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(230, 94);
+            this.btnSave.Size = new System.Drawing.Size(230, 63);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClearForm
             // 
-            this.btnClearForm.Location = new System.Drawing.Point(475, 819);
+            this.btnClearForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnClearForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearForm.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnClearForm.Location = new System.Drawing.Point(785, 800);
             this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(230, 94);
+            this.btnClearForm.Size = new System.Drawing.Size(148, 63);
             this.btnClearForm.TabIndex = 13;
             this.btnClearForm.Text = "Očisti";
-            this.btnClearForm.UseVisualStyleBackColor = true;
+            this.btnClearForm.UseVisualStyleBackColor = false;
             this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
             // 
             // errProvider
@@ -238,6 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2157, 1140);
             this.Controls.Add(this.btnClearForm);
             this.Controls.Add(this.btnSave);

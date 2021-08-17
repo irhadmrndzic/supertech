@@ -68,6 +68,7 @@
             this.dgvOffers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOffers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvOffers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOffers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OfferId,
@@ -309,6 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1614, 987);
             this.Controls.Add(this.btnSaveOffer);
             this.Controls.Add(this.btnDelete);

@@ -359,6 +359,7 @@ namespace superTech.WinUI.Offers
             // 
             this.dgvProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
@@ -448,6 +449,7 @@ namespace superTech.WinUI.Offers
             this.dgvProductOrder.AllowUserToAddRows = false;
             this.dgvProductOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProductOrder.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProductOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SelectedProductId,
@@ -520,6 +522,7 @@ namespace superTech.WinUI.Offers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1990, 1729);
             this.Controls.Add(this.dgvProductOrder);
             this.Controls.Add(this.groupBox3);

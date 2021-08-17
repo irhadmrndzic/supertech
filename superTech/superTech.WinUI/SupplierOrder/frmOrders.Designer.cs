@@ -38,6 +38,7 @@
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Confirmed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.GroupBox();
+            this.txtOrderNumberSearch = new System.Windows.Forms.MaskedTextBox();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.lblNoOrders = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.btnOrderItems = new System.Windows.Forms.Button();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtOrderNumberSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbCanceled = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.Search.SuspendLayout();
             this.Edit.SuspendLayout();
@@ -65,6 +66,7 @@
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderId,
@@ -75,11 +77,11 @@
             this.SupplierString,
             this.Active,
             this.Confirmed});
-            this.dgvOrders.Location = new System.Drawing.Point(988, 12);
+            this.dgvOrders.Location = new System.Drawing.Point(809, 12);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 62;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrders.Size = new System.Drawing.Size(1292, 1262);
+            this.dgvOrders.Size = new System.Drawing.Size(1471, 1262);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOrders_CellFormatting);
             this.dgvOrders.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvOrders_MouseDoubleClick);
@@ -164,6 +166,14 @@
             this.Search.TabStop = false;
             this.Search.Text = "Pretraga";
             // 
+            // txtOrderNumberSearch
+            // 
+            this.txtOrderNumberSearch.Location = new System.Drawing.Point(7, 138);
+            this.txtOrderNumberSearch.Mask = "0000000000";
+            this.txtOrderNumberSearch.Name = "txtOrderNumberSearch";
+            this.txtOrderNumberSearch.Size = new System.Drawing.Size(338, 26);
+            this.txtOrderNumberSearch.TabIndex = 5;
+            // 
             // btnShowAll
             // 
             this.btnShowAll.Location = new System.Drawing.Point(595, 70);
@@ -211,12 +221,13 @@
             // 
             // Edit
             // 
+            this.Edit.Controls.Add(this.cbCanceled);
             this.Edit.Controls.Add(this.btnSave);
             this.Edit.Controls.Add(this.cbActive);
             this.Edit.Controls.Add(this.cbConfirmOrder);
             this.Edit.Location = new System.Drawing.Point(13, 334);
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(547, 178);
+            this.Edit.Size = new System.Drawing.Size(547, 194);
             this.Edit.TabIndex = 2;
             this.Edit.TabStop = false;
             this.Edit.Text = "Potvrda prijema  robe";
@@ -279,18 +290,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Broj narudžbe";
             // 
-            // txtOrderNumberSearch
+            // cbCanceled
             // 
-            this.txtOrderNumberSearch.Location = new System.Drawing.Point(7, 138);
-            this.txtOrderNumberSearch.Mask = "0000000000";
-            this.txtOrderNumberSearch.Name = "txtOrderNumberSearch";
-            this.txtOrderNumberSearch.Size = new System.Drawing.Size(338, 26);
-            this.txtOrderNumberSearch.TabIndex = 5;
+            this.cbCanceled.AutoCheck = false;
+            this.cbCanceled.AutoSize = true;
+            this.cbCanceled.Location = new System.Drawing.Point(3, 154);
+            this.cbCanceled.Name = "cbCanceled";
+            this.cbCanceled.Size = new System.Drawing.Size(104, 24);
+            this.cbCanceled.TabIndex = 4;
+            this.cbCanceled.Text = "Otkazana";
+            this.cbCanceled.UseVisualStyleBackColor = true;
             // 
             // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2292, 1286);
             this.Controls.Add(this.btnOrderItems);
             this.Controls.Add(this.label1);
@@ -336,5 +351,6 @@
         private System.Windows.Forms.Label lblNoOrders;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.MaskedTextBox txtOrderNumberSearch;
+        private System.Windows.Forms.CheckBox cbCanceled;
     }
 }

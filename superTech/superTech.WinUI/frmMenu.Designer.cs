@@ -42,15 +42,15 @@
             this.novaNabavkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ponudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.novaPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
@@ -152,9 +152,16 @@
             // pregledToolStripMenuItem3
             // 
             this.pregledToolStripMenuItem3.Name = "pregledToolStripMenuItem3";
-            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(223, 34);
             this.pregledToolStripMenuItem3.Text = "Pregled";
             this.pregledToolStripMenuItem3.Click += new System.EventHandler(this.pregledToolStripMenuItem3_Click);
+            // 
+            // novaPonudaToolStripMenuItem
+            // 
+            this.novaPonudaToolStripMenuItem.Name = "novaPonudaToolStripMenuItem";
+            this.novaPonudaToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+            this.novaPonudaToolStripMenuItem.Text = "Nova ponuda";
+            this.novaPonudaToolStripMenuItem.Click += new System.EventHandler(this.novaPonudaToolStripMenuItem_Click);
             // 
             // txtUsername
             // 
@@ -170,13 +177,6 @@
             this.txtUsername.Size = new System.Drawing.Size(199, 30);
             this.txtUsername.TabIndex = 4;
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // novaPonudaToolStripMenuItem
-            // 
-            this.novaPonudaToolStripMenuItem.Name = "novaPonudaToolStripMenuItem";
-            this.novaPonudaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.novaPonudaToolStripMenuItem.Text = "Nova ponuda";
-            this.novaPonudaToolStripMenuItem.Click += new System.EventHandler(this.novaPonudaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

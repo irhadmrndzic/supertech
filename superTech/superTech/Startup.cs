@@ -23,6 +23,7 @@ using superTech.Models.News;
 using superTech.Models.Suppliers;
 using superTech.Models.Orders;
 using superTech.Models.Offers;
+using superTech.Models.Brands;
 
 namespace superTech
 {
@@ -104,6 +105,8 @@ namespace superTech
                 .AddScoped<ICRUDService<RolesModel, object, RolesModel, RolesModel>,
                     BaseCRUDService<RolesModel, object, Role, RolesModel, RolesModel>>();
 
+
+
             services.AddScoped<ICRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>,
                 BaseCRUDService<UnitsOfMeasuresModel, object, UnitsOfMeasure, UnitsOfMeasuresUpsertRequest, UnitsOfMeasuresUpsertRequest>>();
 
@@ -112,6 +115,8 @@ namespace superTech
             services.AddScoped<ICRUDService<NewsModel, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>,
               NewsService>();
 
+            services.AddScoped<ICRUDService<BrandsModel, BrandsSearchRequest, BrandsUpsertRequest, BrandsUpsertRequest>,
+                BaseCRUDService<BrandsModel, BrandsSearchRequest, Brand, BrandsUpsertRequest, BrandsUpsertRequest>>();
 
             services.AddScoped<ICRUDService<SuppliersModel, SuppliersSearchRequest, SuppliersModel, SuppliersModel>,
               SuppliersService>();

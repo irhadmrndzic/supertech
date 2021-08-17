@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdcutName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +72,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.cmbBrand = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProdImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -85,24 +88,26 @@
             this.dgvProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
             this.Code,
             this.ProdcutName,
             this.Category,
+            this.Brand,
             this.UnitOfMeasure,
             this.Price,
             this.Description,
             this.Active,
             this.Rating,
             this.Inventory});
-            this.dgvProducts.Location = new System.Drawing.Point(839, 0);
+            this.dgvProducts.Location = new System.Drawing.Point(774, 0);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1376, 1115);
+            this.dgvProducts.Size = new System.Drawing.Size(1548, 1221);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProducts_CellFormatting);
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
@@ -140,6 +145,14 @@
             this.Category.Name = "Category";
             this.Category.Width = 150;
             // 
+            // Brand
+            // 
+            this.Brand.DataPropertyName = "Brand";
+            this.Brand.HeaderText = "Proizvođač";
+            this.Brand.MinimumWidth = 8;
+            this.Brand.Name = "Brand";
+            this.Brand.Width = 150;
+            // 
             // UnitOfMeasure
             // 
             this.UnitOfMeasure.DataPropertyName = "FkUnitOfMeasureString";
@@ -175,9 +188,9 @@
             // Rating
             // 
             this.Rating.DataPropertyName = "Rating";
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = "/";
-            this.Rating.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "/";
+            this.Rating.DefaultCellStyle = dataGridViewCellStyle2;
             this.Rating.HeaderText = "Ocjena";
             this.Rating.MinimumWidth = 8;
             this.Rating.Name = "Rating";
@@ -193,7 +206,7 @@
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(177, 295);
+            this.txtCode.Location = new System.Drawing.Point(110, 267);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(643, 26);
             this.txtCode.TabIndex = 3;
@@ -201,7 +214,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 301);
+            this.label2.Location = new System.Drawing.Point(39, 273);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 20);
             this.label2.TabIndex = 4;
@@ -209,7 +222,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(177, 341);
+            this.txtName.Location = new System.Drawing.Point(110, 313);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(643, 26);
             this.txtName.TabIndex = 5;
@@ -217,7 +230,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 347);
+            this.label3.Location = new System.Drawing.Point(39, 319);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 6;
@@ -225,7 +238,7 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(177, 387);
+            this.txtDesc.Location = new System.Drawing.Point(110, 405);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(643, 96);
             this.txtDesc.TabIndex = 7;
@@ -234,7 +247,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(106, 390);
+            this.label4.Location = new System.Drawing.Point(39, 408);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 20);
             this.label4.TabIndex = 8;
@@ -243,7 +256,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(106, 511);
+            this.label5.Location = new System.Drawing.Point(39, 529);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 20);
             this.label5.TabIndex = 10;
@@ -252,7 +265,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(448, 511);
+            this.label6.Location = new System.Drawing.Point(381, 529);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 20);
             this.label6.TabIndex = 12;
@@ -260,8 +273,9 @@
             // 
             // pbProdImage
             // 
+            this.pbProdImage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pbProdImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbProdImage.Location = new System.Drawing.Point(332, 662);
+            this.pbProdImage.Location = new System.Drawing.Point(265, 650);
             this.pbProdImage.Name = "pbProdImage";
             this.pbProdImage.Size = new System.Drawing.Size(488, 248);
             this.pbProdImage.TabIndex = 16;
@@ -270,7 +284,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(110, 575);
+            this.label8.Location = new System.Drawing.Point(43, 593);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 20);
             this.label8.TabIndex = 18;
@@ -278,35 +292,40 @@
             // 
             // txtImage
             // 
-            this.txtImage.Location = new System.Drawing.Point(177, 564);
+            this.txtImage.Location = new System.Drawing.Point(110, 582);
             this.txtImage.Name = "txtImage";
             this.txtImage.Size = new System.Drawing.Size(448, 26);
             this.txtImage.TabIndex = 17;
             // 
             // btnAddImage
             // 
-            this.btnAddImage.Location = new System.Drawing.Point(642, 559);
+            this.btnAddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnAddImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnAddImage.Location = new System.Drawing.Point(569, 571);
             this.btnAddImage.Name = "btnAddImage";
-            this.btnAddImage.Size = new System.Drawing.Size(178, 36);
+            this.btnAddImage.Size = new System.Drawing.Size(178, 49);
             this.btnAddImage.TabIndex = 19;
             this.btnAddImage.Text = "...";
-            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.UseVisualStyleBackColor = false;
             this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(576, 966);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnSave.Location = new System.Drawing.Point(501, 1030);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(230, 94);
+            this.btnSave.Size = new System.Drawing.Size(230, 63);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cmbUom
             // 
             this.cmbUom.FormattingEnabled = true;
-            this.cmbUom.Location = new System.Drawing.Point(568, 503);
+            this.cmbUom.Location = new System.Drawing.Point(501, 521);
             this.cmbUom.Name = "cmbUom";
             this.cmbUom.Size = new System.Drawing.Size(252, 28);
             this.cmbUom.TabIndex = 21;
@@ -315,7 +334,7 @@
             // 
             this.cbActive.AutoSize = true;
             this.cbActive.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbActive.Location = new System.Drawing.Point(110, 632);
+            this.cbActive.Location = new System.Drawing.Point(43, 650);
             this.cbActive.Name = "cbActive";
             this.cbActive.Size = new System.Drawing.Size(87, 24);
             this.cbActive.TabIndex = 23;
@@ -325,7 +344,7 @@
             // cmbCategories
             // 
             this.cmbCategories.FormattingEnabled = true;
-            this.cmbCategories.Location = new System.Drawing.Point(177, 247);
+            this.cmbCategories.Location = new System.Drawing.Point(110, 219);
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(385, 28);
             this.cmbCategories.TabIndex = 26;
@@ -334,7 +353,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(79, 255);
+            this.label7.Location = new System.Drawing.Point(12, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 20);
             this.label7.TabIndex = 25;
@@ -346,12 +365,14 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 966);
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Location = new System.Drawing.Point(424, 934);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(148, 84);
+            this.btnClear.Size = new System.Drawing.Size(148, 63);
             this.btnClear.TabIndex = 27;
-            this.btnClear.Text = "Očisti";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Text = "Očisti formu";
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // errProvider
@@ -360,18 +381,21 @@
             // 
             // btnShowProducts
             // 
-            this.btnShowProducts.Location = new System.Drawing.Point(618, 236);
+            this.btnShowProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnShowProducts.Location = new System.Drawing.Point(569, 208);
             this.btnShowProducts.Name = "btnShowProducts";
-            this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
+            this.btnShowProducts.Size = new System.Drawing.Size(178, 49);
             this.btnShowProducts.TabIndex = 28;
             this.btnShowProducts.Text = "Prikazi";
-            this.btnShowProducts.UseVisualStyleBackColor = true;
+            this.btnShowProducts.UseVisualStyleBackColor = false;
             this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 
             // txtPrice
             // 
             this.txtPrice.DecimalPlaces = 2;
-            this.txtPrice.Location = new System.Drawing.Point(177, 509);
+            this.txtPrice.Location = new System.Drawing.Point(110, 527);
             this.txtPrice.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -389,7 +413,7 @@
             this.groupSearch.Controls.Add(this.txtCodeSearch);
             this.groupSearch.Controls.Add(this.label1);
             this.groupSearch.Controls.Add(this.txtNameSearch);
-            this.groupSearch.Location = new System.Drawing.Point(177, 40);
+            this.groupSearch.Location = new System.Drawing.Point(110, 12);
             this.groupSearch.Name = "groupSearch";
             this.groupSearch.Size = new System.Drawing.Size(643, 177);
             this.groupSearch.TabIndex = 30;
@@ -398,12 +422,15 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(435, 64);
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnSearch.Location = new System.Drawing.Point(459, 64);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(202, 49);
+            this.btnSearch.Size = new System.Drawing.Size(178, 49);
             this.btnSearch.TabIndex = 31;
             this.btnSearch.Text = "Prikazi";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblNoProducts
@@ -448,20 +475,43 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDelete.Location = new System.Drawing.Point(332, 966);
+            this.btnDelete.BackColor = System.Drawing.Color.Salmon;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnDelete.Location = new System.Drawing.Point(257, 1030);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(214, 94);
+            this.btnDelete.Size = new System.Drawing.Size(214, 63);
             this.btnDelete.TabIndex = 31;
-            this.btnDelete.Text = "Obriši";
+            this.btnDelete.Text = "Obriši proizvod";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // cmbBrand
+            // 
+            this.cmbBrand.FormattingEnabled = true;
+            this.cmbBrand.Location = new System.Drawing.Point(110, 359);
+            this.cmbBrand.Name = "cmbBrand";
+            this.cmbBrand.Size = new System.Drawing.Size(643, 28);
+            this.cmbBrand.TabIndex = 33;
+            this.cmbBrand.SelectedIndexChanged += new System.EventHandler(this.cmbBrand_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 367);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 20);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Proizvođač";
             // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2215, 1115);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(2322, 1221);
+            this.Controls.Add(this.cmbBrand);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupSearch);
             this.Controls.Add(this.txtPrice);
@@ -536,11 +586,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdcutName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Active;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inventory;
+        private System.Windows.Forms.ComboBox cmbBrand;
+        private System.Windows.Forms.Label label10;
     }
 }

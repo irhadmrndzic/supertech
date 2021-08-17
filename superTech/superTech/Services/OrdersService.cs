@@ -103,6 +103,19 @@ namespace superTech.Services
                 entity.Confirmed = false;
                 entity.Active = true;
             }
+
+            if (request.Canceled)
+            {
+                entity.Confirmed = false;
+                entity.Active = false;
+            }
+
+            if(request.Canceled && request.Active && request.Confirmed)
+            {
+                // uraditi scaffold da bi se dodato properti canceled u db
+            }
+
+
             _dbContext.SaveChanges();
 
             return _mapper.Map<OrdersModel>(entity);

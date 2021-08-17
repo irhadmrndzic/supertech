@@ -56,17 +56,20 @@
             // 
             this.txtUsersFirstName.Location = new System.Drawing.Point(6, 83);
             this.txtUsersFirstName.Name = "txtUsersFirstName";
-            this.txtUsersFirstName.Size = new System.Drawing.Size(577, 26);
+            this.txtUsersFirstName.Size = new System.Drawing.Size(541, 26);
             this.txtUsersFirstName.TabIndex = 1;
             // 
             // btnShowUsers
             // 
-            this.btnShowUsers.Location = new System.Drawing.Point(317, 260);
+            this.btnShowUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.btnShowUsers.Location = new System.Drawing.Point(281, 240);
             this.btnShowUsers.Name = "btnShowUsers";
-            this.btnShowUsers.Size = new System.Drawing.Size(266, 61);
+            this.btnShowUsers.Size = new System.Drawing.Size(266, 63);
             this.btnShowUsers.TabIndex = 2;
             this.btnShowUsers.Text = "Prikaži";
-            this.btnShowUsers.UseVisualStyleBackColor = true;
+            this.btnShowUsers.UseVisualStyleBackColor = false;
             this.btnShowUsers.Click += new System.EventHandler(this.btnShowUsers_Click);
             // 
             // groupBox1
@@ -74,6 +77,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtUsersLastName);
@@ -110,7 +114,7 @@
             // 
             this.txtUsersLastName.Location = new System.Drawing.Point(6, 167);
             this.txtUsersLastName.Name = "txtUsersLastName";
-            this.txtUsersLastName.Size = new System.Drawing.Size(577, 26);
+            this.txtUsersLastName.Size = new System.Drawing.Size(541, 26);
             this.txtUsersLastName.TabIndex = 5;
             // 
             // dgvUsers
@@ -120,6 +124,7 @@
             this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserId,
