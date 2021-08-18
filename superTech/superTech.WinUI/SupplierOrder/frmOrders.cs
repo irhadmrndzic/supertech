@@ -60,6 +60,7 @@ namespace superTech.WinUI.SupplierOrder
 
                 cbActive.Checked = entity.Active;
                 cbConfirmOrder.Checked = entity.Confirmed;
+                cbCanceled.Checked = entity.Canceled; // NA FORM RESETU PONISIT DISABLED CBOXE
                 txtOrderNumber.Text = entity.OrderNumber.ToString();
             }
             catch (Exception exception)
@@ -150,22 +151,53 @@ namespace superTech.WinUI.SupplierOrder
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if (validateForm())
             {
-                if (_orderId.HasValue)
+
+                try
                 {
-                    OrdersUpsertRequest request = new OrdersUpsertRequest();
+                    if (_orderId.HasValue)
+                    {
+                        OrdersUpsertRequest request = new OrdersUpsertRequest();
 
-                    request.Confirmed = cbConfirmOrder.Checked;
+                        request.Confirmed = cbConfirmOrder.Checked;
+                        if (cbConfirmOrder.Checked)
+                        {
+                            cbCanceled.Enabled = false;
+                            cbCanceled.Checked = false;
+                            request.Canceled = false;
+                            request.Active = false;
+                        }
+                        else if (!cbConfirmOrder.Checked)
+                        {
+                            cbCanceled.Enabled = true;
 
-                    await _ordersService.Update<OrdersModel>(_orderId, request);
-                    clearForm();
-                    MessageBox.Show("Uspješno ste uredili narudžbu : " + txtOrderNumber.Text + " !");
+                            if (cbCanceled.Checked)
+                            {
+                                request.Confirmed = false;
+                                request.Canceled = true;
+                                request.Active = false;
+                            }
+
+                        }
+
+                        await _ordersService.Update<OrdersModel>(_orderId, request);
+
+                        DialogResult result = MessageBox.Show("Uspješno ste uredili narudžbu : " + txtOrderNumber.Text + " !", "Uredi narudžbu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (result == DialogResult.OK)
+                        {
+                            clearForm();
+                            loadOrders();
+                            this.cbCanceled.Enabled = true;
+                        }
+                    }
                 }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
         }
 
@@ -176,6 +208,43 @@ namespace superTech.WinUI.SupplierOrder
             FormReset.ResetAllControls(this);
             dpOrder.CustomFormat = " ";
             dpOrder.Format = DateTimePickerFormat.Custom;
+            errProvider.Clear();
+            errProvider.Dispose();
         }
+        bool validateForm()
+        {
+            if (!validateCheckBoxes())
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        bool validateCheckBoxes()
+        {
+            if (cbConfirmOrder.Checked == true && cbCanceled.Checked == true)
+            {
+                errProvider.SetError(EditOrder, "Narudžba ne može biti potvrđena i otkazana u isto vrijeme ! ");
+                return false;
+            }
+            return true;
+        }
+
+
+        /*
+           if (string.IsNullOrWhiteSpace(txtProductCode.Text))
+            {
+                errProvider.SetError(txtProductCode, Properties.Resources.Validate_Input);
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(txtProductCode, null);
+                return true;
+            }
+         
+         
+         */
     }
 }

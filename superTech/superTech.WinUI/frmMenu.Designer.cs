@@ -50,14 +50,14 @@
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.menuStrip.BackColor = System.Drawing.Color.WhiteSmoke;
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
             this.proizvodiToolStripMenuItem,
-            this.newsToolStripMenuItem,
             this.nabavkaToolStripMenuItem,
-            this.ponudeToolStripMenuItem});
+            this.ponudeToolStripMenuItem,
+            this.newsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(2072, 33);
@@ -107,13 +107,13 @@
             this.newsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledToolStripMenuItem1});
             this.newsToolStripMenuItem.Name = "newsToolStripMenuItem";
-            this.newsToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
-            this.newsToolStripMenuItem.Text = "News";
+            this.newsToolStripMenuItem.Size = new System.Drawing.Size(90, 29);
+            this.newsToolStripMenuItem.Text = "Novosti";
             // 
             // pregledToolStripMenuItem1
             // 
             this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
-            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(174, 34);
+            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.pregledToolStripMenuItem1.Text = "Pregled";
             this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.pregledToolStripMenuItem1_Click);
             // 
@@ -129,14 +129,14 @@
             // pregledToolStripMenuItem2
             // 
             this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
-            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(227, 34);
+            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
             this.pregledToolStripMenuItem2.Text = "Pregled";
             this.pregledToolStripMenuItem2.Click += new System.EventHandler(this.pregledToolStripMenuItem2_Click);
             // 
             // novaNabavkaToolStripMenuItem
             // 
             this.novaNabavkaToolStripMenuItem.Name = "novaNabavkaToolStripMenuItem";
-            this.novaNabavkaToolStripMenuItem.Size = new System.Drawing.Size(227, 34);
+            this.novaNabavkaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.novaNabavkaToolStripMenuItem.Text = "Nova nabavka";
             this.novaNabavkaToolStripMenuItem.Click += new System.EventHandler(this.novaNabavkaToolStripMenuItem_Click);
             // 
@@ -152,14 +152,14 @@
             // pregledToolStripMenuItem3
             // 
             this.pregledToolStripMenuItem3.Name = "pregledToolStripMenuItem3";
-            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(223, 34);
+            this.pregledToolStripMenuItem3.Size = new System.Drawing.Size(270, 34);
             this.pregledToolStripMenuItem3.Text = "Pregled";
             this.pregledToolStripMenuItem3.Click += new System.EventHandler(this.pregledToolStripMenuItem3_Click);
             // 
             // novaPonudaToolStripMenuItem
             // 
             this.novaPonudaToolStripMenuItem.Name = "novaPonudaToolStripMenuItem";
-            this.novaPonudaToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+            this.novaPonudaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.novaPonudaToolStripMenuItem.Text = "Nova ponuda";
             this.novaPonudaToolStripMenuItem.Click += new System.EventHandler(this.novaPonudaToolStripMenuItem_Click);
             // 

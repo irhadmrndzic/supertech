@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,17 +45,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnFilterOrder = new System.Windows.Forms.Button();
             this.dpOrder = new System.Windows.Forms.DateTimePicker();
-            this.Edit = new System.Windows.Forms.GroupBox();
+            this.EditOrder = new System.Windows.Forms.GroupBox();
+            this.cbCanceled = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.cbActive = new System.Windows.Forms.CheckBox();
             this.cbConfirmOrder = new System.Windows.Forms.CheckBox();
             this.btnOrderItems = new System.Windows.Forms.Button();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbCanceled = new System.Windows.Forms.CheckBox();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.Search.SuspendLayout();
-            this.Edit.SuspendLayout();
+            this.EditOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvOrders
@@ -219,18 +222,28 @@
             this.dpOrder.TabIndex = 0;
             this.dpOrder.ValueChanged += new System.EventHandler(this.dpOrder_ValueChanged);
             // 
-            // Edit
+            // EditOrder
             // 
-            this.Edit.Controls.Add(this.cbCanceled);
-            this.Edit.Controls.Add(this.btnSave);
-            this.Edit.Controls.Add(this.cbActive);
-            this.Edit.Controls.Add(this.cbConfirmOrder);
-            this.Edit.Location = new System.Drawing.Point(13, 334);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(547, 194);
-            this.Edit.TabIndex = 2;
-            this.Edit.TabStop = false;
-            this.Edit.Text = "Potvrda prijema  robe";
+            this.EditOrder.Controls.Add(this.cbCanceled);
+            this.EditOrder.Controls.Add(this.btnSave);
+            this.EditOrder.Controls.Add(this.cbActive);
+            this.EditOrder.Controls.Add(this.cbConfirmOrder);
+            this.EditOrder.Location = new System.Drawing.Point(13, 334);
+            this.EditOrder.Name = "EditOrder";
+            this.EditOrder.Size = new System.Drawing.Size(547, 184);
+            this.EditOrder.TabIndex = 2;
+            this.EditOrder.TabStop = false;
+            this.EditOrder.Text = "Potvrda prijema  robe";
+            // 
+            // cbCanceled
+            // 
+            this.cbCanceled.AutoSize = true;
+            this.cbCanceled.Location = new System.Drawing.Point(6, 133);
+            this.cbCanceled.Name = "cbCanceled";
+            this.cbCanceled.Size = new System.Drawing.Size(104, 24);
+            this.cbCanceled.TabIndex = 5;
+            this.cbCanceled.Text = "Otkazana";
+            this.cbCanceled.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -246,7 +259,7 @@
             // 
             this.cbActive.AutoCheck = false;
             this.cbActive.AutoSize = true;
-            this.cbActive.Location = new System.Drawing.Point(7, 104);
+            this.cbActive.Location = new System.Drawing.Point(7, 91);
             this.cbActive.Name = "cbActive";
             this.cbActive.Size = new System.Drawing.Size(87, 24);
             this.cbActive.TabIndex = 1;
@@ -290,16 +303,9 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Broj narudžbe";
             // 
-            // cbCanceled
+            // errProvider
             // 
-            this.cbCanceled.AutoCheck = false;
-            this.cbCanceled.AutoSize = true;
-            this.cbCanceled.Location = new System.Drawing.Point(3, 154);
-            this.cbCanceled.Name = "cbCanceled";
-            this.cbCanceled.Size = new System.Drawing.Size(104, 24);
-            this.cbCanceled.TabIndex = 4;
-            this.cbCanceled.Text = "Otkazana";
-            this.cbCanceled.UseVisualStyleBackColor = true;
+            this.errProvider.ContainerControl = this;
             // 
             // frmOrders
             // 
@@ -310,7 +316,7 @@
             this.Controls.Add(this.btnOrderItems);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtOrderNumber);
-            this.Controls.Add(this.Edit);
+            this.Controls.Add(this.EditOrder);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.dgvOrders);
             this.Name = "frmOrders";
@@ -319,8 +325,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.Search.ResumeLayout(false);
             this.Search.PerformLayout();
-            this.Edit.ResumeLayout(false);
-            this.Edit.PerformLayout();
+            this.EditOrder.ResumeLayout(false);
+            this.EditOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,7 +339,7 @@
         private System.Windows.Forms.GroupBox Search;
         private System.Windows.Forms.Button btnFilterOrder;
         private System.Windows.Forms.DateTimePicker dpOrder;
-        private System.Windows.Forms.GroupBox Edit;
+        private System.Windows.Forms.GroupBox EditOrder;
         private System.Windows.Forms.CheckBox cbActive;
         private System.Windows.Forms.CheckBox cbConfirmOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderId;
@@ -352,5 +359,6 @@
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.MaskedTextBox txtOrderNumberSearch;
         private System.Windows.Forms.CheckBox cbCanceled;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

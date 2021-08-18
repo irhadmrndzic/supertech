@@ -93,28 +93,24 @@ namespace superTech.Services
             _dbContext.Orders.Attach(entity);
             _dbContext.Orders.Update(entity);
 
-            if (request.Confirmed == true)
+            if (request.Confirmed && !request.Canceled)
             {
                 entity.Confirmed = true;
                 entity.Active = false;
+                entity.Canceled = false;
             }
-            else
+            else if (request.Canceled && !request.Confirmed)
             {
-                entity.Confirmed = false;
-                entity.Active = true;
-            }
-
-            if (request.Canceled)
-            {
-                entity.Confirmed = false;
+                entity.Canceled = true;
                 entity.Active = false;
+                entity.Confirmed = false;
             }
-
-            if(request.Canceled && request.Active && request.Confirmed)
+            else if(!request.Canceled && !request.Confirmed)
             {
-                // uraditi scaffold da bi se dodato properti canceled u db
+                entity.Canceled = false;
+                entity.Active = true;
+                entity.Confirmed = false;
             }
-
 
             _dbContext.SaveChanges();
 

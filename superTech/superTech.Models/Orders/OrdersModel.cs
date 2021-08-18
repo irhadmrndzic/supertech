@@ -18,6 +18,7 @@ namespace superTech.Models.Orders
         public int? FkSupplierId { get; set; }
         public string SupplierString { get; set; }
         public string UserString { get; set; }
+        public bool Canceled { get; set; }
         public virtual ICollection<OrderItemModel> OrderItems { get; set; }
 
     }

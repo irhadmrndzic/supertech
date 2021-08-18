@@ -20,7 +20,7 @@ namespace superTech.Database
         public int? FkUserId { get; set; }
         public int? FkSupplierId { get; set; }
         public bool? Confirmed { get; set; }
-
+        public bool? Canceled { get; set; }
         public virtual Supplier FkSupplier { get; set; }
         public virtual User FkUser { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
