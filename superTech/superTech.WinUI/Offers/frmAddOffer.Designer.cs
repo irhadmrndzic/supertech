@@ -38,7 +38,7 @@ namespace superTech.WinUI.Offers
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dpDateTo = new System.Windows.Forms.DateTimePicker();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbAddProduct = new System.Windows.Forms.GroupBox();
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.txtPriceDiscount = new System.Windows.Forms.TextBox();
@@ -76,7 +76,7 @@ namespace superTech.WinUI.Offers
             this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox3.SuspendLayout();
+            this.gbAddProduct.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductOrder)).BeginInit();
@@ -150,28 +150,28 @@ namespace superTech.WinUI.Offers
             this.dpDateTo.TabIndex = 5;
             this.dpDateTo.ValueChanged += new System.EventHandler(this.dpDateTo_ValueChanged);
             // 
-            // groupBox3
+            // gbAddProduct
             // 
-            this.groupBox3.Controls.Add(this.btnAddOrder);
-            this.groupBox3.Controls.Add(this.btnRemoveProduct);
-            this.groupBox3.Controls.Add(this.txtPriceDiscount);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.txtDiscount);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.txtUnitOfMeasure);
-            this.groupBox3.Controls.Add(this.btnAddProduct);
-            this.groupBox3.Controls.Add(this.groupSearch);
-            this.groupBox3.Controls.Add(this.txtPrice);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.Popust);
-            this.groupBox3.Controls.Add(this.txtProductCode);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(12, 693);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(721, 697);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Proizvodi";
+            this.gbAddProduct.Controls.Add(this.btnAddOrder);
+            this.gbAddProduct.Controls.Add(this.btnRemoveProduct);
+            this.gbAddProduct.Controls.Add(this.txtPriceDiscount);
+            this.gbAddProduct.Controls.Add(this.label5);
+            this.gbAddProduct.Controls.Add(this.txtDiscount);
+            this.gbAddProduct.Controls.Add(this.label18);
+            this.gbAddProduct.Controls.Add(this.txtUnitOfMeasure);
+            this.gbAddProduct.Controls.Add(this.btnAddProduct);
+            this.gbAddProduct.Controls.Add(this.groupSearch);
+            this.gbAddProduct.Controls.Add(this.txtPrice);
+            this.gbAddProduct.Controls.Add(this.label10);
+            this.gbAddProduct.Controls.Add(this.Popust);
+            this.gbAddProduct.Controls.Add(this.txtProductCode);
+            this.gbAddProduct.Controls.Add(this.label8);
+            this.gbAddProduct.Location = new System.Drawing.Point(12, 693);
+            this.gbAddProduct.Name = "gbAddProduct";
+            this.gbAddProduct.Size = new System.Drawing.Size(721, 697);
+            this.gbAddProduct.TabIndex = 9;
+            this.gbAddProduct.TabStop = false;
+            this.gbAddProduct.Text = "Proizvodi";
             // 
             // btnAddOrder
             // 
@@ -525,7 +525,7 @@ namespace superTech.WinUI.Offers
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1990, 1729);
             this.Controls.Add(this.dgvProductOrder);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.gbAddProduct);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dpDateTo);
@@ -538,8 +538,8 @@ namespace superTech.WinUI.Offers
             this.Name = "frmAddOffer";
             this.Text = "frmAddOffer";
             this.Load += new System.EventHandler(this.frmAddOffer_Load);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbAddProduct.ResumeLayout(false);
+            this.gbAddProduct.PerformLayout();
             this.groupSearch.ResumeLayout(false);
             this.groupSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
@@ -560,7 +560,7 @@ namespace superTech.WinUI.Offers
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dpDateTo;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbAddProduct;
         private System.Windows.Forms.MaskedTextBox txtDiscount;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtUnitOfMeasure;

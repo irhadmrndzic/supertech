@@ -209,7 +209,7 @@ namespace superTech.WinUI.Offers
                 if (orderList.Count == 0)
                 {
                     setEntities(entity);
-
+                    errProvider.SetError(gbAddProduct, null);
                     return;
                 }
 
@@ -217,6 +217,7 @@ namespace superTech.WinUI.Offers
                 {
                     if (!orderList.Where(x => x.Code == entity.Code).Any())
                     {
+                        errProvider.SetError(gbAddProduct, null);
                         setEntities(entity);
                     }
                     else
@@ -237,7 +238,7 @@ namespace superTech.WinUI.Offers
 
         private async void btnAddOrder_Click(object sender, EventArgs e)
         {
-            if (validateForm())
+            if (validateForm() && validateProductList())
             {
                 try
                 {
@@ -264,6 +265,8 @@ namespace superTech.WinUI.Offers
 
                     await _offerService.Insert<OffersModel>(request);
                     MessageBox.Show("Uspješno ste dodali ponudu ! ", "Ponuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    errProvider.Clear();
+                    errProvider.Dispose();
 
                 }
                 catch (Exception exception)
@@ -287,7 +290,7 @@ namespace superTech.WinUI.Offers
 
         bool validateForm()
         {
-            if (!validateTitle() || !validateDescription() || !validateOrderDateFrom() || !validateOrderDateTo() || !validatePeriod() || !validateProduct() || !validateDiscount())
+            if (!validateTitle() || !validateDescription() || !validateOrderDateFrom() || !validateOrderDateTo() || !validatePeriod() || !validateProduct() || !validateDiscount() )
                 return false;
             return true;
         }
@@ -402,5 +405,22 @@ namespace superTech.WinUI.Offers
                 return true;
             }
         }
+
+        bool validateProductList()
+        {
+            if (orderList.Count == 0)
+            {
+                errProvider.SetError(gbAddProduct, "Molimo dodajte proizvod u listu !");
+                return false;
+            }
+            else
+            {
+                errProvider.SetError(gbAddProduct, null);
+                return true;
+            }
+        }
+
+
+        
     }
 }
