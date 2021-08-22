@@ -27,6 +27,8 @@ namespace superTech.WinUI.SupplierOrder
 
         public int? _supplierId = null;
         public int? _productId = null;
+        public List<OrdersModel> currentOrders = null;
+
 
         public List<UserModel> user = new List<UserModel>();
         public frmSupplierOrder()
@@ -63,6 +65,20 @@ namespace superTech.WinUI.SupplierOrder
             //await loadUnitsOfMeasures();
             await loadCategories();
             await loadProducts(0);
+            await loadOrders();
+
+        }
+
+        public async Task loadOrders()
+        {
+            try
+            {
+                currentOrders = await _orderService.Get<List<OrdersModel>>(null);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -252,6 +268,8 @@ namespace superTech.WinUI.SupplierOrder
                     orderList.Add(selectedProduct);
                     selectedProduct = null;
 
+                    txtOrderNumber.Text = (++currentOrders[currentOrders.Count - 1].OrderNumber).ToString();
+
                 }
                 else
                 {
@@ -270,6 +288,9 @@ namespace superTech.WinUI.SupplierOrder
                         selectedProduct.Price = entity.Price * int.Parse(txtQuantity.Text);
                         orderList.Add(selectedProduct);
                     }
+
+                    txtOrderNumber.Text = (++currentOrders[currentOrders.Count - 1].OrderNumber).ToString();
+
                 }
 
                 dgvProductOrder.DataSource = orderList.ToList();
@@ -455,7 +476,7 @@ namespace superTech.WinUI.SupplierOrder
                     }
                     order.Amount = amount;
                     order.Date = dpOrderDate.Value;
-                    order.OrderNumber = int.Parse(txtOrderNumber.Text);
+                    order.OrderNumber = currentOrders[currentOrders.Count -1 ].OrderNumber++;
                     order.SupplierId = _supplierId;
                     order.UserId = Convert.ToInt32(user[0].UserId);
                     order.Active = true;

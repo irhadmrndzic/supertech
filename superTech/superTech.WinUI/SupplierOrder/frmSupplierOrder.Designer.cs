@@ -90,7 +90,6 @@
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,6 +99,7 @@
             this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -411,6 +411,7 @@
             this.txtOrderNumber.Location = new System.Drawing.Point(10, 93);
             this.txtOrderNumber.Mask = "0000000000";
             this.txtOrderNumber.Name = "txtOrderNumber";
+            this.txtOrderNumber.ReadOnly = true;
             this.txtOrderNumber.Size = new System.Drawing.Size(464, 26);
             this.txtOrderNumber.TabIndex = 37;
             // 
@@ -738,10 +739,6 @@
             this.dgvProducts.TabIndex = 9;
             this.dgvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDoubleClick);
             // 
-            // errProvider
-            // 
-            this.errProvider.ContainerControl = this;
-            // 
             // ProductId
             // 
             this.ProductId.DataPropertyName = "ProductId";
@@ -814,6 +811,10 @@
             this.ProductDescription.MinimumWidth = 8;
             this.ProductDescription.Name = "ProductDescription";
             this.ProductDescription.Width = 150;
+            // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
             // 
             // frmSupplierOrder
             // 
