@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvNews = new System.Windows.Forms.DataGridView();
-            this.NewsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfCreation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtContent = new System.Windows.Forms.RichTextBox();
@@ -48,6 +43,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.NewsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfCreation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
@@ -76,52 +76,6 @@
             this.dgvNews.Size = new System.Drawing.Size(1139, 1116);
             this.dgvNews.TabIndex = 0;
             this.dgvNews.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvNews_MouseDoubleClick);
-            // 
-            // NewsId
-            // 
-            this.NewsId.DataPropertyName = "NewsId";
-            this.NewsId.HeaderText = "Id";
-            this.NewsId.MinimumWidth = 8;
-            this.NewsId.Name = "NewsId";
-            this.NewsId.ReadOnly = true;
-            this.NewsId.Visible = false;
-            this.NewsId.Width = 150;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Naslov";
-            this.Title.MinimumWidth = 8;
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.Width = 150;
-            // 
-            // Content
-            // 
-            this.Content.DataPropertyName = "Content";
-            this.Content.HeaderText = "Sadržaj";
-            this.Content.MinimumWidth = 8;
-            this.Content.Name = "Content";
-            this.Content.ReadOnly = true;
-            this.Content.Width = 150;
-            // 
-            // DateOfCreation
-            // 
-            this.DateOfCreation.DataPropertyName = "DateOfCreation";
-            this.DateOfCreation.HeaderText = "Datum kreiranja";
-            this.DateOfCreation.MinimumWidth = 8;
-            this.DateOfCreation.Name = "DateOfCreation";
-            this.DateOfCreation.ReadOnly = true;
-            this.DateOfCreation.Width = 150;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "Active";
-            this.Active.HeaderText = "Aktivna";
-            this.Active.MinimumWidth = 8;
-            this.Active.Name = "Active";
-            this.Active.ReadOnly = true;
-            this.Active.Width = 150;
             // 
             // label1
             // 
@@ -247,6 +201,54 @@
             // 
             this.errProvider.ContainerControl = this;
             // 
+            // NewsId
+            // 
+            this.NewsId.DataPropertyName = "NewsId";
+            this.NewsId.HeaderText = "Id";
+            this.NewsId.MinimumWidth = 8;
+            this.NewsId.Name = "NewsId";
+            this.NewsId.ReadOnly = true;
+            this.NewsId.Visible = false;
+            this.NewsId.Width = 150;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Naslov";
+            this.Title.MinimumWidth = 8;
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Width = 150;
+            // 
+            // Content
+            // 
+            this.Content.DataPropertyName = "Content";
+            this.Content.HeaderText = "Sadržaj";
+            this.Content.MinimumWidth = 8;
+            this.Content.Name = "Content";
+            this.Content.ReadOnly = true;
+            this.Content.Width = 150;
+            // 
+            // DateOfCreation
+            // 
+            this.DateOfCreation.DataPropertyName = "DateOfCreation";
+            this.DateOfCreation.HeaderText = "Datum kreiranja";
+            this.DateOfCreation.MinimumWidth = 8;
+            this.DateOfCreation.Name = "DateOfCreation";
+            this.DateOfCreation.ReadOnly = true;
+            this.DateOfCreation.Width = 150;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Aktivna";
+            this.Active.MinimumWidth = 8;
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Active.Width = 150;
+            // 
             // frmNews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -286,16 +288,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dpDoC;
         private System.Windows.Forms.CheckBox cbActive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NewsId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Content;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateOfCreation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Label lblNoNews;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClearForm;
         private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NewsId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Content;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateOfCreation;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
     }
 }

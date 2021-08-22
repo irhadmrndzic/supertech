@@ -76,6 +76,7 @@ namespace superTech.WinUI.Offers
             this.SelectedProductQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbActive = new System.Windows.Forms.CheckBox();
             this.gbAddProduct.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -118,7 +119,7 @@ namespace superTech.WinUI.Offers
             // 
             // dpDateFrom
             // 
-            this.dpDateFrom.Location = new System.Drawing.Point(17, 531);
+            this.dpDateFrom.Location = new System.Drawing.Point(18, 560);
             this.dpDateFrom.Name = "dpDateFrom";
             this.dpDateFrom.Size = new System.Drawing.Size(378, 26);
             this.dpDateFrom.TabIndex = 4;
@@ -127,7 +128,7 @@ namespace superTech.WinUI.Offers
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 494);
+            this.label3.Location = new System.Drawing.Point(13, 523);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 20);
             this.label3.TabIndex = 6;
@@ -136,7 +137,7 @@ namespace superTech.WinUI.Offers
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 583);
+            this.label4.Location = new System.Drawing.Point(14, 612);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(137, 20);
             this.label4.TabIndex = 7;
@@ -144,7 +145,7 @@ namespace superTech.WinUI.Offers
             // 
             // dpDateTo
             // 
-            this.dpDateTo.Location = new System.Drawing.Point(17, 620);
+            this.dpDateTo.Location = new System.Drawing.Point(18, 649);
             this.dpDateTo.Name = "dpDateTo";
             this.dpDateTo.Size = new System.Drawing.Size(378, 26);
             this.dpDateTo.TabIndex = 5;
@@ -518,12 +519,23 @@ namespace superTech.WinUI.Offers
             // 
             this.errProvider.ContainerControl = this;
             // 
+            // cbActive
+            // 
+            this.cbActive.AutoSize = true;
+            this.cbActive.Location = new System.Drawing.Point(18, 478);
+            this.cbActive.Name = "cbActive";
+            this.cbActive.Size = new System.Drawing.Size(91, 24);
+            this.cbActive.TabIndex = 41;
+            this.cbActive.Text = "Aktivna:";
+            this.cbActive.UseVisualStyleBackColor = true;
+            // 
             // frmAddOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1990, 1729);
+            this.Controls.Add(this.cbActive);
             this.Controls.Add(this.dgvProductOrder);
             this.Controls.Add(this.gbAddProduct);
             this.Controls.Add(this.label4);
@@ -598,5 +610,6 @@ namespace superTech.WinUI.Offers
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceDiscount;
+        private System.Windows.Forms.CheckBox cbActive;
     }
 }

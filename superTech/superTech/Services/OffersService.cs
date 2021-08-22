@@ -57,6 +57,14 @@ namespace superTech.Services
             entity.DateTo = request.DateTo;
             entity.Title = request.Title;
             entity.Description = request.Description;
+
+            entity.Active = request.Active;
+
+            if (request.DateTo < System.DateTime.Today)
+            {
+                entity.Active = false;
+            }
+
             _dbContext.SaveChanges();
             if (request.OfferItems != null &&  request.OfferItems.Count > 0)
             {
@@ -94,6 +102,12 @@ namespace superTech.Services
             offer.Description = request.Description;
             offer.DateFrom = request.DateFrom;
             offer.DateTo = request.DateTo;
+            offer.Active = request.Active;
+
+            if (request.DateTo < System.DateTime.Today)
+            {
+                offer.Active = false;
+            }
 
             _dbContext.Offers.Add(offer);
             _dbContext.SaveChanges();

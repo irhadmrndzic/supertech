@@ -107,6 +107,11 @@ namespace superTech.Database
 
             modelBuilder.Entity<BuyerOrder>(entity =>
             {
+                entity.HasIndex(e => e.OrderNumber, "UQ__BuyerOrd__CAC5E7434DFFE578")
+                    .IsUnique();
+
+                entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
+
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.FkUserId).HasColumnName("FK_UserId");
@@ -121,6 +126,8 @@ namespace superTech.Database
             {
                 entity.HasKey(e => e.BuyerOrderItemsId)
                     .HasName("PK__BuyerOrd__8E1D118BEDBD0F49");
+
+                entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.FkBuyerOrder).HasColumnName("FK_BuyerOrder");
 

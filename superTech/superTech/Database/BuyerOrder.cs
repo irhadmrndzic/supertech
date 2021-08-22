@@ -18,6 +18,9 @@ namespace superTech.Database
         public bool Active { get; set; }
         public bool Canceled { get; set; }
         public int? FkUserId { get; set; }
+        public int? OrderNumber { get; set; }
+        public decimal? Amount { get; set; }
+        public bool? Confirmed { get; set; }
 
         public virtual User FkUser { get; set; }
         public virtual ICollection<Bill> Bills { get; set; }

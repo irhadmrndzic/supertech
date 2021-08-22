@@ -11,6 +11,7 @@ namespace superTech.Models.Offers
         public string Description { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
+        public bool Active { get; set; }
         //public ICollection<OrderItemsUpsertRequest> OrderItems { get; set; }
         public ICollection<OfferItemsUpsertRequest> OfferItems { get; set; }
 

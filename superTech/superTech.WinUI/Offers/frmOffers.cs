@@ -64,6 +64,7 @@ namespace superTech.WinUI.Offers
                 txtDescription.Text = entity.Description;
                 dpDateFrom.Value = entity.DateFrom;
                 dpDateTo.Value = entity.DateTo;
+                cbActive.Checked = entity.Active;
             }
             catch (Exception exception)
             {
@@ -321,6 +322,17 @@ namespace superTech.WinUI.Offers
             }
         }
 
-
+        private void dgvOffers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                if (e.Value is bool)
+                {
+                    bool value = (bool)e.Value;
+                    e.Value = (value) ? "Da" : "Ne";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

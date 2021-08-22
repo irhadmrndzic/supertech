@@ -11,6 +11,7 @@ namespace superTech.Database
         public int? Quantity { get; set; }
         public int? FkProductId { get; set; }
         public int? FkBuyerOrder { get; set; }
+        public decimal? Amount { get; set; }
 
         public virtual BuyerOrder FkBuyerOrderNavigation { get; set; }
         public virtual Product FkProduct { get; set; }

@@ -248,7 +248,7 @@ namespace superTech.WinUI.Offers
                     request.DateTo = dpDateTo.Value;
                     request.Title = txtTitle.Text;
                     request.Description = txtDesc.Text;
-
+                    request.Active = cbActive.Checked;
 
                     request.OfferItems = new List<OfferItemsUpsertRequest>();
 

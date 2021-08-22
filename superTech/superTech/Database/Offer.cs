@@ -17,6 +17,7 @@ namespace superTech.Database
         public string Description { get; set; }
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
+        public bool? Active { get; set; }
 
         public virtual ICollection<ProductOffer> ProductOffers { get; set; }
     }

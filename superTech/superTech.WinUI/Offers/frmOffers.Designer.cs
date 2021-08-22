@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvOffers = new System.Windows.Forms.DataGridView();
-            this.OfferId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNoOffers = new System.Windows.Forms.Label();
             this.btnShowAll = new System.Windows.Forms.Button();
@@ -55,6 +50,13 @@
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSaveOffer = new System.Windows.Forms.Button();
+            this.cbActive = new System.Windows.Forms.CheckBox();
+            this.OfferId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -75,7 +77,8 @@
             this.Title,
             this.Description,
             this.DateFrom,
-            this.DateTo});
+            this.DateTo,
+            this.Active});
             this.dgvOffers.Location = new System.Drawing.Point(749, 12);
             this.dgvOffers.Name = "dgvOffers";
             this.dgvOffers.RowHeadersWidth = 62;
@@ -83,48 +86,8 @@
             this.dgvOffers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOffers.Size = new System.Drawing.Size(853, 963);
             this.dgvOffers.TabIndex = 0;
+            this.dgvOffers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOffers_CellFormatting);
             this.dgvOffers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvOffers_MouseDoubleClick);
-            // 
-            // OfferId
-            // 
-            this.OfferId.DataPropertyName = "OfferId";
-            this.OfferId.HeaderText = "OfferId";
-            this.OfferId.MinimumWidth = 8;
-            this.OfferId.Name = "OfferId";
-            this.OfferId.Visible = false;
-            this.OfferId.Width = 150;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Naslov";
-            this.Title.MinimumWidth = 8;
-            this.Title.Name = "Title";
-            this.Title.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Opis";
-            this.Description.MinimumWidth = 8;
-            this.Description.Name = "Description";
-            this.Description.Width = 150;
-            // 
-            // DateFrom
-            // 
-            this.DateFrom.DataPropertyName = "DateFrom";
-            this.DateFrom.HeaderText = "Datum Od";
-            this.DateFrom.MinimumWidth = 8;
-            this.DateFrom.Name = "DateFrom";
-            this.DateFrom.Width = 150;
-            // 
-            // DateTo
-            // 
-            this.DateTo.DataPropertyName = "DateTo";
-            this.DateTo.HeaderText = "Datum do";
-            this.DateTo.MinimumWidth = 8;
-            this.DateTo.Name = "DateTo";
-            this.DateTo.Width = 150;
             // 
             // groupBox1
             // 
@@ -288,7 +251,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDelete.Location = new System.Drawing.Point(34, 882);
+            this.btnDelete.Location = new System.Drawing.Point(34, 896);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(146, 58);
             this.btnDelete.TabIndex = 13;
@@ -298,7 +261,7 @@
             // 
             // btnSaveOffer
             // 
-            this.btnSaveOffer.Location = new System.Drawing.Point(467, 882);
+            this.btnSaveOffer.Location = new System.Drawing.Point(467, 896);
             this.btnSaveOffer.Name = "btnSaveOffer";
             this.btnSaveOffer.Size = new System.Drawing.Size(146, 58);
             this.btnSaveOffer.TabIndex = 15;
@@ -306,12 +269,73 @@
             this.btnSaveOffer.UseVisualStyleBackColor = true;
             this.btnSaveOffer.Click += new System.EventHandler(this.btnSaveOffer_Click);
             // 
+            // cbActive
+            // 
+            this.cbActive.AutoSize = true;
+            this.cbActive.Location = new System.Drawing.Point(34, 820);
+            this.cbActive.Name = "cbActive";
+            this.cbActive.Size = new System.Drawing.Size(91, 24);
+            this.cbActive.TabIndex = 16;
+            this.cbActive.Text = "Aktivna:";
+            this.cbActive.UseVisualStyleBackColor = true;
+            // 
+            // OfferId
+            // 
+            this.OfferId.DataPropertyName = "OfferId";
+            this.OfferId.HeaderText = "OfferId";
+            this.OfferId.MinimumWidth = 8;
+            this.OfferId.Name = "OfferId";
+            this.OfferId.Visible = false;
+            this.OfferId.Width = 150;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Naslov";
+            this.Title.MinimumWidth = 8;
+            this.Title.Name = "Title";
+            this.Title.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Opis";
+            this.Description.MinimumWidth = 8;
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
+            // DateFrom
+            // 
+            this.DateFrom.DataPropertyName = "DateFrom";
+            this.DateFrom.HeaderText = "Datum Od";
+            this.DateFrom.MinimumWidth = 8;
+            this.DateFrom.Name = "DateFrom";
+            this.DateFrom.Width = 150;
+            // 
+            // DateTo
+            // 
+            this.DateTo.DataPropertyName = "DateTo";
+            this.DateTo.HeaderText = "Datum do";
+            this.DateTo.MinimumWidth = 8;
+            this.DateTo.Name = "DateTo";
+            this.DateTo.Width = 150;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Aktivna";
+            this.Active.MinimumWidth = 8;
+            this.Active.Name = "Active";
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.Width = 150;
+            // 
             // frmOffers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1614, 987);
+            this.Controls.Add(this.cbActive);
             this.Controls.Add(this.btnSaveOffer);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnOfferItems);
@@ -349,11 +373,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dpDateFrom;
         private System.Windows.Forms.DateTimePicker dpDateTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OfferId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateFrom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateTo;
         private System.Windows.Forms.Button btnOfferItems;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Button btnFilter;
@@ -365,5 +384,12 @@
         private System.Windows.Forms.ErrorProvider errProvider;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveOffer;
+        private System.Windows.Forms.CheckBox cbActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OfferId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateFrom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
     }
 }
