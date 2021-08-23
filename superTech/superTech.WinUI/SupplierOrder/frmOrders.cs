@@ -40,7 +40,7 @@ namespace superTech.WinUI.SupplierOrder
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message, "Nabavka", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -208,6 +208,9 @@ namespace superTech.WinUI.SupplierOrder
             FormReset.ResetAllControls(this);
             dpOrder.CustomFormat = " ";
             dpOrder.Format = DateTimePickerFormat.Custom;
+            cbActive.Enabled = true;
+            cbConfirmOrder.Enabled = true;
+            cbCanceled.Enabled = true;
             errProvider.Clear();
             errProvider.Dispose();
         }

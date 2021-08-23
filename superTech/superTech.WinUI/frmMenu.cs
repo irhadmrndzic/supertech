@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using superTech.WinUI.BuyerOrder;
 using superTech.WinUI.News;
 using superTech.WinUI.Offers;
 using superTech.WinUI.Products;
@@ -143,6 +144,19 @@ namespace superTech.WinUI
             frmAddOffer.MdiParent = this;
             frmAddOffer.WindowState = FormWindowState.Maximized;
             frmAddOffer.Show();
+        }
+
+        private void narudžbeKupacaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+       
+        }
+
+        private void pregledToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmBuyerOrders frmBuyerOrders = new frmBuyerOrders();
+            frmBuyerOrders.MdiParent = this;
+            frmBuyerOrders.WindowState = FormWindowState.Maximized;
+            frmBuyerOrders.Show();
         }
     }
 }
