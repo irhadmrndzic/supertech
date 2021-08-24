@@ -234,6 +234,8 @@ namespace superTech.WinUI.SupplierOrder
             return true;
         }
 
+      
+
 
         /*
            if (string.IsNullOrWhiteSpace(txtProductCode.Text))

@@ -1,6 +1,4 @@
 ﻿
-using superTech.Models.Ratings;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace superTech.Models.Product

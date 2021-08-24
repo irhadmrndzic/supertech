@@ -1,4 +1,6 @@
-﻿using System;
+﻿using superTech.Models.BuyerOrders.BuyerOrderItems;
+using System;
+using System.Collections.Generic;
 
 namespace superTech.Models.BuyerOrders
 {
@@ -13,6 +15,9 @@ namespace superTech.Models.BuyerOrders
         public decimal? Amount { get; set; }
         public bool? Confirmed { get; set; }
         public string UserString { get; set; }
+
+        public virtual ICollection<BuyerOrderItemsModel> BuyerOrderItems { get; set; }
+
 
     }
 }

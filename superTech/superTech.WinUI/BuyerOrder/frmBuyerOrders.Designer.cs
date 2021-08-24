@@ -277,7 +277,7 @@ namespace superTech.WinUI.BuyerOrder
             this.Controls.Add(this.Search);
             this.Controls.Add(this.dgvBuyerOrders);
             this.Name = "frmBuyerOrders";
-            this.Text = "frmBuyerOrders";
+            this.Text = "Narudžbe";
             this.Load += new System.EventHandler(this.frmBuyerOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuyerOrders)).EndInit();
             this.Search.ResumeLayout(false);

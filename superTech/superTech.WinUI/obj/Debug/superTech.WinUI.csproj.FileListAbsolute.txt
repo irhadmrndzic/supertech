@@ -34,3 +34,4 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.exe
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.BuyerOrder.frmBuyerOrders.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.BuyerOrder.frmBuyerOrderItems.resources

@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService\APIService.cs" />
+    <Compile Include="BuyerOrder\frmBuyerOrderItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyerOrder\frmBuyerOrderItems.Designer.cs">
+      <DependentUpon>frmBuyerOrderItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuyerOrder\frmBuyerOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\FormReset.cs" />
+    <EmbeddedResource Include="BuyerOrder\frmBuyerOrderItems.resx">
+      <DependentUpon>frmBuyerOrderItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuyerOrder\frmBuyerOrders.resx">
       <DependentUpon>frmBuyerOrders.cs</DependentUpon>
     </EmbeddedResource>

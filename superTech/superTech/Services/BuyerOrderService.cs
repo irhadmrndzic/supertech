@@ -18,6 +18,7 @@ namespace superTech.Services
         public override List<BuyerOrdersModel> Get(object searchFilter)
         {
             var query = _dbContext.BuyerOrders.Include(x => x.FkUser).AsQueryable();
+            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
 
             var list = query.ToList().OrderBy(x => x.Active ? 1 : 0);
 
@@ -29,7 +30,7 @@ namespace superTech.Services
         {
             var query = _dbContext.BuyerOrders.Where(x => x.BuyerOrderId == id);
 
-            query = query.Include(o => o.FkUser).AsQueryable();
+            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
 
             var entity = query.SingleOrDefault();
 

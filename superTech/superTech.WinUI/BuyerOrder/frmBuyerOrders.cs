@@ -105,7 +105,7 @@ namespace superTech.WinUI.BuyerOrder
 
                         btnProcess.Text = "Procesiraj";
                         btnProcess.Name = "btnProcess";
-                        btnProcess.BackColor = Color.FromArgb(0, 35, 102);
+                        btnProcess.BackColor = Color.FromArgb(15, 82, 186);
                         btnProcess.Parent = gbInfo;
                         btnProcess.Dock = DockStyle.Bottom;
                         gbInfo.Controls.Add(btnProcess);
@@ -113,6 +113,7 @@ namespace superTech.WinUI.BuyerOrder
                         btnProcess.Height =63;
                         btnProcess.Width = 230;
 
+                        btnProcess.Click += new EventHandler(btnProcess_Click);
                     }
 
                 }
@@ -134,5 +135,18 @@ namespace superTech.WinUI.BuyerOrder
             }
 
         }
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+            if (_orderId.HasValue)
+            {
+                frmBuyerOrderItems frm = new frmBuyerOrderItems(_orderId);
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Molimo odaberite narudžbu ! ");
+            }
+        }
+
     }
 }

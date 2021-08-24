@@ -320,7 +320,7 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.dgvOrders);
             this.Name = "frmOrders";
-            this.Text = "Narudžbe";
+            this.Text = "Nabavke";
             this.Load += new System.EventHandler(this.frmOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.Search.ResumeLayout(false);

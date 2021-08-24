@@ -3,6 +3,7 @@ using AutoMapper;
 using superTech.Database;
 using superTech.Models.Brands;
 using superTech.Models.BuyerOrders;
+using superTech.Models.BuyerOrders.BuyerOrderItems;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.News;
@@ -118,8 +119,14 @@ namespace superTech.Mappers
             CreateMap<BuyerOrder, BuyerOrdersModel>()
                 .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
                 .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
+                .ForMember(q => q.BuyerOrderItems, w => w.MapFrom(src => src.BuyerOrderItems))
                 .ReverseMap();
 
+
+            CreateMap<BuyerOrderItem, BuyerOrderItemsModel>()
+                .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
+                .ForMember(x => x.ProductCode, src => src.MapFrom(q => q.FkProduct.Code))
+                .ForMember(x => x.ProductPrice, src => src.MapFrom(q => q.FkProduct.Price)).ReverseMap();
 
             //CreateMap<OffersUpsertRequest, Offer>()
             //        .ForMember(x => x.ProductOffers, src => src.MapFrom(x => x.OfferItems)).ReverseMap();
