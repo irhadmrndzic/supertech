@@ -72,6 +72,12 @@
     <Compile Include="BuyerOrder\frmBuyerOrders.Designer.cs">
       <DependentUpon>frmBuyerOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="BuyerOrder\frmProcessedBuyerOrderItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyerOrder\frmProcessedBuyerOrderItems.Designer.cs">
+      <DependentUpon>frmProcessedBuyerOrderItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BuyerOrder\frmBuyerOrders.resx">
       <DependentUpon>frmBuyerOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyerOrder\frmProcessedBuyerOrderItems.resx">
+      <DependentUpon>frmProcessedBuyerOrderItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>

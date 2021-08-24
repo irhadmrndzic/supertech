@@ -25,13 +25,13 @@ namespace superTech.WinUI.BuyerOrder
             cbOrderStatus.DataSource = this.orderStatus;
             dgvBuyerOrders.AutoGenerateColumns = false;
 
-         
+
 
         }
 
         private async void frmBuyerOrders_Load(object sender, EventArgs e)
         {
-          await loadBuyerOrders();
+            await loadBuyerOrders();
         }
 
 
@@ -39,7 +39,7 @@ namespace superTech.WinUI.BuyerOrder
         {
             try
             {
-               var buyerOrdersList =  await _buyerOrderService.Get<List<BuyerOrdersModel>>(null);
+                var buyerOrdersList = await _buyerOrderService.Get<List<BuyerOrdersModel>>(null);
                 Cursor.Current = Cursor.Current;
                 dgvBuyerOrders.DataSource = buyerOrdersList;
 
@@ -74,10 +74,8 @@ namespace superTech.WinUI.BuyerOrder
         public async Task selectOrder()
         {
 
-
             try
             {
-                //Point newLoc = new Point(7, 491);
                 _orderId = (int)dgvBuyerOrders.SelectedRows[0].Cells[0].Value;
 
                 var entity = await _buyerOrderService.GetById<BuyerOrdersModel>(_orderId);
@@ -90,42 +88,30 @@ namespace superTech.WinUI.BuyerOrder
 
                 if (!entity.Active)
                 {
-                    bool buttonCounter = false;
                     foreach (Control control in gbInfo.Controls)
                     {
                         if (control is Button)
                         {
-                            buttonCounter = true;
+                            gbInfo.Controls.Remove(control);
                         }
                     }
 
-                    if(buttonCounter == false)
-                    {
-                        Button btnProcess = new Button();
 
-                        btnProcess.Text = "Procesiraj";
-                        btnProcess.Name = "btnProcess";
-                        btnProcess.BackColor = Color.FromArgb(15, 82, 186);
-                        btnProcess.Parent = gbInfo;
-                        btnProcess.Dock = DockStyle.Bottom;
-                        gbInfo.Controls.Add(btnProcess);
-                        btnProcess.ForeColor = Color.White;
-                        btnProcess.Height =63;
-                        btnProcess.Width = 230;
-
-                        btnProcess.Click += new EventHandler(btnProcess_Click);
-                    }
+                    Button btnProcess = new Button();
+                    btnProcess = generateButton("btnProcess","Procesiraj", 15, 82, 186, btnProcess_Click);
 
                 }
                 else
                 {
                     foreach (Control control in gbInfo.Controls)
                     {
-                        if(control is Button)
+                        if (control is Button)
                         {
                             gbInfo.Controls.Remove(control);
                         }
                     }
+                        Button btnProcessedOrderItems = new Button();
+                        btnProcessedOrderItems = generateButton("btnProcessedOrderItems","Artikli", 153, 179, 190, btnProcessedOrderItems_Click);
 
                 }
             }
@@ -148,5 +134,36 @@ namespace superTech.WinUI.BuyerOrder
             }
         }
 
+        private void btnProcessedOrderItems_Click(object sender, EventArgs e)
+        {
+            if (_orderId.HasValue)
+            {
+                frmProcessedBuyerOrderItems frm = new frmProcessedBuyerOrderItems(_orderId);
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Molimo odaberite narudžbu ! ");
+            }
+        }
+
+        public Button generateButton(string name, string text, int r, int g, int b, EventHandler handler)
+        {
+            Button btn = new Button();
+
+            btn.Text = text;
+            btn.Name = name;
+            btn.BackColor = Color.FromArgb(r, g, b);
+            btn.Parent = gbInfo;
+            btn.Dock = DockStyle.Bottom;
+            gbInfo.Controls.Add(btn);
+            btn.ForeColor = Color.White;
+            btn.Height = 63;
+            btn.Width = 230;
+            btn.Click += new EventHandler(handler);
+
+            return btn;
+
+        }
     }
 }
