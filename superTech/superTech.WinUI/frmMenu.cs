@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using superTech.Models.BuyerOrders;
+using superTech.WinUI.Bills;
 using superTech.WinUI.BuyerOrder;
 using superTech.WinUI.News;
 using superTech.WinUI.Offers;
@@ -180,6 +181,14 @@ namespace superTech.WinUI
             {
                 notificationIcon.ShowBalloonTip(6000, "Neprocesirane narudžbe", "Broj narudžbi: " + buyerOrdersList.Count, ToolTipIcon.Info);
             }
+        }
+
+        private void pregledToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            frmBills frmBills = new frmBills();
+            frmBills.MdiParent = this;
+            frmBills.WindowState = FormWindowState.Maximized;
+            frmBills.Show();
         }
     }
 }

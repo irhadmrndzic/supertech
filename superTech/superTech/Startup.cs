@@ -25,6 +25,7 @@ using superTech.Models.Orders;
 using superTech.Models.Offers;
 using superTech.Models.Brands;
 using superTech.Models.BuyerOrders;
+using superTech.Models.Bills;
 
 namespace superTech
 {
@@ -131,6 +132,9 @@ namespace superTech
 
             services.AddScoped<ICRUDService<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest>,
                 BuyerOrderService>();
+
+            services.AddScoped<ICRUDService<BillsModel, object, object, object>,
+             BillsService>();
 
         }
 

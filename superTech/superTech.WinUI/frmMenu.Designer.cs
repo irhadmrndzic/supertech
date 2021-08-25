@@ -48,6 +48,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.notificationIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.računiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +63,7 @@
             this.proizvodiToolStripMenuItem,
             this.nabavkaToolStripMenuItem,
             this.narudžbeKupacaToolStripMenuItem,
+            this.računiToolStripMenuItem,
             this.ponudeToolStripMenuItem,
             this.newsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -204,6 +207,21 @@
             this.notificationIcon.Visible = true;
             this.notificationIcon.BalloonTipClicked += new System.EventHandler(this.notificationIcon_BalloonTipClicked);
             // 
+            // računiToolStripMenuItem
+            // 
+            this.računiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem5});
+            this.računiToolStripMenuItem.Name = "računiToolStripMenuItem";
+            this.računiToolStripMenuItem.Size = new System.Drawing.Size(80, 29);
+            this.računiToolStripMenuItem.Text = "Računi";
+            // 
+            // pregledToolStripMenuItem5
+            // 
+            this.pregledToolStripMenuItem5.Name = "pregledToolStripMenuItem5";
+            this.pregledToolStripMenuItem5.Size = new System.Drawing.Size(270, 34);
+            this.pregledToolStripMenuItem5.Text = "Pregled";
+            this.pregledToolStripMenuItem5.Click += new System.EventHandler(this.pregledToolStripMenuItem5_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -246,6 +264,8 @@
         private System.Windows.Forms.ToolStripMenuItem narudžbeKupacaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem4;
         private System.Windows.Forms.NotifyIcon notificationIcon;
+        private System.Windows.Forms.ToolStripMenuItem računiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem5;
     }
 }
 

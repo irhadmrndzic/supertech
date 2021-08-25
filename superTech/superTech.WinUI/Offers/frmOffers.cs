@@ -213,6 +213,7 @@ namespace superTech.WinUI.Offers
                         offersUpsertRequest.DateTo = dpDateTo.Value;
                         offersUpsertRequest.Title = txtTitle.Text;
                         offersUpsertRequest.Description = txtDescription.Text;
+                        offersUpsertRequest.Active = cbActive.Checked;
 
                         await _offerService.Update<OffersModel>(_offerId, offersUpsertRequest);
                         MessageBox.Show("Uspješno ste uredili ponudu ! ", "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Information);

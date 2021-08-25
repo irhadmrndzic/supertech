@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using AutoMapper;
 using superTech.Database;
+using superTech.Models.Bills;
+using superTech.Models.Bills.BillItems;
 using superTech.Models.Brands;
 using superTech.Models.BuyerOrders;
 using superTech.Models.BuyerOrders.BuyerOrderItems;
@@ -61,7 +63,7 @@ namespace superTech.Mappers
                 ForMember(s => s.UnitOfMeasureId, sr => sr.MapFrom(um => um.FkUnitOfMeasure.UnitOfMeasureId)).
                 ForMember(r => r.Rating, ra => ra.MapFrom(srr => srr.Ratings.Average(ra => (decimal?)ra.Rating1)))
                 .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f => f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
-                .ForMember(b=>b.Brand, sr=>sr.MapFrom(x=>x.Brand.Name))
+                .ForMember(b => b.Brand, sr => sr.MapFrom(x => x.Brand.Name))
                 .ReverseMap();
 
 
@@ -116,18 +118,30 @@ namespace superTech.Mappers
             CreateMap<BuyerOrderItem, BuyerOrderItemsModel>()
                 .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
                 .ForMember(x => x.ProductCode, src => src.MapFrom(q => q.FkProduct.Code))
-                .ForMember(x => x.ProductPrice, src => src.MapFrom(q => q.FkProduct.Price)).ReverseMap();
+                .ForMember(x => x.ProductPrice, opt => opt.MapFrom(src => src.FkProduct.ProductOffers
+                .Where(x => x.FkProduct.ProductId == src.FkProductId && x.FkOffer.Active == true).Count() > 0 ? src.FkProduct.ProductOffers
+                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.PriceWithDiscount).LastOrDefault() : src.FkProduct.Price))
 
-            //CreateMap<BuyerOrderItem,BuyerOrderItemsUpsertRequest>
+               .ReverseMap();
+
+
+            CreateMap<Bill, BillsModel>()
+              //.ForMember(x => x.EmployeeString, src => src.MapFrom(x => x.FkUser.UserName))
+              //.ForMember(q => q.BuyerString, src => src.MapFrom(w => w.FkBuyerOrderNavigation.FkUser.UserName))
+              .ForMember(x => x.BillItems, src => src.MapFrom(x => x.BillItems)).ReverseMap();
+
+            CreateMap<BillItem, BillItemsModel>()
+                .ForMember(x => x.ProductString, src => src.MapFrom(x => x.FkProduct.Name))
+                 .ForMember(x => x.Price, src => src.MapFrom(q => q.Price))
+                 .ForMember(x => x.Discount, opt => opt.MapFrom(src => src.FkProduct.ProductOffers
+                .Where(x => x.FkProduct.ProductId == src.FkProductId && x.FkOffer.Active == true).Count() > 0 ? src.FkProduct.ProductOffers
+                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.Discount).LastOrDefault() : 0))
+
+
+                .ReverseMap();
 
 
 
-
-         //   CreateMap<OrderItem, OrderItemModel>()
-         //.ForMember(x => x.FkOrderId, src => src.MapFrom(a => a.FkOrder.OrderId))
-         //.ForMember(x => x.FkProductId, src => src.MapFrom(a => a.FkProduct.ProductId))
-         //.ForMember(x => x.ProductName, src => src.MapFrom(a => a.FkProduct.Name))
-         //.ForMember(x => x.ProductCode, src => src.MapFrom(a => a.FkProduct.Code));
         }
     }
 }

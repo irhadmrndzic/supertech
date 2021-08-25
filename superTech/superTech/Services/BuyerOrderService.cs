@@ -19,7 +19,7 @@ namespace superTech.Services
         public override List<BuyerOrdersModel> Get(BuyerOrdersSearchRequest searchFilter)
         {
             var query = _dbContext.BuyerOrders.Include(x => x.FkUser).AsQueryable();
-            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
+            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct).ThenInclude(o => o.ProductOffers).ThenInclude(p => p.FkOffer); ;
 
             if(searchFilter.Status == "Procesirana")
             {
@@ -41,7 +41,7 @@ namespace superTech.Services
         {
             var query = _dbContext.BuyerOrders.Where(x => x.BuyerOrderId == id);
 
-            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
+            query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct).ThenInclude(o=>o.ProductOffers).ThenInclude(p=>p.FkOffer);
 
             var entity = query.SingleOrDefault();
 
