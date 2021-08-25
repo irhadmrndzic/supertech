@@ -183,7 +183,7 @@ namespace superTech.WinUI.SupplierOrder
 
                         await _ordersService.Update<OrdersModel>(_orderId, request);
 
-                        DialogResult result = MessageBox.Show("Uspješno ste uredili narudžbu : " + txtOrderNumber.Text + " !", "Uredi narudžbu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogResult result = MessageBox.Show("Uspješno ste uredili nabavku : " + txtOrderNumber.Text + " !", "Uredi nabavke", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         if (result == DialogResult.OK)
                         {
@@ -195,7 +195,7 @@ namespace superTech.WinUI.SupplierOrder
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exception.Message, "Nabavke", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }

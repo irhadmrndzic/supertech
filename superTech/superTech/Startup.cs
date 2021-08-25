@@ -129,7 +129,7 @@ namespace superTech
                         OffersService>();
 
 
-            services.AddScoped<ICRUDService<BuyerOrdersModel, object, object, object>,
+            services.AddScoped<ICRUDService<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest>,
                 BuyerOrderService>();
 
         }

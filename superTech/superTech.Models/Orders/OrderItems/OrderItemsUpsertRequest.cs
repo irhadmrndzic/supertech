@@ -8,7 +8,5 @@ namespace superTech.Models.Orders.OrderItems
         public decimal? Amount { get; set; }
         public int? FkProductId { get; set; }
 
-        //public virtual Order FkOrder { get; set; }
-        //public virtual Product FkProduct { get; set; }
     }
 }

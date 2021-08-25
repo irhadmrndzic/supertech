@@ -22,11 +22,8 @@ namespace superTech.WinUI.BuyerOrder
             this.orderStatus[1] = "Neprocesirana";
             this.orderStatus[2] = "Procesirana";
 
-            cbOrderStatus.DataSource = this.orderStatus;
+            cmbOrderStatus.DataSource = this.orderStatus;
             dgvBuyerOrders.AutoGenerateColumns = false;
-
-
-
         }
 
         private async void frmBuyerOrders_Load(object sender, EventArgs e)
@@ -46,7 +43,6 @@ namespace superTech.WinUI.BuyerOrder
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -60,7 +56,7 @@ namespace superTech.WinUI.BuyerOrder
                 if (e.Value is bool)
                 {
                     bool value = (bool)e.Value;
-                    e.Value = (value) ? "Da" : "Ne";
+                    e.Value = (value) ? "Ne" : "Da";
                     e.FormattingApplied = true;
                 }
             }
@@ -84,9 +80,9 @@ namespace superTech.WinUI.BuyerOrder
                 txtDate.Text = entity.Date.ToString();
                 txtBuyer.Text = entity.UserString;
                 txtAmount.Text = entity.Amount.ToString();
-                cbProcessed.Checked = entity.Active;
+                cbProcessed.Checked = !entity.Active; //Procesirana je ako nije aktivna
 
-                if (!entity.Active)
+                if (entity.Active)
                 {
                     foreach (Control control in gbInfo.Controls)
                     {
@@ -98,7 +94,7 @@ namespace superTech.WinUI.BuyerOrder
 
 
                     Button btnProcess = new Button();
-                    btnProcess = generateButton("btnProcess","Procesiraj", 15, 82, 186, btnProcess_Click);
+                    btnProcess = generateButton("btnProcess", "Procesiraj", 15, 82, 186, btnProcess_Click);
 
                 }
                 else
@@ -110,8 +106,8 @@ namespace superTech.WinUI.BuyerOrder
                             gbInfo.Controls.Remove(control);
                         }
                     }
-                        Button btnProcessedOrderItems = new Button();
-                        btnProcessedOrderItems = generateButton("btnProcessedOrderItems","Artikli", 153, 179, 190, btnProcessedOrderItems_Click);
+                    Button btnProcessedOrderItems = new Button();
+                    btnProcessedOrderItems = generateButton("btnProcessedOrderItems", "Artikli", 153, 179, 190, btnProcessedOrderItems_Click);
 
                 }
             }
@@ -121,12 +117,17 @@ namespace superTech.WinUI.BuyerOrder
             }
 
         }
-        private void btnProcess_Click(object sender, EventArgs e)
+        private async void btnProcess_Click(object sender, EventArgs e)
         {
             if (_orderId.HasValue)
             {
                 frmBuyerOrderItems frm = new frmBuyerOrderItems(_orderId);
-                frm.Show();
+                frm.ShowDialog();
+
+                if(frm.result == DialogResult.OK)
+                {
+                   await loadBuyerOrders();
+                }
             }
             else
             {
@@ -163,6 +164,34 @@ namespace superTech.WinUI.BuyerOrder
             btn.Click += new EventHandler(handler);
 
             return btn;
+
+        }
+
+        private async void btnFilterOrder_Click(object sender, EventArgs e)
+        {
+            var value = cmbOrderStatus.SelectedValue;
+            BuyerOrdersSearchRequest req = new BuyerOrdersSearchRequest();
+
+            if (value == "")
+            {
+                await loadBuyerOrders();
+            }
+            else if (value == "Neprocesirana")
+            {
+                req.Status = "Neprocesirana";
+                var buyerOrdersList = await _buyerOrderService.Get<List<BuyerOrdersModel>>(req);
+                Cursor.Current = Cursor.Current;
+                dgvBuyerOrders.DataSource = buyerOrdersList;
+            }
+            else
+            {
+                req.Status = "Procesirana";
+                var buyerOrdersList = await _buyerOrderService.Get<List<BuyerOrdersModel>>(req);
+                Cursor.Current = Cursor.Current;
+                dgvBuyerOrders.DataSource = buyerOrdersList;
+            }
+
+
 
         }
     }

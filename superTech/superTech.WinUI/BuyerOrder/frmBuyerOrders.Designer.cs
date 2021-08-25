@@ -38,7 +38,7 @@ namespace superTech.WinUI.BuyerOrder
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbOrderStatus = new System.Windows.Forms.ComboBox();
+            this.cmbOrderStatus = new System.Windows.Forms.ComboBox();
             this.btnFilterOrder = new System.Windows.Forms.Button();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.cbProcessed = new System.Windows.Forms.CheckBox();
@@ -135,7 +135,7 @@ namespace superTech.WinUI.BuyerOrder
             // Search
             // 
             this.Search.Controls.Add(this.label2);
-            this.Search.Controls.Add(this.cbOrderStatus);
+            this.Search.Controls.Add(this.cmbOrderStatus);
             this.Search.Controls.Add(this.btnFilterOrder);
             this.Search.Location = new System.Drawing.Point(12, 12);
             this.Search.Name = "Search";
@@ -153,13 +153,13 @@ namespace superTech.WinUI.BuyerOrder
             this.label2.TabIndex = 8;
             this.label2.Text = "Status";
             // 
-            // cbOrderStatus
+            // cmbOrderStatus
             // 
-            this.cbOrderStatus.FormattingEnabled = true;
-            this.cbOrderStatus.Location = new System.Drawing.Point(30, 95);
-            this.cbOrderStatus.Name = "cbOrderStatus";
-            this.cbOrderStatus.Size = new System.Drawing.Size(233, 28);
-            this.cbOrderStatus.TabIndex = 7;
+            this.cmbOrderStatus.FormattingEnabled = true;
+            this.cmbOrderStatus.Location = new System.Drawing.Point(30, 95);
+            this.cmbOrderStatus.Name = "cmbOrderStatus";
+            this.cmbOrderStatus.Size = new System.Drawing.Size(233, 28);
+            this.cmbOrderStatus.TabIndex = 7;
             // 
             // btnFilterOrder
             // 
@@ -169,6 +169,7 @@ namespace superTech.WinUI.BuyerOrder
             this.btnFilterOrder.TabIndex = 1;
             this.btnFilterOrder.Text = "Filtriraj";
             this.btnFilterOrder.UseVisualStyleBackColor = true;
+            this.btnFilterOrder.Click += new System.EventHandler(this.btnFilterOrder_Click);
             // 
             // gbInfo
             // 
@@ -291,15 +292,9 @@ namespace superTech.WinUI.BuyerOrder
         #endregion
 
         private System.Windows.Forms.DataGridView dgvBuyerOrders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BuyerOrderId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Buyer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
         private System.Windows.Forms.GroupBox Search;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbOrderStatus;
+        private System.Windows.Forms.ComboBox cmbOrderStatus;
         private System.Windows.Forms.Button btnFilterOrder;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.CheckBox cbProcessed;
@@ -311,5 +306,11 @@ namespace superTech.WinUI.BuyerOrder
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtOrderNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BuyerOrderId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Buyer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
     }
 }

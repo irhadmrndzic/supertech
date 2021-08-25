@@ -2,23 +2,34 @@
 using Microsoft.EntityFrameworkCore;
 using superTech.Database;
 using superTech.Models.BuyerOrders;
+using superTech.Models.BuyerOrders.BuyerOrderItems;
 using superTech.Services.GenericCRUD;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace superTech.Services
 {
-    public class BuyerOrderService : BaseCRUDService<BuyerOrdersModel, object, BuyerOrder, object, object>, ICRUDService<BuyerOrdersModel, object, object, object>
+    public class BuyerOrderService : BaseCRUDService<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrder, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest>, ICRUDService<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest>
     {
         public BuyerOrderService(superTechRSContext context, IMapper mapper) : base(context, mapper)
         {
 
         }
 
-        public override List<BuyerOrdersModel> Get(object searchFilter)
+        public override List<BuyerOrdersModel> Get(BuyerOrdersSearchRequest searchFilter)
         {
             var query = _dbContext.BuyerOrders.Include(x => x.FkUser).AsQueryable();
             query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
+
+            if(searchFilter.Status == "Procesirana")
+            {
+                query = query.Where(x => x.Active == false);
+            }
+            else if(searchFilter.Status == "Neprocesirana")
+            {
+                query = query.Where(x => x.Active == true);
+
+            }
 
             var list = query.ToList().OrderBy(x => x.Active ? 1 : 0);
 
@@ -33,6 +44,37 @@ namespace superTech.Services
             query = query.Include(x => x.FkUser).Include(q => q.BuyerOrderItems).ThenInclude(p => p.FkProduct);
 
             var entity = query.SingleOrDefault();
+
+            return _mapper.Map<BuyerOrdersModel>(entity);
+        }
+
+        public override BuyerOrdersModel Update(int id, BuyerOrdersUpsertRequest request)
+        {
+            var entity = _dbContext.BuyerOrders.Find(id);
+            _dbContext.BuyerOrders.Attach(entity);
+            _dbContext.BuyerOrders.Update(entity);
+
+
+            if (request.Confirmed)
+            {
+                entity.Confirmed = true;
+                entity.Active = false;
+                entity.Canceled = false;
+            }
+            else if (request.Canceled)
+            {
+                entity.Canceled = true;
+                entity.Confirmed = false;
+                entity.Active = false;
+            }
+            else
+            {
+                entity.Active = true;
+                entity.Confirmed = false;
+                entity.Canceled = false;
+            }
+
+            _dbContext.SaveChanges();
 
             return _mapper.Map<BuyerOrdersModel>(entity);
         }

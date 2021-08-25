@@ -21,6 +21,11 @@ namespace superTech.WinUI.BuyerOrder
             if (_orderId.HasValue)
             {
                 var order = await _buyerOrderService.GetById<Models.BuyerOrders.BuyerOrdersModel>(_orderId);
+                lblAmount.Text = order.Amount.ToString();
+                lblBuyer.Text = order.UserString;
+                lblOrderDate.Text = order.Date.ToShortDateString();
+                lblOrderNumber.Text = order.OrderNumber.ToString();
+                txtInfo.Text = order.Canceled ? "Otkazana" : "Potvrđena";
                 listViewOrderItems.Items.Clear();
                 int i = 1;
                 foreach (var orderItem in order.BuyerOrderItems)

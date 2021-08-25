@@ -47,6 +47,7 @@ namespace superTech.WinUI.BuyerOrder
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +74,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.lblOrderDate.AutoSize = true;
             this.lblOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblOrderDate.Location = new System.Drawing.Point(155, 84);
+            this.lblOrderDate.Location = new System.Drawing.Point(155, 72);
             this.lblOrderDate.Name = "lblOrderDate";
             this.lblOrderDate.Size = new System.Drawing.Size(0, 22);
             this.lblOrderDate.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.Datum.AutoSize = true;
             this.Datum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Datum.Location = new System.Drawing.Point(12, 84);
+            this.Datum.Location = new System.Drawing.Point(12, 72);
             this.Datum.Name = "Datum";
             this.Datum.Size = new System.Drawing.Size(67, 22);
             this.Datum.TabIndex = 2;
@@ -92,7 +93,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblAmount.Location = new System.Drawing.Point(423, 84);
+            this.lblAmount.Location = new System.Drawing.Point(423, 72);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(0, 22);
             this.lblAmount.TabIndex = 7;
@@ -101,7 +102,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.Iznos.AutoSize = true;
             this.Iznos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Iznos.Location = new System.Drawing.Point(330, 84);
+            this.Iznos.Location = new System.Drawing.Point(330, 72);
             this.Iznos.Name = "Iznos";
             this.Iznos.Size = new System.Drawing.Size(56, 22);
             this.Iznos.TabIndex = 6;
@@ -204,6 +205,7 @@ namespace superTech.WinUI.BuyerOrder
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Otkaži";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -216,12 +218,24 @@ namespace superTech.WinUI.BuyerOrder
             this.btnConfirm.TabIndex = 11;
             this.btnConfirm.Text = "Potvrdi";
             this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // txtInfo
+            // 
+            this.txtInfo.BackColor = System.Drawing.SystemColors.Info;
+            this.txtInfo.Location = new System.Drawing.Point(16, 108);
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.ReadOnly = true;
+            this.txtInfo.Size = new System.Drawing.Size(220, 26);
+            this.txtInfo.TabIndex = 17;
+            this.txtInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmBuyerOrderItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 810);
+            this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
@@ -237,6 +251,7 @@ namespace superTech.WinUI.BuyerOrder
             this.Name = "frmBuyerOrderItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalji narudžbe ";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmBuyerOrderItems_FormClosed);
             this.Load += new System.EventHandler(this.frmBuyerOrderItems_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -264,5 +279,6 @@ namespace superTech.WinUI.BuyerOrder
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }

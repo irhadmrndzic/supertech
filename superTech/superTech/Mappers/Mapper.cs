@@ -96,13 +96,6 @@ namespace superTech.Mappers
                 .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
                 .ReverseMap();
 
-            //CreateMap<ProductOffer, OfferItemsUpsertRequest>()
-            //    .ForMember(x => x.Discount, src => src.MapFrom(q => q.Discount))
-            //    .ForMember(x => x.PriceWithDiscount, src => src.MapFrom(q => q.PriceWithDiscount))
-            //    .ForMember(q => q.FkProductId, src => src.MapFrom(w => w.FkProduct.ProductId))
-            //    .ForMember(q => q.FkOfferId, src => src.MapFrom(w => w.FkOffer.OfferId)).ReverseMap();
-
-
             CreateMap<OfferItemsUpsertRequest, ProductOffer>()
                 .ForMember(x => x.FkProductId, src => src.MapFrom(q => q.FkProductId))
                 .ForMember(x => x.FkOfferId, src => src.MapFrom(q => q.FkOfferId))
@@ -110,11 +103,8 @@ namespace superTech.Mappers
                 .ForMember(x => x.PriceWithDiscount, src => src.MapFrom(q => q.PriceWithDiscount)).ReverseMap();
 
 
-
-
             CreateMap<Offer, OffersModel>()
                     .ForMember(x => x.OfferItems, src => src.MapFrom(x => x.ProductOffers)).ReverseMap();
-
 
             CreateMap<BuyerOrder, BuyerOrdersModel>()
                 .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
@@ -128,8 +118,16 @@ namespace superTech.Mappers
                 .ForMember(x => x.ProductCode, src => src.MapFrom(q => q.FkProduct.Code))
                 .ForMember(x => x.ProductPrice, src => src.MapFrom(q => q.FkProduct.Price)).ReverseMap();
 
-            //CreateMap<OffersUpsertRequest, Offer>()
-            //        .ForMember(x => x.ProductOffers, src => src.MapFrom(x => x.OfferItems)).ReverseMap();
+            //CreateMap<BuyerOrderItem,BuyerOrderItemsUpsertRequest>
+
+
+
+
+         //   CreateMap<OrderItem, OrderItemModel>()
+         //.ForMember(x => x.FkOrderId, src => src.MapFrom(a => a.FkOrder.OrderId))
+         //.ForMember(x => x.FkProductId, src => src.MapFrom(a => a.FkProduct.ProductId))
+         //.ForMember(x => x.ProductName, src => src.MapFrom(a => a.FkProduct.Name))
+         //.ForMember(x => x.ProductCode, src => src.MapFrom(a => a.FkProduct.Code));
         }
     }
 }

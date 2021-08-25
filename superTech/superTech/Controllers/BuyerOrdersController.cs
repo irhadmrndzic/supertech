@@ -8,9 +8,9 @@ namespace superTech.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BuyerOrdersController : BaseCRUDController<BuyerOrdersModel, object, object, object>
+    public class BuyerOrdersController : BaseCRUDController<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest>
     {
-        public BuyerOrdersController(ICRUDService<BuyerOrdersModel, object, object, object> IBaseService):base(IBaseService)
+        public BuyerOrdersController(ICRUDService<BuyerOrdersModel, BuyerOrdersSearchRequest, BuyerOrdersUpsertRequest, BuyerOrdersUpsertRequest> IBaseService):base(IBaseService)
         {
 
         }

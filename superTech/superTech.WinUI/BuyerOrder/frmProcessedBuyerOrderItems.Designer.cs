@@ -45,6 +45,7 @@ namespace superTech.WinUI.BuyerOrder
             this.Datum = new System.Windows.Forms.Label();
             this.lblOrderNumber = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.gbItems.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +120,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblAmount.Location = new System.Drawing.Point(423, 86);
+            this.lblAmount.Location = new System.Drawing.Point(423, 76);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(0, 22);
             this.lblAmount.TabIndex = 15;
@@ -128,7 +129,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.Iznos.AutoSize = true;
             this.Iznos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Iznos.Location = new System.Drawing.Point(330, 86);
+            this.Iznos.Location = new System.Drawing.Point(330, 76);
             this.Iznos.Name = "Iznos";
             this.Iznos.Size = new System.Drawing.Size(56, 22);
             this.Iznos.TabIndex = 14;
@@ -157,7 +158,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.lblOrderDate.AutoSize = true;
             this.lblOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblOrderDate.Location = new System.Drawing.Point(155, 86);
+            this.lblOrderDate.Location = new System.Drawing.Point(155, 76);
             this.lblOrderDate.Name = "lblOrderDate";
             this.lblOrderDate.Size = new System.Drawing.Size(0, 22);
             this.lblOrderDate.TabIndex = 11;
@@ -166,7 +167,7 @@ namespace superTech.WinUI.BuyerOrder
             // 
             this.Datum.AutoSize = true;
             this.Datum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Datum.Location = new System.Drawing.Point(12, 86);
+            this.Datum.Location = new System.Drawing.Point(12, 76);
             this.Datum.Name = "Datum";
             this.Datum.Size = new System.Drawing.Size(67, 22);
             this.Datum.TabIndex = 10;
@@ -191,11 +192,22 @@ namespace superTech.WinUI.BuyerOrder
             this.label1.TabIndex = 8;
             this.label1.Text = "Broj narudžbe:";
             // 
+            // txtInfo
+            // 
+            this.txtInfo.BackColor = System.Drawing.SystemColors.Info;
+            this.txtInfo.Location = new System.Drawing.Point(15, 111);
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.ReadOnly = true;
+            this.txtInfo.Size = new System.Drawing.Size(220, 26);
+            this.txtInfo.TabIndex = 16;
+            this.txtInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmProcessedBuyerOrderItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 735);
+            this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.Iznos);
             this.Controls.Add(this.lblBuyer);
@@ -234,5 +246,6 @@ namespace superTech.WinUI.BuyerOrder
         private System.Windows.Forms.Label Datum;
         private System.Windows.Forms.Label lblOrderNumber;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }
