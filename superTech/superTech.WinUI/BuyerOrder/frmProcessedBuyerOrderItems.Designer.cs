@@ -220,7 +220,7 @@ namespace superTech.WinUI.BuyerOrder
             this.MaximizeBox = false;
             this.Name = "frmProcessedBuyerOrderItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmProcessedBuyerOrderItems";
+            this.Text = "Detalji procesirane narudžbe";
             this.Load += new System.EventHandler(this.frmProcessedBuyerOrderItems_Load);
             this.gbItems.ResumeLayout(false);
             this.ResumeLayout(false);

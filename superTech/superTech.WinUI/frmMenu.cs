@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using superTech.Models.BuyerOrders;
 using superTech.WinUI.BuyerOrder;
 using superTech.WinUI.News;
 using superTech.WinUI.Offers;
@@ -12,10 +14,12 @@ namespace superTech.WinUI
     public partial class frmMenu : Form
     {
         private int childFormNumber = 0;
+        public readonly APIService.APIService _buyerOrderService = new APIService.APIService("buyerOrders");
 
         public frmMenu()
         {
             InitializeComponent();
+            this.notificationIcon.Icon = this.Icon;
             txtUsername.Text = APIService.APIService.Username;
         }
 
@@ -146,10 +150,6 @@ namespace superTech.WinUI
             frmAddOffer.Show();
         }
 
-        private void narudžbeKupacaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-       
-        }
 
         private void pregledToolStripMenuItem4_Click(object sender, EventArgs e)
         {
@@ -157,6 +157,29 @@ namespace superTech.WinUI
             frmBuyerOrders.MdiParent = this;
             frmBuyerOrders.WindowState = FormWindowState.Maximized;
             frmBuyerOrders.Show();
+        }
+
+
+
+        private void notificationIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            frmBuyerOrders frmBuyerOrders = new frmBuyerOrders();
+            frmBuyerOrders.MdiParent = this;
+            frmBuyerOrders.WindowState = FormWindowState.Maximized;
+            frmBuyerOrders.Show();
+        }
+
+        private async void frmMenu_Load(object sender, EventArgs e)
+        {
+            BuyerOrdersSearchRequest searchRequest = new BuyerOrdersSearchRequest();
+            searchRequest.Status = "Neprocesirana";
+
+            var buyerOrdersList = await _buyerOrderService.Get<List<BuyerOrdersModel>>(searchRequest);
+
+            if (buyerOrdersList.Count > 0)
+            {
+                notificationIcon.ShowBalloonTip(6000, "Neprocesirane narudžbe", "Broj narudžbi: " + buyerOrdersList.Count, ToolTipIcon.Info);
+            }
         }
     }
 }

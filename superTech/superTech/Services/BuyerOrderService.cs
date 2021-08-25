@@ -31,7 +31,7 @@ namespace superTech.Services
 
             }
 
-            var list = query.ToList().OrderBy(x => x.Active ? 1 : 0);
+            var list = query.ToList().OrderBy(x => x.Active ? 0 : 1).ThenBy(q => q.Date);
 
             return _mapper.Map<List<BuyerOrdersModel>>(list);
 

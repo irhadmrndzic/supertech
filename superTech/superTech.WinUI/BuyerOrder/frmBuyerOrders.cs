@@ -161,6 +161,7 @@ namespace superTech.WinUI.BuyerOrder
             btn.ForeColor = Color.White;
             btn.Height = 63;
             btn.Width = 230;
+            btn.FlatStyle = FlatStyle.Flat;
             btn.Click += new EventHandler(handler);
 
             return btn;
