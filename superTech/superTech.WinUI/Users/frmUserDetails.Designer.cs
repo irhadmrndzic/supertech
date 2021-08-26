@@ -345,7 +345,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "frmUserDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalji korisnika";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();

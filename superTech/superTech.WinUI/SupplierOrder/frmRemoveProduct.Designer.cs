@@ -47,12 +47,15 @@
             // 
             // btnContinue
             // 
+            this.btnContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContinue.ForeColor = System.Drawing.Color.White;
             this.btnContinue.Location = new System.Drawing.Point(12, 123);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(209, 48);
             this.btnContinue.TabIndex = 2;
             this.btnContinue.Text = "Nastavi";
-            this.btnContinue.UseVisualStyleBackColor = true;
+            this.btnContinue.UseVisualStyleBackColor = false;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
             // errProvider

@@ -179,12 +179,15 @@
             // 
             // btnShowAll
             // 
+            this.btnShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAll.ForeColor = System.Drawing.Color.White;
             this.btnShowAll.Location = new System.Drawing.Point(595, 70);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(106, 52);
             this.btnShowAll.TabIndex = 7;
             this.btnShowAll.Text = "Prikaži sve";
-            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.UseVisualStyleBackColor = false;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // lblNoOrders
@@ -206,12 +209,15 @@
             // 
             // btnFilterOrder
             // 
+            this.btnFilterOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnFilterOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterOrder.ForeColor = System.Drawing.Color.White;
             this.btnFilterOrder.Location = new System.Drawing.Point(416, 70);
             this.btnFilterOrder.Name = "btnFilterOrder";
             this.btnFilterOrder.Size = new System.Drawing.Size(106, 52);
             this.btnFilterOrder.TabIndex = 1;
             this.btnFilterOrder.Text = "Filtriraj";
-            this.btnFilterOrder.UseVisualStyleBackColor = true;
+            this.btnFilterOrder.UseVisualStyleBackColor = false;
             this.btnFilterOrder.Click += new System.EventHandler(this.btnFilterOrder_Click);
             // 
             // dpOrder
@@ -247,12 +253,15 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(416, 76);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(274, 73);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(106, 52);
+            this.btnSave.Size = new System.Drawing.Size(257, 58);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbActive
@@ -278,6 +287,7 @@
             // 
             // btnOrderItems
             // 
+            this.btnOrderItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOrderItems.Location = new System.Drawing.Point(429, 268);
             this.btnOrderItems.Name = "btnOrderItems";
             this.btnOrderItems.Size = new System.Drawing.Size(106, 45);

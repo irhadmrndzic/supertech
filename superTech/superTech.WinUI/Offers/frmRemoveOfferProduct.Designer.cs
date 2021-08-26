@@ -39,12 +39,15 @@ namespace superTech.WinUI.Offers
             // 
             // btnCnt
             // 
+            this.btnCnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnCnt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCnt.ForeColor = System.Drawing.Color.White;
             this.btnCnt.Location = new System.Drawing.Point(12, 110);
             this.btnCnt.Name = "btnCnt";
             this.btnCnt.Size = new System.Drawing.Size(209, 48);
             this.btnCnt.TabIndex = 5;
             this.btnCnt.Text = "Nastavi";
-            this.btnCnt.UseVisualStyleBackColor = true;
+            this.btnCnt.UseVisualStyleBackColor = false;
             this.btnCnt.Click += new System.EventHandler(this.btnCnt_Click);
             // 
             // label1

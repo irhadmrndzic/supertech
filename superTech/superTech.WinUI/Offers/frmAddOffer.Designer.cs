@@ -46,10 +46,8 @@ namespace superTech.WinUI.Offers
             this.txtDiscount = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtUnitOfMeasure = new System.Windows.Forms.TextBox();
-            this.btnAddProduct = new System.Windows.Forms.Button();
             this.groupSearch = new System.Windows.Forms.GroupBox();
             this.lblNoProducts = new System.Windows.Forms.Label();
-            this.btnShowProducts = new System.Windows.Forms.Button();
             this.cmbProductCategories = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtProductCodeSearch = new System.Windows.Forms.TextBox();
@@ -77,6 +75,8 @@ namespace superTech.WinUI.Offers
             this.PriceDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbActive = new System.Windows.Forms.CheckBox();
+            this.btnShowProducts = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.gbAddProduct.SuspendLayout();
             this.groupSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -176,17 +176,22 @@ namespace superTech.WinUI.Offers
             // 
             // btnAddOrder
             // 
-            this.btnAddOrder.Location = new System.Drawing.Point(516, 588);
+            this.btnAddOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnAddOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddOrder.ForeColor = System.Drawing.Color.White;
+            this.btnAddOrder.Location = new System.Drawing.Point(452, 584);
             this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(184, 84);
+            this.btnAddOrder.Size = new System.Drawing.Size(230, 63);
             this.btnAddOrder.TabIndex = 40;
             this.btnAddOrder.Text = "Zaključi";
-            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.UseVisualStyleBackColor = false;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
             // btnRemoveProduct
             // 
             this.btnRemoveProduct.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRemoveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveProduct.ForeColor = System.Drawing.Color.White;
             this.btnRemoveProduct.Location = new System.Drawing.Point(545, 302);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Size = new System.Drawing.Size(137, 54);
@@ -237,16 +242,6 @@ namespace superTech.WinUI.Offers
             this.txtUnitOfMeasure.Size = new System.Drawing.Size(138, 26);
             this.txtUnitOfMeasure.TabIndex = 35;
             // 
-            // btnAddProduct
-            // 
-            this.btnAddProduct.Location = new System.Drawing.Point(344, 423);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
-            this.btnAddProduct.TabIndex = 34;
-            this.btnAddProduct.Text = "Dodaj na listu";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
-            // 
             // groupSearch
             // 
             this.groupSearch.Controls.Add(this.lblNoProducts);
@@ -269,16 +264,6 @@ namespace superTech.WinUI.Offers
             this.lblNoProducts.Name = "lblNoProducts";
             this.lblNoProducts.Size = new System.Drawing.Size(0, 20);
             this.lblNoProducts.TabIndex = 32;
-            // 
-            // btnShowProducts
-            // 
-            this.btnShowProducts.Location = new System.Drawing.Point(424, 70);
-            this.btnShowProducts.Name = "btnShowProducts";
-            this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
-            this.btnShowProducts.TabIndex = 33;
-            this.btnShowProducts.Text = "Prikazi";
-            this.btnShowProducts.UseVisualStyleBackColor = true;
-            this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 
             // cmbProductCategories
             // 
@@ -529,6 +514,32 @@ namespace superTech.WinUI.Offers
             this.cbActive.Text = "Aktivna:";
             this.cbActive.UseVisualStyleBackColor = true;
             // 
+            // btnShowProducts
+            // 
+            this.btnShowProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowProducts.ForeColor = System.Drawing.Color.White;
+            this.btnShowProducts.Location = new System.Drawing.Point(424, 70);
+            this.btnShowProducts.Name = "btnShowProducts";
+            this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
+            this.btnShowProducts.TabIndex = 33;
+            this.btnShowProducts.Text = "Filtriraj";
+            this.btnShowProducts.UseVisualStyleBackColor = false;
+            this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddProduct.Location = new System.Drawing.Point(344, 423);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(202, 49);
+            this.btnAddProduct.TabIndex = 34;
+            this.btnAddProduct.Text = "Dodaj na listu";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
             // frmAddOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -576,10 +587,8 @@ namespace superTech.WinUI.Offers
         private System.Windows.Forms.MaskedTextBox txtDiscount;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtUnitOfMeasure;
-        private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.GroupBox groupSearch;
         private System.Windows.Forms.Label lblNoProducts;
-        private System.Windows.Forms.Button btnShowProducts;
         private System.Windows.Forms.ComboBox cmbProductCategories;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtProductCodeSearch;
@@ -611,5 +620,7 @@ namespace superTech.WinUI.Offers
         private System.Windows.Forms.DataGridViewTextBoxColumn SelectedProductQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceDiscount;
         private System.Windows.Forms.CheckBox cbActive;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnShowProducts;
     }
 }

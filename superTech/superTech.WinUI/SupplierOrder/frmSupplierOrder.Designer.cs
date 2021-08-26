@@ -208,7 +208,7 @@
             this.btnShowSuppliers.Name = "btnShowSuppliers";
             this.btnShowSuppliers.Size = new System.Drawing.Size(202, 49);
             this.btnShowSuppliers.TabIndex = 33;
-            this.btnShowSuppliers.Text = "Prikaži";
+            this.btnShowSuppliers.Text = "Filtriraj";
             this.btnShowSuppliers.UseVisualStyleBackColor = false;
             this.btnShowSuppliers.Click += new System.EventHandler(this.btnShowSuppliers_Click);
             // 
@@ -635,7 +635,7 @@
             this.btnShowProducts.Name = "btnShowProducts";
             this.btnShowProducts.Size = new System.Drawing.Size(202, 49);
             this.btnShowProducts.TabIndex = 33;
-            this.btnShowProducts.Text = "Prikazi";
+            this.btnShowProducts.Text = "Filtriraj";
             this.btnShowProducts.UseVisualStyleBackColor = false;
             this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 

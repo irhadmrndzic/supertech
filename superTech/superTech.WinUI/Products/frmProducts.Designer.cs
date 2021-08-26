@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -187,9 +187,9 @@
             // Rating
             // 
             this.Rating.DataPropertyName = "Rating";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "/";
-            this.Rating.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "/";
+            this.Rating.DefaultCellStyle = dataGridViewCellStyle2;
             this.Rating.HeaderText = "Ocjena";
             this.Rating.MinimumWidth = 8;
             this.Rating.Name = "Rating";
@@ -313,9 +313,9 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
-            this.btnSave.Location = new System.Drawing.Point(265, 1030);
+            this.btnSave.Location = new System.Drawing.Point(496, 1036);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(488, 63);
+            this.btnSave.Size = new System.Drawing.Size(257, 58);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -387,7 +387,7 @@
             this.btnShowProducts.Name = "btnShowProducts";
             this.btnShowProducts.Size = new System.Drawing.Size(178, 49);
             this.btnShowProducts.TabIndex = 28;
-            this.btnShowProducts.Text = "Prikazi";
+            this.btnShowProducts.Text = "Filtriraj";
             this.btnShowProducts.UseVisualStyleBackColor = false;
             this.btnShowProducts.Click += new System.EventHandler(this.btnShowProducts_Click);
             // 
@@ -428,7 +428,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(178, 49);
             this.btnSearch.TabIndex = 31;
-            this.btnSearch.Text = "Prikazi";
+            this.btnSearch.Text = "Filtriraj";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

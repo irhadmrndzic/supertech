@@ -163,12 +163,15 @@ namespace superTech.WinUI.BuyerOrder
             // 
             // btnFilterOrder
             // 
+            this.btnFilterOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnFilterOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterOrder.ForeColor = System.Drawing.Color.White;
             this.btnFilterOrder.Location = new System.Drawing.Point(328, 82);
             this.btnFilterOrder.Name = "btnFilterOrder";
             this.btnFilterOrder.Size = new System.Drawing.Size(106, 52);
             this.btnFilterOrder.TabIndex = 1;
             this.btnFilterOrder.Text = "Filtriraj";
-            this.btnFilterOrder.UseVisualStyleBackColor = true;
+            this.btnFilterOrder.UseVisualStyleBackColor = false;
             this.btnFilterOrder.Click += new System.EventHandler(this.btnFilterOrder_Click);
             // 
             // gbInfo
