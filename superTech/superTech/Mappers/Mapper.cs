@@ -126,22 +126,12 @@ namespace superTech.Mappers
 
 
             CreateMap<Bill, BillsModel>()
-              //.ForMember(x => x.EmployeeString, src => src.MapFrom(x => x.FkUser.UserName))
-              //.ForMember(q => q.BuyerString, src => src.MapFrom(w => w.FkBuyerOrderNavigation.FkUser.UserName))
               .ForMember(x => x.BillItems, src => src.MapFrom(x => x.BillItems)).ReverseMap();
 
             CreateMap<BillItem, BillItemsModel>()
                 .ForMember(x => x.ProductString, src => src.MapFrom(x => x.FkProduct.Name))
                  .ForMember(x => x.Price, src => src.MapFrom(q => q.Price))
-                 .ForMember(x => x.Discount, opt => opt.MapFrom(src => src.FkProduct.ProductOffers
-                .Where(x => x.FkProduct.ProductId == src.FkProductId && x.FkOffer.Active == true).Count() > 0 ? src.FkProduct.ProductOffers
-                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.Discount).LastOrDefault() : 0))
-
-
                 .ReverseMap();
-
-
-
         }
     }
 }

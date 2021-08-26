@@ -44,9 +44,9 @@ namespace superTech.WinUI.Bills
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Discount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblAmountWithTax = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbItems.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,6 +188,12 @@ namespace superTech.WinUI.Bills
             this.Discount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Discount.Width = 125;
             // 
+            // Total
+            // 
+            this.Total.Text = "Ukupno";
+            this.Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Total.Width = 125;
+            // 
             // lblAmountWithTax
             // 
             this.lblAmountWithTax.AutoSize = true;
@@ -207,12 +213,6 @@ namespace superTech.WinUI.Bills
             this.label3.TabIndex = 26;
             this.label3.Text = "Iznos s porezom:";
             // 
-            // Total
-            // 
-            this.Total.Text = "Ukupno";
-            this.Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Total.Width = 125;
-            // 
             // frmBillItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -229,6 +229,7 @@ namespace superTech.WinUI.Bills
             this.Controls.Add(this.lblBillNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbItems);
+            this.MaximizeBox = false;
             this.Name = "frmBillItems";
             this.Text = "frmBillItems";
             this.Load += new System.EventHandler(this.frmBillItems_Load);

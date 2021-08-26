@@ -52,7 +52,7 @@ namespace superTech.WinUI.BuyerOrder
             {
                 await _buyerOrderService.Update<BuyerOrdersModel>(_orderId, req);
 
-                DialogResult result = MessageBox.Show("Uspješno ste potvrdili narudžbu!", "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Narudžba potvrđena, račun kreiran !", "Narudžbe", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (result == DialogResult.OK)
                 {

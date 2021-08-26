@@ -24,14 +24,14 @@ namespace superTech.WinUI.Bills
                 lblBillNumber.Text = bill.BillNumber.ToString();
                 lblIssuingDate.Text = bill.IssuingDate.ToShortDateString();
                 lblAmount.Text = bill.Amount.ToString();
-                lblTax.Text = bill.Tax.ToString();
+                lblTax.Text = bill.Tax.ToString() + "%";  
                 lblAmountWithTax.Text = bill.AmountWithTax.ToString();
                 listViewOrderItems.Items.Clear();
                 int i = 1;
                 foreach (var billItem in bill.BillItems)
                 {
                     var row = new string[] { i.ToString(), billItem.ProductString, billItem.Price.ToString() + "KM", billItem.Quantity.ToString(), billItem.Discount.HasValue && billItem.Discount > 1? billItem.Discount.ToString():"0",
-                        (Math.Round(billItem.Quantity * decimal.Parse(billItem.Price.ToString()) * (billItem.Discount.HasValue && billItem.Discount > 1? (decimal.Parse(billItem.Discount.ToString())):1),2)).ToString() +"KM" };
+                        (Math.Round(billItem.Quantity * decimal.Parse(billItem.Price.ToString()))).ToString() +"KM" };
                     var lvItem = new ListViewItem(row);
                     listViewOrderItems.Items.Add(lvItem);
                     i++;
