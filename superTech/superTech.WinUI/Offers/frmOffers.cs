@@ -177,28 +177,6 @@ namespace superTech.WinUI.Offers
             LoadOffers();
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (_offerId.HasValue)
-            {
-                try
-                {
-                    await _offerService.Delete<OffersModel>(_offerId);
-                    MessageBox.Show("Uspješno ste obrisali ponudu ! ");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ponude", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Molimo odaberite ponudu ! ");
-            }
-
-        }
-
         private async void btnSaveOffer_Click(object sender, EventArgs e)
         {
             OffersUpsertRequest offersUpsertRequest = new OffersUpsertRequest();

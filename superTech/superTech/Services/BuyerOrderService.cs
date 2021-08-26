@@ -88,11 +88,11 @@ namespace superTech.Services
                     billItem.FkBillId = bill.BillId;
                     billItem.FkProductId = buyerItem.FkProductId;
                     billItem.Price = (decimal)(buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Count() > 0 ?
-                     buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Select(q => q.PriceWithDiscount).LastOrDefault() : buyerItem.FkProduct.Price);
+                     buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Select(q => q.PriceWithDiscount).FirstOrDefault() : buyerItem.FkProduct.Price);
 
 
                     billItem.Discount = (decimal)(buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Count() > 0 ?
-                     buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Select(q => q.Discount).LastOrDefault() : 0);
+                     buyerItem.FkProduct.ProductOffers.Where(x => x.FkProductId == billItem.FkProductId && x.FkOffer.Active == true).Select(q => q.Discount).FirstOrDefault() : 0);
 
                     bill.BillItems.Add(billItem);
                     _dbContext.BillItems.Add(billItem);

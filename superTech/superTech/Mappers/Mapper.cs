@@ -120,7 +120,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.ProductCode, src => src.MapFrom(q => q.FkProduct.Code))
                 .ForMember(x => x.ProductPrice, opt => opt.MapFrom(src => src.FkProduct.ProductOffers
                 .Where(x => x.FkProduct.ProductId == src.FkProductId && x.FkOffer.Active == true).Count() > 0 ? src.FkProduct.ProductOffers
-                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.PriceWithDiscount).LastOrDefault() : src.FkProduct.Price))
+                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.PriceWithDiscount).FirstOrDefault() : src.FkProduct.Price))
 
                .ReverseMap();
 
@@ -132,6 +132,11 @@ namespace superTech.Mappers
                 .ForMember(x => x.ProductString, src => src.MapFrom(x => x.FkProduct.Name))
                  .ForMember(x => x.Price, src => src.MapFrom(q => q.Price))
                 .ReverseMap();
+
+
+            CreateMap<Bill, BillsUpsertRequest>()
+                .ReverseMap();
+
         }
     }
 }

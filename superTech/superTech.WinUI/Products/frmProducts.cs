@@ -426,23 +426,6 @@ namespace superTech.WinUI.Products
             onGetProductsClicked();
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-
-            if (_id.HasValue)
-            {
-            await _productsService.Delete<ProductModel>(_id);
-                DialogResult result = MessageBox.Show("Uspješno ste obrisali proizvod ! ", "Obriši proizvod", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if(result == DialogResult.OK)
-                {
-                    clearForm();
-                    onGetProductsClicked();
-                }
-
-            }
-
-        }
 
         private void cmbBrand_SelectedIndexChanged(object sender, EventArgs e)
         {

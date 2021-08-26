@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvOffers = new System.Windows.Forms.DataGridView();
+            this.OfferId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNoOffers = new System.Windows.Forms.Label();
             this.btnShowAll = new System.Windows.Forms.Button();
@@ -48,15 +54,8 @@
             this.dpDateTo = new System.Windows.Forms.DateTimePicker();
             this.btnOfferItems = new System.Windows.Forms.Button();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSaveOffer = new System.Windows.Forms.Button();
             this.cbActive = new System.Windows.Forms.CheckBox();
-            this.OfferId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -89,6 +88,56 @@
             this.dgvOffers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOffers_CellFormatting);
             this.dgvOffers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvOffers_MouseDoubleClick);
             // 
+            // OfferId
+            // 
+            this.OfferId.DataPropertyName = "OfferId";
+            this.OfferId.HeaderText = "OfferId";
+            this.OfferId.MinimumWidth = 8;
+            this.OfferId.Name = "OfferId";
+            this.OfferId.Visible = false;
+            this.OfferId.Width = 150;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Naslov";
+            this.Title.MinimumWidth = 8;
+            this.Title.Name = "Title";
+            this.Title.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Opis";
+            this.Description.MinimumWidth = 8;
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
+            // DateFrom
+            // 
+            this.DateFrom.DataPropertyName = "DateFrom";
+            this.DateFrom.HeaderText = "Datum Od";
+            this.DateFrom.MinimumWidth = 8;
+            this.DateFrom.Name = "DateFrom";
+            this.DateFrom.Width = 150;
+            // 
+            // DateTo
+            // 
+            this.DateTo.DataPropertyName = "DateTo";
+            this.DateTo.HeaderText = "Datum do";
+            this.DateTo.MinimumWidth = 8;
+            this.DateTo.Name = "DateTo";
+            this.DateTo.Width = 150;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Aktivna";
+            this.Active.MinimumWidth = 8;
+            this.Active.Name = "Active";
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.Width = 150;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblNoOffers);
@@ -115,22 +164,28 @@
             // 
             // btnShowAll
             // 
+            this.btnShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAll.ForeColor = System.Drawing.Color.White;
             this.btnShowAll.Location = new System.Drawing.Point(554, 111);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(106, 55);
             this.btnShowAll.TabIndex = 17;
             this.btnShowAll.Text = "Prikaži sve";
-            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.UseVisualStyleBackColor = false;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // btnFilter
             // 
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.ForeColor = System.Drawing.Color.White;
             this.btnFilter.Location = new System.Drawing.Point(397, 111);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(106, 55);
             this.btnFilter.TabIndex = 13;
             this.btnFilter.Text = "Filtriraj";
-            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // dpDTSearch
@@ -236,6 +291,7 @@
             // 
             // btnOfferItems
             // 
+            this.btnOfferItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOfferItems.Location = new System.Drawing.Point(434, 709);
             this.btnOfferItems.Name = "btnOfferItems";
             this.btnOfferItems.Size = new System.Drawing.Size(106, 55);
@@ -248,25 +304,17 @@
             // 
             this.errProvider.ContainerControl = this;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDelete.Location = new System.Drawing.Point(34, 896);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(146, 58);
-            this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Obriši";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnSaveOffer
             // 
-            this.btnSaveOffer.Location = new System.Drawing.Point(467, 896);
+            this.btnSaveOffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.btnSaveOffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveOffer.ForeColor = System.Drawing.Color.White;
+            this.btnSaveOffer.Location = new System.Drawing.Point(356, 885);
             this.btnSaveOffer.Name = "btnSaveOffer";
-            this.btnSaveOffer.Size = new System.Drawing.Size(146, 58);
+            this.btnSaveOffer.Size = new System.Drawing.Size(257, 58);
             this.btnSaveOffer.TabIndex = 15;
             this.btnSaveOffer.Text = "Sačuvaj";
-            this.btnSaveOffer.UseVisualStyleBackColor = true;
+            this.btnSaveOffer.UseVisualStyleBackColor = false;
             this.btnSaveOffer.Click += new System.EventHandler(this.btnSaveOffer_Click);
             // 
             // cbActive
@@ -279,56 +327,6 @@
             this.cbActive.Text = "Aktivna:";
             this.cbActive.UseVisualStyleBackColor = true;
             // 
-            // OfferId
-            // 
-            this.OfferId.DataPropertyName = "OfferId";
-            this.OfferId.HeaderText = "OfferId";
-            this.OfferId.MinimumWidth = 8;
-            this.OfferId.Name = "OfferId";
-            this.OfferId.Visible = false;
-            this.OfferId.Width = 150;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Naslov";
-            this.Title.MinimumWidth = 8;
-            this.Title.Name = "Title";
-            this.Title.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Opis";
-            this.Description.MinimumWidth = 8;
-            this.Description.Name = "Description";
-            this.Description.Width = 150;
-            // 
-            // DateFrom
-            // 
-            this.DateFrom.DataPropertyName = "DateFrom";
-            this.DateFrom.HeaderText = "Datum Od";
-            this.DateFrom.MinimumWidth = 8;
-            this.DateFrom.Name = "DateFrom";
-            this.DateFrom.Width = 150;
-            // 
-            // DateTo
-            // 
-            this.DateTo.DataPropertyName = "DateTo";
-            this.DateTo.HeaderText = "Datum do";
-            this.DateTo.MinimumWidth = 8;
-            this.DateTo.Name = "DateTo";
-            this.DateTo.Width = 150;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "Active";
-            this.Active.HeaderText = "Aktivna";
-            this.Active.MinimumWidth = 8;
-            this.Active.Name = "Active";
-            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Active.Width = 150;
-            // 
             // frmOffers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -337,7 +335,6 @@
             this.ClientSize = new System.Drawing.Size(1614, 987);
             this.Controls.Add(this.cbActive);
             this.Controls.Add(this.btnSaveOffer);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnOfferItems);
             this.Controls.Add(this.dpDateTo);
             this.Controls.Add(this.dpDateFrom);
@@ -382,7 +379,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblNoOffers;
         private System.Windows.Forms.ErrorProvider errProvider;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveOffer;
         private System.Windows.Forms.CheckBox cbActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn OfferId;

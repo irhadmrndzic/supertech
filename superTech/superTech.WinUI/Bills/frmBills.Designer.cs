@@ -38,6 +38,7 @@ namespace superTech.WinUI.Bills
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountWithTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.btnBillItems = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAmountWithTax = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,14 +50,8 @@ namespace superTech.WinUI.Bills
             this.txtIssuingDate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBillNumber = new System.Windows.Forms.TextBox();
-            this.Search = new System.Windows.Forms.GroupBox();
-            this.dpDoC = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnFilterOrder = new System.Windows.Forms.Button();
-            this.btnBillItems = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).BeginInit();
             this.gbInfo.SuspendLayout();
-            this.Search.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBills
@@ -158,12 +153,23 @@ namespace superTech.WinUI.Bills
             this.gbInfo.Controls.Add(this.txtIssuingDate);
             this.gbInfo.Controls.Add(this.label1);
             this.gbInfo.Controls.Add(this.txtBillNumber);
-            this.gbInfo.Location = new System.Drawing.Point(12, 236);
+            this.gbInfo.Location = new System.Drawing.Point(12, 12);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(484, 651);
             this.gbInfo.TabIndex = 5;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Informacije";
+            // 
+            // btnBillItems
+            // 
+            this.btnBillItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBillItems.Location = new System.Drawing.Point(218, 482);
+            this.btnBillItems.Name = "btnBillItems";
+            this.btnBillItems.Size = new System.Drawing.Size(205, 46);
+            this.btnBillItems.TabIndex = 6;
+            this.btnBillItems.Text = "Artikli";
+            this.btnBillItems.UseVisualStyleBackColor = true;
+            this.btnBillItems.Click += new System.EventHandler(this.btnBillItems_Click);
             // 
             // label7
             // 
@@ -260,54 +266,6 @@ namespace superTech.WinUI.Bills
             this.txtBillNumber.Size = new System.Drawing.Size(417, 26);
             this.txtBillNumber.TabIndex = 5;
             // 
-            // Search
-            // 
-            this.Search.Controls.Add(this.dpDoC);
-            this.Search.Controls.Add(this.label2);
-            this.Search.Controls.Add(this.btnFilterOrder);
-            this.Search.Location = new System.Drawing.Point(12, 12);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(484, 192);
-            this.Search.TabIndex = 4;
-            this.Search.TabStop = false;
-            this.Search.Text = "Pretraga";
-            // 
-            // dpDoC
-            // 
-            this.dpDoC.Location = new System.Drawing.Point(6, 93);
-            this.dpDoC.Name = "dpDoC";
-            this.dpDoC.Size = new System.Drawing.Size(316, 26);
-            this.dpDoC.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Datum";
-            // 
-            // btnFilterOrder
-            // 
-            this.btnFilterOrder.Location = new System.Drawing.Point(356, 82);
-            this.btnFilterOrder.Name = "btnFilterOrder";
-            this.btnFilterOrder.Size = new System.Drawing.Size(106, 52);
-            this.btnFilterOrder.TabIndex = 1;
-            this.btnFilterOrder.Text = "Filtriraj";
-            this.btnFilterOrder.UseVisualStyleBackColor = true;
-            // 
-            // btnBillItems
-            // 
-            this.btnBillItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBillItems.Location = new System.Drawing.Point(263, 482);
-            this.btnBillItems.Name = "btnBillItems";
-            this.btnBillItems.Size = new System.Drawing.Size(160, 46);
-            this.btnBillItems.TabIndex = 6;
-            this.btnBillItems.Text = "Artikli";
-            this.btnBillItems.UseVisualStyleBackColor = true;
-            this.btnBillItems.Click += new System.EventHandler(this.btnBillItems_Click);
-            // 
             // frmBills
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -315,7 +273,6 @@ namespace superTech.WinUI.Bills
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2132, 1251);
             this.Controls.Add(this.gbInfo);
-            this.Controls.Add(this.Search);
             this.Controls.Add(this.dgvBills);
             this.Name = "frmBills";
             this.Text = "frmBills";
@@ -323,8 +280,6 @@ namespace superTech.WinUI.Bills
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
-            this.Search.ResumeLayout(false);
-            this.Search.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -347,10 +302,6 @@ namespace superTech.WinUI.Bills
         private System.Windows.Forms.TextBox txtIssuingDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBillNumber;
-        private System.Windows.Forms.GroupBox Search;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnFilterOrder;
-        private System.Windows.Forms.DateTimePicker dpDoC;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAmountWithTax;
         private System.Windows.Forms.Label label6;

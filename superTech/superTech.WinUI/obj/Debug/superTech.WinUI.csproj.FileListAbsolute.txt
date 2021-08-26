@@ -13,6 +13,8 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csproj.AssemblyReference.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.exe.config
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Bills.frmBillItems.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Bills.frmBills.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.BuyerOrder.frmBuyerOrderItems.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.BuyerOrder.frmBuyerOrders.resources
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.BuyerOrder.frmProcessedBuyerOrderItems.resources
@@ -36,5 +38,3 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debu
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.csproj.CopyComplete
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.exe
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.pdb
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Bills.frmBills.resources
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.WinUI\obj\Debug\superTech.WinUI.Bills.frmBillItems.resources

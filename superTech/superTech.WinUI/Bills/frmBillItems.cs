@@ -31,7 +31,7 @@ namespace superTech.WinUI.Bills
                 foreach (var billItem in bill.BillItems)
                 {
                     var row = new string[] { i.ToString(), billItem.ProductString, billItem.Price.ToString() + "KM", billItem.Quantity.ToString(), billItem.Discount.HasValue && billItem.Discount > 1? billItem.Discount.ToString():"0",
-                        (Math.Round(billItem.Quantity * decimal.Parse(billItem.Price.ToString()))).ToString() +"KM" };
+                        (Math.Round(billItem.Quantity * decimal.Parse(billItem.Price.ToString()),2)).ToString() +"KM" };
                     var lvItem = new ListViewItem(row);
                     listViewOrderItems.Items.Add(lvItem);
                     i++;

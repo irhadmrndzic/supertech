@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +71,6 @@
             this.txtCodeSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.cmbBrand = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -188,9 +187,9 @@
             // Rating
             // 
             this.Rating.DataPropertyName = "Rating";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "/";
-            this.Rating.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "/";
+            this.Rating.DefaultCellStyle = dataGridViewCellStyle4;
             this.Rating.HeaderText = "Ocjena";
             this.Rating.MinimumWidth = 8;
             this.Rating.Name = "Rating";
@@ -314,9 +313,9 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
-            this.btnSave.Location = new System.Drawing.Point(501, 1030);
+            this.btnSave.Location = new System.Drawing.Point(265, 1030);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(230, 63);
+            this.btnSave.Size = new System.Drawing.Size(488, 63);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -367,7 +366,7 @@
             // 
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(424, 934);
+            this.btnClear.Location = new System.Drawing.Point(605, 932);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(148, 63);
             this.btnClear.TabIndex = 27;
@@ -473,19 +472,6 @@
             this.txtNameSearch.Size = new System.Drawing.Size(362, 26);
             this.txtNameSearch.TabIndex = 0;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.Salmon;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
-            this.btnDelete.Location = new System.Drawing.Point(257, 1030);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(214, 63);
-            this.btnDelete.TabIndex = 31;
-            this.btnDelete.Text = "Obriši proizvod";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // cmbBrand
             // 
             this.cmbBrand.FormattingEnabled = true;
@@ -512,7 +498,6 @@
             this.ClientSize = new System.Drawing.Size(2322, 1221);
             this.Controls.Add(this.cmbBrand);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupSearch);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.btnShowProducts);
@@ -581,7 +566,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNameSearch;
         private System.Windows.Forms.Label lblNoProducts;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdcutName;

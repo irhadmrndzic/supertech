@@ -48,15 +48,17 @@
             this.DOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Roles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUsersFirstName
             // 
-            this.txtUsersFirstName.Location = new System.Drawing.Point(6, 83);
+            this.txtUsersFirstName.Location = new System.Drawing.Point(6, 68);
             this.txtUsersFirstName.Name = "txtUsersFirstName";
-            this.txtUsersFirstName.Size = new System.Drawing.Size(541, 26);
+            this.txtUsersFirstName.Size = new System.Drawing.Size(336, 26);
             this.txtUsersFirstName.TabIndex = 1;
             // 
             // btnShowUsers
@@ -64,7 +66,7 @@
             this.btnShowUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
             this.btnShowUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
-            this.btnShowUsers.Location = new System.Drawing.Point(281, 240);
+            this.btnShowUsers.Location = new System.Drawing.Point(281, 225);
             this.btnShowUsers.Name = "btnShowUsers";
             this.btnShowUsers.Size = new System.Drawing.Size(266, 63);
             this.btnShowUsers.TabIndex = 2;
@@ -78,12 +80,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtUsersLastName);
-            this.groupBox1.Controls.Add(this.btnShowUsers);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.dgvUsers);
-            this.groupBox1.Controls.Add(this.txtUsersFirstName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(2532, 1187);
@@ -95,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 134);
+            this.label2.Location = new System.Drawing.Point(6, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 7;
@@ -104,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 50);
+            this.label1.Location = new System.Drawing.Point(6, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 20);
             this.label1.TabIndex = 6;
@@ -112,9 +110,9 @@
             // 
             // txtUsersLastName
             // 
-            this.txtUsersLastName.Location = new System.Drawing.Point(6, 167);
+            this.txtUsersLastName.Location = new System.Drawing.Point(6, 152);
             this.txtUsersLastName.Name = "txtUsersLastName";
-            this.txtUsersLastName.Size = new System.Drawing.Size(541, 26);
+            this.txtUsersLastName.Size = new System.Drawing.Size(341, 26);
             this.txtUsersLastName.TabIndex = 5;
             // 
             // dgvUsers
@@ -270,6 +268,20 @@
             this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Active.Width = 150;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtUsersFirstName);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.btnShowUsers);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtUsersLastName);
+            this.groupBox2.Location = new System.Drawing.Point(6, 31);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(573, 340);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pretraga";
+            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -280,8 +292,9 @@
             this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.frmUsers_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +320,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
