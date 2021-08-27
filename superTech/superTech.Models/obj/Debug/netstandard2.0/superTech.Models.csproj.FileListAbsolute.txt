@@ -6,3 +6,4 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Deb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.csproj.CoreCompileInputs.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.pdb
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.csproj.AssemblyReference.cache
