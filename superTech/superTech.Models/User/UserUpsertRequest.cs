@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace superTech.Models.User
@@ -30,8 +31,8 @@ namespace superTech.Models.User
         public bool Active { get; set; }
         [Required]
         public int CityId { get; set; }
-        public List<int> Roles { get; set; } = new List<int>();
+        public List<int>? Roles { get; set; } = new List<int>();
 
-
+      
     }
 }

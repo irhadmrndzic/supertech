@@ -6,7 +6,6 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [Route("api/[controller]")]
     [ApiController]
     public class CitiesController : BaseCRUDController<CityModel, object, CityUpsertRequest, CityUpsertRequest>

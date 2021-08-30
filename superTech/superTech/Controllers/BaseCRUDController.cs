@@ -6,7 +6,6 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseCRUDController<T,TSearch,TInsert,TUpdate> : BaseController<T,TSearch>

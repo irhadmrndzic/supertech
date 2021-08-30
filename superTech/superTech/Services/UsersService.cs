@@ -12,28 +12,28 @@ using superTech.Services.GenericCRUD;
 
 namespace superTech.Services
 {
-    public class UsersService:IUsersService
+    public class UsersService : IUsersService
     {
         private readonly superTechRSContext _dbContext;
         private readonly IMapper _mapper;
 
-        public UsersService(superTechRSContext context, IMapper mapper )
+        public UsersService(superTechRSContext context, IMapper mapper)
         {
             _dbContext = context;
             _mapper = mapper;
         }
 
-        public  List<UserModel> Get(UserSearchRequest searchFilter)
+        public List<UserModel> Get(UserSearchRequest searchFilter)
         {
             var query = _dbContext.Users.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchFilter.FirstName) &&
                 !string.IsNullOrWhiteSpace((searchFilter.LastName)))
             {
-                query = _dbContext.Users.Where(x => x.FirstName.ToLower().StartsWith(searchFilter.FirstName.ToLower())).Where(q=>q.LastName.ToLower().StartsWith(searchFilter.LastName.ToLower()));
+                query = _dbContext.Users.Where(x => x.FirstName.ToLower().StartsWith(searchFilter.FirstName.ToLower())).Where(q => q.LastName.ToLower().StartsWith(searchFilter.LastName.ToLower()));
             }
 
-            if(!string.IsNullOrWhiteSpace(searchFilter.FirstName) && string.IsNullOrWhiteSpace(searchFilter.LastName))
+            if (!string.IsNullOrWhiteSpace(searchFilter.FirstName) && string.IsNullOrWhiteSpace(searchFilter.LastName))
             {
                 query = _dbContext.Users.Where(x => x.FirstName.ToLower().StartsWith(searchFilter.FirstName.ToLower()));
             }
@@ -48,14 +48,14 @@ namespace superTech.Services
                 query = _dbContext.Users.Where(x => x.UserName.ToLower().StartsWith(searchFilter.Username.ToLower()));
             }
 
-            query = query.Include(x => x.FkCity).Include(q=>q.UsersRoles).ThenInclude(r=>r.FkRole);
+            query = query.Include(x => x.FkCity).Include(q => q.UsersRoles).ThenInclude(r => r.FkRole);
 
             var list = query.ToList();
 
             return _mapper.Map<List<UserModel>>(list);
         }
 
-        public  UserModel GetById(int id)
+        public UserModel GetById(int id)
         {
             var entity = _dbContext.Users.Where(x => x.UserId == id)
                 .Include(ur => ur.UsersRoles)
@@ -65,19 +65,31 @@ namespace superTech.Services
             return _mapper.Map<UserModel>(entity);
         }
 
-        public  UserModel Insert(UserUpsertRequest request)
+        public UserModel Insert(UserUpsertRequest request)
         {
+
             var entity = _mapper.Map<User>(request);
 
             entity.RegistrationDate = DateTime.Parse(request.DateOfRegistration);
 
             entity.DateOfBirth = DateTime.Parse(request.DateOfBirth);
 
+            if (!string.IsNullOrWhiteSpace(request.UserName))
+            {
+                var userNameMatch = _dbContext.Users.Any(x => x.UserName == request.UserName);
+
+                if (userNameMatch)
+                {
+                    throw new UserException("Korisničko ime zauzeto!");
+                }
+            }
+
+
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
                 if (request.Password != request.PasswordConfirmation)
                 {
-                    throw new UserException("Passwords don't match!");
+                    throw new UserException("Passwordi se ne slažu!");
                 }
 
                 entity.PasswordSalt = GenerateSalt();
@@ -105,12 +117,14 @@ namespace superTech.Services
 
 
             var query = _dbContext.Users.Where(x => x.UserId == entity.UserId).Include(q => q.UsersRoles)
-                .ThenInclude(r => r.FkRole).Include(c=>c.FkCity).SingleOrDefault();
+                .ThenInclude(r => r.FkRole).Include(c => c.FkCity).SingleOrDefault();
 
             return _mapper.Map<UserModel>(query);
+
+
         }
 
-        public  UserModel Update(int id, UserUpsertRequest request)
+        public UserModel Update(int id, UserUpsertRequest request)
         {
             var entity = _dbContext.Users.Find(id);
             _dbContext.Users.Attach(entity);
@@ -144,11 +158,11 @@ namespace superTech.Services
 
                 if (role != 0)
                 {
-                 var uRoles =  _dbContext.UsersRoles.Where(x => x.FkUserId == entity.UserId);
-                 foreach (var ur in uRoles)
-                 {
-                     _dbContext.UsersRoles.Remove(ur);
-                 }
+                    var uRoles = _dbContext.UsersRoles.Where(x => x.FkUserId == entity.UserId);
+                    foreach (var ur in uRoles)
+                    {
+                        _dbContext.UsersRoles.Remove(ur);
+                    }
                 }
             }
 

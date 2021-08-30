@@ -14,7 +14,7 @@ namespace superTechMobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

@@ -1,9 +1,6 @@
 ﻿using superTechMobile.ViewModels;
+using superTechMobile.Views.RegistrationVIew;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +13,10 @@ namespace superTechMobile.Views
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
+        }
+        private async void NavigateButton_OnClicked(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistrationPage());
         }
     }
 }

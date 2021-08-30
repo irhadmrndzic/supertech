@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace superTech.Controllers
 {
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -16,7 +16,6 @@ namespace superTech.Controllers
         {
             _service = service;
         }
-
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
@@ -32,7 +31,6 @@ namespace superTech.Controllers
             return _service.GetById(id);
         }
 
-        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public UserModel Insert(UserUpsertRequest request)
         {

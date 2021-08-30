@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using superTech.AuthHandlers;
 using superTech.Database;
-using superTech.Filters;
 using superTech.Models.Category;
 using superTech.Models.City;
 using superTech.Models.Product;
@@ -17,7 +16,6 @@ using superTech.Models.User;
 using superTech.Services;
 using superTech.Services.Generic;
 using superTech.Services.GenericCRUD;
-using Newtonsoft;
 using superTech.Models.UnitsOfMeasures;
 using superTech.Models.News;
 using superTech.Models.Suppliers;
@@ -26,6 +24,7 @@ using superTech.Models.Offers;
 using superTech.Models.Brands;
 using superTech.Models.BuyerOrders;
 using superTech.Models.Bills;
+using eProdaja.WebAPI.Filters;
 
 namespace superTech
 {
@@ -42,7 +41,7 @@ namespace superTech
         {
 
             services.AddMvc(x => x.Filters.Add<ErrorFilter>());
-            ;
+            
             services.AddControllers().AddNewtonsoftJson(x =>
              x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
@@ -151,7 +150,7 @@ namespace superTech
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

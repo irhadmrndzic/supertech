@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Registration" xmlns:behavior="clr-namespace:superTechMobile.Helper"
+             x:Class="superTechMobile.Views.RegistrationVIew.RegistrationPage"
+             Title="Registracija">
+
+    <ContentPage.BindingContext>
+        <vm:RegistrationViewModel></vm:RegistrationViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+
+                <Label Text="Ime"></Label>
+                <Entry x:Name="FirstName" Text="{Binding FirstName}"></Entry>
+
+                <Label Text="Prezime"></Label>
+                <Entry x:Name="LastName" Text="{Binding LastName}"></Entry>
+
+                <Label Text="Datum rođenja"></Label>
+                <DatePicker HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand" Date="{Binding DateOfBirth}" Format="dd/MM/yyyy"></DatePicker>
+
+                <Label Text="Korisničko ime"></Label>
+                <Entry x:Name="Username" Text="{Binding Username}"></Entry>
+
+                <Label Text="Email"></Label>
+                <Entry x:Name="Email" Text="{Binding Email}"></Entry>
+
+                <Label Text="Broj telefona"></Label>
+                <Entry Text="{Binding PhoneNumber}" Keyboard="Telephone">
+                    <Entry.Behaviors>
+                        <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask" />
+                        <behavior:EntryLengthValidator MaxLength="12"/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="Password"></Label>
+                <Entry IsPassword="true" x:Name="Password" Text="{Binding Password}"></Entry>
+
+                <Label Text="Potvrdi passowrd"></Label>
+                <Entry IsPassword="true" x:Name="PasswordConfirmation" Text="{Binding PasswordConfirmation}"></Entry>
+
+                <Label Text="Adresa"></Label>
+                <Entry x:Name="Address" Text="{Binding Address}"></Entry>
+
+                <Label Text="Grad"></Label>
+                <Picker Title="Odaberite grad: "
+                ItemsSource="{Binding Cities}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCity}" />
+
+                <Label Text="Spol"></Label>
+                <Entry x:Name="Gender" Text="{Binding Gender}"></Entry>
+
+                <Button Text="Registracija" Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50"></Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

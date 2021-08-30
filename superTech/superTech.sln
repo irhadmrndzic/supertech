@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "superTechMobile.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "superTechMobile.iOS", "superTechMobile\superTechMobile.iOS\superTechMobile.iOS.csproj", "{EBBDAE7D-2087-40EE-B502-12B20586661A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "superTechMobile", "superTechMobile\superTechMobile\superTechMobile.csproj", "{47F5F296-49E2-42B7-B4D6-3C6E31B7AE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "superTechMobile", "superTechMobile\superTechMobile\superTechMobile.csproj", "{47F5F296-49E2-42B7-B4D6-3C6E31B7AE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
