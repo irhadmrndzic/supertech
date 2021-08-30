@@ -54,7 +54,7 @@ namespace superTechMobile.ViewModels
             {
                 await _usersApiService.Get<object>(null);
 
-                Application.Current.MainPage = new LoginPage();
+                Application.Current.MainPage = new AppShell();
 
             }
             catch (Exception exception)

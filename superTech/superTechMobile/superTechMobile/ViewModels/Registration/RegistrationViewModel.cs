@@ -27,12 +27,12 @@ namespace superTechMobile.ViewModels.Registration
         string _username = string.Empty;
         string _password = string.Empty;
         string _passwordConfirmation = string.Empty;
-        DateTime _dateOfBirth;
+        DateTime _dateOfBirth = Convert.ToDateTime("01/01/2003");
         string _email = string.Empty;
         string _phoneNumber = string.Empty;
         string _address = string.Empty;
         string _gender = string.Empty;
-
+        DateTime _fromMiminumDate = Convert.ToDateTime("01/01/1940");
         private CityModel _city;
         public CityModel SelectedCity
         {
@@ -92,11 +92,32 @@ namespace superTechMobile.ViewModels.Registration
             set { SetProperty(ref _dateOfBirth, value); }
         }
 
+        public DateTime FromMiminumDate
+        {
+            get { return _fromMiminumDate; }
+            set
+            {
+                if (_fromMiminumDate == value)
+                    return;
+
+                _fromMiminumDate = value;
+                NotifyPropertyChanged(nameof(FromMiminumDate));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public RegistrationViewModel()
         {
             RegisterCommand = new Command(async () => await onRegistrationClicked());
             InitCommand = new Command(async () => await Init());
         }
+
+
 
         public async Task Init()
         {
@@ -150,7 +171,7 @@ namespace superTechMobile.ViewModels.Registration
                 if (!string.IsNullOrEmpty(Username) && !Regex.IsMatch(Username, "^[a-zA-Z0-9]+$"))
                 {
                     throw new Exception("Korisničko ime može sadržavati samo slova i brojeve!");
-                }
+                } 
 
                 if (!string.IsNullOrEmpty(Gender) && !Regex.IsMatch(Gender, "^[a-zA-Z]+$"))
                 {
@@ -160,6 +181,17 @@ namespace superTechMobile.ViewModels.Registration
                 if (!string.IsNullOrEmpty(Address) && !Regex.IsMatch(Address, "[A-Za-z0-9'\\.\\-\\s\\,]"))
                 {
                     throw new Exception("Unesite validu adresu!");
+                }
+
+                if (!string.IsNullOrEmpty(DateOfBirth.ToString()) && !(DateTime.Now.Year - 18 >= DateOfBirth.Year) )
+                {
+                    throw new Exception("Morate biti stariji od 18 godina!");
+                }
+
+
+                if (!string.IsNullOrEmpty(Email) && !Regex.IsMatch(Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    throw new Exception("Unesite validan email!");
                 }
 
                 var role = new List<int>();

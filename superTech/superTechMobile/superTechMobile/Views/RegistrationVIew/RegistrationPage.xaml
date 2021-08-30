@@ -18,7 +18,7 @@
                 <Entry x:Name="LastName" Text="{Binding LastName}"></Entry>
 
                 <Label Text="Datum rođenja"></Label>
-                <DatePicker HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand" Date="{Binding DateOfBirth}" Format="dd/MM/yyyy"></DatePicker>
+                <DatePicker HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand" Date="{Binding DateOfBirth}" Format="dd/MM/yyyy" MinimumDate="{Binding FromMiminumDate}" ></DatePicker>
 
                 <Label Text="Korisničko ime"></Label>
                 <Entry x:Name="Username" Text="{Binding Username}"></Entry>
