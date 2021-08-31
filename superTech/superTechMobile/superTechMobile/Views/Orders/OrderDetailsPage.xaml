@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Orders"
+             x:Class="superTechMobile.Views.Orders.OrderDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:OrderDetailsViewModel></vm:OrderDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10" Padding="8">
+                <Frame BorderColor="Black" CornerRadius="4">
+                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                        <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Broj narudžbe:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding OrderNumber}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Potvrđena" FontSize="18" LineBreakMode="WordWrap" />
+                            <CheckBox IsChecked="{Binding Confirmed}" IsEnabled="False"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Iznos:" FontSize="18" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding Amount}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <ScrollView>
+                    <StackLayout Padding="3" >
+                        <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="Start"    />
+                        <ListView ItemsSource="{Binding AllOrderItems}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout  
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="StartAndExpand" Padding="8">
+                                            <StackLayout >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Naziv: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding ProductName}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Šifra: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding ProductCode}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Količina: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding Quantity}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Cijena: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding ProductPrice}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding ProductPrice, StringFormat='KM'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Iznos: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding Amount, StringFormat='KM'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

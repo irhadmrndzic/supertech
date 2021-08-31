@@ -40,6 +40,14 @@ namespace superTechMobile.ViewModels
             LoginCommand = new Command(async () => await OnLoginClicked());
         }
 
+        public async void GetCurrentUser()
+        {
+            UserSearchRequest request = new UserSearchRequest();
+            request.Username = Username;
+            APIService.APIService.CurrentUser = await _usersApiService.Get<List<UserModel>>(request);
+            APIService.APIService.userId = int.Parse(APIService.APIService.CurrentUser[0].UserId);
+        }
+
         private async Task OnLoginClicked()
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
@@ -54,7 +62,10 @@ namespace superTechMobile.ViewModels
             {
                 await _usersApiService.Get<object>(null);
 
+                 GetCurrentUser();
+
                 Application.Current.MainPage = new AppShell();
+
 
             }
             catch (Exception exception)

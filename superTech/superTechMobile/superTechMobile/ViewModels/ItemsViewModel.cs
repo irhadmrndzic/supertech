@@ -74,11 +74,11 @@ namespace superTechMobile.ViewModels
 
         async void OnItemSelected(Item item)
         {
-            if (item == null)
-                return;
+            //if (item == null)
+            //    return;
 
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+            //// This will push the ItemDetailPage onto the navigation stack
+            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
     }
 }

@@ -17,14 +17,15 @@ namespace superTech.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
+        [AllowAnonymous]
         [HttpGet]
         public List<UserModel> Get([FromQuery]UserSearchRequest searchFilter)
         {
             return _service.Get(searchFilter);
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
         public UserModel GetById(int id)
         {

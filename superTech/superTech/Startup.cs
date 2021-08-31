@@ -25,6 +25,7 @@ using superTech.Models.Brands;
 using superTech.Models.BuyerOrders;
 using superTech.Models.Bills;
 using eProdaja.WebAPI.Filters;
+using superTech.Models.Ratings;
 
 namespace superTech
 {
@@ -135,6 +136,8 @@ namespace superTech
             services.AddScoped<ICRUDService<BillsModel, object, BillsUpsertRequest, BillsUpsertRequest>,
              BillsService>();
 
+            services.AddScoped<ICRUDService<RatingsModel, RatingsSearchRequest, RatingsUpsertRequest, RatingsUpsertRequest>,
+         RatingsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

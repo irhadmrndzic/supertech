@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Rating" xmlns:behavior="clr-namespace:superTechMobile.Helper"
+             x:Class="superTechMobile.Views.Ratings.RateProductPage"
+             Title="Ocjena">
+
+
+    <ContentPage.BindingContext>
+        <vm:RatingsViewModel></vm:RatingsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="Ocijenite proizvod :" FontSize="20" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+            <Entry 
+       Keyboard="Numeric"
+       Text="{Binding Rating}"  WidthRequest="10" HorizontalTextAlignment="Center">
+                <Entry.Behaviors>
+                    <behavior:EntryLengthValidator MaxLength="1"/>
+                </Entry.Behaviors>
+            </Entry>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Button Clicked="Button_Clicked" Text="Ocijeni" IsVisible="{Binding EnableButton}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="rate_btn"></Button>
+                <Label Text="Narudžba nije potvrđena ili ste već ocijenili proizvod!" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding EnableLabel}"/>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -31,6 +31,11 @@ namespace superTech.Services
 
             }
 
+            if (!string.IsNullOrEmpty(searchFilter.Username))
+            {
+                query = query.Where(x => x.FkUser.UserName == searchFilter.Username);
+            }
+
             var list = query.ToList().OrderBy(x => x.Active ? 0 : 1).ThenBy(q => q.Date);
 
             return _mapper.Map<List<BuyerOrdersModel>>(list);

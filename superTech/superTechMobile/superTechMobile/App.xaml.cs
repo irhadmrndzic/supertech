@@ -1,5 +1,6 @@
 ﻿using superTechMobile.Services;
 using superTechMobile.Views;
+using superTechMobile.Views.News;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

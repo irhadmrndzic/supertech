@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.News"
+             x:Class="superTechMobile.Views.News.NewsPage">
+    <ContentPage.BindingContext>
+        <vm:NewsViewModel></vm:NewsViewModel>
+    </ContentPage.BindingContext>
+        <ScrollView>    
+            <StackLayout>
+                <Label Text="Novosti" FontSize="22" FontAttributes="bold" Padding="0,8,0,8"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+            <ListView ItemsSource="{Binding NewsList}" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  
+                                           VerticalOptions="CenterAndExpand" 
+                                           HorizontalOptions="CenterAndExpand" Padding="8">
+                                    <Label Text="{Binding Title}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding DateOfCreation.Date}" FontSize="13" Padding="0,0,0,4"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+</ContentPage>

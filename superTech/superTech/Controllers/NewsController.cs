@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using superTech.Models.News;
 using superTech.Services.GenericCRUD;
 
 namespace superTech.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
 

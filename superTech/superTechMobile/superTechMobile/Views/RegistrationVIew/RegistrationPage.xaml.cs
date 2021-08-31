@@ -1,10 +1,4 @@
 ﻿using superTechMobile.ViewModels.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,8 +12,8 @@ namespace superTechMobile.Views.RegistrationVIew
         public RegistrationPage()
         {
             InitializeComponent();
-            this.BindingContext = new RegistrationViewModel();
-            BindingContext = _model = new RegistrationViewModel();
+                this.BindingContext = new RegistrationViewModel();
+                BindingContext = _model = new RegistrationViewModel();
         }
 
         protected async override void OnAppearing()

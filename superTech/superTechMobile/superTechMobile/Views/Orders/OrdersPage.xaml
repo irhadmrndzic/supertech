@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Orders"
+             x:Class="superTechMobile.Views.Orders.OrdersPage">
+    <ContentPage.BindingContext>
+        <vm:OrdersViewModel></vm:OrdersViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5">
+                <Label Text="Moje narudžbe" FontSize="22" FontAttributes="bold" Padding="0,8,0,8"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <StackLayout>
+                    <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <ListView ItemsSource="{Binding OrdersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="StartAndExpand" Padding="8">
+                                    <StackLayout >
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Broj narudžbe: " FontSize="16"  FontAttributes="None"></Label>
+                                            <Label Text="{Binding OrderNumber}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                                            <Label Text="Datum: " FontSize="16"  FontAttributes="None"></Label>
+                                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                     
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

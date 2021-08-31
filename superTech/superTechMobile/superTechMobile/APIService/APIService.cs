@@ -1,5 +1,6 @@
 ﻿using Flurl.Http;
 using superTech.Models.Extensions;
+using superTech.Models.User;
 using superTechMobile.Views;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,8 @@ namespace superTechMobile.APIService
         private string _route = null;
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static int userId{ get; set; }
+        public static List<UserModel> CurrentUser;
         public APIService(string route)
         {
             _route = route;
@@ -21,6 +24,9 @@ namespace superTechMobile.APIService
 #if DEBUG
         private string _apiUrl = "http://localhost:5001/api";
 #endif
+
+    
+
         public async Task<T> Get<T>(object search)
         {
             var url = $"{_apiUrl}/{_route}";
@@ -85,6 +91,11 @@ namespace superTechMobile.APIService
                     if (currPage.Title != "" && currPage.Title.ToString() == "Registracija")
                     {
                         await Application.Current.MainPage.DisplayAlert("Info", "Registracija uspješna!", "OK");
+                    }
+
+                    if (currPage.Title != "" && currPage.Title.ToString() == "Ocjena")
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Info", "Uspješno ste ocijenili proizvod!", "OK");
                     }
 
                 }

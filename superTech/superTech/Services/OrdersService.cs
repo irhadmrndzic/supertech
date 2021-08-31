@@ -25,6 +25,8 @@ namespace superTech.Services
                 query = query.Where(q => q.OrderNumber == searchFilter.OrderNumber);
             }
 
+       
+
             if(searchFilter?.Date !=null && (searchFilter?.Date.ToString() != "1.1.0001. 00:00:00" && searchFilter?.Date.ToString() != "1.1.0001. 01:00:00"))
             {
                 var date = searchFilter.Date.Date;
