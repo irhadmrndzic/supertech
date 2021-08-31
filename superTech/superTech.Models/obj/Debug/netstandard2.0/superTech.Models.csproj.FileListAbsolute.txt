@@ -1,7 +1,6 @@
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\bin\Debug\netstandard2.0\superTech.Models.deps.json
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\bin\Debug\netstandard2.0\superTech.Models.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\bin\Debug\netstandard2.0\superTech.Models.pdb
-C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.csproj.AssemblyReference.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.AssemblyInfoInputs.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech.Models\obj\Debug\netstandard2.0\superTech.Models.AssemblyInfo.cs

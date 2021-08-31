@@ -31,6 +31,7 @@ namespace superTech.Database
         public string Address { get; set; }
         public bool Active { get; set; }
         public int? FkCityId { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
         public virtual City FkCity { get; set; }
         public virtual ICollection<Bill> Bills { get; set; }

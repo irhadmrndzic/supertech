@@ -7,6 +7,7 @@
        xmlns:welcomePage="clr-namespace:superTechMobile.Views.WelcomePage"
        xmlns:ordersPage="clr-namespace:superTechMobile.Views.Orders"
        xmlns:billsPage="clr-namespace:superTechMobile.Views.Bills"
+       xmlns:userDetailsPage="clr-namespace:superTechMobile.Views.UserDetails"
        Title="superTechMobile"
        x:Class="superTechMobile.AppShell">
 
@@ -99,11 +100,11 @@
     <FlyoutItem Title="Novosti" >
         <ShellContent Route="NewsPage" ContentTemplate="{DataTemplate news:NewsPage}" />
     </FlyoutItem>
-    <!--<FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>-->
 
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
+    <FlyoutItem Title="Moj profil" >
+        <ShellContent Route="UserDetailsPage" ContentTemplate="{DataTemplate userDetailsPage:UserDetailsPage}" />
+    </FlyoutItem>
+    
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="onLogoutClicked">
     </MenuItem>
 

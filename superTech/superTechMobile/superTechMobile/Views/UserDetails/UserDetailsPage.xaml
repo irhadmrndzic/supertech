@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.UserDetails" xmlns:behavior="clr-namespace:superTechMobile.Helper"
+             x:Class="superTechMobile.Views.UserDetails.UserDetailsPage"
+             Title="Moj profil">
+    <ContentPage.BindingContext>
+        <vm:UserDetailsViewModel></vm:UserDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Ime:"></Label>
+                    <Entry Text="{Binding FirstName}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Prezime:"></Label>
+                    <Entry Text="{Binding LastName}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Datum rođenja:"></Label>
+                    <Entry Text="{Binding DateOfBirth,StringFormat='{0:dd.MM.yyyy}'}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Korisničko ime:"></Label>
+                    <Entry Text="{Binding Username}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Email:"></Label>
+                    <Entry Text="{Binding Email}" TextChanged="Entry_TextChangedEmail" ></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Broj telefona:"></Label>
+                    <Entry Text="{Binding PhoneNumber}" Keyboard="Telephone" TextChanged="Entry_TextChangedPhoneNumber">
+                        <Entry.Behaviors>
+                            <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask"  />
+                            <behavior:EntryLengthValidator MaxLength="12"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Adresa:"></Label>
+                    <Entry Text="{Binding Address}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Grad:"></Label>
+                    <Entry Text="{Binding City}" IsEnabled="False"></Entry>
+                </StackLayout>
+                <Button IsEnabled="{Binding IsTextChanged}" Text="Sačuvaj" HeightRequest="50" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

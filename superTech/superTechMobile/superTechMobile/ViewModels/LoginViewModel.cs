@@ -67,11 +67,22 @@ namespace superTechMobile.ViewModels
 
             try
             {
-                await _usersApiService.Get<object>(null);
+                UserSearchRequest request = new UserSearchRequest();
+                request.Username = Username;
+                List<UserModel> users = await _usersApiService.Get<List<UserModel>>(request);
 
-                 GetCurrentUser();
+                if (users.Count > 0)
+                {
+                    APIService.APIService.userId = int.Parse(users[0].UserId);
+                    Application.Current.MainPage = new AppShell();
+                }
+                else
+                {
+                     throw new Exception("Autentifikacija neuspješna!");
+                }
 
-                Application.Current.MainPage = new AppShell();
+                //GetCurrentUser();
+
 
 
             }
@@ -80,6 +91,6 @@ namespace superTechMobile.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Login", exception.Message, "OK");
             }
         }
-     
+
     }
 }
