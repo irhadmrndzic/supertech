@@ -1,7 +1,6 @@
 ﻿using superTech.Models.BuyerOrders;
 using superTech.Models.BuyerOrders.BuyerOrderItems;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace superTechMobile.ViewModels.Orders

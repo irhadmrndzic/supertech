@@ -6,9 +6,9 @@ namespace superTech.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BillsController : BaseCRUDController<BillsModel, object, BillsUpsertRequest, BillsUpsertRequest>
+    public class BillsController : BaseCRUDController<BillsModel, BillsSearchRequest, BillsUpsertRequest, BillsUpsertRequest>
     {
-        public BillsController(ICRUDService<BillsModel, object, BillsUpsertRequest, BillsUpsertRequest> IBaseService) : base(IBaseService)
+        public BillsController(ICRUDService<BillsModel, BillsSearchRequest, BillsUpsertRequest, BillsUpsertRequest> IBaseService) : base(IBaseService)
         {
 
         }

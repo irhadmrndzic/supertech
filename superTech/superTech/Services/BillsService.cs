@@ -8,14 +8,14 @@ using System.Linq;
 
 namespace superTech.Services
 {
-    public class BillsService : BaseCRUDService<BillsModel, object, Bill, BillsUpsertRequest, BillsUpsertRequest>, ICRUDService<BillsModel, object, BillsUpsertRequest, BillsUpsertRequest>
+    public class BillsService : BaseCRUDService<BillsModel, BillsSearchRequest, Bill, BillsUpsertRequest, BillsUpsertRequest>, ICRUDService<BillsModel, BillsSearchRequest, BillsUpsertRequest, BillsUpsertRequest>
     {
         public BillsService(superTechRSContext context, IMapper mapper) : base(context, mapper)
         {
 
         }
 
-        public override List<BillsModel> Get(object searchFilter)
+        public override List<BillsModel> Get(BillsSearchRequest searchFilter)
         {
 
 
@@ -23,6 +23,11 @@ namespace superTech.Services
 
             query = query.Include(q => q.BillItems).ThenInclude(a => a.FkProduct).ThenInclude(s => s.BuyerOrderItems).ThenInclude(y => y.FkBuyerOrderNavigation)
                 .ThenInclude(d => d.FkUser);
+
+            if (!string.IsNullOrWhiteSpace(searchFilter.Username))
+            {
+                query = query.Where(x => x.FkUser.UserName == searchFilter.Username);
+            }
 
             var list = query.ToList();
 

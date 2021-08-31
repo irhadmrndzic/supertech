@@ -1,30 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Orders"
-             x:Class="superTechMobile.Views.Orders.OrderDetailsPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Bills"
+             x:Class="superTechMobile.Views.Bills.BillsDetailsPage">
     <ContentPage.BindingContext>
-        <vm:OrderDetailsViewModel></vm:OrderDetailsViewModel>
+        <vm:BillsDetailsViewModel></vm:BillsDetailsViewModel>
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="8">
                 <Frame BorderColor="Black" CornerRadius="4">
                     <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                         <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Broj narudžbe:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            <Label Text="{Binding OrderNumber}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Broj računa:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding BillNumber}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
+
                         <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Datum:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Datum izdavanja:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Potvrđena" FontSize="18" LineBreakMode="WordWrap" />
-                            <CheckBox IsChecked="{Binding Confirmed}" IsEnabled="False"/>
+                            <Label Text="Zatvoren:" FontSize="18" LineBreakMode="WordWrap" />
+                            <CheckBox IsChecked="{Binding Closed}" IsEnabled="False"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Iznos:" FontSize="18" LineBreakMode="WordWrap"/>
+                            <Label Text="Porez:" FontSize="18" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding Tax}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Iznos bez poreza:" FontSize="18" LineBreakMode="WordWrap"/>
                             <Label Text="{Binding Amount}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
+                        </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Iznos s porezom:" FontSize="18" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding AmountWithTax}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -33,7 +44,7 @@
                         <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="Start"    />
-                        <ListView ItemsSource="{Binding AllOrderItems}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+                        <ListView ItemsSource="{Binding AllBillItems}" Style="{DynamicResource BorderContentView}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -43,26 +54,22 @@
                                             <StackLayout >
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Naziv: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding ProductName}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding ProductString}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Šifra: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding ProductCode}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                    <Label Text="Cijena: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding Price}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Količina: " FontSize="16"  FontAttributes="None"></Label>
                                                     <Label Text="{Binding Quantity}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Cijena: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding ProductPrice}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                                    <Label Text="{Binding ProductPrice, StringFormat='KM'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
 
-                                                </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Iznos: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding Amount, StringFormat='KM'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                    <Label Text="Popust: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding Discount}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
                                                 </StackLayout>
+
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>

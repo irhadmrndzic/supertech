@@ -42,10 +42,17 @@ namespace superTechMobile.ViewModels
 
         public async void GetCurrentUser()
         {
-            UserSearchRequest request = new UserSearchRequest();
-            request.Username = Username;
-            APIService.APIService.CurrentUser = await _usersApiService.Get<List<UserModel>>(request);
-            APIService.APIService.userId = int.Parse(APIService.APIService.CurrentUser[0].UserId);
+            try
+            {
+                UserSearchRequest request = new UserSearchRequest();
+                request.Username = Username;
+                APIService.APIService.CurrentUser = await _usersApiService.Get<List<UserModel>>(request);
+                APIService.APIService.userId = int.Parse(APIService.APIService.CurrentUser[0].UserId);
+            }
+            catch (Exception exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Login", exception.Message, "OK");
+            }
         }
 
         private async Task OnLoginClicked()
