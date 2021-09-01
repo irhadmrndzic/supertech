@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products"
+             x:Class="superTechMobile.Views.Products.ProductsPage"
+             Title="Proizvodi">
+    <ContentPage.BindingContext>
+        <vm:ProductsViewModel></vm:ProductsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <StackLayout Margin="10" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                <Label Text="Filtriraj po vrsti proizvoda:"></Label>
+                <Picker ItemsSource="{Binding CategoriesList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCategory}">
+                </Picker>
+                <Button Text="Reset" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+            <ListView ItemsSource="{Binding ProductsList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="8" Orientation="Horizontal" Margin="0,0,0,10">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" FontSize="18"  FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="{Binding Code}" FontSize="14" LineBreakMode="WordWrap" ></Label>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Cijena: " FontSize="16"  FontAttributes="None"></Label>
+                                        <Label Text="{Binding PriceString}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

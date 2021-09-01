@@ -8,6 +8,7 @@
        xmlns:ordersPage="clr-namespace:superTechMobile.Views.Orders"
        xmlns:billsPage="clr-namespace:superTechMobile.Views.Bills"
        xmlns:userDetailsPage="clr-namespace:superTechMobile.Views.UserDetails"
+       xmlns:productsPage="clr-namespace:superTechMobile.Views.Products"
        Title="superTechMobile"
        x:Class="superTechMobile.AppShell">
 
@@ -89,7 +90,9 @@
     <FlyoutItem Title="SuperTech" >
         <ShellContent Route="WelcomePage" ContentTemplate="{DataTemplate welcomePage:WelcomePage}" />
     </FlyoutItem>
-    
+    <FlyoutItem Title="Proizvodi" >
+        <ShellContent Route="ProductsPage" ContentTemplate="{DataTemplate productsPage:ProductsPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Narudžbe" >
         <ShellContent Route="OrdersPage" ContentTemplate="{DataTemplate ordersPage:OrdersPage}" />
     </FlyoutItem>

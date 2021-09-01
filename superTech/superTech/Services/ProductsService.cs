@@ -26,26 +26,26 @@ namespace superTech.Services
         public List<ProductModel> Get(ProductsSearchRequest searchFilter)
         {
             var query = _dbContext.Products.AsQueryable();
-
+            
 
             if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
             {
-                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory).Include(q => q.FkCategory); ;
+                query = query.Where(x => x.FkCategoryId == searchFilter.CategoryId).Include(q => q.FkCategory).Include(q => q.FkCategory); 
             }
 
             if ((!string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
             {
-                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()) && x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); ;
+                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()) && x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); 
             }
 
             if((!string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
             {
-                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower())).Include(q => q.FkCategory); ;
+                query = query.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower())).Include(q => q.FkCategory); 
             }
 
             if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && !string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId == 0))
             {
-                query = query.Where(x => x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); ;
+                query = query.Where(x => x.Code.ToLower().Contains(searchFilter.Code.ToLower())).Include(q => q.FkCategory); 
             }
 
             if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
@@ -70,7 +70,6 @@ namespace superTech.Services
             }
 
 
-
             query = query
                 .Include(b=>b.Brand)
                 .Include(q => q.FkCategory)
@@ -81,6 +80,8 @@ namespace superTech.Services
                 .Include(p=>p.BuyerOrderItems)
                 .ThenInclude(l=>l.FkBuyerOrderNavigation);
             query.OrderBy(x => x.Name);
+
+
 
             var list = query.ToList();
 

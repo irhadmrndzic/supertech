@@ -11,6 +11,7 @@ namespace superTech.Models.Product
         public string Code { get; set; }
         [Range(0,double.MaxValue)]
         public decimal Price { get; set; }
+        public string PriceString { get; set; }
         public decimal? Rating { get; set; }
         public bool Active { get; set; }
         public byte[] Image { get; set; }

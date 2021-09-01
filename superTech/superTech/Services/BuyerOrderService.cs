@@ -36,10 +36,41 @@ namespace superTech.Services
                 query = query.Where(x => x.FkUser.UserName == searchFilter.Username);
             }
 
-            var list = query.ToList().OrderBy(x => x.Active ? 0 : 1).ThenBy(q => q.Date);
+            var list = query.ToList().OrderBy(x => x.Active ? 0 : 1).ThenByDescending(q=>q.Date);
 
             return _mapper.Map<List<BuyerOrdersModel>>(list);
 
+        }
+
+        public override BuyerOrdersModel Insert(BuyerOrdersUpsertRequest request)
+        {
+            BuyerOrder entity = new BuyerOrder();
+
+            entity.OrderNumber = request.OrderNumber;
+            entity.Date = request.Date;
+            entity.Active = true;
+            entity.Confirmed = false;
+            entity.Confirmed = request.Canceled;
+            entity.Amount = request.Amount;
+            entity.FkUserId = request.UserId;
+
+            _dbContext.BuyerOrders.Add(entity);
+            _dbContext.SaveChanges();
+            foreach (var item in request.BuyerOrderItems)
+            {
+                BuyerOrderItem oi = new BuyerOrderItem
+                {
+                    Amount = item.Amount,
+                    Quantity = item.Quantity,
+                    FkProductId = item.FkProductId,
+                    FkBuyerOrder = entity.BuyerOrderId,
+                };
+                entity.BuyerOrderItems.Add(oi);
+                _dbContext.BuyerOrderItems.Add(oi);
+            }
+            _dbContext.SaveChanges();
+
+            return _mapper.Map<BuyerOrdersModel>(entity);
         }
 
         public override BuyerOrdersModel GetById(int id)

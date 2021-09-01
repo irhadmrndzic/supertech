@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Orders"
-             x:Class="superTechMobile.Views.Orders.OrdersPage">
+             x:Class="superTechMobile.Views.Orders.OrdersPage" Title="Moje narudžbe">
     <ContentPage.BindingContext>
         <vm:OrdersViewModel></vm:OrdersViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="5">
-                <Label Text="Moje narudžbe" FontSize="22" FontAttributes="bold" Padding="0,8,0,8"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="5" Margin="0,0,0,20">
+ 
                 <StackLayout>
                     <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
                 </StackLayout>
@@ -38,6 +35,5 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
