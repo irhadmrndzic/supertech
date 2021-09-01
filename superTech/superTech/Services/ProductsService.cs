@@ -1,10 +1,14 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
+using Microsoft.ML.Trainers;
 using superTech.Database;
+using superTech.MachineLearning;
 using superTech.Models.Product;
 using superTech.Services.GenericCRUD;
 
@@ -12,7 +16,8 @@ namespace superTech.Services
 {
     public class ProductsService : IProductsService
     {
-
+        static MLContext mlContext = null;
+        public static ITransformer model = null;
         private readonly superTechRSContext _dbContext;
         private readonly IMapper _mapper;
         public ProductsService(superTechRSContext context, IMapper mapper)
@@ -151,6 +156,68 @@ namespace superTech.Services
 
             _dbContext.SaveChanges();
 
+        }
+
+        public List<ProductModel> Recommender(int id)
+        {
+            if(mlContext == null)
+            {
+                 mlContext = new MLContext();
+
+                var tmpData = _dbContext.BuyerOrders.Include(x => x.BuyerOrderItems).ToList();
+
+                var data = new List<ProductEntry>();
+
+                foreach (var item in tmpData)
+                {
+                    if(item.BuyerOrderItems.Count > 1)
+                    {
+                        var distItemId = item.BuyerOrderItems.Select(q => q.FkProductId).ToList();
+                        distItemId.ForEach(y =>
+                        {
+                            var relatedItem = item.BuyerOrderItems.Where(a => a.FkProductId != y).ToList();
+
+                            relatedItem.ForEach(t =>
+                            {
+                                data.Add(new ProductEntry() { ProductID = (uint)y, CoPurchaseProductID = (uint)t.FkProductId });
+                            });
+                        });
+                    }
+                }
+
+                var trainData = mlContext.Data.LoadFromEnumerable(data);
+                MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
+                options.MatrixColumnIndexColumnName = nameof(ProductEntry.ProductID);
+                options.MatrixRowIndexColumnName = nameof(ProductEntry.CoPurchaseProductID);
+                options.LabelColumnName = "Label";
+                options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
+                options.Alpha = 0.01;
+                options.Lambda = 0.0001;
+
+                var est = mlContext.Recommendation().Trainers.MatrixFactorization(options);
+
+               model = est.Fit(trainData);
+            }
+
+            var allItems = _dbContext.Products.Where(x => x.ProductId != id).ToList();
+            var predResult = new List<Tuple<Database.Product, float>>();
+
+            foreach (var aItem in allItems)
+            {
+                var predictionengine = mlContext.Model.CreatePredictionEngine<ProductEntry, Copurchase_prediction>(model);
+                var prediction = predictionengine.Predict(
+                                         new ProductEntry()
+                                         {
+                                             ProductID = (uint)id,
+
+                                             CoPurchaseProductID = (uint)aItem.ProductId
+                                         });
+                predResult.Add(new Tuple<Product, float>(aItem, prediction.Score));
+            }
+
+
+            var probResult = predResult.OrderByDescending(x=>x.Item2).Select(x=>x.Item1).Take(3).ToList();
+            return _mapper.Map<List<ProductModel>>(probResult);
         }
     }
 }

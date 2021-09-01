@@ -1,7 +1,10 @@
 ﻿using superTech.Models.Offers;
 using superTech.Models.Product;
+using superTechMobile.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace superTechMobile.ViewModels.Products
 {
@@ -21,6 +24,7 @@ namespace superTechMobile.ViewModels.Products
         public string _proiductCategory;
         public int _quantity;
         public decimal _productPriceDecimal;
+        public ObservableCollection<ProductModel> ProductsList { get; set; } = new ObservableCollection<ProductModel>();
 
         public byte[] _image;
 
@@ -109,5 +113,40 @@ namespace superTechMobile.ViewModels.Products
             }
         }
 
+
+        public async void loadRecommendedProducts(int id)
+        {
+            try
+            {
+                List<ProductModel> products = await _productsApiService.GetRecommended<List<ProductModel>>(id);
+                var offers = await _offersApiService.Get<List<OffersModel>>(null);
+
+                ProductsList.Clear();
+
+                foreach (var item in products)
+                {
+                    ProductsList.Add(item);
+                }
+                foreach (var offer in offers)
+                {
+                    foreach (var item in offer.OfferItems)
+                    {
+                        foreach (var prod in ProductsList)
+                        {
+                            if (prod.ProductId == item.FkProductId)
+                            {
+                                ProductsList.Where(x => x.ProductId == item.FkProductId && offer.Active == true).SetValue(q => q.Price = (decimal)item.PriceWithDiscount);
+                                ProductsList.Where(x => x.ProductId == item.FkProductId && offer.Active == true).SetValue(q => q.PriceString = item.PriceWithDiscount.ToString() + " KM");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
     }
 }

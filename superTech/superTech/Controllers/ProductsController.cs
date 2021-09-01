@@ -20,7 +20,7 @@ namespace superTech.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
-        public List<ProductModel> Get([FromQuery]ProductsSearchRequest searchFilter)
+        public List<ProductModel> Get([FromQuery] ProductsSearchRequest searchFilter)
         {
             return _productsService.Get(searchFilter);
         }
@@ -39,11 +39,9 @@ namespace superTech.Controllers
             return _productsService.Insert(request);
         }
 
-
-
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Kupac,Serviser")]
         [HttpPut("{id}")]
-        public ProductModel Update(int id, [FromBody]ProductUpsertRequest request)
+        public ProductModel Update(int id, [FromBody] ProductUpsertRequest request)
         {
             return _productsService.Update(id, request);
         }
@@ -53,7 +51,15 @@ namespace superTech.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-             _productsService.Delete(id);
+            _productsService.Delete(id);
+        }
+
+
+        [HttpGet("{id}/recommend")]
+        [AllowAnonymous]
+        public List<ProductModel> Recommend(int id)
+        {
+            return _productsService.Recommender(id);
         }
 
     }

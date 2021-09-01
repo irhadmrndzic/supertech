@@ -25,7 +25,19 @@ namespace superTechMobile.APIService
         private string _apiUrl = "http://localhost:5001/api";
 #endif
 
-    
+        public async Task<T> GetRecommended<T>(object id)
+        {
+            var url = $"{_apiUrl}/{_route}/{id}/recommend";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                throw;
+            }
+        }
 
         public async Task<T> Get<T>(object search)
         {

@@ -30,7 +30,8 @@ namespace superTechMobile.Views.Products
         protected override void OnAppearing()
         {
             _model.loadProductDetails();
-            if(Global.Global.activeOrder != null)
+            _model.loadRecommendedProducts(_model.ProductId);
+            if (Global.Global.activeOrder != null)
             {
                 if (Global.Global.activeOrder.tempOrderItemsList != null)
                 {
