@@ -1,9 +1,5 @@
-﻿using superTechMobile.ViewModels;
-using superTechMobile.Views;
-using superTechMobile.Views.News;
-using superTechMobile.Views.WelcomePage;
+﻿using superTechMobile.Views;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace superTechMobile
@@ -13,10 +9,6 @@ namespace superTechMobile
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(NewsDetailsPage), typeof(NewsDetailsPage));
-            Routing.RegisterRoute(nameof(NewsPage), typeof(NewsPage));
-            Routing.RegisterRoute(nameof(WelcomePage), typeof(WelcomePage));
         }
 
         private  void onLogoutClicked(object sender, EventArgs e)

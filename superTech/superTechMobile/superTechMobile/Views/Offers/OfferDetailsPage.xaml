@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Offers"
+             x:Class="superTechMobile.Views.Offers.OfferDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:OfferDetailsViewModel></vm:OfferDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10" Padding="8">
+                <Frame BorderColor="Black" CornerRadius="4">
+                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                        <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding Title}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Važi do:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding DateTO, StringFormat='{0:dd.MM.yyyy}'}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Text="Opis:" FontSize="18" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding Description}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <ScrollView>
+                    <StackLayout Padding="3" >
+                        <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="Start"    />
+                        <ListView ItemsSource="{Binding AllOfferItems}" Style="{DynamicResource BorderContentView}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout  
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="StartAndExpand" Padding="8">
+                                            <StackLayout >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Naziv: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding ProductName}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Popust: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding Discount}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Cijena s popustom: " FontSize="16"  FontAttributes="None"></Label>
+                                                    <Label Text="{Binding PriceWithDiscount}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" TextColor="Red"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

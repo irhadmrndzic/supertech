@@ -9,6 +9,7 @@
        xmlns:billsPage="clr-namespace:superTechMobile.Views.Bills"
        xmlns:userDetailsPage="clr-namespace:superTechMobile.Views.UserDetails"
        xmlns:productsPage="clr-namespace:superTechMobile.Views.Products"
+       xmlns:offersPage="clr-namespace:superTechMobile.Views.Offers"
        Title="superTechMobile"
        x:Class="superTechMobile.AppShell">
 
@@ -61,9 +62,6 @@
                 </Setter>
             </Style>
 
-            <!--
-            Custom Style you can apply to any Flyout Item
-            -->
             <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -80,11 +78,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <!-- 
-        When the Flyout is visible this defines the content to display in the flyout.
-        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
-        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    -->
+
 
 
     <FlyoutItem Title="SuperTech" >
@@ -92,6 +86,9 @@
     </FlyoutItem>
     <FlyoutItem Title="Proizvodi" >
         <ShellContent Route="ProductsPage" ContentTemplate="{DataTemplate productsPage:ProductsPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Specijalne ponude" >
+        <ShellContent Route="OffersPage" ContentTemplate="{DataTemplate offersPage:OffersPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Narudžbe" >
         <ShellContent Route="OrdersPage" ContentTemplate="{DataTemplate ordersPage:OrdersPage}" />
@@ -111,48 +108,11 @@
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="onLogoutClicked">
     </MenuItem>
 
-    <!--
-        TabBar lets you define content that won't show up in a flyout menu. When this content is active
-        the flyout menu won't be available. This is useful for creating areas of the application where 
-        you don't want users to be able to navigate away from. If you would like to navigate to this 
-        content you can do so by calling 
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
+
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate login:LoginPage}" />
     </TabBar>
 
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
 
-    // This header appears at the top of the Flyout.
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyout-header
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-flyoutitem-appearance
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-menuitem-appearance
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
 
 </Shell>

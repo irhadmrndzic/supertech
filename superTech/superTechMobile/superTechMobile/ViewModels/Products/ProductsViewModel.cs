@@ -28,6 +28,7 @@ namespace superTechMobile.ViewModels.Products
         public string _proiductCategory;
 
         public ICommand InitCommand { get; }
+
         public string ProductName { get => _productName; set { SetProperty(ref _productName, value); } }
         public string ProductCode { get => _productCode; set { SetProperty(ref _productCode, value); } }
         public string ProductDescription { get => _productDescription; set { SetProperty(ref _productDescription, value); } }

@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products" xmlns:local="clr-namespace:superTechMobile.Converter"
              x:Class="superTechMobile.Views.Products.ProductsPage"
              Title="Proizvodi">
     <ContentPage.BindingContext>
         <vm:ProductsViewModel></vm:ProductsViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgCnv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="5">
             <StackLayout Margin="10" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
@@ -22,6 +27,9 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="8" Orientation="Horizontal" Margin="0,0,0,10">
+                                <StackLayout>
+                                    <Image Source="{Binding Image, Converter={StaticResource imgCnv}}" HeightRequest="100" WidthRequest="80"></Image>
+                                </StackLayout>
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Name}" FontSize="18"  FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
                                     <Label Text="{Binding Code}" FontSize="14" LineBreakMode="WordWrap" ></Label>

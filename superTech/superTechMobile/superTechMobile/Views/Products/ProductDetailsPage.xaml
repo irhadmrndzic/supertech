@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products" xmlns:behavior="clr-namespace:superTechMobile.Helper"
+             xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products" xmlns:behavior="clr-namespace:superTechMobile.Helper" xmlns:local="clr-namespace:superTechMobile.Converter"
              x:Class="superTechMobile.Views.Products.ProductDetailsPage">
     <ContentPage.BindingContext>
         <vm:ProductDetailsViewModel></vm:ProductDetailsViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgCnv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
 
         <Frame BorderColor="Black" CornerRadius="4">
@@ -27,17 +32,23 @@
                     <Label Text="Kategorija:"  FontSize="18" LineBreakMode="WordWrap"></Label>
                     <Label Text="{Binding ProductCategory}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
-                    <Label Text="Ocjena:"  FontSize="18" LineBreakMode="WordWrap"></Label>
-                    <Label Text="{Binding ProductRating}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+       
+                <StackLayout>
+                    <Image Source="{Binding Image, Converter={StaticResource imgCnv}}" HeightRequest="200" WidthRequest="20"></Image>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Opis:"  FontSize="18" LineBreakMode="WordWrap"></Label>
                     <Label Text="{Binding ProductDescription}" FontSize="20" LineBreakMode="WordWrap" ></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
+                    <Label Text="Ocjena:"  FontSize="18" LineBreakMode="WordWrap"></Label>
+                    <Label Text="{Binding ProductRating}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical">
                     <Label Text="{Binding Inventory}" FontSize="23" LineBreakMode="WordWrap"  FontAttributes="Bold"></Label>
                 </StackLayout>
+                
 
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="70,2,70,2">
                     <Label Text="Odaberite količinu: " Margin="0,10,0,0"></Label>

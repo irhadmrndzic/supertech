@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Offers"
+             x:Class="superTechMobile.Views.Offers.OffersPage"
+             Title="Specijalne ponude">
+    <ContentPage.BindingContext>
+        <vm:OffersViewModel></vm:OffersViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="5" Margin="0,0,0,20">
+            <StackLayout>
+                <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+            <ListView ItemsSource="{Binding OffersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout  
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="StartAndExpand" Padding="8">
+                                <StackLayout >
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Title}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                                            <Label Text="Važi do: " FontSize="16"  FontAttributes="None"></Label>
+                                            <Label Text="{Binding DateTo, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                        <Label Text="{Binding Description}" FontSize="18" LineBreakMode="NoWrap" ></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

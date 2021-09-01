@@ -6,28 +6,9 @@
         <vm:HomePageViewModel></vm:HomePageViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="SuperTech" FontSize="22" FontAttributes="bold"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-                <ListView ItemsSource="{Binding HomePageItems}"      VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand">
-                    <ListView.ItemTemplate >
-                        <DataTemplate >
-                            <ViewCell>
-                                <StackLayout      VerticalOptions="CenterAndExpand" 
-                                                 HorizontalOptions="CenterAndExpand"
-                                            Padding="2">
-                                    <Label Text="{Binding Title}" FontSize="30"  FontAttributes="Bold" Margin="10"       VerticalOptions="CenterAndExpand" 
-                                             HorizontalOptions="CenterAndExpand"></Label>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Dobrodošli" HorizontalOptions="Center" FontSize="23"></Label>
+            <Label x:Name="Username" Text="{Binding Username}" HorizontalOptions="Center" FontSize="23"></Label>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

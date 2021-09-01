@@ -5,8 +5,11 @@ namespace superTechMobile.ViewModels.HomePage
 {
     public class HomePageViewModel : BaseViewModel
     {
+        public string _username;
+        public string Username { get => _username; set { SetProperty(ref _username, value); } }
 
-       public List<Item> _homePageItems;
+
+        public List<Item> _homePageItems;
 
         public HomePageViewModel()
         {
@@ -18,6 +21,7 @@ namespace superTechMobile.ViewModels.HomePage
                 new Item { Title="Narudžbe" },
                 new Item { Title="Računi" }
             };
+            Username = APIService.APIService.Username;
         }
 
         public List<Item> HomePageItems
