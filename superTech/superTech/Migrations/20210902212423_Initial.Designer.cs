@@ -10,8 +10,8 @@ using superTech.Database;
 namespace superTech.Migrations
 {
     [DbContext(typeof(superTechRSContext))]
-    [Migration("20210708000011_initialMigration")]
-    partial class initialMigration
+    [Migration("20210902212423_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,6 +97,30 @@ namespace superTech.Migrations
                     b.ToTable("BillItems");
                 });
 
+            modelBuilder.Entity("superTech.Database.Brand", b =>
+                {
+                    b.Property<int>("BrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("WebAddress")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("BrandId");
+
+                    b.ToTable("Brands");
+                });
+
             modelBuilder.Entity("superTech.Database.BuyerOrder", b =>
                 {
                     b.Property<int>("BuyerOrderId")
@@ -107,7 +131,13 @@ namespace superTech.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
+                    b.Property<decimal?>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<bool>("Canceled")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("Confirmed")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("Date")
@@ -116,6 +146,9 @@ namespace superTech.Migrations
                     b.Property<int?>("FkUserId")
                         .HasColumnType("int")
                         .HasColumnName("FK_UserId");
+
+                    b.Property<int?>("OrderNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("BuyerOrderId");
 
@@ -130,6 +163,9 @@ namespace superTech.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal?>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("FkBuyerOrder")
                         .HasColumnType("int")
@@ -230,6 +266,9 @@ namespace superTech.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool?>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("DateFrom")
                         .HasColumnType("date");
 
@@ -262,6 +301,12 @@ namespace superTech.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool?>("Canceled")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("Confirmed")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
@@ -273,7 +318,7 @@ namespace superTech.Migrations
                         .HasColumnType("int")
                         .HasColumnName("FK_UserId");
 
-                    b.Property<int>("OrderNumber")
+                    b.Property<int?>("OrderNumber")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
@@ -325,6 +370,9 @@ namespace superTech.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -357,6 +405,8 @@ namespace superTech.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("BrandId");
 
                     b.HasIndex("FkCategoryId");
 
@@ -562,6 +612,9 @@ namespace superTech.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<DateTime?>("RegistrationDate")
                         .HasColumnType("date");
 
@@ -718,6 +771,11 @@ namespace superTech.Migrations
 
             modelBuilder.Entity("superTech.Database.Product", b =>
                 {
+                    b.HasOne("superTech.Database.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId")
+                        .HasConstraintName("FK__Products__BrandI__160F4887");
+
                     b.HasOne("superTech.Database.Category", "FkCategory")
                         .WithMany("Products")
                         .HasForeignKey("FkCategoryId")
@@ -727,6 +785,8 @@ namespace superTech.Migrations
                         .WithMany("Products")
                         .HasForeignKey("FkUnitOfMeasureId")
                         .HasConstraintName("FK__Products__FK_Uni__4AB81AF0");
+
+                    b.Navigation("Brand");
 
                     b.Navigation("FkCategory");
 
@@ -797,6 +857,11 @@ namespace superTech.Migrations
             modelBuilder.Entity("superTech.Database.Bill", b =>
                 {
                     b.Navigation("BillItems");
+                });
+
+            modelBuilder.Entity("superTech.Database.Brand", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("superTech.Database.BuyerOrder", b =>

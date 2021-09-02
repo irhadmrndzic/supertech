@@ -200,6 +200,7 @@ namespace superTech.WinUI.Products
                 else
                 {
                     await _productsService.Update<ProductModel>(_id, req);
+                    MessageBox.Show("Uspješno ste uredili proizvod ! ", "Dodaj proizvod", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

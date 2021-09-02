@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  supertech-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - supertech
+
+  supertech-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:ConnString=Server=supertech-sql,1433;Database=supertechrs;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 58744:80
+    networks:
+      - supertech
+    links:
+      - supertech-sql
+    depends_on:
+      - supertech-sql
+      
+networks:
+  supertech:
+    driver: bridge

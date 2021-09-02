@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -7,6 +9,8 @@ namespace superTech.Database
 {
     public partial class BillItem
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BillItemId { get; set; }
         public decimal Price { get; set; }
         public decimal? Discount { get; set; }

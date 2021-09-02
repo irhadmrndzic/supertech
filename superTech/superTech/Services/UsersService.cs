@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using superTech.Database;
 using superTech.Exceptions;
 using superTech.Models.User;
-using superTech.Services.GenericCRUD;
+using superTech.Services ;
 
 namespace superTech.Services
 {

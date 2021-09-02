@@ -18,14 +18,14 @@ namespace superTech.Controllers
         }
 
 
-        [Authorize(Roles = "Administrator")]
         [HttpGet]
+        [AllowAnonymous]
         public List<ProductModel> Get([FromQuery] ProductsSearchRequest searchFilter)
         {
             return _productsService.Get(searchFilter);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ProductModel GetById(int id)
         {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -13,6 +15,8 @@ namespace superTech.Database
             BuyerOrderItems = new HashSet<BuyerOrderItem>();
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BuyerOrderId { get; set; }
         public DateTime Date { get; set; }
         public bool Active { get; set; }

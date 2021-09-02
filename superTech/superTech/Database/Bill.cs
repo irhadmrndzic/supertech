@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -11,7 +13,8 @@ namespace superTech.Database
         {
             BillItems = new HashSet<BillItem>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BillId { get; set; }
         public int BillNumber { get; set; }
         public DateTime IssuingDate { get; set; }

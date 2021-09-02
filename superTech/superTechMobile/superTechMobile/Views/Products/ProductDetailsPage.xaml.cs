@@ -86,7 +86,7 @@ namespace superTechMobile.Views.Products
                     Global.Global.activeOrder.FkUserId = APIService.APIService.userId;
                     Global.Global.activeOrder.Confirmed = false;
                     Global.Global.activeOrder.Canceled = false;
-                    Global.Global.activeOrder.OrderNumber = number++;
+                    Global.Global.activeOrder.OrderNumber = ++number;
                     Global.Global.activeOrder.Date = DateTime.Now;
                 }
 

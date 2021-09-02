@@ -107,8 +107,6 @@ namespace superTech.Database
 
             modelBuilder.Entity<BuyerOrder>(entity =>
             {
-                entity.HasIndex(e => e.OrderNumber, "UQ__BuyerOrd__CAC5E7434DFFE578")
-                    .IsUnique();
 
                 entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
 
