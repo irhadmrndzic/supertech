@@ -160,6 +160,8 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netc
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\superTech.Models.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csproj.AssemblyReference.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.Properties.Resources.resources
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.csproj.GenerateResource.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfoInputs.cache
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.AssemblyInfo.cs

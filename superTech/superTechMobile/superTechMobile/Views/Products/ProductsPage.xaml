@@ -17,6 +17,9 @@
                 <Label Text="Filtriraj po vrsti proizvoda:"></Label>
                 <Picker ItemsSource="{Binding CategoriesList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCategory}">
                 </Picker>
+                <Label Text="Filtriraj po prozivođaču:" Margin="0,5,0,0"></Label>
+                <Picker ItemsSource="{Binding BrandsList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedBrand}">
+                </Picker>
                 <Button Text="Reset" Clicked="Button_Clicked"></Button>
             </StackLayout>
             <StackLayout>

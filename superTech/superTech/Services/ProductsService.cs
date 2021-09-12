@@ -31,7 +31,20 @@ namespace superTech.Services
         public List<ProductModel> Get(ProductsSearchRequest searchFilter)
         {
             var query = _dbContext.Products.AsQueryable();
-            
+
+            if (searchFilter.BrandId.HasValue && searchFilter.BrandId > 0)
+            {
+                query = query.Where(x => x.BrandId == searchFilter.BrandId);
+            }
+            else if(searchFilter.BrandId.HasValue && searchFilter.BrandId > 0 && searchFilter.CategoryId.HasValue && searchFilter.CategoryId > 0)
+            {
+                query = query.Where(x => x.BrandId == searchFilter.BrandId && x.FkCategoryId == searchFilter.CategoryId);
+            }
+            else if (searchFilter.CategoryId.HasValue && searchFilter.CategoryId > 0)
+            {
+                query = query.Where(x=>x.FkCategoryId == searchFilter.CategoryId);
+            }
+
 
             if ((string.IsNullOrWhiteSpace(searchFilter?.Name) && string.IsNullOrWhiteSpace(searchFilter?.Code)) && (searchFilter?.CategoryId.HasValue == true && searchFilter?.CategoryId != 0))
             {

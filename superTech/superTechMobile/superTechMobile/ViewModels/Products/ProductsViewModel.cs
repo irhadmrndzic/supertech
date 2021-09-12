@@ -17,6 +17,7 @@ namespace superTechMobile.ViewModels.Products
         private readonly APIService.APIService _productsApiService = new APIService.APIService("products");
         private readonly APIService.APIService _categoriesApiService = new APIService.APIService("categories");
         private readonly APIService.APIService _offersApiService = new APIService.APIService("offers");
+        private readonly APIService.APIService _brandsService = new APIService.APIService("brands");
 
         public string _productName;
         public string _productCode;
@@ -51,6 +52,19 @@ namespace superTechMobile.ViewModels.Products
                 }
             }
         }
+        public BrandsModel _selectedBrand = null;
+        public BrandsModel SelectedBrand
+        {
+            get => _selectedBrand;
+            set
+            {
+                SetProperty(ref _selectedBrand, value);
+                if (value != null)
+                {
+                    InitCommand.Execute(null);
+                }
+            }
+        }
 
 
         public ObservableCollection<ProductModel> ProductsList { get; set; } = new ObservableCollection<ProductModel>();
@@ -67,6 +81,7 @@ namespace superTechMobile.ViewModels.Products
         public  void Reset()
         {
             SelectedCategory = null;
+            SelectedBrand = null;
             InitCommand.Execute(null);
         }
         public async Task Init()
@@ -86,10 +101,28 @@ namespace superTechMobile.ViewModels.Products
                     }
                 }
 
-                if (SelectedCategory != null)
+                if(BrandsList.Count == 0)
+                {
+                    var brandsList = await _brandsService.Get<List<BrandsModel>>(null);
+                    BrandsList.Clear();
+                    foreach (var item in brandsList)
+                    {
+                        BrandsList.Add(item);
+                    }
+                }
+
+                if (SelectedCategory != null || SelectedBrand !=null)
                 {
                     ProductsSearchRequest request = new ProductsSearchRequest();
-                    request.CategoryId = SelectedCategory.CategoryId;
+
+                    if (SelectedCategory != null)
+                    {
+                        request.CategoryId = SelectedCategory.CategoryId;
+                    }
+                    if (SelectedBrand != null)
+                    {
+                        request.BrandId = SelectedBrand.BrandId;
+                    }
                     var list = await _productsApiService.Get<List<ProductModel>>(request);
                     ProductsList.Clear();
                     foreach (var item in list)
@@ -114,7 +147,7 @@ namespace superTechMobile.ViewModels.Products
 
                 }
 
-                if (SelectedCategory == null)
+                if (SelectedCategory == null && SelectedBrand == null)
                 {
                     var list = await _productsApiService.Get<List<ProductModel>>(null);
                     ProductsList.Clear();

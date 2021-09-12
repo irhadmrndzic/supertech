@@ -423,8 +423,8 @@ namespace superTech.WinUI.Products
 
         private  void btnSearch_Click(object sender, EventArgs e)
         {
-            clearForm();
             onGetProductsClicked();
+            clearForm();
         }
 
 
@@ -436,5 +436,7 @@ namespace superTech.WinUI.Products
                 value = 0;
             }
         }
+
+
     }
 }

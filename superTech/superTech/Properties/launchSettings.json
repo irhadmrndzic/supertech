@@ -20,7 +20,7 @@
     "superTech": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:58744/swagger/index.html",
+      "launchUrl": "http://localhost:5001/swagger/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
