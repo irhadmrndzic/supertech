@@ -50,7 +50,7 @@
                     </StackLayout>
 
 
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="70,2,70,2">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="70,2,70,2" IsVisible="{Binding HasAccess}">
                         <Label Text="Odaberite količinu: " Margin="0,10,0,0"></Label>
                         <Entry  Keyboard="Numeric" x:Name="qty"
           HorizontalTextAlignment="Center" Text="{Binding Quantity}">
@@ -61,15 +61,15 @@
                         </Entry>
                     </StackLayout>
 
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="70,2,70,2">
-                        <Button Text="Dodaj u korpu"  HorizontalOptions="Center"  HeightRequest="50" Clicked="Button_AddToCart_Clicked" BackgroundColor="Green" x:Name="addToCartBtn"></Button>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="70,2,70,2" IsVisible="{Binding HasAccess}">
+                        <Button Text="Dodaj u korpu"  HorizontalOptions="Center"  HeightRequest="50" Clicked="Button_AddToCart_Clicked" BackgroundColor="Green" x:Name="addToCartBtn" IsEnabled="{Binding HasAccess}"></Button>
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="40,2,40,2">
                         <Label x:Name="CartInfo" FontSize="23" LineBreakMode="WordWrap"  FontAttributes="Bold" TextColor="Green"></Label>
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="{Binding HasAccess}">
                         <Button Text="Pregled narudžbe"  HorizontalOptions="FillAndExpand" Margin="0,4,0,0" HeightRequest="50" x:Name="ConfirmOrder" Clicked="Button_Confirm_Order_Clicked"></Button>
                     </StackLayout>
 

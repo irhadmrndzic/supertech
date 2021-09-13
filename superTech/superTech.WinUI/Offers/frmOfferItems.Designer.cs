@@ -88,7 +88,7 @@
             this.Controls.Add(this.listViewOfferItems);
             this.Name = "frmOfferItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmOfferItems";
+            this.Text = "Stavke ponude";
             this.Load += new System.EventHandler(this.frmOfferItems_Load);
             this.ResumeLayout(false);
 

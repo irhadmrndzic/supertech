@@ -1,19 +1,16 @@
 ﻿using superTech.Models.User;
 using superTechMobile.Views;
 using superTechMobile.Views.Bills;
+using superTechMobile.Views.DelivererOrders;
 using superTechMobile.Views.News;
 using superTechMobile.Views.Offers;
 using superTechMobile.Views.Orders;
 using superTechMobile.Views.Products;
 using superTechMobile.Views.UserDetails;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -41,7 +38,6 @@ namespace superTechMobile.Navigation
         }
 
 
-
         class MenuFlyoutViewModel : INotifyPropertyChanged
         {
             public ObservableCollection<MenuFlyoutMenuItem> MenuItems { get; set; }
@@ -61,7 +57,9 @@ namespace superTechMobile.Navigation
                 }
                 if (APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
                 {
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "TestOrder", Image = "orders.png", TargetType = typeof(OrdersPage) }); // Napraviti stranicu za pregled nepotvrdjenih narudzbi usera, forma ista kao na desktopu
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Početna", Image = "find-product.png", TargetType = typeof(ProductsPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Narudžbe", Image = "orders.png", TargetType = typeof(DelivererOrdersPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Odjava", Image = "find-product.png", TargetType = typeof(LoginPage) });
                 }
             }
 

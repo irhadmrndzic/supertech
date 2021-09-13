@@ -275,7 +275,7 @@ namespace superTech.WinUI.Bills
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.dgvBills);
             this.Name = "frmBills";
-            this.Text = "frmBills";
+            this.Text = "Računi";
             this.Load += new System.EventHandler(this.frmBills_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).EndInit();
             this.gbInfo.ResumeLayout(false);

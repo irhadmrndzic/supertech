@@ -15,6 +15,7 @@ namespace superTech.Models.BuyerOrders
         public decimal? Amount { get; set; }
         public bool Confirmed { get; set; }
         public string UserString { get; set; }
+        public string ShippingAddress { get; set; }
 
         public virtual ICollection<BuyerOrderItemsModel> BuyerOrderItems { get; set; }
 

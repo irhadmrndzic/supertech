@@ -113,6 +113,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
                 .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
                 .ForMember(q => q.BuyerOrderItems, w => w.MapFrom(src => src.BuyerOrderItems))
+                .ForMember(a=>a.ShippingAddress, src=>src.MapFrom(q=>q.FkUser.Address))
                 .ReverseMap();
 
 

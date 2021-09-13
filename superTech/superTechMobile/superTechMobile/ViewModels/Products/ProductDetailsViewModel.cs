@@ -24,6 +24,11 @@ namespace superTechMobile.ViewModels.Products
         public string _proiductCategory;
         public int _quantity;
         public decimal _productPriceDecimal;
+        public bool _hasAccess;
+
+
+        public bool HasAccess { get => _hasAccess; set { SetProperty(ref _hasAccess, value); } }
+
         public ObservableCollection<ProductModel> ProductsList { get; set; } = new ObservableCollection<ProductModel>();
 
         public byte[] _image;
@@ -43,6 +48,7 @@ namespace superTechMobile.ViewModels.Products
                 ProductId = value;
             }
         }
+  
 
         public string ProductName { get => _productName; set { SetProperty(ref _productName, value); } }
         public byte[] Image{ get => _image; set { SetProperty(ref _image, value); } }
@@ -68,7 +74,16 @@ namespace superTechMobile.ViewModels.Products
 
         public async void loadProductDetails()
         {
-            try
+            if (APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
+            {
+                HasAccess = false;
+            }
+            else
+            {
+                HasAccess = true;
+            }
+
+                try
             {
                 ProductModel product = await _productsApiService.GetById<ProductModel>(ProductId);
                 var offers = await _offersApiService.Get<List<OffersModel>>(null);

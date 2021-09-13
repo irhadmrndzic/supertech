@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,10 +7,17 @@ namespace superTechMobile.Navigation
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : FlyoutPage
     {
+
         public Menu()
         {
             InitializeComponent();
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
+
+        }
+
+        protected  override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

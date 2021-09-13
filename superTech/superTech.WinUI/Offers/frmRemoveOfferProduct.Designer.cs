@@ -80,9 +80,11 @@ namespace superTech.WinUI.Offers
             this.Controls.Add(this.btnCnt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNumber);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmRemoveOfferProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRemoveOfferProduct";
+            this.Text = "Ukloni proizvod";
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
