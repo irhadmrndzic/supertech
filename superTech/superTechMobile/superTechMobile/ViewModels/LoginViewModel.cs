@@ -74,14 +74,15 @@ namespace superTechMobile.ViewModels
                 if (users.Count > 0)
                 {
                     APIService.APIService.userId = int.Parse(users[0].UserId);
-                    Application.Current.MainPage = new AppShell();
+                    APIService.APIService.cUser = await _usersApiService.GetById<UserModel>(int.Parse(users[0].UserId));
+
+                    Application.Current.MainPage = new Navigation.Menu();
                 }
                 else
                 {
                      throw new Exception("Autentifikacija neuspješna!");
                 }
 
-                //GetCurrentUser();
 
 
 

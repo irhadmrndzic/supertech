@@ -17,21 +17,21 @@ namespace superTech.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Administrator,Kupac,Serviser")]
+        [Authorize(Roles = "Administrator,Kupac,Serviser,Dostavljac")]
         [HttpGet]
         public List<UserModel> Get([FromQuery]UserSearchRequest searchFilter)
         {
             return _service.Get(searchFilter);
         }
 
-        [Authorize(Roles = "Administrator,Kupac,Serviser")]
+        [Authorize(Roles = "Administrator,Kupac,Serviser,Dostavljac")]
         [HttpGet("{id}")]
         public UserModel GetById(int id)
         {
             return _service.GetById(id);
         }
 
-        [Authorize(Roles = "Administrator,Kupac,Serviser")]
+        [Authorize(Roles = "Administrator,Kupac,Serviser,Dostavljac")]
         [AllowAnonymous]
         [HttpPost]
         public UserModel Insert(UserUpsertRequest request)
@@ -40,7 +40,7 @@ namespace superTech.Controllers
         }
 
 
-        [Authorize(Roles = "Administrator,Kupac,Serviser")]
+        [Authorize(Roles = "Administrator,Kupac,Serviser,Dostavljac")]
         [AllowAnonymous]
         [HttpPut("{id}")]
         public UserModel Update(int id, [FromBody]UserUpsertRequest request)

@@ -88,9 +88,19 @@ namespace superTechMobile.ViewModels.TempOrderDetails
 
                     request.BuyerOrderItems.Add(itemsRequest);
                 }
-                await _ordersApiService.Insert<BuyerOrdersModel>(request);
-                await Application.Current.MainPage.DisplayAlert("Info", "Narudžba zaprimljena !", "OK");
-                await Application.Current.MainPage.Navigation.PushAsync(new OrdersPage());
+                try
+                {
+                    await _ordersApiService.Insert<BuyerOrdersModel>(request);
+                    await Application.Current.MainPage.DisplayAlert("Info", "Narudžba zaprimljena !", "OK");
+                    Global.Global.activeOrder = null;
+                    Application.Current.MainPage = new Navigation.Menu();
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", ex.Message, "OK");
+
+                }
+
 
             }
             catch (Exception ex)

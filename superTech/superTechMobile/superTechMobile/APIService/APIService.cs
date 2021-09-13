@@ -16,6 +16,7 @@ namespace superTechMobile.APIService
         public static string Password { get; set; }
         public static int userId{ get; set; }
         public static List<UserModel> CurrentUser;
+        public static UserModel cUser;
         public APIService(string route)
         {
             _route = route;
@@ -85,32 +86,32 @@ namespace superTechMobile.APIService
             try
             {
                 var res = await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
-                if (res.ToString() != "")
-                {
+                //if (res.ToString() != "")
+                //{
 
-                    Page currPage = null;
+                //    Page currPage = null;
 
-                    if (Application.Current.MainPage.Navigation.NavigationStack.Count > 0)
-                    {
+                //    if (Application.Current.MainPage.Navigation.NavigationStack.Count > 0)
+                //    {
 
-                        int index = Application.Current.MainPage.Navigation.NavigationStack.Count - 1;
+                //        int index = Application.Current.MainPage.Navigation.NavigationStack.Count;
 
-                        currPage = Application.Current.MainPage.Navigation.NavigationStack[index];
+                //        currPage = Application.Current.MainPage.Navigation.NavigationStack[index];
 
-                    }
+                //    }
 
 
-                    if (currPage.Title != "" && currPage.Title.ToString() == "Registracija")
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Info", "Registracija uspješna!", "OK");
-                    }
+                //    if (currPage.Title != "" && currPage.Title.ToString() == "Registracija")
+                //    {
+                //        await Application.Current.MainPage.DisplayAlert("Info", "Registracija uspješna!", "OK");
+                //    }
 
-                    if (currPage.Title != "" && currPage.Title.ToString() == "Ocjena")
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Info", "Uspješno ste ocijenili proizvod!", "OK");
-                    }
+                //    if (currPage.Title != "" && currPage.Title.ToString() == "Ocjena")
+                //    {
+                //        await Application.Current.MainPage.DisplayAlert("Info", "Uspješno ste ocijenili proizvod!", "OK");
+                //    }
 
-                }
+                //}
                 return res;
 
             }

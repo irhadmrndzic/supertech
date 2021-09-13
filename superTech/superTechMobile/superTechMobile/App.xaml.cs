@@ -1,5 +1,4 @@
-﻿using superTechMobile.Services;
-using superTechMobile.Views;
+﻿using superTechMobile.Views;
 using superTechMobile.Views.News;
 using System;
 using Xamarin.Forms;
@@ -14,7 +13,6 @@ namespace superTechMobile
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new LoginPage());
         }
 
