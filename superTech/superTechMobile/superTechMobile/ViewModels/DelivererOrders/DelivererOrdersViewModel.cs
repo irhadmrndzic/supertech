@@ -25,8 +25,10 @@ namespace superTechMobile.ViewModels.DelivererOrders
         {
             try
             {
+                BuyerOrdersSearchRequest request = new BuyerOrdersSearchRequest();
+                request.Status = "Neprocesirana";
                 IsBusy = true;
-                var list = await _buyerOrderService.Get<List<BuyerOrdersModel>>(null);
+                var list = await _buyerOrderService.Get<List<BuyerOrdersModel>>(request);
                 OrdersList.Clear();
                 foreach (var item in list)
                 {

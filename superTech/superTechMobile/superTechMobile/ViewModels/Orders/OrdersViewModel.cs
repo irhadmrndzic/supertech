@@ -16,24 +16,40 @@ namespace superTechMobile.ViewModels.Orders
 
         public OrdersViewModel()
         {
-            InitCommand = new Command(async () => await Init());
+            InitCommand = new Command(async () => await Init(false));
 
         }
 
-        public async Task Init()
+        public async Task Init(bool all)
         {
-            BuyerOrdersSearchRequest request = new BuyerOrdersSearchRequest();
+         
 
-            request.Username = APIService.APIService.Username;
             try
             {
-                IsBusy = true;
-                var list = await _ordersApiService.Get<List<BuyerOrdersModel>>(request);
-                OrdersList.Clear();
-                foreach (var item in list)
+                if (!all)
                 {
-                    OrdersList.Add(item);
+                    BuyerOrdersSearchRequest request = new BuyerOrdersSearchRequest();
+                    request.Username = APIService.APIService.Username;
+                    IsBusy = true;
+                    var list = await _ordersApiService.Get<List<BuyerOrdersModel>>(request);
+                    OrdersList.Clear();
+                    foreach (var item in list)
+                    {
+                        OrdersList.Add(item);
+                    }
                 }
+                else
+                {
+                    IsBusy = true;
+                    var list = await _ordersApiService.Get<List<BuyerOrdersModel>>(null);
+                    OrdersList.Clear();
+                    foreach (var item in list)
+                    {
+                        OrdersList.Add(item);
+                    }
+                }
+
+           
             }
             catch (Exception)
             {

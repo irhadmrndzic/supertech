@@ -74,13 +74,13 @@ namespace superTechMobile.ViewModels.Products
 
         public async void loadProductDetails()
         {
-            if (APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
+            if (APIService.APIService.cUser.RolesString.Contains("Kupac"))
             {
-                HasAccess = false;
+                HasAccess = true;
             }
             else
             {
-                HasAccess = true;
+                HasAccess = false;
             }
 
                 try

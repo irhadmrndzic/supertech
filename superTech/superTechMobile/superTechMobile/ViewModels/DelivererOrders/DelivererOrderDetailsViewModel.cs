@@ -2,7 +2,8 @@
 using superTech.Models.BuyerOrders.BuyerOrderItems;
 using System;
 using System.Collections.ObjectModel;
-
+using System.Threading.Tasks;
+using Xamarin.Forms;
 namespace superTechMobile.ViewModels.DelivererOrders
 {
     public class DelivererOrderDetailsViewModel:BaseViewModel
@@ -85,5 +86,24 @@ namespace superTechMobile.ViewModels.DelivererOrders
                 throw;
             }
         }
+
+        public async Task confirmOrderDelivery()
+        {
+            try
+            {
+                BuyerOrdersUpsertRequest req = new BuyerOrdersUpsertRequest();
+                req.Confirmed = true;
+                req.Active = false;
+                req.Canceled = false;
+                await _ordersApiService.Update<BuyerOrdersModel>(OrderDetailId, req);
+                await Application.Current.MainPage.DisplayAlert("Info", "Narudžba potvrđena !", "OK");
+
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Narudžbu nije moguće potvrditi! ", "OK");
+            }
+        }
+
     }
 }

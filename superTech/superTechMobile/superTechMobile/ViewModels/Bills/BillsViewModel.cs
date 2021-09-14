@@ -17,23 +17,39 @@ namespace superTechMobile.ViewModels.Bills
 
         public BillsViewModel()
         {
-            InitCommand = new Command(async () => await Init());
+            InitCommand = new Command(async () => await Init(false));
+
         }
 
-        public async Task Init()
+        public async Task Init(bool all)
         {
-            BillsSearchRequest request = new BillsSearchRequest();
-
-            request.Username = APIService.APIService.Username;
             try
             {
-                IsBusy = true;
-                var list = await _billsApiService.Get<List<BillsModel>>(request);
-                BillsList.Clear();
-                foreach (var item in list)
+                if (!all)
                 {
-                    BillsList.Add(item);
+                    BillsSearchRequest request = new BillsSearchRequest();
+
+                    request.Username = APIService.APIService.Username;
+
+                    IsBusy = true;
+                    var list = await _billsApiService.Get<List<BillsModel>>(request);
+                    BillsList.Clear();
+                    foreach (var item in list)
+                    {
+                        BillsList.Add(item);
+                    }
                 }
+                else
+                {
+                    IsBusy = true;
+                    var list = await _billsApiService.Get<List<BillsModel>>(null);
+                    BillsList.Clear();
+                    foreach (var item in list)
+                    {
+                        BillsList.Add(item);
+                    }
+                }
+
             }
             catch (Exception)
             {

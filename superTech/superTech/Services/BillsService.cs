@@ -18,8 +18,9 @@ namespace superTech.Services
         public override List<BillsModel> Get(BillsSearchRequest searchFilter)
         {
 
-
             var query = _dbContext.Bills.AsQueryable();
+
+
 
             query = query.Include(q => q.BillItems).ThenInclude(a => a.FkProduct).ThenInclude(s => s.BuyerOrderItems).ThenInclude(y => y.FkBuyerOrderNavigation)
                 .ThenInclude(d => d.FkUser);
@@ -27,6 +28,11 @@ namespace superTech.Services
             if (!string.IsNullOrWhiteSpace(searchFilter.Username))
             {
                 query = query.Where(x => x.FkUser.UserName == searchFilter.Username);
+            }
+
+            if(searchFilter.Status == false)
+            {
+                query = query.Where(x => x.Closed == false);
             }
 
             var list = query.ToList();

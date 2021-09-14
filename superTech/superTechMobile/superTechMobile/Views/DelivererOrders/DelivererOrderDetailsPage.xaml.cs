@@ -30,6 +30,9 @@ namespace superTechMobile.Views.DelivererOrders
             base.OnAppearing();
         }
 
-     
+        private async void orderConfirmBtn_Clicked(object sender, EventArgs e)
+        {
+            await _model.confirmOrderDelivery();
+        }
     }
 }

@@ -19,7 +19,15 @@ namespace superTechMobile.Views.Bills
 
         protected async override void OnAppearing()
         {
-            await _model.Init();
+            if (APIService.APIService.cUser.RolesString.Contains("Dostavljac") || APIService.APIService.cUser.RolesString.Contains("Administrator"))
+            {
+                await _model.Init(true);
+            }
+            else
+            {
+                await _model.Init(false);
+
+            }
             base.OnAppearing();
         }
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

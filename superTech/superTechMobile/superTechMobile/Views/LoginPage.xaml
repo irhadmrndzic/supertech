@@ -13,7 +13,7 @@
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10" BackgroundColor="LightGray">
             <Label Text="Korisničko ime"></Label>
             <Entry x:Name="Username" Text="{Binding Username}" ></Entry>
 
@@ -27,7 +27,7 @@
                     <Button Text="Prijava" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50"></Button>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Button Text="Registracija"  HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50" Clicked="NavigateButton_OnClicked"></Button>
+                    <Button Text="Registracija"  HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50" Clicked="NavigateButton_OnClicked" BackgroundColor="Orange"></Button>
                 </StackLayout>
             </StackLayout>
             

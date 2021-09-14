@@ -1,6 +1,7 @@
 ﻿using superTech.Models.User;
 using superTechMobile.Views;
 using superTechMobile.Views.Bills;
+using superTechMobile.Views.DelivererBills;
 using superTechMobile.Views.DelivererOrders;
 using superTechMobile.Views.News;
 using superTechMobile.Views.Offers;
@@ -58,7 +59,8 @@ namespace superTechMobile.Navigation
                 if (APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
                 {
                     MenuItems.Add(new MenuFlyoutMenuItem { Title = "Početna", Image = "find-product.png", TargetType = typeof(ProductsPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Narudžbe", Image = "orders.png", TargetType = typeof(DelivererOrdersPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Aktivne narudžbe", Image = "orders.png", TargetType = typeof(DelivererOrdersPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Aktivni računi", Image = "orders.png", TargetType = typeof(DelivererBills) });
                     MenuItems.Add(new MenuFlyoutMenuItem { Title = "Odjava", Image = "find-product.png", TargetType = typeof(LoginPage) });
                 }
             }
