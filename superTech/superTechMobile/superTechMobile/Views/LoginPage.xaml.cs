@@ -16,6 +16,7 @@ namespace superTechMobile.Views
         }
         private async void NavigateButton_OnClicked(object sender, EventArgs e)
         {
+            Global.Global.activeOrder = null;
             await Application.Current.MainPage.Navigation.PushAsync(new RegistrationPage());
         }
     }

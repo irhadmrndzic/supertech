@@ -59,7 +59,7 @@ namespace superTechMobile.ViewModels
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-
+            Global.Global.activeOrder = null;
             IsBusy = true;
 
             APIService.APIService.Username = Username;
