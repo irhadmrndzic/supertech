@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bills.png" />
+    <Content Include="cart.png" />
     <Content Include="find-product.png" />
     <Content Include="home-page.png" />
     <Content Include="logout.png" />
@@ -127,6 +128,7 @@
     <AndroidResource Include="Resources\bills.png" />
     <AndroidResource Include="Resources\orders.png" />
     <AndroidResource Include="Resources\news.png" />
+    <AndroidResource Include="Resources\cart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -16,6 +16,12 @@ namespace superTechMobile.ViewModels.TempOrderDetails
 
         private readonly APIService.APIService _ordersApiService = new APIService.APIService("buyerorders");
 
+        public bool _listHasValues;
+        public bool ListHasValues { get => _listHasValues; set => SetProperty(ref _listHasValues, value); }
+
+        public bool _listHasNoValues;
+        public bool ListHasNoValues { get => _listHasNoValues; set => SetProperty(ref _listHasNoValues, value); }
+
         public DateTime _date;
         public bool _active;
         public bool _canceled;
@@ -41,21 +47,41 @@ namespace superTechMobile.ViewModels.TempOrderDetails
 
         public async Task Init()
         {
-            Date = Global.Global.activeOrder.Date;
-            Active = Global.Global.activeOrder.Active;
-            Canceled = Global.Global.activeOrder.Canceled;
-            Confirmed = (bool)Global.Global.activeOrder.Confirmed;
-            UserId = (int)Global.Global.activeOrder.FkUserId;
-            OrderNumber = (int)Global.Global.activeOrder.OrderNumber;
-            foreach (var item in Global.Global.activeOrder.tempOrderItemsList)
+            if (Global.Global.activeOrder != null)
             {
-                AllOrderItems.Add(item);
-            }
+                Date = Global.Global.activeOrder.Date;
+                Active = Global.Global.activeOrder.Active;
+                Canceled = Global.Global.activeOrder.Canceled;
+                Confirmed = (bool)Global.Global.activeOrder.Confirmed;
+                UserId = (int)Global.Global.activeOrder.FkUserId;
+                OrderNumber = (int)Global.Global.activeOrder.OrderNumber;
+                foreach (var item in Global.Global.activeOrder.tempOrderItemsList)
+                {
+                    AllOrderItems.Add(item);
+                }
 
-            foreach (var item in AllOrderItems)
-            {
-                Amount += (decimal)item.Amount;
+                foreach (var item in AllOrderItems)
+                {
+                    Amount += (decimal)item.Amount;
+                }
+
+                if (AllOrderItems.Count > 0)
+                {
+                    ListHasValues = true;
+                    ListHasNoValues = false;
+                }
+                else
+                {
+                    ListHasValues = false;
+                    ListHasNoValues = true;
+                }
             }
+            else
+            {
+                ListHasValues = false;
+                ListHasNoValues = true;
+            }
+    
         }
 
         public async Task ConfirmOrder()

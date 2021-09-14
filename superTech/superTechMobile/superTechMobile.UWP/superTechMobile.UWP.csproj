@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bills.png" />
+    <Content Include="cart.png" />
     <Content Include="find-product.png" />
     <Content Include="home-page.png" />
     <Content Include="logout.png" />

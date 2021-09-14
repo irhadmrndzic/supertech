@@ -9,15 +9,17 @@
         <vm:RatingsViewModel></vm:RatingsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
             <Label Text="Ocijenite proizvod :" FontSize="20" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-            <Entry 
+            <StackLayout  HorizontalOptions="Center" Margin="70,2,70,2" Orientation="Horizontal">
+                <Entry HorizontalOptions="Center" 
        Keyboard="Numeric"
-       Text="{Binding Rating}"  WidthRequest="10" HorizontalTextAlignment="Center">
-                <Entry.Behaviors>
-                    <behavior:EntryLengthValidator MaxLength="1"/>
-                </Entry.Behaviors>
-            </Entry>
+       Text="{Binding Rating}"    HorizontalTextAlignment="Center">
+                    <Entry.Behaviors>
+                        <behavior:EntryLengthValidator MaxLength="1"/>
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Button Clicked="Button_Clicked" Text="Ocijeni" IsVisible="{Binding EnableButton}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="rate_btn"></Button>
                 <Label Text="Narudžba nije potvrđena ili ste već ocijenili proizvod!" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding EnableLabel}"/>
