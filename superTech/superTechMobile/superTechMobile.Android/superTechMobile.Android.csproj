@@ -112,5 +112,21 @@
       <Name>superTechMobile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="bills.png" />
+    <Content Include="find-product.png" />
+    <Content Include="home-page.png" />
+    <Content Include="logout.png" />
+    <Content Include="my-account.png" />
+    <Content Include="news.png" />
+    <Content Include="orders.png" />
+    <AndroidResource Include="Resources\home-page.png" />
+    <AndroidResource Include="Resources\my-account.png" />
+    <AndroidResource Include="Resources\logout.png" />
+    <AndroidResource Include="Resources\find-product.png" />
+    <AndroidResource Include="Resources\bills.png" />
+    <AndroidResource Include="Resources\orders.png" />
+    <AndroidResource Include="Resources\news.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

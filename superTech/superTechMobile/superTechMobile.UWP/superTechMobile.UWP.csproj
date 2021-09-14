@@ -105,7 +105,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bills.png" />
     <Content Include="find-product.png" />
+    <Content Include="home-page.png" />
+    <Content Include="logout.png" />
+    <Content Include="my-account.png" />
+    <Content Include="news.png" />
     <Content Include="orders.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

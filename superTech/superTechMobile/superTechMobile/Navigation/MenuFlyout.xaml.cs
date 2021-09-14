@@ -45,24 +45,23 @@ namespace superTechMobile.Navigation
             public MenuFlyoutViewModel()
             {
                 MenuItems = new ObservableCollection<MenuFlyoutMenuItem>();
+                MenuItems.Add(new MenuFlyoutMenuItem { Title = "Početna", Image = "home-page.png", TargetType = typeof(ProductsPage) });
 
                 if (!APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
                 {
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Početna", Image = "find-product.png", TargetType = typeof(ProductsPage) });
                     MenuItems.Add(new MenuFlyoutMenuItem { Title = "Ponude", Image = "find-product.png", TargetType = typeof(OffersPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Moje narudžbe", Image = "find-product.png", TargetType = typeof(OrdersPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Moji računi", Image = "find-product.png", TargetType = typeof(BillsPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Novosti", Image = "find-product.png", TargetType = typeof(NewsPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Profil", Image = "find-product.png", TargetType = typeof(UserDetailsPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Odjava", Image = "find-product.png", TargetType = typeof(LoginPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Moje narudžbe", Image = "orders.png", TargetType = typeof(OrdersPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Moji računi", Image = "bills.png", TargetType = typeof(BillsPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Novosti", Image = "news.png", TargetType = typeof(NewsPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Profil", Image = "my-account.png", TargetType = typeof(UserDetailsPage) });
                 }
                 if (APIService.APIService.cUser.RolesString.Contains("Dostavljac"))
                 {
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Početna", Image = "find-product.png", TargetType = typeof(ProductsPage) });
                     MenuItems.Add(new MenuFlyoutMenuItem { Title = "Aktivne narudžbe", Image = "orders.png", TargetType = typeof(DelivererOrdersPage) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Aktivni računi", Image = "orders.png", TargetType = typeof(DelivererBills) });
-                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Odjava", Image = "find-product.png", TargetType = typeof(LoginPage) });
+                    MenuItems.Add(new MenuFlyoutMenuItem { Title = "Aktivni računi", Image = "bills.png", TargetType = typeof(DelivererBills) });
                 }
+                MenuItems.Add(new MenuFlyoutMenuItem { Title = "Odjava", Image = "logout.png", TargetType = typeof(LoginPage) });
+
             }
 
             #region INotifyPropertyChanged Implementation
