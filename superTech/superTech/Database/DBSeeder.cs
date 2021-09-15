@@ -72,8 +72,8 @@ namespace superTech.Database
 
             },
                 new Role{
-                Name = "Serviser",
-                Description = "Serviser"
+                Name = "Dostavljac",
+                Description = "Dostavljac"
 
             } };
 
@@ -105,7 +105,7 @@ namespace superTech.Database
                 Gender = "Muski",
                 RegistrationDate = DateTime.Now,
                 DateOfBirth = DateTime.Now,
-                ProfilePicture = null,
+                ProfilePicture = ReadFile("../supertech/Resources/admin.png"),
                 PasswordSalt = adminSalt,
                 PasswordHash = UsersService.GenerateHash(adminSalt, "test")
             };
@@ -130,8 +130,7 @@ namespace superTech.Database
                 DateOfBirth = DateTime.Now,
                 PasswordSalt = mobileSalt,
                 PasswordHash = UsersService.GenerateHash(mobileSalt, "test"),
-                ProfilePicture = ReadFile("../supertech/Resources/samsung.jpg"),
-
+                ProfilePicture = ReadFile("../supertech/Resources/profilePhoto.jpg"),
             };
 
             context.Users.Add(mobile);
@@ -160,6 +159,29 @@ namespace superTech.Database
             context.Users.Add(test);
             context.SaveChanges();
 
+            var delivererSalt = UsersService.GenerateSalt();
+
+            var deliverer = new User()
+            {
+                FirstName = "deliverer",
+                LastName = "deliverer",
+                UserName = "deliverer",
+                Active = true,
+                FkCity = cities[1],
+                Address = "Bulevar M.S",
+                PhoneNumber = "124-456-789",
+                Email = "deliverer@mail.com",
+                Gender = "Muski",
+                RegistrationDate = DateTime.Now,
+                DateOfBirth = DateTime.Now,
+                ProfilePicture = ReadFile("../supertech/Resources/deliverer.jpg"),
+                PasswordSalt = delivererSalt,
+                PasswordHash = UsersService.GenerateHash(delivererSalt, "test")
+            };
+
+            context.Users.Add(deliverer);
+            context.SaveChanges();
+
             var userRoles = new List<UsersRole> { new UsersRole
             {
                 DateOfModification = DateTime.Now,
@@ -178,6 +200,12 @@ namespace superTech.Database
                  DateOfModification = DateTime.Now,
                  FkUser = test,
                 FkRole = roles[1],
+            }
+            ,new UsersRole
+            {
+                 DateOfModification = DateTime.Now,
+                 FkUser = deliverer,
+                FkRole = roles[2],
             }
             };
 
