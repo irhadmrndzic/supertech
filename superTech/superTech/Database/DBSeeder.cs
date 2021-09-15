@@ -128,9 +128,10 @@ namespace superTech.Database
                 Gender = "Muski",
                 RegistrationDate = DateTime.Now,
                 DateOfBirth = DateTime.Now,
-                ProfilePicture = null,
                 PasswordSalt = mobileSalt,
-                PasswordHash = UsersService.GenerateHash(mobileSalt, "test")
+                PasswordHash = UsersService.GenerateHash(mobileSalt, "test"),
+                ProfilePicture = ReadFile("../supertech/Resources/samsung.jpg"),
+
             };
 
             context.Users.Add(mobile);

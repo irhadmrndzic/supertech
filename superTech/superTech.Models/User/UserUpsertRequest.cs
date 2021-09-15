@@ -31,6 +31,8 @@ namespace superTech.Models.User
         public bool Active { get; set; }
         [Required]
         public int CityId { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
         public List<int>? Roles { get; set; } = new List<int>();
 
       

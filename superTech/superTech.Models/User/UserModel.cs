@@ -22,6 +22,7 @@ namespace superTech.Models.User
         public int City { get; set; }
         public string CityString { get; set; }
         public string RolesString { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
         public List<int> Roles { get; set; }
         public ICollection<UsersRolesModel> UsersRoles { get; set; }

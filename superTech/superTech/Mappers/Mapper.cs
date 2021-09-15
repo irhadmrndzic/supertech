@@ -29,7 +29,7 @@ namespace superTech.Mappers
             CreateMap<Role, RolesModel>().ReverseMap();
             CreateMap<Brand, BrandsModel>().ReverseMap();
 
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<User, UserModel>().ForMember(x=>x.DateOfBirth, src=>src.MapFrom(x=>x.DateOfBirth.ToShortDateString())).ReverseMap();
             CreateMap<UsersRole, UsersRolesModel>().ReverseMap();
             CreateMap<Rating, RatingsModel>().ReverseMap();
 
@@ -39,6 +39,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.Roles, a => a.MapFrom(src => src.UsersRoles.Select(s => s.FkRole.Name)))
                 .ForMember(g => g.City, gr => gr.MapFrom(sr => sr.FkCity.CityId))
                 .ForMember(c => c.CityString, c => c.MapFrom(c => c.FkCity.Name))
+                .ForMember(a=>a.ProfilePicture, sr=>sr.MapFrom(q=>q.ProfilePicture))
                 .ForMember(r => r.RolesString, rs => rs.MapFrom(src => string.Join(",", src.UsersRoles.Select(x => x.FkRole.Name))))
                 .ForMember(c => c.Roles, c => c.MapFrom(c => c.UsersRoles.Select(q => q.FkRoleId)))
                 .ReverseMap();
