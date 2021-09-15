@@ -1,2 +1,4 @@
-Desktop credentials: desktop, test
-Mobile credentials: mobile, test
+Desktop credentials: [desktop, test]
+
+Mobile credentials: ([mobile, test] ,[deliverer, test])
+

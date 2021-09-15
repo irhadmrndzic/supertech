@@ -308,7 +308,7 @@
             this.txtPhoneNumber.Mask = "000-000-000";
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(491, 26);
-            this.txtPhoneNumber.TabIndex = 45;
+            this.txtPhoneNumber.TabIndex = 6;
             // 
             // frmUserDetails
             // 

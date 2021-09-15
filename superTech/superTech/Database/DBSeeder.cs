@@ -37,58 +37,64 @@ namespace superTech.Database
                 return;
             }
 
-            var cities = new List<City> { new City
-            {
-                Name ="Mostar",
-                ZipCode="88000"
-            }
-            ,new City{
-            Name="Sarajevo",
-            ZipCode="71000"} };
+            
 
-            context.Cities.AddRange(cities);
+            City mostar = new City
+            {
+                Name = "Mostar",
+                ZipCode = "88000"
+            };
+
+            context.Cities.Add(mostar);
+            context.SaveChanges();
+
+            City sarajevo = new City
+            {
+                Name = "Sarajevo",
+                ZipCode = "71000"
+            };
+
+            context.Cities.Add(sarajevo);
             context.SaveChanges();
 
 
-            var categories = new List<Category> { new Category
-            {
-                Name ="Mobiteli",
-            }
-            ,new Category{
-                Name="Laptopi",
-            } };
 
-            context.Categories.AddRange(categories);
+
+            Category mobiteli = new Category
+            {
+                Name = "Mobiteli"
+            };
+
+            context.Categories.Add(mobiteli);
             context.SaveChanges();
 
-            var roles = new List<Role> { new Role
+            Category laptopi = new Category
             {
-                Name = "Administrator",
-                Description = "Administrator"
+                Name = "Laptopi"
+            };
 
-            }, new Role{
-                Name = "Kupac",
-                Description = "Kupac"
+            context.Categories.Add(laptopi);
+            context.SaveChanges();
 
-            },
-                new Role{
-                Name = "Dostavljac",
-                Description = "Dostavljac"
+            Role Administrator = new Role { Name = "Administrator", Description = "Administrator" };
+            Role Kupac = new Role { Name = "Kupac", Description = "Kupac" };
+            Role Dostavljac = new Role { Name = "Dostavljac", Description = "Dostavljac" };
 
-            } };
-
-
-            context.Roles.AddRange(roles);
-
+            context.Roles.Add(Administrator);
+            context.SaveChanges();
+            context.Roles.Add(Kupac);
+            context.SaveChanges();
+            context.Roles.Add(Dostavljac);
             context.SaveChanges();
 
 
-            var uom = new List<UnitsOfMeasure> { new UnitsOfMeasure
-            {
-                Name = "Komad",
+            UnitsOfMeasure komad = new UnitsOfMeasure { Name = "Komad" };
+            UnitsOfMeasure metar = new UnitsOfMeasure { Name = "Metar" };
 
-            }, new UnitsOfMeasure{Name="Metar" } };
-
+            context.UnitsOfMeasures.Add(komad);
+            context.SaveChanges();
+            context.UnitsOfMeasures.Add(metar);
+            context.SaveChanges();
 
             var adminSalt = UsersService.GenerateSalt();
 
@@ -98,7 +104,7 @@ namespace superTech.Database
                 LastName = "Admin",
                 UserName = "desktop",
                 Active = true,
-                FkCity = cities[1],
+                FkCity =mostar,
                 Address = "Marsala Tita",
                 PhoneNumber = "124-456-789",
                 Email = "mail@mail.com",
@@ -121,7 +127,7 @@ namespace superTech.Database
                 LastName = "mobile",
                 UserName = "mobile",
                 Active = true,
-                FkCity = cities[0],
+                FkCity = mostar,
                 Address = "Bulevar M.S",
                 PhoneNumber = "124-456-789",
                 Email = "email@mail.com",
@@ -144,7 +150,7 @@ namespace superTech.Database
                 LastName = "test",
                 UserName = "test",
                 Active = true,
-                FkCity = cities[1],
+                FkCity = sarajevo,
                 Address = "Bulevar M.S",
                 PhoneNumber = "124-456-789",
                 Email = "test@mail.com",
@@ -167,7 +173,7 @@ namespace superTech.Database
                 LastName = "deliverer",
                 UserName = "deliverer",
                 Active = true,
-                FkCity = cities[1],
+                FkCity =mostar,
                 Address = "Bulevar M.S",
                 PhoneNumber = "124-456-789",
                 Email = "deliverer@mail.com",
@@ -186,26 +192,26 @@ namespace superTech.Database
             {
                 DateOfModification = DateTime.Now,
                 FkUser = admin,
-                FkRole = roles[0],
+                FkRole =Administrator,
 
             },
             new UsersRole
             {
                 DateOfModification = DateTime.Now,
                  FkUser = mobile,
-                FkRole = roles[1],
+                FkRole = Kupac,
             }
             ,new UsersRole
             {
                  DateOfModification = DateTime.Now,
                  FkUser = test,
-                FkRole = roles[1],
+                FkRole = Kupac,
             }
             ,new UsersRole
             {
                  DateOfModification = DateTime.Now,
                  FkUser = deliverer,
-                FkRole = roles[2],
+                FkRole = Dostavljac,
             }
             };
 
@@ -237,13 +243,13 @@ namespace superTech.Database
 
             var samsung = new Product
             {
-                FkCategory = categories[0],
+                FkCategory =mobiteli,
                 Name = "Samsung S21",
                 Price = 2200,
                 Brand = brands[0],
                 Active = true,
                 Code = "FKLSD3942",
-                FkUnitOfMeasure = uom[0],
+                FkUnitOfMeasure =komad,
                 Description = "Najbolji mobitel od Samsunga.",
                 Image = ReadFile("../supertech/Resources/samsung.jpg"),
                 ImageThumb = ReadFile("../supertech/Resources/samsung.jpg"),
@@ -251,25 +257,25 @@ namespace superTech.Database
 
             var dell = new Product
             {
-                FkCategory = categories[1],
+                FkCategory = laptopi,
                 Name = "LAPTOP DELL INSPIRON15",
                 Price = 1000,
                 Brand = brands[1],
                 Active = true,
                 Code = "KGUID3942",
-                FkUnitOfMeasure = uom[0],
+                FkUnitOfMeasure = komad,
                 Description = "15.6'' FULL HD AG, INTEL I3-1005G1",
                 Image = ReadFile("../supertech/Resources/dell.jpg"),
                 ImageThumb = ReadFile("../supertech/Resources/dell.jpg"),
             };
             var apple = new Product
             {
-                FkCategory = categories[1],
+                FkCategory = laptopi,
                 Name = "APPLE MACBOOK AIR 13.3",
                 Price = 3000,
                 Brand = brands[2],
                 Active = true,
-                FkUnitOfMeasure = uom[0],
+                FkUnitOfMeasure = komad,
                 Code = "LPUID2942",
                 Description = "Procesor: Apple M1",
                 Image = ReadFile("../supertech/Resources/mac.jpg"),

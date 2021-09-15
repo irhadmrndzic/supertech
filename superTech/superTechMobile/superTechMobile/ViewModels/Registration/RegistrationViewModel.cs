@@ -195,7 +195,7 @@ namespace superTechMobile.ViewModels.Registration
                 }
 
                 var role = new List<int>();
-                role.Add(1);//buyer
+                role.Add(2);//buyer
                 UserUpsertRequest request = new UserUpsertRequest
                 {
                     FirstName = FirstName,

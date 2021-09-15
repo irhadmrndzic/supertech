@@ -85,33 +85,7 @@ namespace superTechMobile.APIService
 
             try
             {
-                var res = await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
-                //if (res.ToString() != "")
-                //{
-
-                //    Page currPage = null;
-
-                //    if (Application.Current.MainPage.Navigation.NavigationStack.Count > 0)
-                //    {
-
-                //        int index = Application.Current.MainPage.Navigation.NavigationStack.Count;
-
-                //        currPage = Application.Current.MainPage.Navigation.NavigationStack[index];
-
-                //    }
-
-
-                //    if (currPage.Title != "" && currPage.Title.ToString() == "Registracija")
-                //    {
-                //        await Application.Current.MainPage.DisplayAlert("Info", "Registracija uspješna!", "OK");
-                //    }
-
-                //    if (currPage.Title != "" && currPage.Title.ToString() == "Ocjena")
-                //    {
-                //        await Application.Current.MainPage.DisplayAlert("Info", "Uspješno ste ocijenili proizvod!", "OK");
-                //    }
-
-                //}
+                T res = await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
                 return res;
 
             }

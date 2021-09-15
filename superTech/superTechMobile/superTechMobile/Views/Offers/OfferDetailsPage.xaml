@@ -18,8 +18,7 @@
                             <Label Text="{Binding DateTO, StringFormat='{0:dd.MM.yyyy}'}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Opis:" FontSize="18" LineBreakMode="WordWrap"/>
-                            <Label Text="{Binding Description}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" FontSize="22" LineBreakMode="WordWrap" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
