@@ -12,20 +12,24 @@ namespace superTech.Database
     public class DBSeeder
     {
 
-        public static byte[] ReadFile(string sPath)
+      public static byte[] ReadFile(string sPath)
         {
-            byte[] data = null;
+            try
+            {
+                FileInfo fInfo = new FileInfo(sPath);
+                long numBytes = fInfo.Length;
 
-            FileInfo fInfo = new FileInfo(sPath);
-            long numBytes = fInfo.Length;
+                FileStream fStream = new FileStream(sPath, FileMode.Open, FileAccess.Read);
 
-            FileStream fStream = new FileStream(sPath, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fStream);
 
-            BinaryReader br = new BinaryReader(fStream);
-
-            data = br.ReadBytes((int)numBytes);
-
-            return data;
+                byte[] data = br.ReadBytes((int)numBytes);
+                return data;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static void Init(superTechRSContext context)
