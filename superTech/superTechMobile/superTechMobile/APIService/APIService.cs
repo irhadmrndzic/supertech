@@ -23,7 +23,7 @@ namespace superTechMobile.APIService
         }
 
 #if DEBUG
-        private string _apiUrl = "http://localhost:5001/api";
+        private string _apiUrl = "http://localhost:58744/api";
 #endif
 
         public async Task<T> GetRecommended<T>(object id)

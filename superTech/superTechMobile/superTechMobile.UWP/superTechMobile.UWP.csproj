@@ -105,6 +105,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="bills.png" />
     <Content Include="cart.png" />
     <Content Include="find-product.png" />

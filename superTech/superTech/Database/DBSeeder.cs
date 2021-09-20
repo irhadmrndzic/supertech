@@ -12,7 +12,7 @@ namespace superTech.Database
     public class DBSeeder
     {
 
-      public static byte[] ReadFile(string sPath)
+        public static byte[] ReadFile(string sPath)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace superTech.Database
                 return;
             }
 
-            
+
 
             City mostar = new City
             {
@@ -108,14 +108,14 @@ namespace superTech.Database
                 LastName = "Admin",
                 UserName = "desktop",
                 Active = true,
-                FkCity =mostar,
+                FkCity = mostar,
                 Address = "Marsala Tita",
                 PhoneNumber = "124-456-789",
                 Email = "mail@mail.com",
                 Gender = "Muski",
                 RegistrationDate = DateTime.Now,
                 DateOfBirth = DateTime.Now,
-                ProfilePicture = ReadFile("../supertech/Resources/admin.png"),
+                ProfilePicture = ReadFile("./Resources/admin.png"),
                 PasswordSalt = adminSalt,
                 PasswordHash = UsersService.GenerateHash(adminSalt, "test")
             };
@@ -140,7 +140,7 @@ namespace superTech.Database
                 DateOfBirth = DateTime.Now,
                 PasswordSalt = mobileSalt,
                 PasswordHash = UsersService.GenerateHash(mobileSalt, "test"),
-                ProfilePicture = ReadFile("../supertech/Resources/profilePhoto.jpg"),
+                ProfilePicture = ReadFile("./Resources/profilePhoto.jpg"),
             };
 
             context.Users.Add(mobile);
@@ -177,14 +177,14 @@ namespace superTech.Database
                 LastName = "deliverer",
                 UserName = "deliverer",
                 Active = true,
-                FkCity =mostar,
+                FkCity = mostar,
                 Address = "Bulevar M.S",
                 PhoneNumber = "124-456-789",
                 Email = "deliverer@mail.com",
                 Gender = "Muski",
                 RegistrationDate = DateTime.Now,
                 DateOfBirth = DateTime.Now,
-                ProfilePicture = ReadFile("../supertech/Resources/deliverer.jpg"),
+                ProfilePicture = ReadFile("./Resources/deliverer.jpg"),
                 PasswordSalt = delivererSalt,
                 PasswordHash = UsersService.GenerateHash(delivererSalt, "test")
             };
@@ -247,16 +247,16 @@ namespace superTech.Database
 
             var samsung = new Product
             {
-                FkCategory =mobiteli,
+                FkCategory = mobiteli,
                 Name = "Samsung S21",
                 Price = 2200,
                 Brand = brands[0],
                 Active = true,
                 Code = "FKLSD3942",
-                FkUnitOfMeasure =komad,
+                FkUnitOfMeasure = komad,
                 Description = "Najbolji mobitel od Samsunga.",
-                Image = ReadFile("../supertech/Resources/samsung.jpg"),
-                ImageThumb = ReadFile("../supertech/Resources/samsung.jpg"),
+                Image = ReadFile("./Resources/samsung.jpg"),
+                ImageThumb = ReadFile("./Resources/samsung.jpg"),
             };
 
             var dell = new Product
@@ -269,8 +269,8 @@ namespace superTech.Database
                 Code = "KGUID3942",
                 FkUnitOfMeasure = komad,
                 Description = "15.6'' FULL HD AG, INTEL I3-1005G1",
-                Image = ReadFile("../supertech/Resources/dell.jpg"),
-                ImageThumb = ReadFile("../supertech/Resources/dell.jpg"),
+                Image = ReadFile("./Resources/dell.jpg"),
+                ImageThumb = ReadFile("./Resources/dell.jpg"),
             };
             var apple = new Product
             {
@@ -282,8 +282,8 @@ namespace superTech.Database
                 FkUnitOfMeasure = komad,
                 Code = "LPUID2942",
                 Description = "Procesor: Apple M1",
-                Image = ReadFile("../supertech/Resources/mac.jpg"),
-                ImageThumb = ReadFile("../supertech/Resources/mac.jpg"),
+                Image = ReadFile("./Resources/mac.jpg"),
+                ImageThumb = ReadFile("./Resources/mac.jpg"),
             };
 
 
@@ -593,13 +593,14 @@ namespace superTech.Database
 
 
 
-            var offers = new Offer { 
-                
-                Active =true,
-                DateFrom =DateTime.Now,
+            var offers = new Offer
+            {
+
+                Active = true,
+                DateFrom = DateTime.Now,
                 DateTo = DateTime.Now.AddDays(30),
                 Description = "Samsung S21 po super povoljnoj cijeni !",
-                Title ="Super ponuda Samsung S21"
+                Title = "Super ponuda Samsung S21"
             };
 
             context.Add(offers);
