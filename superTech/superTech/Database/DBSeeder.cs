@@ -603,7 +603,7 @@ namespace superTech.Database
                 Title = "Super ponuda Samsung S21"
             };
 
-            context.Add(offers);
+            context.Offers.Add(offers);
             context.SaveChanges();
 
 
@@ -614,7 +614,7 @@ namespace superTech.Database
             PriceWithDiscount =2000
             } };
 
-            context.AddRange(offerItems);
+            context.ProductOffers.AddRange(offerItems);
             context.SaveChanges();
         }
 

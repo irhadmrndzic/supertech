@@ -8,7 +8,7 @@ namespace superTech.Models.Orders
     {
 
         public int? OrderNumber { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
     }
 }

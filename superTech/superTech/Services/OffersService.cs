@@ -21,15 +21,17 @@ namespace superTech.Services
 
             query = query.Include(x => x.ProductOffers).ThenInclude(p => p.FkProduct);
 
-            if (searchFilter?.DateFrom != null && (searchFilter?.DateFrom.ToString() != "1.1.0001. 00:00:00" && searchFilter?.DateFrom.ToString() != "1.1.0001. 01:00:00")
-                && (searchFilter?.DateTo != null && (searchFilter?.DateTo.ToString() != "1.1.0001. 00:00:00" && searchFilter?.DateTo.ToString() != "1.1.0001. 01:00:00")))
+            if (searchFilter.DateFrom.HasValue)
             {
-                query = query.Where(x => x.DateFrom >= searchFilter.DateFrom && x.DateTo <= searchFilter.DateTo);
+                query = query.Where(x => x.DateFrom >= searchFilter.DateFrom.Value);
+            }
 
+            if (searchFilter.DateTo.HasValue)
+            {
+                query = query.Where(x => x.DateTo <= searchFilter.DateTo.Value);
             }
 
             var list = query.ToList();
-
             return _mapper.Map<List<OffersModel>>(list);
 
         }

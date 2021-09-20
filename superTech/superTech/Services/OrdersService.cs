@@ -27,9 +27,9 @@ namespace superTech.Services
 
        
 
-            if(searchFilter?.Date !=null && (searchFilter?.Date.ToString() != "1.1.0001. 00:00:00" && searchFilter?.Date.ToString() != "1.1.0001. 01:00:00"))
+            if(searchFilter.Date.HasValue)
             {
-                var date = searchFilter.Date.Date;
+                var date = searchFilter.Date.Value.Date;
 
                 query = query.Where(x => x.Date.Date == date);
                 query = query.OrderBy(x => x.Date);

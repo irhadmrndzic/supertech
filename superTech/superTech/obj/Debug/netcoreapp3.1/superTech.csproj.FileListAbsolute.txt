@@ -176,3 +176,9 @@ C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netc
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.dll
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.pdb
 C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\obj\Debug\netcoreapp3.1\superTech.genruntimeconfig.cache
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\admin.png
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\deliverer.jpg
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\dell.jpg
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\mac.jpg
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\profilePhoto.jpg
+C:\Users\Irhad Mrndzic\Desktop\RSII_SuperTech\superTech\superTech\bin\Debug\netcoreapp3.1\Resources\samsung.jpg

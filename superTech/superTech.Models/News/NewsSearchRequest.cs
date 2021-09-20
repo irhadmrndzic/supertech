@@ -6,7 +6,7 @@ namespace superTech.Models.News
 {
     public class NewsSearchRequest
     {
-        public DateTime DateOfCreation { get; set; }
+        public DateTime? DateOfCreation { get; set; }
 
     }
 }
