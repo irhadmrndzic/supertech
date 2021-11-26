@@ -22,6 +22,11 @@ namespace superTech.WinUI
             InitializeComponent();
             this.notificationIcon.Icon = this.Icon;
             txtUsername.Text = APIService.APIService.Username;
+
+            Reports.Reports frmReports = new Reports.Reports();
+            frmReports.MdiParent = this;
+            frmReports.WindowState = FormWindowState.Maximized;
+            frmReports.Show();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -189,6 +194,15 @@ namespace superTech.WinUI
             frmBills.MdiParent = this;
             frmBills.WindowState = FormWindowState.Maximized;
             frmBills.Show();
+        }
+
+        private void izvještajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports.Reports frmReports = new Reports.Reports();
+            frmReports.MdiParent = this;
+            frmReports.WindowState = FormWindowState.Maximized;
+            frmReports.Show();
+
         }
     }
 }

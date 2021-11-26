@@ -15,6 +15,7 @@ using superTech.Models.Orders;
 using superTech.Models.Orders.OrderItems;
 using superTech.Models.Product;
 using superTech.Models.Ratings;
+using superTech.Models.ReportsModel;
 using superTech.Models.Roles;
 using superTech.Models.Suppliers;
 using superTech.Models.UnitsOfMeasures;
@@ -29,7 +30,7 @@ namespace superTech.Mappers
             CreateMap<Role, RolesModel>().ReverseMap();
             CreateMap<Brand, BrandsModel>().ReverseMap();
 
-            CreateMap<User, UserModel>().ForMember(x=>x.DateOfBirth, src=>src.MapFrom(x=>x.DateOfBirth.ToShortDateString())).ReverseMap();
+            CreateMap<User, UserModel>().ForMember(x => x.DateOfBirth, src => src.MapFrom(x => x.DateOfBirth.ToShortDateString())).ReverseMap();
             CreateMap<UsersRole, UsersRolesModel>().ReverseMap();
             CreateMap<Rating, RatingsModel>().ReverseMap();
 
@@ -39,7 +40,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.Roles, a => a.MapFrom(src => src.UsersRoles.Select(s => s.FkRole.Name)))
                 .ForMember(g => g.City, gr => gr.MapFrom(sr => sr.FkCity.CityId))
                 .ForMember(c => c.CityString, c => c.MapFrom(c => c.FkCity.Name))
-                .ForMember(a=>a.ProfilePicture, sr=>sr.MapFrom(q=>q.ProfilePicture))
+                .ForMember(a => a.ProfilePicture, sr => sr.MapFrom(q => q.ProfilePicture))
                 .ForMember(r => r.RolesString, rs => rs.MapFrom(src => string.Join(",", src.UsersRoles.Select(x => x.FkRole.Name))))
                 .ForMember(c => c.Roles, c => c.MapFrom(c => c.UsersRoles.Select(q => q.FkRoleId)))
                 .ReverseMap();
@@ -114,7 +115,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
                 .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
                 .ForMember(q => q.BuyerOrderItems, w => w.MapFrom(src => src.BuyerOrderItems))
-                .ForMember(a=>a.ShippingAddress, src=>src.MapFrom(q=>q.FkUser.Address))
+                .ForMember(a => a.ShippingAddress, src => src.MapFrom(q => q.FkUser.Address))
                 .ReverseMap();
 
 
@@ -138,6 +139,18 @@ namespace superTech.Mappers
 
 
             CreateMap<Bill, BillsUpsertRequest>()
+                .ReverseMap();
+
+
+
+            CreateMap<BuyerOrderItem, ReportsBuyerItemsModel>()
+                .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
+                .ForMember(x => x.ProductCode, src => src.MapFrom(q => q.FkProduct.Code))
+                .ForMember(x => x.ProductPrice, opt => opt.MapFrom(src => src.FkProduct.ProductOffers
+                .Where(x => x.FkProduct.ProductId == src.FkProductId && x.FkOffer.Active == true).Count() > 0 ? src.FkProduct.ProductOffers
+                .Where(a => a.FkProduct.ProductId == src.FkProductId).Select(f => f.PriceWithDiscount).FirstOrDefault() : src.FkProduct.Price))
+               .ForMember(q=>q.Quantity,src=>src.MapFrom(s=>s.FkBuyerOrderNavigation.BuyerOrderItems.Sum(y=>y.Quantity)))
+               .ForMember(q=>q.Amount,src=>src.MapFrom(s=>s.FkBuyerOrderNavigation.BuyerOrderItems.Sum(y=>y.Amount)))
                 .ReverseMap();
 
         }

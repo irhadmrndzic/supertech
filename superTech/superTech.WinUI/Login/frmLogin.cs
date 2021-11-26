@@ -18,8 +18,8 @@ namespace superTech.WinUI.Login
 
         private async void btnSubmit_Click(object sender, EventArgs e)
         {
-            APIService.APIService.Username = txtUsername.Text;
-            APIService.APIService.Password = txtPassword.Text;
+            APIService.APIService.Username = "desktop";
+            APIService.APIService.Password = "test";
 
             try
             {

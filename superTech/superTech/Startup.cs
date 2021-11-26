@@ -82,6 +82,7 @@ namespace superTech
             var connection = Configuration.GetConnectionString("ConnString");
             services.AddDbContext<superTechRSContext>(opt => opt.UseSqlServer(connection));
 
+            services.AddScoped<IReports, ReportsService>();
 
             services.AddScoped<IBaseService<UserModel, object>, BaseService<UserModel, object, User>>();
 
