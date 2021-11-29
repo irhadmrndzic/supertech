@@ -16,6 +16,8 @@ namespace superTech.WinUI.Offers
         {
             InitializeComponent();
             SetDatesEmpty();
+
+
         }
 
         public void SetDatesEmpty()
@@ -35,6 +37,8 @@ namespace superTech.WinUI.Offers
         private void frmOffers_Load(object sender, EventArgs e)
         {
             dgvOffers.AutoGenerateColumns = false;
+            dgvOffers.Columns[0].Width = 350;
+            dgvOffers.Columns[1].Width = 350;
             LoadOffers();
         }
 

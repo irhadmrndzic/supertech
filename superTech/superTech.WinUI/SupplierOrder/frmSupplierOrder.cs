@@ -44,16 +44,22 @@ namespace superTech.WinUI.SupplierOrder
             dgvSuppliers.AutoGenerateColumns = false;
             dgvSuppliers.AllowUserToResizeColumns = false;
             dgvSuppliers.AllowUserToResizeRows = false;
+            dgvSuppliers.Columns[0].Width = 210;
+
 
             dgvProductOrder.AutoGenerateColumns = false;
             dgvProductOrder.AllowUserToResizeRows = false;
             dgvProductOrder.AllowUserToResizeColumns = false;
+            dgvProductOrder.Columns[1].Width = 210;
+
 
             dgvProducts.AutoGenerateColumns = false;
             dgvProducts.AllowUserToResizeRows = false;
             dgvProducts.AllowUserToResizeColumns = false;
 
-            
+            dgvProducts.Columns[1].Width = 210;
+
+
 
             dpOrderDate.CustomFormat = " ";
             dpOrderDate.Format = DateTimePickerFormat.Custom;
@@ -268,7 +274,14 @@ namespace superTech.WinUI.SupplierOrder
                     orderList.Add(selectedProduct);
                     selectedProduct = null;
 
-                    txtOrderNumber.Text = (++currentOrders[currentOrders.Count - 1].OrderNumber).ToString();
+                    if(currentOrders.Count == 0)
+                    {
+                        txtOrderNumber.Text = "1";
+                    }
+                    else
+                    {
+                        txtOrderNumber.Text = (++currentOrders[currentOrders.Count - 1].OrderNumber).ToString();
+                    }
 
                 }
                 else
@@ -476,7 +489,14 @@ namespace superTech.WinUI.SupplierOrder
                     }
                     order.Amount = amount;
                     order.Date = dpOrderDate.Value;
-                    order.OrderNumber = currentOrders[currentOrders.Count -1 ].OrderNumber++;
+                    if(currentOrders.Count == 0)
+                    {
+                        order.OrderNumber = 1;
+                    }
+                    else
+                    {
+                        order.OrderNumber = currentOrders[currentOrders.Count - 1].OrderNumber++;
+                    }
                     order.SupplierId = _supplierId;
                     order.UserId = Convert.ToInt32(user[0].UserId);
                     order.Active = true;
@@ -498,7 +518,7 @@ namespace superTech.WinUI.SupplierOrder
                         order.OrderItems.Add(oi);
                     }
                     await _orderService.Insert<OrdersModel>(order);
-                    MessageBox.Show("Uspješno ste dodali narudžbu !");
+                    MessageBox.Show("Uspješno ste dodali nabavku !");
 
                 }
                 catch (Exception exception)

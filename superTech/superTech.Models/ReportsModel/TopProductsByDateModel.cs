@@ -7,7 +7,8 @@ namespace superTech.Models.ReportsModel
     {
         public string Name { get; set; }
         public int Quanity { get; set; }
-        public int Sum { get; set; }
+        public decimal Sum { get; set; }
+        public string SumString { get; set; }
 
         public List<object> test { get; set; }
     }

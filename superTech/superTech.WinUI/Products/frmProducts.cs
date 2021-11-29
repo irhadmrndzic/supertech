@@ -84,8 +84,11 @@ namespace superTech.WinUI.Products
             {
                 Cursor.Current = Cursor.Current;
                 dgvProducts.AutoGenerateColumns = false;
+                Color back = Color.FromKnownColor(KnownColor.ControlLight);
+                dgvProducts.RowsDefaultCellStyle.SelectionBackColor = back;
+                dgvProducts.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
 
-                    dgvProducts.DataSource = products;
+                dgvProducts.DataSource = products;
             }
 
             if (products.Count == 0)
@@ -128,6 +131,16 @@ namespace superTech.WinUI.Products
                 if (castedUOMs[i] == entity.UnitOfMeasureId)
                 {
                     cmbUom.SelectedIndex = i;
+                }
+            }
+
+            var castedBrands = cmbBrand.Items.Cast<BrandsModel>().Select(x => x.BrandId).ToList();
+
+            for (int i = 0; i < castedBrands.Count; i++)
+            {
+                if (castedBrands[i] == entity.BrandId)
+                {
+                    cmbBrand.SelectedIndex = i;
                 }
             }
 
@@ -238,7 +251,7 @@ namespace superTech.WinUI.Products
 
         private void dgvProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex ==8)
             {
                 if (e.Value is bool)
                 {

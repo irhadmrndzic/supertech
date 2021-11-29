@@ -39,6 +39,9 @@ namespace superTech.WinUI.Reports
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pbEmployees = new System.Windows.Forms.PictureBox();
             this.lblEmployeesCount = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
@@ -52,9 +55,10 @@ namespace superTech.WinUI.Reports
             this.lblProductsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblBuyerOrdersCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblBuyerBillsSum = new System.Windows.Forms.Label();
@@ -67,23 +71,27 @@ namespace superTech.WinUI.Reports
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.dgvMostSoldProducts = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.dgvMonthlyOrders = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CountOrders = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SumOrders = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Količina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaxPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.dgvMonthlyOrders = new System.Windows.Forms.DataGridView();
+            this.Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CountOrders = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SumOrders = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.dtpDateTo = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpDateFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvProdsByDate = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SumString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployees)).BeginInit();
             this.panel1.SuspendLayout();
@@ -92,6 +100,7 @@ namespace superTech.WinUI.Reports
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -102,7 +111,6 @@ namespace superTech.WinUI.Reports
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostSoldProducts)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthlyOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdsByDate)).BeginInit();
@@ -148,7 +156,7 @@ namespace superTech.WinUI.Reports
             this.panel1.Controls.Add(this.pbEmployees);
             this.panel1.Controls.Add(this.lblEmployeesCount);
             this.panel1.Controls.Add(this.lbl1);
-            this.panel1.Location = new System.Drawing.Point(12, 94);
+            this.panel1.Location = new System.Drawing.Point(338, 109);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 159);
             this.panel1.TabIndex = 5;
@@ -159,7 +167,7 @@ namespace superTech.WinUI.Reports
             this.panel2.Controls.Add(this.lblBuyersCount);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lblBuyersCountLabel);
-            this.panel2.Location = new System.Drawing.Point(488, 94);
+            this.panel2.Location = new System.Drawing.Point(814, 109);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(408, 159);
             this.panel2.TabIndex = 6;
@@ -204,7 +212,7 @@ namespace superTech.WinUI.Reports
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.lblProductsCount);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(964, 94);
+            this.panel3.Location = new System.Drawing.Point(1290, 109);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(408, 159);
             this.panel3.TabIndex = 7;
@@ -250,24 +258,24 @@ namespace superTech.WinUI.Reports
             this.panel4.Controls.Add(this.pictureBox7);
             this.panel4.Controls.Add(this.lblBuyerOrdersCount);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(1440, 94);
+            this.panel4.Location = new System.Drawing.Point(1766, 109);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(408, 159);
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // pictureBox3
+            // pictureBox7
             // 
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.ErrorImage = null;
-            this.pictureBox3.ImageLocation = "./Reports";
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(467, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(156, 119);
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
+            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox7.ErrorImage = null;
+            this.pictureBox7.ImageLocation = "./Reports";
+            this.pictureBox7.InitialImage = null;
+            this.pictureBox7.Location = new System.Drawing.Point(249, 13);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(156, 119);
+            this.pictureBox7.TabIndex = 8;
+            this.pictureBox7.TabStop = false;
             // 
             // lblBuyerOrdersCount
             // 
@@ -290,13 +298,26 @@ namespace superTech.WinUI.Reports
             this.label3.TabIndex = 5;
             this.label3.Text = "Narudžbi";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.ErrorImage = null;
+            this.pictureBox3.ImageLocation = "./Reports";
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(467, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(156, 119);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(56)))), ((int)(((byte)(64)))));
             this.panel5.Controls.Add(this.pictureBox5);
             this.panel5.Controls.Add(this.lblBuyerBillsSum);
             this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(2392, 94);
+            this.panel5.Location = new System.Drawing.Point(2718, 109);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(564, 159);
             this.panel5.TabIndex = 8;
@@ -342,7 +363,7 @@ namespace superTech.WinUI.Reports
             this.panel6.Controls.Add(this.lblProductsSold);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(1916, 94);
+            this.panel6.Location = new System.Drawing.Point(2242, 109);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(408, 159);
             this.panel6.TabIndex = 8;
@@ -393,13 +414,13 @@ namespace superTech.WinUI.Reports
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.CadetBlue;
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
             this.panel7.Controls.Add(this.pictureBox6);
             this.panel7.Controls.Add(this.dgvMostSoldProducts);
             this.panel7.Controls.Add(this.label4);
-            this.panel7.Location = new System.Drawing.Point(12, 307);
+            this.panel7.Location = new System.Drawing.Point(663, 354);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(613, 514);
+            this.panel7.Size = new System.Drawing.Size(613, 756);
             this.panel7.TabIndex = 16;
             // 
             // pictureBox6
@@ -420,152 +441,55 @@ namespace superTech.WinUI.Reports
             this.dgvMostSoldProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMostSoldProducts.BackgroundColor = System.Drawing.Color.CadetBlue;
+            this.dgvMostSoldProducts.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvMostSoldProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMostSoldProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMostSoldProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMostSoldProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMostSoldProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Naziv,
             this.Količina,
             this.TaxPrice});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMostSoldProducts.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMostSoldProducts.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMostSoldProducts.GridColor = System.Drawing.Color.CadetBlue;
             this.dgvMostSoldProducts.Location = new System.Drawing.Point(18, 157);
             this.dgvMostSoldProducts.Name = "dgvMostSoldProducts";
             this.dgvMostSoldProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMostSoldProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMostSoldProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMostSoldProducts.RowHeadersVisible = false;
             this.dgvMostSoldProducts.RowHeadersWidth = 62;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dgvMostSoldProducts.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dgvMostSoldProducts.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMostSoldProducts.RowTemplate.Height = 28;
             this.dgvMostSoldProducts.ShowCellErrors = false;
             this.dgvMostSoldProducts.ShowCellToolTips = false;
             this.dgvMostSoldProducts.ShowEditingIcon = false;
             this.dgvMostSoldProducts.ShowRowErrors = false;
-            this.dgvMostSoldProducts.Size = new System.Drawing.Size(571, 335);
+            this.dgvMostSoldProducts.Size = new System.Drawing.Size(571, 577);
             this.dgvMostSoldProducts.StandardTab = true;
             this.dgvMostSoldProducts.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(11, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(358, 37);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Najprodavaniji proizvodi";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel8.Controls.Add(this.pictureBox3);
-            this.panel8.Controls.Add(this.dgvMonthlyOrders);
-            this.panel8.Controls.Add(this.label7);
-            this.panel8.Location = new System.Drawing.Point(750, 307);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(610, 756);
-            this.panel8.TabIndex = 17;
-            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
-            // 
-            // dgvMonthlyOrders
-            // 
-            this.dgvMonthlyOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMonthlyOrders.BackgroundColor = System.Drawing.Color.RosyBrown;
-            this.dgvMonthlyOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMonthlyOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvMonthlyOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonthlyOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Month,
-            this.CountOrders,
-            this.SumOrders});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMonthlyOrders.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMonthlyOrders.GridColor = System.Drawing.Color.CadetBlue;
-            this.dgvMonthlyOrders.Location = new System.Drawing.Point(18, 157);
-            this.dgvMonthlyOrders.Name = "dgvMonthlyOrders";
-            this.dgvMonthlyOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMonthlyOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvMonthlyOrders.RowHeadersVisible = false;
-            this.dgvMonthlyOrders.RowHeadersWidth = 62;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dgvMonthlyOrders.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvMonthlyOrders.RowTemplate.Height = 28;
-            this.dgvMonthlyOrders.ShowCellErrors = false;
-            this.dgvMonthlyOrders.ShowCellToolTips = false;
-            this.dgvMonthlyOrders.ShowEditingIcon = false;
-            this.dgvMonthlyOrders.ShowRowErrors = false;
-            this.dgvMonthlyOrders.Size = new System.Drawing.Size(575, 577);
-            this.dgvMonthlyOrders.StandardTab = true;
-            this.dgvMonthlyOrders.TabIndex = 6;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(11, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(329, 37);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Narudžbe po mjesecu";
-            // 
-            // Month
-            // 
-            this.Month.DataPropertyName = "MonthString";
-            this.Month.HeaderText = "Mjesec";
-            this.Month.MinimumWidth = 8;
-            this.Month.Name = "Month";
-            this.Month.Width = 150;
-            // 
-            // CountOrders
-            // 
-            this.CountOrders.DataPropertyName = "Count";
-            this.CountOrders.HeaderText = "Broj narudžbi";
-            this.CountOrders.MinimumWidth = 8;
-            this.CountOrders.Name = "CountOrders";
-            this.CountOrders.Width = 150;
-            // 
-            // SumOrders
-            // 
-            this.SumOrders.DataPropertyName = "SumAmountString";
-            this.SumOrders.HeaderText = "Ukupan iznos";
-            this.SumOrders.MinimumWidth = 8;
-            this.SumOrders.Name = "SumOrders";
-            this.SumOrders.Width = 150;
             // 
             // Naziv
             // 
@@ -591,28 +515,133 @@ namespace superTech.WinUI.Reports
             this.TaxPrice.Name = "TaxPrice";
             this.TaxPrice.Width = 150;
             // 
-            // pictureBox7
+            // label4
             // 
-            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox7.ErrorImage = null;
-            this.pictureBox7.ImageLocation = "./Reports";
-            this.pictureBox7.InitialImage = null;
-            this.pictureBox7.Location = new System.Drawing.Point(249, 13);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(156, 119);
-            this.pictureBox7.TabIndex = 8;
-            this.pictureBox7.TabStop = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(11, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(358, 37);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Najprodavaniji proizvodi";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel8.Controls.Add(this.pictureBox3);
+            this.panel8.Controls.Add(this.dgvMonthlyOrders);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Location = new System.Drawing.Point(1438, 354);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(610, 756);
+            this.panel8.TabIndex = 17;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
+            // 
+            // dgvMonthlyOrders
+            // 
+            this.dgvMonthlyOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMonthlyOrders.BackgroundColor = System.Drawing.Color.RosyBrown;
+            this.dgvMonthlyOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMonthlyOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMonthlyOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMonthlyOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMonthlyOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Month,
+            this.CountOrders,
+            this.SumOrders});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMonthlyOrders.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvMonthlyOrders.GridColor = System.Drawing.Color.CadetBlue;
+            this.dgvMonthlyOrders.Location = new System.Drawing.Point(18, 157);
+            this.dgvMonthlyOrders.Name = "dgvMonthlyOrders";
+            this.dgvMonthlyOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMonthlyOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvMonthlyOrders.RowHeadersVisible = false;
+            this.dgvMonthlyOrders.RowHeadersWidth = 62;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dgvMonthlyOrders.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvMonthlyOrders.RowTemplate.Height = 28;
+            this.dgvMonthlyOrders.ShowCellErrors = false;
+            this.dgvMonthlyOrders.ShowCellToolTips = false;
+            this.dgvMonthlyOrders.ShowEditingIcon = false;
+            this.dgvMonthlyOrders.ShowRowErrors = false;
+            this.dgvMonthlyOrders.Size = new System.Drawing.Size(575, 577);
+            this.dgvMonthlyOrders.StandardTab = true;
+            this.dgvMonthlyOrders.TabIndex = 6;
+            // 
+            // Month
+            // 
+            this.Month.DataPropertyName = "MonthString";
+            this.Month.HeaderText = "Mjesec";
+            this.Month.MinimumWidth = 8;
+            this.Month.Name = "Month";
+            this.Month.Width = 150;
+            // 
+            // CountOrders
+            // 
+            this.CountOrders.DataPropertyName = "Count";
+            this.CountOrders.HeaderText = "Broj narudžbi";
+            this.CountOrders.MinimumWidth = 8;
+            this.CountOrders.Name = "CountOrders";
+            this.CountOrders.Width = 150;
+            // 
+            // SumOrders
+            // 
+            this.SumOrders.DataPropertyName = "SumAmountString";
+            this.SumOrders.HeaderText = "Ukupan iznos";
+            this.SumOrders.MinimumWidth = 8;
+            this.SumOrders.Name = "SumOrders";
+            this.SumOrders.Width = 150;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(11, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(435, 37);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Izvještaj narudžbi po mjesecu";
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel9.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panel9.Controls.Add(this.pictureBox8);
+            this.panel9.Controls.Add(this.btnFilter);
+            this.panel9.Controls.Add(this.dtpDateTo);
+            this.panel9.Controls.Add(this.label10);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Controls.Add(this.dtpDateFrom);
             this.panel9.Controls.Add(this.dgvProdsByDate);
             this.panel9.Controls.Add(this.label8);
-            this.panel9.Location = new System.Drawing.Point(1559, 307);
+            this.panel9.Location = new System.Drawing.Point(2210, 354);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1061, 756);
+            this.panel9.Size = new System.Drawing.Size(665, 756);
             this.panel9.TabIndex = 18;
             // 
             // pictureBox8
@@ -622,82 +651,137 @@ namespace superTech.WinUI.Reports
             this.pictureBox8.ErrorImage = null;
             this.pictureBox8.ImageLocation = "./Reports";
             this.pictureBox8.InitialImage = null;
-            this.pictureBox8.Location = new System.Drawing.Point(467, 12);
+            this.pictureBox8.Location = new System.Drawing.Point(509, 12);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(156, 119);
-            this.pictureBox8.TabIndex = 7;
+            this.pictureBox8.TabIndex = 20;
             this.pictureBox8.TabStop = false;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnFilter.Location = new System.Drawing.Point(448, 168);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(198, 63);
+            this.btnFilter.TabIndex = 19;
+            this.btnFilter.Text = "Pretraži";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // dtpDateTo
+            // 
+            this.dtpDateTo.Location = new System.Drawing.Point(18, 231);
+            this.dtpDateTo.Name = "dtpDateTo";
+            this.dtpDateTo.Size = new System.Drawing.Size(318, 26);
+            this.dtpDateTo.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(13, 185);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(166, 37);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Datum do:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(11, 104);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(166, 37);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Datum od:";
+            // 
+            // dtpDateFrom
+            // 
+            this.dtpDateFrom.Location = new System.Drawing.Point(18, 150);
+            this.dtpDateFrom.Name = "dtpDateFrom";
+            this.dtpDateFrom.Size = new System.Drawing.Size(318, 26);
+            this.dtpDateFrom.TabIndex = 8;
             // 
             // dgvProdsByDate
             // 
             this.dgvProdsByDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProdsByDate.BackgroundColor = System.Drawing.Color.RosyBrown;
+            this.dgvProdsByDate.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.dgvProdsByDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProdsByDate.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdsByDate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvProdsByDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdsByDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProdsByDate.DefaultCellStyle = dataGridViewCellStyle7;
+            this.NameProd,
+            this.QtyProd,
+            this.SumString});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProdsByDate.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvProdsByDate.GridColor = System.Drawing.Color.CadetBlue;
-            this.dgvProdsByDate.Location = new System.Drawing.Point(18, 157);
+            this.dgvProdsByDate.Location = new System.Drawing.Point(18, 301);
             this.dgvProdsByDate.Name = "dgvProdsByDate";
             this.dgvProdsByDate.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdsByDate.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdsByDate.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvProdsByDate.RowHeadersVisible = false;
             this.dgvProdsByDate.RowHeadersWidth = 62;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dgvProdsByDate.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dgvProdsByDate.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvProdsByDate.RowTemplate.Height = 28;
             this.dgvProdsByDate.ShowCellErrors = false;
             this.dgvProdsByDate.ShowCellToolTips = false;
             this.dgvProdsByDate.ShowEditingIcon = false;
             this.dgvProdsByDate.ShowRowErrors = false;
-            this.dgvProdsByDate.Size = new System.Drawing.Size(1026, 577);
+            this.dgvProdsByDate.Size = new System.Drawing.Size(630, 433);
             this.dgvProdsByDate.StandardTab = true;
             this.dgvProdsByDate.TabIndex = 6;
             // 
-            // dataGridViewTextBoxColumn1
+            // NameProd
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "MonthString";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mjesec";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
+            this.NameProd.DataPropertyName = "Name";
+            this.NameProd.HeaderText = "Naziv";
+            this.NameProd.MinimumWidth = 8;
+            this.NameProd.Name = "NameProd";
+            this.NameProd.Width = 150;
             // 
-            // dataGridViewTextBoxColumn2
+            // QtyProd
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Count";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Broj narudžbi";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 150;
+            this.QtyProd.DataPropertyName = "Quanity";
+            this.QtyProd.HeaderText = "Kolićina";
+            this.QtyProd.MinimumWidth = 8;
+            this.QtyProd.Name = "QtyProd";
+            this.QtyProd.Width = 150;
             // 
-            // dataGridViewTextBoxColumn3
+            // SumString
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "SumAmountString";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Ukupan iznos";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 150;
+            this.SumString.DataPropertyName = "SumString";
+            this.SumString.HeaderText = "Ukupan iznos";
+            this.SumString.MinimumWidth = 8;
+            this.SumString.Name = "SumString";
+            this.SumString.Width = 150;
             // 
             // label8
             // 
@@ -706,9 +790,9 @@ namespace superTech.WinUI.Reports
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(11, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(329, 37);
+            this.label8.Size = new System.Drawing.Size(439, 37);
             this.label8.TabIndex = 5;
-            this.label8.Text = "Narudžbe po mjesecu";
+            this.label8.Text = "Izvještaj prodaje po proizvodu";
             // 
             // Reports
             // 
@@ -738,6 +822,7 @@ namespace superTech.WinUI.Reports
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -752,7 +837,6 @@ namespace superTech.WinUI.Reports
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthlyOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -802,11 +886,16 @@ namespace superTech.WinUI.Reports
         private System.Windows.Forms.DataGridViewTextBoxColumn TaxPrice;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.DataGridView dgvProdsByDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtpDateTo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtpDateFrom;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SumString;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

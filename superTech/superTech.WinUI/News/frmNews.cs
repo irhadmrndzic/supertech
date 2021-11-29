@@ -123,6 +123,8 @@ namespace superTech.WinUI.News
                     _id = null;
                     dpDoC.CustomFormat = " ";
                     dpDoC.Format = DateTimePickerFormat.Custom;
+
+                    await this.loadNews();
                 }
                 catch (Exception ex)
                 {

@@ -29,6 +29,9 @@ namespace superTech.WinUI.Bills
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBills = new System.Windows.Forms.DataGridView();
             this.BuyerOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,8 +53,13 @@ namespace superTech.WinUI.Bills
             this.txtIssuingDate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBillNumber = new System.Windows.Forms.TextBox();
+            this.Search = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbOrderStatus = new System.Windows.Forms.ComboBox();
+            this.btnFilterOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).BeginInit();
             this.gbInfo.SuspendLayout();
+            this.Search.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBills
@@ -64,6 +72,14 @@ namespace superTech.WinUI.Bills
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBills.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBills.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BuyerOrderId,
@@ -73,13 +89,30 @@ namespace superTech.WinUI.Bills
             this.Amount,
             this.Active,
             this.AmountWithTax});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBills.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBills.Location = new System.Drawing.Point(534, 12);
             this.dgvBills.Name = "dgvBills";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBills.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBills.RowHeadersWidth = 62;
             this.dgvBills.RowTemplate.Height = 28;
             this.dgvBills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBills.Size = new System.Drawing.Size(1586, 1227);
             this.dgvBills.TabIndex = 1;
+            this.dgvBills.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBills_CellFormatting);
             this.dgvBills.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvBills_MouseDoubleClick);
             // 
             // BuyerOrderId
@@ -153,7 +186,7 @@ namespace superTech.WinUI.Bills
             this.gbInfo.Controls.Add(this.txtIssuingDate);
             this.gbInfo.Controls.Add(this.label1);
             this.gbInfo.Controls.Add(this.txtBillNumber);
-            this.gbInfo.Location = new System.Drawing.Point(12, 12);
+            this.gbInfo.Location = new System.Drawing.Point(12, 233);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(484, 651);
             this.gbInfo.TabIndex = 5;
@@ -266,12 +299,54 @@ namespace superTech.WinUI.Bills
             this.txtBillNumber.Size = new System.Drawing.Size(417, 26);
             this.txtBillNumber.TabIndex = 5;
             // 
+            // Search
+            // 
+            this.Search.Controls.Add(this.label2);
+            this.Search.Controls.Add(this.cmbOrderStatus);
+            this.Search.Controls.Add(this.btnFilterOrder);
+            this.Search.Location = new System.Drawing.Point(22, 21);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(474, 192);
+            this.Search.TabIndex = 18;
+            this.Search.TabStop = false;
+            this.Search.Text = "Pretraga";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Status";
+            // 
+            // cmbOrderStatus
+            // 
+            this.cmbOrderStatus.FormattingEnabled = true;
+            this.cmbOrderStatus.Location = new System.Drawing.Point(30, 95);
+            this.cmbOrderStatus.Name = "cmbOrderStatus";
+            this.cmbOrderStatus.Size = new System.Drawing.Size(233, 28);
+            this.cmbOrderStatus.TabIndex = 7;
+            // 
+            // btnFilterOrder
+            // 
+            this.btnFilterOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(82)))), ((int)(((byte)(186)))));
+            this.btnFilterOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterOrder.ForeColor = System.Drawing.Color.White;
+            this.btnFilterOrder.Location = new System.Drawing.Point(328, 82);
+            this.btnFilterOrder.Name = "btnFilterOrder";
+            this.btnFilterOrder.Size = new System.Drawing.Size(106, 52);
+            this.btnFilterOrder.TabIndex = 1;
+            this.btnFilterOrder.Text = "Filtriraj";
+            this.btnFilterOrder.UseVisualStyleBackColor = false;
+            // 
             // frmBills
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2132, 1251);
+            this.Controls.Add(this.Search);
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.dgvBills);
             this.Name = "frmBills";
@@ -280,6 +355,8 @@ namespace superTech.WinUI.Bills
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
+            this.Search.ResumeLayout(false);
+            this.Search.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +384,9 @@ namespace superTech.WinUI.Bills
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Button btnBillItems;
+        private System.Windows.Forms.GroupBox Search;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbOrderStatus;
+        private System.Windows.Forms.Button btnFilterOrder;
     }
 }

@@ -88,23 +88,32 @@ namespace superTechMobile.ViewModels.Products
                 ProductModel product = await _productsApiService.GetById<ProductModel>(ProductId);
                 var offers = await _offersApiService.Get<List<OffersModel>>(null);
 
-                foreach (var offer in offers)
+                if(offers.Count() > 0)
                 {
-                    foreach (var item in offer.OfferItems)
+                    foreach (var offer in offers)
                     {
+                        foreach (var item in offer.OfferItems)
+                        {
 
-                        if (product.ProductId == item.FkProductId)
-                        {
-                            ProductPrice = item.PriceWithDiscount.ToString();
-                            ProductPriceDecimal = (decimal)item.PriceWithDiscount;
-                        }
-                        else
-                        {
-                            ProductPriceDecimal = product.Price;
-                            ProductPrice = product.PriceString;
+                            if (product.ProductId == item.FkProductId)
+                            {
+                                ProductPrice = item.PriceWithDiscount.ToString();
+                                ProductPriceDecimal = (decimal)item.PriceWithDiscount;
+                            }
+                            else
+                            {
+                                ProductPriceDecimal = product.Price;
+                                ProductPrice = product.PriceString;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    ProductPrice = product.PriceString;
+                }
+                
+         
                 ProductName = product.Name;
                 ProductCode = product.Code;
                 ProductDescription = product.Description;

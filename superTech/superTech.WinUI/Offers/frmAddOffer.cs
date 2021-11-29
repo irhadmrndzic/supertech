@@ -32,6 +32,10 @@ namespace superTech.WinUI.Offers
             dgvProducts.AutoGenerateColumns = false;
             dgvProducts.AllowUserToResizeRows = false;
             dgvProducts.AllowUserToResizeColumns = false;
+
+            dgvProducts.Columns[1].Width = 350;
+            dgvProducts.Columns[7].Width = 350;
+            dgvProductOrder.Columns[2].Width = 350;
             SetDatesEmpty();
 
 

@@ -67,6 +67,7 @@ namespace superTech.Mappers
                 .ForMember(i => i.Inventory, sri => sri.MapFrom(mf => mf.OrderItems.Where(f => f.FkOrder.Confirmed == true).Sum(e => e.Quantity) - mf.BuyerOrderItems.Sum(o => o.Quantity)))
                 .ForMember(b => b.Brand, sr => sr.MapFrom(x => x.Brand.Name))
                 .ForMember(b => b.PriceString, sr => sr.MapFrom(x => x.Price + " KM"))
+                .ForMember(b=>b.BrandId,src=>src.MapFrom(x=>x.BrandId))
                 .ReverseMap();
 
 

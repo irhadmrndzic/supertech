@@ -98,6 +98,7 @@ namespace superTech.WinUI.Bills
                     await _billsService.Update<BillsModel>(_billId, request);
 
                     MessageBox.Show("Račun uspješno zatvoren! ", "Računi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await this.loadBills();
 
                 }
                 catch (Exception ex)
@@ -148,6 +149,19 @@ namespace superTech.WinUI.Bills
             btn.Click += new EventHandler(handler);
 
             return btn;
+        }
+
+        private void dgvBills_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex ==3)
+            {
+                if (e.Value is bool)
+                {
+                    bool value = (bool)e.Value;
+                    e.Value = (value) ? "DA" : "NE";
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

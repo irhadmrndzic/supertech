@@ -232,6 +232,7 @@ namespace superTech.WinUI.Bills
             this.Controls.Add(this.gbItems);
             this.MaximizeBox = false;
             this.Name = "frmBillItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Stavke računa";
             this.Load += new System.EventHandler(this.frmBillItems_Load);
             this.gbItems.ResumeLayout(false);
