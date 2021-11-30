@@ -1,23 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Orders"
-             x:Class="superTechMobile.Views.Orders.OrdersPage" Title="Moje narudžbe">
+             x:Class="superTechMobile.Views.Orders.OrdersPage" Title="Moje narudžbe" BackgroundColor="LightBlue" >
     <ContentPage.BindingContext>
         <vm:OrdersViewModel></vm:OrdersViewModel>
     </ContentPage.BindingContext>
-    <ContentPage.Content>
-            <StackLayout Padding="5" Margin="0,0,0,20">
+    <ContentPage.Content >
+        <StackLayout  Margin="0,0,0,20" Padding="6">
  
                 <StackLayout>
                     <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
                 </StackLayout>
-                <ListView ItemsSource="{Binding OrdersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+            <ListView ItemsSource="{Binding OrdersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected" >
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
+                    <DataTemplate >
+                        <ViewCell>
+                            <Frame HasShadow="False" BackgroundColor="WhiteSmoke" HeightRequest="50" CornerRadius="20" Margin="0,10,0,10" >
+
                                 <StackLayout  
                                            VerticalOptions="StartAndExpand" 
-                                           HorizontalOptions="StartAndExpand" Padding="8">
+                                           HorizontalOptions="StartAndExpand">
                                     <StackLayout >
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="Broj narudžbe: " FontSize="16"  FontAttributes="None"></Label>
@@ -27,11 +29,14 @@
                                             <Label Text="Datum: " FontSize="16"  FontAttributes="None"></Label>
                                             <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
                                         </StackLayout>
-                                     
+
                                     </StackLayout>
                                 </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
+                            </Frame>
+                        </ViewCell>
+
+
+                    </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Products" xmlns:local="clr-namespace:superTechMobile.Converter"
              x:Class="superTechMobile.Views.Products.ProductsPage"
-             Title="Proizvodi">
+             Title="Proizvodi" >
     <ContentPage.BindingContext>
         <vm:ProductsViewModel></vm:ProductsViewModel>
     </ContentPage.BindingContext>
@@ -25,10 +25,10 @@
             <StackLayout>
                 <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
             </StackLayout>
-            <ListView ItemsSource="{Binding ProductsList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
-                <ListView.ItemTemplate>
+            <ListView ItemsSource="{Binding ProductsList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected" BackgroundColor="LightBlue">
+                <ListView.ItemTemplate >
                     <DataTemplate>
-                        <ViewCell>
+                        <!--<ViewCell>
                             <StackLayout Padding="8" Orientation="Horizontal" Margin="0,0,0,10">
                                 <StackLayout>
                                     <Image Source="{Binding Image, Converter={StaticResource imgCnv}}" HeightRequest="100" WidthRequest="80"></Image>
@@ -42,7 +42,33 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
+                        </ViewCell>-->
+                        <ViewCell>
+                            <StackLayout Padding="4">
+                                <Frame HasShadow="False" BackgroundColor="white" HeightRequest="90" CornerRadius="20" Margin="0,10,0,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"  Margin="0,0,10,0" Source="{Binding Image, Converter={StaticResource imgCnv}}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding Name}" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Code}" FontSize="15" ></Label>
+                                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PriceString}" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Rating}" FontSize="15" FontAttributes="Bold" ></Label>
+                                        <Image  Grid.Row="3" Grid.Column="1"  Source="star.png" HeightRequest="26" WidthRequest="26" Aspect="AspectFill" Margin="23,0,0,0" HorizontalOptions="Start"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
                         </ViewCell>
+ 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
