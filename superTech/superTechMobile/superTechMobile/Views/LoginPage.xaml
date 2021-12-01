@@ -48,7 +48,7 @@
                                             <Image Source="https://cdn1.iconfinder.com/data/icons/hawcons/32/698959-icon-114-lock-512.png" Aspect="AspectFill" Margin="0"/>
                                         </Frame>
                                         <Entry  Text="{Binding Password}" IsPassword="true" WidthRequest="400"></Entry>
-                                      
+
                                     </StackLayout>
                                 </Frame>
 

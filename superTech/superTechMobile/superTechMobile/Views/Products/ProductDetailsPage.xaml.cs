@@ -97,7 +97,9 @@ namespace superTechMobile.Views.Products
                     if (_model.ProductId == item.FkProductId)
                     {
                         item.Quantity += _model.Quantity;
-
+                        item.Amount = 0;
+                        item.Amount += tempModel.Price * item.Quantity;
+                        item.AmountStr = item.Amount.ToString() + " KM ";
                         isProductAdded = true;
                         await Application.Current.MainPage.DisplayAlert("Info", "Količina proizvoda izmijenjena !", "OK");
 
@@ -110,9 +112,20 @@ namespace superTechMobile.Views.Products
                     tempOrderItemsList.FkProductId = _model.ProductDetailsId;
                     tempOrderItemsList.Quantity = _model.Quantity;
                     tempOrderItemsList.FkProduct = tempModel;
-                    tempOrderItemsList.FkProduct.Image = null;
+                    tempOrderItemsList.FkProduct.Image = _model.Image;
                     tempOrderItemsList.FkProduct.ImageThumb = null;
-                    tempOrderItemsList.Amount = tempModel.Price * int.Parse(qty.Text);
+                    
+                    if(_model.Quantity ==0)
+                    {
+                        tempOrderItemsList.Amount = tempModel.Price * int.Parse(qty.Text);
+                        tempOrderItemsList.AmountStr = (tempModel.Price * int.Parse(qty.Text)).ToString() + " KM ";
+                    }
+                    else
+                    {
+                        tempOrderItemsList.Amount = tempModel.Price * _model.Quantity;
+                        tempOrderItemsList.AmountStr = (tempModel.Price * _model.Quantity).ToString() + " KM ";
+                    }
+  
 
                     Global.Global.activeOrder.tempOrderItemsList.Add(tempOrderItemsList);
                     await Application.Current.MainPage.DisplayAlert("Info", "Proizvod dodan u korpu!", "OK");

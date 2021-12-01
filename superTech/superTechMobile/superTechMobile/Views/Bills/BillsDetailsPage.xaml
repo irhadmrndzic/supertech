@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Bills"
-             x:Class="superTechMobile.Views.Bills.BillsDetailsPage">
+             x:Class="superTechMobile.Views.Bills.BillsDetailsPage" >
     <ContentPage.BindingContext>
         <vm:BillsDetailsViewModel></vm:BillsDetailsViewModel>
     </ContentPage.BindingContext>
@@ -39,7 +39,7 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <ScrollView>
+                <ScrollView Background="lightBlue">
                     <StackLayout Padding="3" >
                         <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
                 VerticalOptions="StartAndExpand" 
@@ -47,7 +47,7 @@
                         <ListView ItemsSource="{Binding AllBillItems}" Style="{DynamicResource BorderContentView}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
+                                    <!--<ViewCell>
                                         <StackLayout  
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="StartAndExpand" Padding="8">
@@ -71,6 +71,38 @@
                                                 </StackLayout>
 
                                             </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>-->
+
+
+                                    <ViewCell>
+                                        <StackLayout Padding="4">
+                                            <Frame HasShadow="False" BackgroundColor="white" HeightRequest="140" CornerRadius="20" Margin="0,10,0,10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding ProductString}" FontSize="15" FontAttributes="Bold"></Label>
+                                                    <Label Grid.Row="1" Grid.Column="1"  Text="Cijena: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PriceString}" FontSize="15" FontAttributes="Bold" Margin="55,0,0,0" HorizontalOptions="Start"></Label>
+                                                    <Label Grid.Row="2" Grid.Column="1"  Text="Naručeno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Quantity}" FontSize="15" FontAttributes="Bold" Margin="78,0,0,0" HorizontalOptions="Start"></Label>
+                                                    <Label Grid.Row="3" Grid.Column="1"  Text="Popust: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding DiscountString}" FontSize="16" FontAttributes="Bold" Margin="65,0,0,0" HorizontalOptions="Start"></Label>
+                                                    <Label Grid.Row="4" Grid.Column="1"  Text="Ukupno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                    <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountSumString}" FontSize="16" FontAttributes="Bold" Margin="65,0,0,0" HorizontalOptions="Start"></Label>
+
+                                                </Grid>
+                                            </Frame>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

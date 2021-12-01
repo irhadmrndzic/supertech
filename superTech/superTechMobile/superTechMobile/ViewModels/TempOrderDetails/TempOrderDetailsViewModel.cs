@@ -28,6 +28,7 @@ namespace superTechMobile.ViewModels.TempOrderDetails
         public bool _confirmed;
         public int _userId;
         public decimal _amount;
+        public string _amountStr;
         public int _orderNumber;
         public ObservableCollection<TempOrderItems> _tempOrderItems = new ObservableCollection<TempOrderItems>();
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
@@ -37,6 +38,8 @@ namespace superTechMobile.ViewModels.TempOrderDetails
         public int UserId{ get => _userId; set => SetProperty(ref _userId, value); }
         public int OrderNumber{ get => _orderNumber; set => SetProperty(ref _orderNumber, value); }
         public decimal Amount{ get => _amount; set => SetProperty(ref _amount, value); }
+        public string AmountStr { get => _amountStr; set { SetProperty(ref _amountStr, value); } }
+
 
         public ObservableCollection<TempOrderItems> AllOrderItems { get => _tempOrderItems; set => SetProperty(ref _tempOrderItems, value); }
 
@@ -55,6 +58,7 @@ namespace superTechMobile.ViewModels.TempOrderDetails
                 Confirmed = (bool)Global.Global.activeOrder.Confirmed;
                 UserId = (int)Global.Global.activeOrder.FkUserId;
                 OrderNumber = (int)Global.Global.activeOrder.OrderNumber;
+                
                 foreach (var item in Global.Global.activeOrder.tempOrderItemsList)
                 {
                     AllOrderItems.Add(item);
@@ -63,6 +67,7 @@ namespace superTechMobile.ViewModels.TempOrderDetails
                 foreach (var item in AllOrderItems)
                 {
                     Amount += (decimal)item.Amount;
+                    AmountStr = Amount.ToString() + " KM ";
                 }
 
                 if (AllOrderItems.Count > 0)
