@@ -118,11 +118,11 @@
 
 
 
-                    <StackLayout>
-                        <Button Clicked="cancelOrder_Clicked" Text="Otkaži" IsVisible="{Binding EnableButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="cancelOrder" HeightRequest="50" BackgroundColor="Red" CornerRadius="10"></Button>
+                    <StackLayout WidthRequest="50">
+                        <Button WidthRequest="50" Clicked="cancelOrder_Clicked" Text="Otkaži" IsVisible="{Binding EnableButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="cancelOrder" HeightRequest="50" BackgroundColor="Red" CornerRadius="15"></Button>
                     </StackLayout>
-                    <StackLayout>
-                        <Button Clicked="confirmOrderBtn_Clicked" Text="Zaključi" IsVisible="{Binding EnableButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="confirmOrderBtn" HeightRequest="50" BackgroundColor="Green" CornerRadius="10"></Button>
+                    <StackLayout WidthRequest="50">
+                        <Button WidthRequest="50" Clicked="confirmOrderBtn_Clicked" Text="Zaključi" IsVisible="{Binding EnableButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="confirmOrderBtn" HeightRequest="50" BackgroundColor="Green" CornerRadius="15"></Button>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

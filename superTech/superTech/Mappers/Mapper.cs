@@ -101,6 +101,7 @@ namespace superTech.Mappers
                 .ForMember(x => x.FkOfferId, src => src.MapFrom(q => q.FkOffer.OfferId))
                 .ForMember(x => x.FkProductId, src => src.MapFrom(q => q.FkProduct.ProductId))
                 .ForMember(x => x.ProductName, src => src.MapFrom(q => q.FkProduct.Name))
+                .ForMember(x => x.PriceNoDiscount, src => src.MapFrom(q => q.FkProduct.Price))
                 .ReverseMap();
 
             CreateMap<OfferItemsUpsertRequest, ProductOffer>()

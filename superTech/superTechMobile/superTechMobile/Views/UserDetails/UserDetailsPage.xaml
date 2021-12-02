@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.UserDetails" xmlns:behavior="clr-namespace:superTechMobile.Helper" xmlns:local="clr-namespace:superTechMobile.Converter"
              x:Class="superTechMobile.Views.UserDetails.UserDetailsPage"
-             Title="Moj profil">
+             Title="Moj profil" >
     <ContentPage.BindingContext>
         <vm:UserDetailsViewModel></vm:UserDetailsViewModel>
     </ContentPage.BindingContext>
@@ -17,32 +17,32 @@
 
                     <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="5,5,5,5">
                         <Image Source="{Binding Image, Converter={StaticResource imgCnv}}" HeightRequest="300" WidthRequest="300" x:Name="FileImage" ></Image>
-                    <Button  Text="Odaberi sliku" HeightRequest="50" Clicked="pickPhotoBtn_Clicked" x:Name="pickPhotoBtn" Margin="0,10,0,10" BackgroundColor="Purple"></Button>
+                    <Button  Text="Odaberi sliku" HeightRequest="50" Clicked="pickPhotoBtn_Clicked" x:Name="pickPhotoBtn" Margin="0,10,0,10" BackgroundColor="Purple" CornerRadius="15"></Button>
                 </StackLayout>
                 
 
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Ime:"></Label>
-                    <Entry Text="{Binding FirstName}" IsEnabled="False"></Entry>
+                    <Label Text="Ime:" FontAttributes="Bold"></Label>
+                    <Entry Text="{Binding FirstName}" IsEnabled="False" ></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Prezime:"></Label>
+                    <Label Text="Prezime:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding LastName}" IsEnabled="False"></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Datum rođenja:"></Label>
+                    <Label Text="Datum rođenja:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding DateOfBirth,StringFormat='{0:dd.MM.yyyy}'}" IsEnabled="False"></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Korisničko ime:"></Label>
+                    <Label Text="Korisničko ime:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding Username}" IsEnabled="False"></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Email:"></Label>
+                    <Label Text="Email:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding Email}" TextChanged="Entry_TextChangedEmail" ></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Broj telefona:"></Label>
+                    <Label Text="Broj telefona:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding PhoneNumber}" Keyboard="Telephone" TextChanged="Entry_TextChangedPhoneNumber">
                         <Entry.Behaviors>
                             <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask"  />
@@ -51,14 +51,14 @@
                     </Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Adresa:"></Label>
+                    <Label Text="Adresa:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding Address}" IsEnabled="False"></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
-                    <Label Text="Grad:"></Label>
+                    <Label Text="Grad:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding City}" IsEnabled="False"></Entry>
                 </StackLayout>
-                <Button IsEnabled="{Binding IsTextChanged}" Text="Sačuvaj" HeightRequest="50" Clicked="Button_Clicked"></Button>
+                <Button IsEnabled="{Binding IsTextChanged}" Text="Sačuvaj" HeightRequest="50" Clicked="Button_Clicked" CornerRadius="15"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

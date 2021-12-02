@@ -51,6 +51,13 @@ namespace superTechMobile.ViewModels.Offers
                 {
                     AllOfferItems.Add(item);
                 }
+
+                foreach (var item in AllOfferItems)
+                {
+                    item.PriceNoDiscounString = item.PriceNoDiscount.ToString() + " KM ";
+                    item.PriceWithDiscountString = item.PriceWithDiscount.ToString() + " KM ";
+                    item.DiscountString = item.Discount.ToString() + " % ";
+                }
             }
             catch (Exception ex)
             {

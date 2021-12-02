@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="8">
-                <Frame BorderColor="Black" CornerRadius="4">
+                <!--<Frame BorderColor="Black" CornerRadius="4">
                     <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                         <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                             <Label Text="{Binding Title}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -21,8 +21,30 @@
                             <Label Text="{Binding Description}" FontSize="22" LineBreakMode="WordWrap" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <ScrollView>
+                </Frame>-->
+
+                <Frame HasShadow="True" BackgroundColor="white" HeightRequest="85" CornerRadius="20" Margin="2" BorderColor="Gray">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding Title}" FontSize="18" FontAttributes="Bold" ></Label>
+                        <Label Grid.Row="1" Grid.Column="1"  Text="Važi do: " FontSize="16" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding DateTO, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" Margin="65,0,0,0"  FontAttributes="Bold" />
+                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"  />
+
+                    </Grid>
+                </Frame> 
+
+
+                <ScrollView Background="lightBlue">
                     <StackLayout Padding="3" >
                         <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
                 VerticalOptions="StartAndExpand" 
@@ -30,7 +52,7 @@
                         <ListView ItemsSource="{Binding AllOfferItems}" Style="{DynamicResource BorderContentView}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
+                                    <!--<ViewCell>
                                         <StackLayout  
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="StartAndExpand" Padding="8">
@@ -48,6 +70,34 @@
                                                     <Label Text="{Binding PriceWithDiscount}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" TextColor="Red"></Label>
                                                 </StackLayout>
                                             </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>-->
+
+                                    <ViewCell>
+                                        <StackLayout Padding="4">
+                                            <Frame HasShadow="False" BackgroundColor="white" HeightRequest="140" CornerRadius="20" Margin="0,10,0,10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  Text="{Binding ProductName}" FontSize="19" FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
+                                                    <Label Grid.Row="1" Grid.Column="1"  Text="Popust: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding DiscountString}" FontSize="19" FontAttributes="Bold" Margin="55,0,0,0" HorizontalOptions="Start" ></Label>
+                                                    <Label Grid.Row="2" Grid.Column="1"  Text="Stara cijena: " FontSize="16" FontAttributes="Bold"  TextDecorations="Strikethrough" VerticalOptions="Center"></Label>
+                                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PriceNoDiscounString}" FontSize="19" FontAttributes="Bold" Margin="95,0,0,0" HorizontalOptions="Start" TextDecorations="Strikethrough" VerticalOptions="Center"></Label>
+                                                    <Label Grid.Row="3" Grid.Column="1"  Text="Cijena s popustom: " FontSize="15" FontAttributes="Bold" TextColor="Red" VerticalOptions="Center"></Label>
+                                                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding PriceWithDiscountString}" FontSize="19" FontAttributes="Bold" Margin="145,0,0,0" HorizontalOptions="Start" TextColor="red" VerticalOptions="Center"></Label>
+                                                </Grid>
+                                            </Frame>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

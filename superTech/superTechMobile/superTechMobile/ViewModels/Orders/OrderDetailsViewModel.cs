@@ -53,6 +53,12 @@ namespace superTechMobile.ViewModels.Orders
                 {
                     AllOrderItems.Add(item);
                 }
+
+                foreach (var item in AllOrderItems)
+                {
+                    item.ProductPriceString = item.ProductPrice.ToString() + " KM";
+                    item.AmountString = item.Amount.ToString() + " KM ";
+                }
             }
             catch (Exception ex)
             {
@@ -76,6 +82,11 @@ namespace superTechMobile.ViewModels.Orders
                 foreach (var item in order.BuyerOrderItems)
                 {
                     AllOrderItems.Add(item);
+                }
+                foreach (var item in AllOrderItems)
+                {
+                    item.ProductPriceString = item.ProductPrice.ToString() + " KM";
+                    item.AmountString = item.Amount.ToString() + " KM ";
                 }
             }
             catch (Exception ex)

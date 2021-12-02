@@ -7,67 +7,29 @@
              mc:Ignorable="d"
              x:Class="superTechMobile.Views.LoginPage"
              Shell.NavBarIsVisible="False" 
-             NavigationPage.HasNavigationBar="false">
-
+             NavigationPage.HasNavigationBar="false" BackgroundColor="LightBlue">
     <ContentPage.BindingContext>
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10" >
+            <Label Text="Korisničko ime"></Label>
+            <Entry x:Name="Username" Text="{Binding Username}" ></Entry>
 
-        <StackLayout BackgroundColor="#e6e6e6">
-            <Grid>
-                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                    <Frame HeightRequest="140" BackgroundColor="LightBlue" Padding="0" Margin="0">
-                        <Image Source="https://static.thenounproject.com/png/186197-84.png" Aspect="AspectFit" Margin="0,0,20,0"/>
-                    </Frame>
+            <Label Text="Password"></Label>
+            <Entry  Text="{Binding Password}" IsPassword="true"></Entry>
+
+            <Label IsVisible="{Binding IsBusy}" Text="Prijava u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="Prijava" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50" CornerRadius="15" WidthRequest="150"></Button>
                 </StackLayout>
-                <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                    <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0,20,0,0">
-
-                        <StackLayout>
-
-
-                            <StackLayout Margin="10">
-                                <Label Text="Prijava" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                            </StackLayout>
-
-                            <StackLayout Padding="0" Margin="15,10">
-
-                                <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Frame BackgroundColor="SkyBlue" HeightRequest="35" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                                            <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
-                                        </Frame>
-                                        <Entry x:Name="Username" Text="{Binding Username}" WidthRequest="400"></Entry>
-                                    </StackLayout>
-                                </Frame>
-
-                                <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Frame BackgroundColor="SkyBlue" HeightRequest="36" WidthRequest="36" CornerRadius="30" Padding="0" Margin="5">
-                                            <Image Source="https://cdn1.iconfinder.com/data/icons/hawcons/32/698959-icon-114-lock-512.png" Aspect="AspectFill" Margin="0"/>
-                                        </Frame>
-                                        <Entry  Text="{Binding Password}" IsPassword="true" WidthRequest="400"></Entry>
-
-                                    </StackLayout>
-                                </Frame>
-
-                                <Button Text="Prijava "  TextColor="White" CornerRadius="10" WidthRequest="50" HeightRequest="40" Margin="0,10,0,5" Command="{Binding LoginCommand}"/>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" >
-                                    <Button Text="Registracija " BackgroundColor="LightGreen" TextColor="Black" CornerRadius="10"  HeightRequest="40" Clicked="NavigateButton_OnClicked"/>
-                                </StackLayout>
-
-                                <Label IsVisible="{Binding IsBusy}" Text="Prijava u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
-
-                            </StackLayout>
-
-
-                        </StackLayout>
-
-                    </Frame>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="Registracija"  HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HeightRequest="50" Clicked="NavigateButton_OnClicked" BackgroundColor="Green" CornerRadius="15" WidthRequest="150"></Button>
                 </StackLayout>
-            </Grid>
+            </StackLayout>
+
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

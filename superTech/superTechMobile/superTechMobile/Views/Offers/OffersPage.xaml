@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.Offers"
              x:Class="superTechMobile.Views.Offers.OffersPage"
-             Title="Specijalne ponude">
+             Title="Specijalne ponude" Background="LightBlue">
     <ContentPage.BindingContext>
         <vm:OffersViewModel></vm:OffersViewModel>
     </ContentPage.BindingContext>
@@ -11,10 +11,10 @@
             <StackLayout>
                 <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
             </StackLayout>
-            <ListView ItemsSource="{Binding OffersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected">
+            <ListView ItemsSource="{Binding OffersList}" Style="{DynamicResource BorderContentView}" ItemSelected="ListView_ItemSelected" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <!--<ViewCell>
                             <StackLayout  
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="StartAndExpand" Padding="8">
@@ -29,6 +29,29 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
+                        </ViewCell>-->
+
+                        <ViewCell>
+                            <Frame HasShadow="False" BackgroundColor="WhiteSmoke" HeightRequest="80" CornerRadius="20" Margin="0,10,0,10" >
+
+                                <StackLayout 
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="StartAndExpand">
+                                    <StackLayout >
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Title}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                                            <Label Text="Važi do: " FontSize="16"   FontAttributes="Bold"></Label>
+                                            <Label Text="{Binding DateTo, StringFormat='{0:dd.MM.yyyy}'}" FontSize="16" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                                            <Label Text="{Binding Description}" FontSize="15" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
