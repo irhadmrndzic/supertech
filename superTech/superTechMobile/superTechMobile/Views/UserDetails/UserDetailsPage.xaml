@@ -38,6 +38,14 @@
                     <Entry Text="{Binding Username}" IsEnabled="False"></Entry>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Lozinka:"  FontAttributes="Bold"></Label>
+                    <Entry  IsEnabled="True"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
+                    <Label Text="Potvrdi lozinku :"  FontAttributes="Bold"></Label>
+                    <Entry  IsEnabled="true"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,0,0,5">
                     <Label Text="Email:"  FontAttributes="Bold"></Label>
                     <Entry Text="{Binding Email}" TextChanged="Entry_TextChangedEmail" ></Entry>
                 </StackLayout>

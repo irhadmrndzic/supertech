@@ -21,7 +21,7 @@
                 </Entry>
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Button Clicked="Button_Clicked" Text="Ocijeni" IsVisible="{Binding EnableButton}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="rate_btn"></Button>
+                <Button Clicked="Button_Clicked" Text="Ocijeni" IsVisible="{Binding EnableButton}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="rate_btn" CornerRadius="10"></Button>
                 <Label Text="Narudžba nije potvrđena ili ste već ocijenili proizvod!" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding EnableLabel}"/>
             </StackLayout>
         </StackLayout>

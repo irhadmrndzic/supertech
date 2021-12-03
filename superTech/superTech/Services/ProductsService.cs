@@ -177,7 +177,7 @@ namespace superTech.Services
             {
                  mlContext = new MLContext();
 
-                var tmpData = _dbContext.BuyerOrders.Include(x => x.BuyerOrderItems).ToList();
+                var tmpData = _dbContext.BuyerOrders.Include(x => x.BuyerOrderItems).ThenInclude(p=>p.FkProduct).ThenInclude(k=>k.Ratings).ToList();
 
                 var data = new List<ProductEntry>();
 
