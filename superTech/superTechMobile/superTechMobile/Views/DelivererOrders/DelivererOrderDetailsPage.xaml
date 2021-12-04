@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.DelivererOrders"
-             x:Class="superTechMobile.Views.DelivererOrders.DelivererOrderDetailsPage">
+             x:Class="superTechMobile.Views.DelivererOrders.DelivererOrderDetailsPage" >
     <ContentPage.BindingContext>
         <vm:DelivererOrderDetailsViewModel></vm:DelivererOrderDetailsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
             <StackLayout Spacing="10" Padding="8">
-                <Frame BorderColor="Black" CornerRadius="4">
+                <!--<Frame BorderColor="Black" CornerRadius="4">
                     <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                         <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                             <Label Text="Broj narudžbe:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
@@ -28,11 +28,50 @@
                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label Text="Adresa za dostavu:" FontSize="18" LineBreakMode="WordWrap"/>
                             <Label Text="{Binding ShippingAddress}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
-                        </StackLayout>         <StackLayout>
+                        </StackLayout>      
+                        
+                        <StackLayout>
                 </StackLayout>
                     </StackLayout>
-                </Frame>
-                <ScrollView>
+                </Frame>-->
+
+
+
+
+            <Frame HasShadow="False" BackgroundColor="white" HeightRequest="220" CornerRadius="20" Margin="4" BorderColor="Gray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1"  Text="Broj narudžbe: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding OrderNumber}" FontSize="18" FontAttributes="Bold" Margin="111,0,0,0" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="1" Grid.Column="1"  Text="Datum: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" Margin="60,0,0,0"  VerticalOptions="End"/>
+                    <Label Grid.Row="2" Grid.Column="1"  Text="Potvrđena? " FontSize="15" FontAttributes="Bold"  VerticalOptions="Center"></Label>
+                    <CheckBox  Grid.Row="2" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
+                    <Label Grid.Row="3" Grid.Column="1"  Text="Korisnik: " FontSize="15"  VerticalOptions="End" FontAttributes="Bold" ></Label>
+                    <Label Grid.Row="3" Grid.Column="1"  Text="{Binding UserString}" FontSize="15"  VerticalOptions="End"  Margin="65,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="4" Grid.Column="1"  Text="Adresa kupca: " FontSize="15"  VerticalOptions="End"  FontAttributes="Bold" ></Label>
+                    <Label Grid.Row="4" Grid.Column="1"  Text="{Binding ShippingAddress}" FontSize="15"  VerticalOptions="End"  Margin="110,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="5" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Amount}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="6" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTaxStr}" FontSize="18" FontAttributes="Bold" Margin="125,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                </Grid>
+            </Frame>
+            <ScrollView BackgroundColor="LightBlue">
                     <StackLayout Padding="3" >
                         <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
                 VerticalOptions="StartAndExpand" 
@@ -40,7 +79,7 @@
                         <ListView ItemsSource="{Binding AllOrderItems}" Style="{DynamicResource BorderContentView}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
+                                    <!--<ViewCell>
                                         <StackLayout  
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="StartAndExpand" Padding="8">
@@ -69,14 +108,47 @@
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
+                                    </ViewCell>-->
+
+
+
+                                <ViewCell>
+                                    <StackLayout Padding="4">
+                                        <Frame HasShadow="False" BackgroundColor="white" HeightRequest="140" CornerRadius="20" Margin="0,10,0,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding ProductName}" FontSize="18" FontAttributes="Bold"></Label>
+                                                <Label Grid.Row="1" Grid.Column="1"  Text="Cijena: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ProductPriceString}" FontSize="15" FontAttributes="Bold" Margin="55,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="2" Grid.Column="1"  Text="Šifra: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ProductCode}" FontSize="15" FontAttributes="Bold" Margin="45,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="3" Grid.Column="1"  Text="Naručeno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Quantity}" FontSize="16" FontAttributes="Bold" Margin="80,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="4" Grid.Column="1"  Text="Ukupno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding AmountString}" FontSize="16" FontAttributes="Bold" Margin="65,0,0,0" HorizontalOptions="Start"></Label>
+
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
                 </ScrollView>
                 <StackLayout >
-                    <Button Clicked="orderConfirmBtn_Clicked" Text="Zaključi narudžbu"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="orderConfirmBtn" HeightRequest="50" BackgroundColor="Blue"></Button>
+                    <Button Clicked="orderConfirmBtn_Clicked" Text="Zaključi narudžbu" CornerRadius="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="orderConfirmBtn" HeightRequest="50" BackgroundColor="Blue"></Button>
                 </StackLayout>
             </StackLayout>
     </ContentPage.Content>

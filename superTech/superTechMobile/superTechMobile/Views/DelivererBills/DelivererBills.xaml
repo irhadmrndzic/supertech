@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:superTechMobile.ViewModels.DelivererBIlls"
-             x:Class="superTechMobile.Views.DelivererBills.DelivererBills">
+             x:Class="superTechMobile.Views.DelivererBills.DelivererBills" BackgroundColor="LightBlue">
     <ContentPage.BindingContext>
         <vm:DelivererBillsViewModel></vm:DelivererBillsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="5">
-                <Label Text="Moji računi" FontSize="22" FontAttributes="bold" Padding="0,8,0,8"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
                 <StackLayout>
                     <Label IsVisible="{Binding IsBusy}" Text="Učitavanje u toku ..." VerticalOptions="Center" HorizontalOptions="Center"></Label>
                 </StackLayout>
@@ -18,20 +15,24 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout  
+                                <Frame HasShadow="False" BackgroundColor="WhiteSmoke" HeightRequest="50" CornerRadius="20" Margin="0,10,0,10" >
+
+                                    <StackLayout  
                                            VerticalOptions="StartAndExpand" 
-                                           HorizontalOptions="StartAndExpand" Padding="8">
-                                    <StackLayout >
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="Broj računa: " FontSize="16"  FontAttributes="None"></Label>
-                                            <Label Text="{Binding BillNumber}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                                            <Label Text="Datum: " FontSize="16"  FontAttributes="None"></Label>
-                                            <Label Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                           HorizontalOptions="StartAndExpand">
+                                        <StackLayout >
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Broj računa: " FontSize="16"  FontAttributes="None"></Label>
+                                                <Label Text="{Binding BillNumber}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                                                <Label Text="Datum: " FontSize="16"  FontAttributes="None"></Label>
+                                                <Label Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" VerticalOptions="End" ></Label>
+                                            </StackLayout>
+
                                         </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

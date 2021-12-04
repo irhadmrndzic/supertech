@@ -27,7 +27,7 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                                             <Label Text="Datum: " FontSize="16"  FontAttributes="None"></Label>
-                                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold" ></Label>
+                                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14" LineBreakMode="WordWrap" FontAttributes="Bold"   VerticalOptions="End"></Label>
                                         </StackLayout>
 
                                     </StackLayout>

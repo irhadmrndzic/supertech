@@ -39,7 +39,7 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>-->
-                <Frame HasShadow="False" BackgroundColor="white" HeightRequest="180" CornerRadius="20" Margin="4" BorderColor="Gray">
+                <Frame HasShadow="False" BackgroundColor="white" HeightRequest="210" CornerRadius="20" Margin="4" BorderColor="Gray">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -53,19 +53,22 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.Column="1"  Text="Broj računa: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
                         <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding BillNumber}" FontSize="18" FontAttributes="Bold" Margin="95,0,0,0" VerticalOptions="Center"></Label>
-                        <Label Grid.Row="1" Grid.Column="1"  Text="Datum izdavanja: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center" ></Label>
-                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" Margin="130,0,0,0"  VerticalOptions="End"/>
-                        <Label Grid.Row="2" Grid.Column="1"  Text="Zatvoren ? " FontSize="15" FontAttributes="Bold"  VerticalOptions="Center"></Label>
-                        <CheckBox  Grid.Row="2" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
-                        <Label Grid.Row="3" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
-                        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Amount}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
-                        <Label Grid.Row="4" Grid.Column="1"  Text="Porez: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
-                        <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Tax}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
-                        <Label Grid.Row="5" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
-                        <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTax}" FontSize="18" FontAttributes="Bold" Margin="124,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="1" Grid.Column="1"  Text="Broj narudžbe: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding OrderNumber}" FontSize="18" FontAttributes="Bold" Margin="105,0,0,0" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="2" Grid.Column="1"  Text="Datum izdavanja: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" Margin="130,0,0,0"  VerticalOptions="End"/>
+                        <Label Grid.Row="3" Grid.Column="1"  Text="Zatvoren ? " FontSize="15" FontAttributes="Bold"  VerticalOptions="Center"></Label>
+                        <CheckBox  Grid.Row="3" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
+                        <Label Grid.Row="4" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Amount}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="5" Grid.Column="1"  Text="Porez: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Tax}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="6" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTax}" FontSize="18" FontAttributes="Bold" Margin="124,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
 
                     </Grid>
                 </Frame>

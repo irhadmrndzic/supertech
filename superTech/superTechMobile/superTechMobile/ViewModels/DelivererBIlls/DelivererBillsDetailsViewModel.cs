@@ -17,6 +17,10 @@ namespace superTechMobile.ViewModels.DelivererBIlls
         public string _tax;
         public string _amount;
         public string _amountWithTax;
+        public string _shippingAddress;
+        public string _userString;
+        public string _orderNumber;
+
         public int BillId { get; set; }
 
         public ObservableCollection<BillItemsModel> _allBillItems = new ObservableCollection<BillItemsModel>();
@@ -27,9 +31,13 @@ namespace superTechMobile.ViewModels.DelivererBIlls
         public bool Closed { get => _closed; set => SetProperty(ref _closed, value); }
         public string Amount { get => _amount; set => SetProperty(ref _amount, value); }
 
-  
+        public string UserString { get => _userString; set => SetProperty(ref _userString, value); }
+        public string ShippingAddress { get => _shippingAddress; set => SetProperty(ref _shippingAddress, value); }
+
         public string Tax { get => _tax; set => SetProperty(ref _tax, value); }
         public string AmountWithTax { get => _amountWithTax; set => SetProperty(ref _amountWithTax, value); }
+        public string OrderNumber { get => _orderNumber; set => SetProperty(ref _orderNumber, value); }
+
         public ObservableCollection<BillItemsModel> AllBillItems { get => _allBillItems; set => SetProperty(ref _allBillItems, value); }
 
 
@@ -58,11 +66,24 @@ namespace superTechMobile.ViewModels.DelivererBIlls
                 Amount = bill.Amount.ToString() + "KM";
                 Tax = bill.Tax.ToString() + "%";
                 AmountWithTax = bill.AmountWithTax.ToString() + "KM";
+                UserString = bill.UserString;
+                ShippingAddress = bill.ShippingAddress;
+                OrderNumber = bill.OrderNumber;
+
                 AllBillItems.Clear();
                 foreach (var item in bill.BillItems)
                 {
                     AllBillItems.Add(item);
                 }
+                foreach (var item in AllBillItems)
+                {
+                    item.AmountSum += item.Quantity * item.Price;
+                    item.AmountSumString = item.AmountSum.ToString() + " KM ";
+                    item.PriceString = item.Price.ToString() + " KM ";
+                    item.DiscountString = item.Discount.ToString() + " % ";
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -83,10 +104,21 @@ namespace superTechMobile.ViewModels.DelivererBIlls
                 Amount = bill.Amount.ToString() + "KM";
                 Tax = bill.Tax.ToString() + "%";
                 AmountWithTax = bill.AmountWithTax.ToString() + "KM";
+                UserString = bill.UserString;
+                ShippingAddress = bill.ShippingAddress;
+                OrderNumber = bill.OrderNumber;
+
                 AllBillItems.Clear();
                 foreach (var item in bill.BillItems)
                 {
                     AllBillItems.Add(item);
+                }
+                foreach (var item in AllBillItems)
+                {
+                    item.AmountSum += item.Quantity * item.Price;
+                    item.AmountSumString = item.AmountSum + " KM ";
+                    item.PriceString = item.Price.ToString() + " KM ";
+                    item.DiscountString = item.Discount.ToString() + " % ";
                 }
             }
             catch (Exception ex)

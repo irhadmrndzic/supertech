@@ -28,6 +28,7 @@ namespace superTechMobile.ViewModels.TempOrderDetails
         public bool _confirmed;
         public int _userId;
         public decimal _amount;
+        public string _amountWithTax;
         public string _amountStr;
         public int _orderNumber;
         public ObservableCollection<TempOrderItems> _tempOrderItems = new ObservableCollection<TempOrderItems>();
@@ -40,6 +41,7 @@ namespace superTechMobile.ViewModels.TempOrderDetails
         public decimal Amount{ get => _amount; set => SetProperty(ref _amount, value); }
         public string AmountStr { get => _amountStr; set { SetProperty(ref _amountStr, value); } }
 
+        public string AmountWithTaxStr { get => _amountWithTax; set => SetProperty(ref _amountWithTax, value); }
 
         public ObservableCollection<TempOrderItems> AllOrderItems { get => _tempOrderItems; set => SetProperty(ref _tempOrderItems, value); }
 
@@ -68,6 +70,8 @@ namespace superTechMobile.ViewModels.TempOrderDetails
                 {
                     Amount += (decimal)item.Amount;
                     AmountStr = Amount.ToString() + " KM ";
+
+                    AmountWithTaxStr = (Math.Round(((decimal)Amount + ((decimal)Amount * (decimal)0.17)),2)).ToString() + " KM ";
                 }
 
                 if (AllOrderItems.Count > 0)

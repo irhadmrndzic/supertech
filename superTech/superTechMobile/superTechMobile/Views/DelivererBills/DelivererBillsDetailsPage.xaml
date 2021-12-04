@@ -8,37 +8,47 @@
     <ContentPage.Content>
         
             <StackLayout Spacing="10" Padding="8">
-                <Frame BorderColor="Black" CornerRadius="4">
-                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                        <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Broj računa:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            <Label Text="{Binding BillNumber}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                        </StackLayout>
 
-                        <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Datum izdavanja:" FontSize="18" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            <Label Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Zatvoren:" FontSize="18" LineBreakMode="WordWrap" />
-                            <CheckBox IsChecked="{Binding Closed}" IsEnabled="False"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Porez:" FontSize="18" LineBreakMode="WordWrap"/>
-                            <Label Text="{Binding Tax}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Iznos bez poreza:" FontSize="18" LineBreakMode="WordWrap"/>
-                            <Label Text="{Binding Amount}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
-                        </StackLayout>
+            <Frame HasShadow="False" BackgroundColor="white" HeightRequest="300" CornerRadius="20" Margin="4" BorderColor="Gray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1"  Text="Broj računa: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding BillNumber}" FontSize="18" FontAttributes="Bold" Margin="95,0,0,0" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="1" Grid.Column="1"  Text="Broj narudžbe: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding OrderNumber}" FontSize="18" FontAttributes="Bold" Margin="105,0,0,0" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="2" Grid.Column="1"  Text="Datum izdavanja: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center" ></Label>
+                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IssuingDate, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" Margin="130,0,0,0"  VerticalOptions="End"/>
+                    <Label Grid.Row="3" Grid.Column="1"  Text="Zatvoren ? " FontSize="15" FontAttributes="Bold"  VerticalOptions="Center"></Label>
+                    <CheckBox  Grid.Row="3" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
+                    <Label Grid.Row="4" Grid.Column="1"  Text="Korisnik: " FontSize="15"  VerticalOptions="End" FontAttributes="Bold" ></Label>
+                    <Label Grid.Row="4" Grid.Column="1"  Text="{Binding UserString}" FontSize="16"  VerticalOptions="End"  Margin="68,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="5" Grid.Column="1"  Text="Adresa za dostavu: " FontSize="15"  VerticalOptions="End"  FontAttributes="Bold" ></Label>
+                    <Label Grid.Row="5" Grid.Column="1"  Text="{Binding ShippingAddress}" FontSize="16"  VerticalOptions="End"  Margin="140,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="6" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Amount}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="7" Grid.Column="1"  Text="Porez: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Tax}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    <Label Grid.Row="8" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                    <Label Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTax}" FontSize="18" FontAttributes="Bold" Margin="124,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
 
-                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label Text="Iznos s porezom:" FontSize="18" LineBreakMode="WordWrap"/>
-                            <Label Text="{Binding AmountWithTax}" FontSize="23" LineBreakMode="WordWrap" FontAttributes="Bold"/>
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-                <ScrollView>
+                </Grid>
+            </Frame>
+            <ScrollView BackgroundColor="LightBlue">
                     <StackLayout Padding="3" >
                         <Label Text="Proizvodi:" FontSize="15" FontAttributes="bold" Padding="0,8,0,8"
                 VerticalOptions="StartAndExpand" 
@@ -46,39 +56,44 @@
                         <ListView ItemsSource="{Binding AllBillItems}" Style="{DynamicResource BorderContentView}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout  
-                                           VerticalOptions="StartAndExpand" 
-                                           HorizontalOptions="StartAndExpand" Padding="8">
-                                            <StackLayout >
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Naziv: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding ProductString}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Cijena: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding Price}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Količina: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding Quantity}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                                </StackLayout>
 
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Popust: " FontSize="16"  FontAttributes="None"></Label>
-                                                    <Label Text="{Binding Discount}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-                                                </StackLayout>
 
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="4">
+                                        <Frame HasShadow="False" BackgroundColor="white" HeightRequest="160" CornerRadius="20" Margin="0,10,0,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding ProductString}" FontSize="18" FontAttributes="Bold"></Label>
+                                                <Label Grid.Row="1" Grid.Column="1"  Text="Cijena: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PriceString}" FontSize="15" FontAttributes="Bold" Margin="55,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="2" Grid.Column="1"  Text="Naručeno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Quantity}" FontSize="15" FontAttributes="Bold" Margin="78,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="3" Grid.Column="1"  Text="Popust: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding DiscountString}" FontSize="16" FontAttributes="Bold" Margin="65,0,0,0" HorizontalOptions="Start"></Label>
+                                                <Label Grid.Row="4" Grid.Column="1"  Text="Ukupno: " FontSize="15" FontAttributes="Bold" ></Label>
+                                                <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountSumString}" FontSize="16" FontAttributes="Bold" Margin="65,0,0,0" HorizontalOptions="Start"></Label>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
                 </ScrollView>
             <StackLayout >
-                <Button Clicked="closeBillBtn_Clicked" Text="Zatvori račun"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="closeBillBtn" HeightRequest="50" BackgroundColor="Blue"></Button>
+                <Button Clicked="closeBillBtn_Clicked" Text="Zatvori račun"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="closeBillBtn" HeightRequest="50" BackgroundColor="Blue" CornerRadius="15" ></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

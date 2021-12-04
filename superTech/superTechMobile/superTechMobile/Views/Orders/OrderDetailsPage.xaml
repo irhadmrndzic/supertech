@@ -41,8 +41,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="0" />
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.Column="1"  Text="Broj narudžbe: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
@@ -53,8 +52,9 @@
                         <CheckBox  Grid.Row="2" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
                         <Label Grid.Row="3" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
                         <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Amount}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="4" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTaxStr}" FontSize="18" FontAttributes="Bold" Margin="125,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                         <Label Grid.Row="5" Grid.Column="1"  Text="Dostava u roku od 7-9 dana. " FontSize="13"  VerticalOptions="End" FontAttributes="Italic,Bold" ></Label>
-                        <Label Grid.Row="6" Grid.Column="1"  Text="*Porez će biti naknadno obračunat. " FontSize="13"  VerticalOptions="End" FontAttributes="Italic" TextColor="red"></Label>
 
                     </Grid>
                 </Frame>

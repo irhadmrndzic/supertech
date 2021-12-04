@@ -16,7 +16,9 @@ namespace superTech.Models.Bills
         public int? FkUserId { get; set; }
         public int? FkBuyerOrder { get; set; }
         //public string EmployeeString { get; set; }
-        //public string BuyerString { get; set; }
+        public string UserString { get; set; }
+        public string ShippingAddress { get; set; }
+        public string OrderNumber { get; set; }
 
         public virtual ICollection<BillItemsModel> BillItems { get; set; }
 

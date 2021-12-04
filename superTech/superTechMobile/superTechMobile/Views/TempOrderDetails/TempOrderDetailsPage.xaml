@@ -42,7 +42,7 @@
                     </StackLayout>
                 </Frame>-->
 
-                <Frame HasShadow="False" BackgroundColor="white" HeightRequest="170" CornerRadius="20" Margin="4" BorderColor="Gray">
+                <Frame HasShadow="False" BackgroundColor="white" HeightRequest="160" CornerRadius="20" Margin="4" BorderColor="Gray">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -50,8 +50,9 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -59,14 +60,13 @@
                         <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding OrderNumber}" FontSize="18" FontAttributes="Bold" Margin="111,0,0,0" VerticalOptions="Center"></Label>
                         <Label Grid.Row="1" Grid.Column="1"  Text="Datum: " FontSize="15" FontAttributes="Bold" VerticalOptions="Center" ></Label>
                         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" FontSize="18" LineBreakMode="WordWrap" FontAttributes="Bold" Margin="60,0,0,0"  VerticalOptions="End"/>
-                        <Label Grid.Row="2" Grid.Column="1"  Text="Potvrđena? " FontSize="15" FontAttributes="Bold"  VerticalOptions="Center"></Label>
-                        <CheckBox  Grid.Row="2" Grid.Column="1" IsChecked="{Binding Confirmed}" IsEnabled="False" Margin="90,0,0,0" VerticalOptions="Center"/>
-                        <Label Grid.Row="3" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
-                        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountStr}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
-
+                        <Label Grid.Row="2" Grid.Column="1"  Text="Iznos: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountStr}" FontSize="18" FontAttributes="Bold" Margin="48,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="3" Grid.Column="1"  Text="Iznos s porezom: " FontSize="15" FontAttributes="Bold"  VerticalOptions="End"></Label>
+                        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AmountWithTaxStr}" FontSize="18" FontAttributes="Bold" Margin="140,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Grid.Row="4" Grid.Column="1"  Text="Dostava u roku od 7-9 dana. " FontSize="13"  VerticalOptions="End" FontAttributes="Italic,Bold" ></Label>
                     </Grid>
                 </Frame>
-
 
 
                 <StackLayout Padding="3" BackgroundColor="LightBlue">

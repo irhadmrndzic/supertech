@@ -116,7 +116,7 @@ namespace superTech.Mappers
 
             CreateMap<BuyerOrder, BuyerOrdersModel>()
                 .ForMember(x => x.FkUserId, src => src.MapFrom(a => a.FkUser.UserId))
-                .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName))
+                .ForMember(q => q.UserString, w => w.MapFrom(src => src.FkUser.UserName + ", " + src.FkUser.FirstName + " " + src.FkUser.LastName))
                 .ForMember(q => q.BuyerOrderItems, w => w.MapFrom(src => src.BuyerOrderItems))
                 .ForMember(a => a.ShippingAddress, src => src.MapFrom(q => q.FkUser.Address))
                 .ReverseMap();
@@ -133,7 +133,11 @@ namespace superTech.Mappers
 
 
             CreateMap<Bill, BillsModel>()
-              .ForMember(x => x.BillItems, src => src.MapFrom(x => x.BillItems)).ReverseMap();
+              .ForMember(x => x.BillItems, src => src.MapFrom(x => x.BillItems))
+              .ForMember(q=>q.UserString,src=>src.MapFrom(k=>k.FkUser.UserName + ", " + k.FkUser.UserName + " " +k.FkUser.LastName))
+              .ForMember(f=>f.ShippingAddress, src=>src.MapFrom(q=>q.FkUser.Address))
+              .ForMember(f=>f.OrderNumber, src=>src.MapFrom(q=>q.FkBuyerOrderNavigation.OrderNumber.ToString()))
+              .ReverseMap();
 
             CreateMap<BillItem, BillItemsModel>()
                 .ForMember(x => x.ProductString, src => src.MapFrom(x => x.FkProduct.Name))

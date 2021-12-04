@@ -16,6 +16,7 @@ namespace superTechMobile.ViewModels.Bills
         public string _amount;
         public string _amountWithTax;
         public string _amountSumString;
+        public string _orderNumber;
         public int BillId { get; set; }
 
         public ObservableCollection<BillItemsModel> _allBillItems = new ObservableCollection<BillItemsModel>();
@@ -28,6 +29,7 @@ namespace superTechMobile.ViewModels.Bills
         public string Tax { get => _tax; set => SetProperty(ref _tax, value); }
         public string AmountWithTax { get => _amountWithTax; set => SetProperty(ref _amountWithTax, value); }
         public string AmountSumString { get => _amountSumString; set => SetProperty(ref _amountSumString, value); }
+        public string OrderNumber { get => _orderNumber; set => SetProperty(ref _orderNumber, value); }
         public ObservableCollection<BillItemsModel> AllBillItems { get => _allBillItems; set => SetProperty(ref _allBillItems, value); }
 
 
@@ -56,6 +58,7 @@ namespace superTechMobile.ViewModels.Bills
                 Amount = bill.Amount.ToString() + "KM";
                 Tax = bill.Tax.ToString() + "%";
                 AmountWithTax = bill.AmountWithTax.ToString() + "KM";
+                OrderNumber = bill.OrderNumber;
                 
                 AllBillItems.Clear();
                 foreach (var item in bill.BillItems)
@@ -82,6 +85,8 @@ namespace superTechMobile.ViewModels.Bills
                 Amount = bill.Amount.ToString() + "KM";
                 Tax = bill.Tax.ToString() + "%";
                 AmountWithTax = bill.AmountWithTax.ToString() + "KM";
+                OrderNumber = bill.OrderNumber;
+
                 AllBillItems.Clear();
                 foreach (var item in bill.BillItems)
                 {

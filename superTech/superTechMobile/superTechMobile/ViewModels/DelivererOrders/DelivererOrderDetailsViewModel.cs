@@ -13,7 +13,10 @@ namespace superTechMobile.ViewModels.DelivererOrders
         public DateTime _date;
         public bool _confirmed;
         public string _amount;
+        public string _userString;
         public string _shippingAddress;
+        public string _amountWithTax;
+
         public ObservableCollection<BuyerOrderItemsModel> _allOrderItems = new ObservableCollection<BuyerOrderItemsModel>();
 
         public int OrderId { get; set; }
@@ -27,6 +30,9 @@ namespace superTechMobile.ViewModels.DelivererOrders
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
         public bool Confirmed { get => _confirmed; set => SetProperty(ref _confirmed, value); }
         public string Amount { get => _amount; set => SetProperty(ref _amount, value); }
+        public string UserString { get => _userString; set => SetProperty(ref _userString, value); }
+        public string AmountWithTaxStr { get => _amountWithTax; set => SetProperty(ref _amountWithTax, value); }
+
         public ObservableCollection<BuyerOrderItemsModel> AllOrderItems { get => _allOrderItems; set => SetProperty(ref _allOrderItems, value); }
 
         public int OrderDetailId
@@ -41,6 +47,8 @@ namespace superTechMobile.ViewModels.DelivererOrders
                 loadOrders(value);
             }
         }
+
+
         public async void loadOrders(int id)
         {
             try
@@ -50,11 +58,20 @@ namespace superTechMobile.ViewModels.DelivererOrders
                 Confirmed = order.Confirmed;
                 Date = order.Date;
                 Amount = order.Amount.ToString() + " KM";
+                AmountWithTaxStr = (Math.Round(((decimal)order.Amount + ((decimal)order.Amount * (decimal)0.17)), 2)).ToString() + " KM ";
+
                 ShippingAddress = order.ShippingAddress;
+                UserString = order.UserString;
                 AllOrderItems.Clear();
                 foreach (var item in order.BuyerOrderItems)
                 {
                     AllOrderItems.Add(item);
+                }
+
+                foreach (var item in AllOrderItems)
+                {
+                    item.ProductPriceString = item.ProductPrice.ToString() + " KM";
+                    item.AmountString = item.Amount.ToString() + " KM ";
                 }
             }
             catch (Exception ex)
@@ -74,11 +91,20 @@ namespace superTechMobile.ViewModels.DelivererOrders
                 Confirmed = order.Confirmed;
                 Date = order.Date;
                 Amount = order.Amount.ToString() + " KM";
+                AmountWithTaxStr = (Math.Round(((decimal)order.Amount + ((decimal)order.Amount * (decimal)0.17)), 2)).ToString() + " KM ";
+
+                UserString = order.UserString;
                 AllOrderItems.Clear();
 
                 foreach (var item in order.BuyerOrderItems)
                 {
                     AllOrderItems.Add(item);
+                }
+
+                foreach (var item in AllOrderItems)
+                {
+                    item.ProductPriceString = item.ProductPrice.ToString() + " KM";
+                    item.AmountString = item.Amount.ToString() + " KM ";
                 }
             }
             catch (Exception ex)
