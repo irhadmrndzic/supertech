@@ -68,6 +68,7 @@ namespace superTechMobile.ViewModels.Products
 
 
         public ObservableCollection<ProductModel> ProductsList { get; set; } = new ObservableCollection<ProductModel>();
+        public ObservableCollection<OffersModel> OffersList { get; set; } = new ObservableCollection<OffersModel>();
         public ObservableCollection<ProductModel> AlteredProductList { get; set; } = new ObservableCollection<ProductModel>();
         public ObservableCollection<CategoryModel> CategoriesList { get; set; } = new ObservableCollection<CategoryModel>();
         public ObservableCollection<BrandsModel> BrandsList { get; set; } = new ObservableCollection<BrandsModel>();
@@ -89,6 +90,10 @@ namespace superTechMobile.ViewModels.Products
             try
             {
                 var offers = await _offersApiService.Get<List<OffersModel>>(null);
+                foreach (var offer in offers)
+                {
+                    OffersList.Add(offer);
+                }
             
                 IsBusy = true;
                 if (CategoriesList.Count == 0)
@@ -131,15 +136,16 @@ namespace superTechMobile.ViewModels.Products
 
                     }
 
-                    foreach (var offer in offers)
+                    foreach (var offer in OffersList)
                     {
-                        foreach (var item in offer.OfferItems)
+                        foreach (var itm in offer.OfferItems)
                         {
                             foreach (var prod in ProductsList)
                             {
-                                if (prod.ProductId == item.FkProductId)
+                                if (prod.ProductId == itm.FkProductId)
                                 {
-                                    ProductsList.Where(x => x.ProductId == item.FkProductId).SetValue(q => q.Price = (decimal)item.PriceWithDiscount);
+                                    ProductsList.Where(x => x.ProductId == itm.FkProductId && offer.Active == true).SetValue(q => q.Price = (decimal)itm.PriceWithDiscount);
+                                    prod.PriceString = prod.Price.ToString() + " KM ";
                                 }
                             }
                         }
@@ -156,16 +162,16 @@ namespace superTechMobile.ViewModels.Products
                         ProductsList.Add(item);
                     }
 
-                    foreach (var offer in offers)
+                    foreach (var offer in OffersList)
                     {
-                        foreach (var item in offer.OfferItems)
+                        foreach (var itm in offer.OfferItems)
                         {
                             foreach (var prod in ProductsList)
                             {
-                                if (prod.ProductId == item.FkProductId)
+                                if (prod.ProductId == itm.FkProductId)
                                 {
-                                    ProductsList.Where(x => x.ProductId == item.FkProductId && offer.Active==true).SetValue(q => q.Price = (decimal)item.PriceWithDiscount);
-                                    ProductsList.Where(x => x.ProductId == item.FkProductId && offer.Active==true).SetValue(q => q.PriceString = item.PriceWithDiscount.ToString()+ " KM");
+                                    ProductsList.Where(x => x.ProductId == itm.FkProductId && offer.Active==true).SetValue(q => q.Price = (decimal)itm.PriceWithDiscount);
+                                    prod.PriceString = prod.Price.ToString() + " KM ";
                                 }
                             }
                         }

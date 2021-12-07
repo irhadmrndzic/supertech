@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System;
+using superTechMobile.Views.Orders;
 
 namespace superTechMobile.ViewModels.Rating
 {
@@ -126,6 +127,7 @@ namespace superTechMobile.ViewModels.Rating
                     throw new Exception("Unesite vrijednost izmedju 1 i 5!");
                 }
                 await _ratingsApiService.Insert<RatingsModel>(request);
+                await Application.Current.MainPage.DisplayAlert("Info", "Proizvod ocijenjen !", "OK");
             }
             catch (System.Exception ex)
             {

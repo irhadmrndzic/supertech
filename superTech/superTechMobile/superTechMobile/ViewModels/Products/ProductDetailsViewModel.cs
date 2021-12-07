@@ -97,20 +97,20 @@ namespace superTechMobile.ViewModels.Products
 
                             if (product.ProductId == item.FkProductId)
                             {
-                                ProductPrice = item.PriceWithDiscount.ToString();
+                                ProductPrice = item.PriceWithDiscount.ToString()+ " KM ";
                                 ProductPriceDecimal = (decimal)item.PriceWithDiscount;
                             }
                             else
                             {
                                 ProductPriceDecimal = product.Price;
-                                ProductPrice = product.PriceString;
+                                ProductPrice = product.PriceString + " KM ";
                             }
                         }
                     }
                 }
                 else
                 {
-                    ProductPrice = product.PriceString;
+                    ProductPrice = product.PriceString + " KM ";
                 }
                 
          

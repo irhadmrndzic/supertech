@@ -215,6 +215,8 @@ namespace superTechMobile.ViewModels.Registration
                 };
 
                 await _usersApiService.Insert<UserModel>(request);
+                await Application.Current.MainPage.DisplayAlert("Info", "Registracija uspješna !", "OK");
+
                 Application.Current.MainPage = new LoginPage();
             }
             catch (Exception ex)

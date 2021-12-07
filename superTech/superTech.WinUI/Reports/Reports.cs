@@ -76,8 +76,6 @@ namespace superTech.WinUI.Reports
             dgvProdsByDate.Columns[0].Width = 200;
             dgvProdsByDate.Columns[1].Width = 50;
             dgvProdsByDate.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvProdsByDate.ScrollBars = ScrollBars.None;
-            dgvProdsByDate.ScrollBars = ScrollBars.None;
             dgvProdsByDate.AutoGenerateColumns = false;
 
 
@@ -150,6 +148,11 @@ namespace superTech.WinUI.Reports
 
             ReportsModel model = await _reportsService.Get<ReportsModel>(req);
             dgvProdsByDate.DataSource = model.TopProductsByDateModel;
+        }
+
+        private void dgvProdsByDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

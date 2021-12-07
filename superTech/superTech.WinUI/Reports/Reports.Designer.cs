@@ -758,6 +758,7 @@ namespace superTech.WinUI.Reports
             this.dgvProdsByDate.Size = new System.Drawing.Size(630, 433);
             this.dgvProdsByDate.StandardTab = true;
             this.dgvProdsByDate.TabIndex = 6;
+            this.dgvProdsByDate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdsByDate_CellContentClick);
             // 
             // NameProd
             // 

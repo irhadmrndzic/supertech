@@ -31,7 +31,7 @@ namespace superTechMobile.Views.Orders
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new RateProductPage((BuyerOrderItemsModel)e.SelectedItem, _model.Confirmed));
+            await Navigation.PushModalAsync(new RateProductPage((BuyerOrderItemsModel)e.SelectedItem, _model.Confirmed));
         }
     }
 }
